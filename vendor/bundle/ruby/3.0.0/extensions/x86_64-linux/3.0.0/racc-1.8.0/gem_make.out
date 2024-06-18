@@ -1,0 +1,15 @@
+current directory: /u/cr4bd/fall2024/cs4457-website/vendor/bundle/ruby/3.0.0/gems/racc-1.8.0/ext/racc/cparse
+/usr/bin/ruby3.0 -I /usr/lib/ruby/vendor_ruby -r ./siteconf20240520-1845422-h8p9lu.rb extconf.rb
+creating Makefile
+
+current directory: /u/cr4bd/fall2024/cs4457-website/vendor/bundle/ruby/3.0.0/gems/racc-1.8.0/ext/racc/cparse
+make DESTDIR\= clean
+
+current directory: /u/cr4bd/fall2024/cs4457-website/vendor/bundle/ruby/3.0.0/gems/racc-1.8.0/ext/racc/cparse
+make DESTDIR\=
+compiling cparse.c
+linking shared-object racc/cparse.so
+
+current directory: /u/cr4bd/fall2024/cs4457-website/vendor/bundle/ruby/3.0.0/gems/racc-1.8.0/ext/racc/cparse
+make DESTDIR\= install
+/usr/bin/install -c -m 0755 cparse.so ./.gem.20240520-1845422-brxxk4/racc

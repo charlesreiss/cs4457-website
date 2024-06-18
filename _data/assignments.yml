@@ -1,0 +1,76 @@
+- name: webserver
+  open: 2024-08-29
+  due: 2024-09-06
+  page: hw/webserver.html
+  tentative: true
+
+- name: webserver - async?
+
+- name: framing
+  FIXME: based on https://cseweb.ucsd.edu/classes/wi22/cse123-a
+  FIXME: communicating on common medium, no retransmissions, etc.
+
+- name: reliable part 1 (zero/one)
+  short_name: reliable1
+  open: 2024-09-06
+  due: 2024-09-13
+  page: hw/reliable.html
+  tentative: true
+
+- name: tcp-trace
+  short_name: tcp-trace
+  open: 2024-09-13
+  due: 2024-09-20
+  page: hw/trace.html
+  tentative: true
+
+- name: reliable part 2 (sliding window)
+  short_name: reliable2
+  open: 2024-09-20
+  due: 2024-09-27
+  page: hw/reliable.html
+  tentative: true
+
+- name: reliable part 3 (variable window)
+  short_name: reliable3
+  open: 2024-09-27
+  due: 2024-10-04
+  page: hw/reliable.html
+  tentative: true
+
+- name: packet scheduling
+  short_name: schedule
+  open: 2024-10-04
+  due: 2024-10-11
+  page: hw/schedule.html
+  tentative: true
+
+- name: DNS
+  open: 2024-10-11
+  due: 2024-10-18
+  page: hw/dns.html
+  tentative: true
+
+- name: DV routing
+  short_name: dv
+  open: 2024-10-18
+  due: 2024-10-25
+  page: hw/dv.html
+  tentative: true
+
+- name: SDN intro
+  short_name: sdn
+  open: 2024-10-25
+  due: 2024-11-01
+  page: hw/sdn.html
+  tentative: true
+
+- name: BGP or multi-access
+  open: 2024-11-01
+  due: 2024-11-15
+  tentative: true
+
+- name: wireless or firewalls
+  open: 2024-11-01
+  due: 2024-11-22
+  tentative: true

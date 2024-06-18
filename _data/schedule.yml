@@ -1,0 +1,168 @@
+- date: 2024-08-27
+  week: 1
+  title: intro/socket API
+
+- date: 2024-08-29
+  week: 1
+  title: HTTP
+
+- date: 2024-08-30
+  week: 1
+
+- date: 2024-09-03
+  week: 2
+  title: layers/packets/multiplexing
+
+- date: 2024-09-05
+  week: 2
+  title: "transport: ACKs"
+
+- date: 2024-09-06
+  week: 2
+
+- date: 2024-09-10
+  week: 3
+  title: "interlude: timeouts, event-based programming"
+
+- date: 2024-09-12
+  week: 3
+  title: "transport: sliding windows"
+
+- date: 2024-09-13
+  week: 3
+
+- date: 2024-09-17
+  week: 4
+  title: "interlude: buffers in routers"
+
+- date: 2024-09-19
+  week: 4
+  title: "transport: congestion control 2"
+
+- date: 2024-09-20
+  week: 4
+
+- date: 2024-09-24
+  week: 5
+  title: "transport: selected TCP details"
+
+- date: 2024-09-26
+  week: 5
+  title: "interlude: DNS, addresses"
+
+- date: 2024-09-27
+  week: 5
+
+- date: 2024-10-01
+  week: 6
+  title: "network: packet forwarding"
+
+- date: 2024-10-03
+  week: 6
+  title: "network: distance vector"
+
+- date: 2024-10-04
+  week: 6
+
+- date: 2024-10-08
+  week: 7
+  title: "network: spanning tree"
+
+- date: 2024-10-10
+  week: 7
+  title: "network: SDN / centralized routing"
+
+- date: 2024-10-11
+  week: 7
+
+- date: 2024-10-15
+  week: 8
+  no_class: true
+
+- date: 2024-10-17
+  week: 8
+  title: "network: BGP"
+
+- date: 2024-10-18
+  week: 8
+
+- date: 2024-10-22
+  week: 9
+  title: "link: error correction / detection"
+
+- date: 2024-10-24
+  week: 9
+  title: "link: multi-access"
+
+- date: 2024-10-25
+  week: 9
+
+- date: 2024-10-29
+  week: 10
+  title: "link: ARP and ND"
+
+- date: 2024-10-31
+  week: 10
+  title: "link: autoconfiguration"
+
+- date: 2024-11-01
+  week: 10
+
+- date: 2024-11-03
+  week: 11
+  no_class: true
+
+- date: 2024-11-07
+  week: 11
+  title: "link: wireless 1"
+
+- date: 2024-11-08
+  week: 11
+
+- date: 2024-11-12
+  week: 12
+  title: "link: wireless 2"
+
+- date: 2024-11-14
+  week: 12
+  title: "security: firewalls, encapsulation"
+
+- date: 2024-11-15
+  week: 12
+
+- date: 2024-11-19
+  week: 13
+  title: "security: IDSs"
+
+- date: 2024-11-21
+  week: 13
+  title: "security: BGP security"
+
+- date: 2024-11-22
+  week: 13
+
+- date: 2024-11-26
+  week: 14
+  title: "slack"
+
+- date: 2024-11-28
+  week: 14
+  no_class: true
+
+- date: 2024-11-29
+  week: 14
+  no_class: true
+
+- date: 2024-12-03
+  week: 15
+  title: "slack"
+
+- date: 2024-12-05
+  week: 15
+  title: "exam review"
+
+- date: 2024-12-17
+  week: 16
+  title: "final exam"
+  description: |
+    2PM-5PM (last exam slot)

@@ -1,0 +1,18 @@
+---
+title: Main Page
+author: Charles Reiss
+...
+
+This is the website for the Fall 2024 offering of CS 4457 (Computer Networks).
+
+You'll probably find the [schedule](schedule.html) link above most useful.
+
+# Course Staff
+
+**Charles Reiss**
+:   Office: Rice 205. 
+    <br/>Email: creiss@virginia.edu
+    <br/>Telephone: 434-924-8274
+
+**TAs**
+:   TBA

@@ -6,9 +6,11 @@ author: Charles Reiss
 # Your Task
 
 1.  Using the standard Python [socket](https://docs.python.org/3/library/socket.html) library,
-    and any data structure and text encoding-related standard Python libraries of your choice,
+    and any data structure and text encoding-related standard Python libraries of your choice^[You may
+    *not* use other Python libraries for handling URIs or HTTP.],
     create a webserver. Your webserver must:
 
+    *  set the SO_REUSEADDR socket option on its server socket
     *  be startable by running `python3 webserver.py 127.0.0.1 PORT` 
     *  listen on IP address 127.0.0.1, port number PORT, and look for files in 
        `webroot` directory in the directory where it is run from
@@ -20,6 +22,8 @@ author: Charles Reiss
              then the webserver returns a "404 Not Found" response whose body
              is the contents of `404.html` in the webroot directory
              (or text of your choice if that file does not exist)
+          *  if `FOO` is `redirect-example`, returns a 301 Moved Permanently response
+             with a Location header specifying /redirect-target.html
           *  if `FOO` exists in webroot but is not readable,
              the webserver returns a "403 Not Authorized" response whose
              body is the contents of `403.html` in the webroot directory
@@ -30,7 +34,66 @@ author: Charles Reiss
           the `Content-Type` header is set to `text/html`; if its extension is `txt`,
           the `Content-Type` header is set to `text/plain`. Otherwise, the
           `Content-Type` header may be omitted or set as you choose.
+       *  When returning a response with a message body, either include
+          a correct `Content-Length` or use the `chunked` transfer encoding
+          for the message body.
+
+     Your webserver only need to handle one connection at a time.
 
 2.  Test your server using TBD.
 
 3.  Submit your server by TBD.
+
+# References
+
+1.  [RFC 9110](https://www.rfc-editor.org/rfc/rfc9110.html) is the official specification for HTTP.
+    You can find a friendlier introduction in [Section 9.1.2 of <i>Computer Networks: A Systems Approach</i>](https://book.systemsapproach.org/applications/traditional.html#world-wide-web-http) 
+
+2.  The reference documentation for the Python socket library is
+    [here](https://docs.python.org/3/library/socket.html). 
+
+    There is a friendlier introduction in the official Python [socket programming
+    HOWTO](https://docs.python.org/3/howto/sockets.html). If you remember the
+    socket chat lab from CSO1, you may notice that since the Python socket library
+    wraps the C API you used in CSO1, it follows the same structure.
+
+    The socket API shows creating server sockets using `socket.scoket` and `bind`; you
+    might find it easier to use the `create_server` utility function as more readable
+    shorthand.
+
+# Hints
+
+## Bytes in Python
+
+1.  The socket functions in Python return and expect `bytes`, not `str` (strings).
+    (`bytes` are composed of 8-bit bytes, but `str`s are composed of Unicode characters.)
+
+    To get `bytes` instead of `str`s:
+
+    *  open files in "binary" mode (for example `open('webroot/404.html', 'rb')` instead of
+       `open('webroot/404.html', 'r')`)
+    *  write constants like `b'foo'` instead of `'foo'`
+    *  given a string `s`, use something like `s.encode('UTF-8')` to convert it to a `bytes` object
+
+    If you need to convert from a `bytes` object `b` to `str`, you can do something like
+    `b.decode('UTF-8', errors='replace')`. <!-- FIXME: pointer to documentation -->
+
+## Reading requests
+
+1.  When you call `recv`, it will read whatever bytes are available, this may or may not be a full
+    request. You may need to call recv multiple times to read enough of a request to figure out what 
+    to do.
+
+    Since a request's headers are always terminated by two CRLFs^[CRLF is an 0x10 byte followed by an 0x13 byte.],
+    I would recommend calling `recv` in a loop, accumulating the bytes received into a buffer, until
+    the buffer contains a doubled CRLF. At that point, you would have a full set of request headers.
+
+2.  Clients can send multiple requests to your server in a single connection.
+    If you only want to handle one request per connection (which would be simpler), then
+    you can close the connection after responding to the first request.
+
+    (You could also handle multiple requests per connection.
+    If you do so, note that some non-GET requests may have request bodies, which you would
+    need to skip over to find the next request.)
+
+
