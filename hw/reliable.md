@@ -1,5 +1,5 @@
 ---
-title: Reliable Transport
+title: reliable transport
 author: Charles Reiss (based on ...)
 ...
 
@@ -91,6 +91,7 @@ author: Charles Reiss (based on ...)
        (`config.MAXIMUM_SEQUENCE` will be at least `config.INITIAL_WINDOW * 2 - 1`).
        To make your implementation simpler, we will gaurentee that MAXIMUM_SEQUENCE + 1 is a reasonable
        size for a Python list
+
     In addition:
     *   the first packet by the sender 
         sent should have a sequence number of 0, the second a sequence number of 1,
