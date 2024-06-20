@@ -73,11 +73,13 @@ author: Charles Reiss (based on ...)
 
 2.  Test your implementation:
 
-    *  With no losses (loss rate 0), two packets per 20 bytes of data + 1 or 2 extra packets should be sent in total.
+    *  With no losses (loss rate 0), two packets per packet of data + 1 or 2 extra packets should be sent
+       in total.
     *  Running the simulator with high loss rates should still result in everything being transmitted
        consistently.
     *  With no or almost no losses, one segment should be transmitted per two delays, so running the simulator with
        `--delay=1` should result in a transmission rate of about 20 bytes/(1*2 time units) = 10 bytes per time unit.
+
 ## Part 2 (second submission)
 
 <!-- FIXME: too much code for this supplied in book??? -->
@@ -103,8 +105,10 @@ author: Charles Reiss (based on ...)
 
 2.  Test your implementation:
 
-    *  With no losses (loss rate 0), no more than two packets per 20 bytes of data + 1 or 2 extra packets should be sent in total.
-    *  With no or almost no losses, about config.MAXIMUM_SEQUENCE / 2 segments should be transmitted per round-trip. With a `--delay=1` and
+    *  With no losses (loss rate 0) and a timeout substantially longer than twice the transmission delay,
+       no more than two packets per packet of data + 1 or 2 extra packets should be sent in total.
+    *  With no or almost no losses, about config.MAXIMUM_SEQUENCE / 2 segments should
+       be transmitted per round-trip. With a `--delay=1` and
        MAXIMUM_SEQUENCE of 10, this should resultin a transmission rate
        of around 20 bytes*5 segments/(1*2 time unit) = 50 bytes per time unit
     *  Running the simulator with high loss rates should still result in everything being transmitted
@@ -123,10 +127,19 @@ author: Charles Reiss (based on ...)
     *  window size increasing by one packet for each successful ACK (provided this does not exceed the maximum)
        and halving for each required retransmission (provided this does not make the new window size less than 1)
 
-2.  Test your implementation by TBD.
-    <!-- FIXME: bandwidth changing instructions -->
+2.  Test your implementation:
+
+    *  Losses should be handled like the previous methods.
+    *  Regardless of the INITIAL_WINDOW setting, the transmission rate should be approximately determined
+       by the simulated bandwidth (provided that the buffer size is not too small or large relative
+       to the bandwidth-delay product).
+
+<!-- FIXME: something with varying buffer -->
 
 # Running the Code
+
+<!--
+## running over UDP
 
 1.  We provide two ways of running ends.py:
 
@@ -146,20 +159,45 @@ author: Charles Reiss (based on ...)
         are no pending timeouts after transmitting the special "END" segment. `udp_server.py` will exit
         after receiving the special "END" segment.
 
-    *   The other runs it in a simulator, which allows you to use how your code deals with packet
-        loss or corruption and allows you to run it faster (because the timeout functions will
-        use a simulated clock).
+-->
 
-        For this, run a command like
+## In simulator
 
-           python3 simulator.py --data-input=FILE --delay=0.1 --loss=0.01
+1.  You can run your implementation in a simulator, which allows you to use how your code deals with packet
+    loss or corruption and uses a simulated clock for timeouts.
 
-        will run the simulation transmitting the contents of FILE with:
+    For example, a command like:
 
-        *  a simulated delay of 0.1 time units,
-        *  a simulated network buffer of 3 segments in each direction,
+       python3 simulator.py --generate-input=100 --delay=0.1
 
-    The simulation will check that the received data matches the content of the FILE.
+    will run the simulator:
+
+    *  transmitting 100 20-byte messages, which will be sent as fast as possible,
+    *  a simulated delay of 0.1 time units for transmitting (in either direction),
+
+    The simulator will check that the received data matches the sent data and is in order.
+    The simulator will terminate without an error message when all data is received
+    (via the `to_application` method).
+
+2.  You can override `config.py` settings in the simulator using a corresponding command-line option;
+    for example:
+
+       python3 simulator.py ... --mode one-zero
+
+    will run the simuluation with the settings specified by `...` but with `config.MODE` set to `'one-zero'`.
+
+3.  The simulator supports simulated random losses with the `--drop` option.
+
+    For example, a command like:
+
+       python3 simulator.py --generate-input=100 --delay=0.1 --drop=0.01 --mode one-zero --timeout 1
+
+    will run the simulation:
+
+    *  transmitting 100 20-byte message, which will be sent as fast as possible,
+    *  a simulated delay of 0.1 time units for transmitting (in either direction),
+    *  with 1% of packets dropped (chosen at random),
+    *  setting `config.MODE` to `'one-zero'` and `config.TIMEOUT` to `1`
 
 2.  The simulator also supports simulated bandwidth limits using the
     
@@ -167,9 +205,13 @@ author: Charles Reiss (based on ...)
 
     and
 
-        --buffer=BUFFER
+        --buffer=BUFFER-SIZE
 
     options.
+
+    In this simulation each link has a buffer that can hold *BUFFER-SIZE* packets.
+    To transmit a packet, it is first added to the buffer. Then, packets are removed
+    the buffer at least 1/*BANDWIDTH* time units after the last packet was transmitted. 
 
     The simulated bandwidth is implemented by using the following logic
     on segment transmission:
