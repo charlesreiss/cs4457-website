@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Homeworks
+index_title: Homeworks
 index_sort: 2
 ---
 

@@ -103,6 +103,8 @@ author: Charles Reiss (based on ...)
     *   your implementation must call `self.to_application` on messages in the order they were sent
         (even if they are not received in order)
 
+    <!-- FIXME: fast retransmit -->
+
 2.  Test your implementation:
 
     *  With no losses (loss rate 0) and a timeout substantially longer than twice the transmission delay,
@@ -124,8 +126,9 @@ author: Charles Reiss (based on ...)
        (`config.MAXIMUM_SEQUENCE` will be at least `config.MAX_WINDOW * 2 - 1`).
        To make your implementation simpler, we will gaurentee that MAXIMUM_SEQUENCE + 1 is a reasonable
        size for a Python list
-    *  window size increasing by one packet for each successful ACK (provided this does not exceed the maximum)
-       and halving for each required retransmission (provided this does not make the new window size less than 1)
+    *  window size increasing by approximately one packet for each round trip time
+       (provided this does not exceed the maximum) when packets are not lost
+    *  when packets are lost, the window size is approximately halved (to a minimum of 1)
 
 2.  Test your implementation:
 

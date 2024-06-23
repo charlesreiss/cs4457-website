@@ -1,5 +1,6 @@
 ---
 title: Main Page
+index_title: Main Page
 author: Charles Reiss
 ...
 
