@@ -88,7 +88,7 @@ author: Charles Reiss, based on an assignment by Hyojoon Kim
             switch=s1,
             table_name='MyIngress.mac_src_lpm',
             match_fields={
-                'hdr.ethernet.dstAddr': ('08:00:00:00:01:01', 48),
+                'hdr.ethernet.srcAddr': ('08:00:00:00:01:01', 48),
             },
             action_name='NoAction',
             action_params={}
