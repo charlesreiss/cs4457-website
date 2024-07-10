@@ -6,9 +6,6 @@
 
 - name: webserver - async?
 
-- name: framing
-  FIXME: based on https://cseweb.ucsd.edu/classes/wi22/cse123-a
-  FIXME: communicating on common medium, no retransmissions, etc.
 
 - name: reliable part 1 (zero/one)
   short_name: reliable1
@@ -58,19 +55,21 @@
   page: hw/dv.html
   tentative: true
 
-- name: SDN intro
-  short_name: sdn
+- name: P4 (two parts)
+  short_name: p4
   open: 2024-10-25
-  due: 2024-11-01
-  page: hw/sdn.html
+  due: 2024-11-15
+  page: hw/p4.html
   tentative: true
 
-- name: BGP or multi-access
+- name: framing
   open: 2024-11-01
   due: 2024-11-15
+  page: hw/framing
   tentative: true
 
-- name: wireless or firewalls
-  open: 2024-11-01
-  due: 2024-11-22
+- name: wireless
+  open: 2024-11-15
+  due: 2024-11-30
+  FIXME: import from ...
   tentative: true
