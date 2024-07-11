@@ -1,29 +1,32 @@
 ---
-title: DNS
+title: P4
 author: Charles Reiss, based on an assignment by Hyojoon Kim
 ...
+
+<!-- similar: https://github.com/2021-cs344/maclearning-exercise --->
 
 # Your Task
 
 ## Part 1
 
-1.  Download the supplied VM image for Virtualbox (x86-64) at TBD or for UTM (ARM macOS) at TBD.
+1.  Download the supplied VM image for Virtualbox (x86-64) at TBD 
+    <!-- or for UTM (ARM macOS) at TBD. -->
 
     (or, install p4 according to the instructions at
     <https://github.com/jafingerhut/p4-guide/blob/master/bin/README-install-troubleshooting.md>
     and clone the git repository at TBD).
 
-2.  Run the VM and login (username/password p4/p4 for the Virtualbox VM or
-    username/password sdn/fun for the UTM VM).
+2.  Run the VM and login (username/password p4/p4 for the Virtualbox image)
 
 2.  Go to the `p4tutorials/cs4457_f24` directory.
 
 2.  Following the instructions below, setup a simulated network with four
     simulated hosts (`h1`, `h2`, `h3`, and `h4`) one simulated switch (`s1`) running 
-    a data plane specified in `cs4457_f24.p4` and a control plane implemented in
+    a data plane specified in `mydataplane.p4` and a control plane implemented in
     `mycontroller.py`.
 
-    To do this, as described below, you'll run `make` to start the network emulator `mininet`.
+    To do this, as described below, you'll run `make` to start the network emulator
+    `mininet`.
     This will give you a prompt allowing you to run commands on each of the hosts.
     In another terminal, run `python3 mycontroller.py` to run the controller for the
     switch `s1`.
@@ -47,6 +50,45 @@ author: Charles Reiss, based on an assignment by Hyojoon Kim
 
 ## Part 2
 
+1.  The initially supplied switch implementation sends all packets to
+    all ports, rather than directing packets to a particular port
+    based on their destination MAC address.
+
+    Modify it so that it does a simple form of "MAC learning":
+
+    *   The controller should learn the association between MAC addresses
+        and switch ports.
+    *   Based on this association, the controller should setup
+        tables in the dataplane to route packets to each MAc address
+        to the appropriate port instead of having them broadcast
+        to all ports.
+
+    (A better version of this functionality would implement
+    ARP (address resolution protocol), but that is not expected for this assignment.)
+
+    As part of your implementation, you will need to arrange for
+    some packets to be sent to the controller. You should
+    arrange for packets to only be sent to the controller if
+    the dataplane cannot route them to the correct port.
+
+    We recommend following the instructions below under "Part 2 recommendation",
+    but this is not required.
+
+2.  Verify that in your implementation:
+
+    *  packets are directed to the correct port rather than being broadcast (without the MAC addresses being hard-coded in the switch in advance)
+    *  once the controller learns about a host, few packets from the host are sent to the controller (most packets are handled exclusively by the
+        data plane "fast path" of the switch)
+
+    Describe how you verified your implementation in a file called `results.txt`
+    or `results.pdf`. Include any relevant output.
+
+3.  Submit your modified `mycontroller.py`, `mydataplane.p4` and `results.txt` or `results.pdf`.
+
+# Part 2 recommendation
+
+## Step 1: Setting a fixed table entry
+
 2.  Modify `mycontroller.py` to make the following call
     to `write_or_overwrite_table_entry` to make it so packets destined to 08:00:00:00:01:01
     (`h1`'s MAC address in `topology.json`)
@@ -66,41 +108,27 @@ author: Charles Reiss, based on an assignment by Hyojoon Kim
             }
         )
 
-    Verify that this change causes packets destined for `h1` not to be duplicated on other ports
-    but should still leave h1 reachable.
-    In a file called `results.txt`, describe how you verified this, including showing any relevant
-    output or measurements.
+   Verify that this change causes packets destined for `h1` not to b
+   duplicated on other ports but should still leave h1 reachable.
 
-3.  Modify `cs4457_f24.p4` to make it so that packets are sent to the switch controller by default
-    by modify the default action for the `mac_src_lpm` table.
+   In later steps rather than hard-coding the MAC address of `h1`
+   and its corresponding port, you will infer that information from
+   packets the switch receives.
+
+## Step 2: make packets be sent to the controller
+
+3.  Modify `mydataplane.p4` to uncomment the call `copy_to_controller()`
+    before `mac_dst_lpm.apply()`.
 
     After doing this (and restarting the network simulation),
     `mycontroller.py` should start outputting information about every packet sent
-    when you run commands in mininet.
+    when you run commands in mininet. This output is produced by the `process_packet`
+    function that you will modify later.
 
-    If you run a command like `h1 ping h2`, you should see ICMP echo request and ICMP echo reply messages.
+    If you run a command like `h1 ping h2`, you should see ICMP echo request
+    and ICMP echo reply messages.
 
-4.  Now, add a table entry to `MyIngress.mac_src_lpm` so that packets from `h1`'s MAC address
-    are not forwarded to the controller:
-
-        write_or_overwrite_table_entry(
-            p4info_helper=p4info_helper,
-            switch=s1,
-            table_name='MyIngress.mac_src_lpm',
-            match_fields={
-                'hdr.ethernet.srcAddr': ('08:00:00:00:01:01', 48),
-            },
-            action_name='NoAction',
-            action_params={}
-        )
-
-    Verify that this prevents mycontroller.py from printing out information about packets _from_
-    `h1`'s MAC address. In the file `results.txt` describe how you did this, including showing
-    any relevant output or measurements.
-
-5.  Submit your `results.txt`, modified `mycontroller.py`, and modified `cs4457_f24.p4`.
-
-## Part 3
+## Step 3: Set `mac_dst_lpm` entries dynamically
 
 5.  Modify `process_packet` in `mycontroller.py` to add entries similar to
     the ones we added manually above for `h1` dynamically. Rather than hard-coding any
@@ -110,14 +138,34 @@ author: Charles Reiss, based on an assignment by Hyojoon Kim
 
     Verify that your solution makes it so that, after each host sends some traffic (such as because
     you ran `pingall`), each host does only receives packets destined for its own MAC address
-    (or packets sent to a broadcast/multicast MAC address). In the file `results.txt` describe how
-    you did this, including showing any relevant output or measurements.
+    (or packets sent to a broadcast/multicast MAC address). 
 
-5.  Submit your `results.txt`, modified `mycontroller.py`, and modified `cs4457_f24.p4`.
+## Step 4: Limit which packets are sent to the controller
 
-# Understanding cs4457_f24.p4:
+6.  Add a new table `mac_port_src_lpm`, which is like `mac_dst_lpm`, but:
+ 
+    *  matches based on the source mac address and input port instead of the destination mac address
+    *  has a default action of copy_to_controller and another possible actoin of `NoAction`
 
-2.  `cs4457_f24.p4`: This contains an implementation of the data plane
+7.  Replace the call to `copy_to_controller()` with an applicatoin of this table.
+    Since the default action in the table is copy_to_controller, this will initially
+    have the same effect
+
+8.  Modify `process_packet` to:
+
+    *  add a table entry to `mac_port_src_lpm` to override the default 
+       `copy_to_controller` setting to `NoAction`, so the switch does not
+       receive future packets for that source MAC address and port, and
+    *  (optional) if a machine changes from one port to another, to
+       overwrite or delete any table mac_port_src_lpm entry added for the
+       prior port. This will ensure that if the machine changes back
+       to the original port, then the controller will handle that operation.
+
+# Hints
+
+# Understanding mydataplane.p4:
+
+2.  `mydataplane.p4`: This contains an implementation of the data plane
     of a very simple switch:
 
     *  Initially, frames are parsed in MyParser(), which extracts headers for use by later steps.
@@ -129,23 +177,24 @@ author: Charles Reiss, based on an assignment by Hyojoon Kim
        before sending out packets to destinations other than the control plane.
 
     *  Then packets enter ingress processing MyIngress(). This stage does table lookups based
-       on the source and destination MAC addresses of the packet. These tables can be configured
+       on the destination MAC addresses of the packet. The tables can be configured
        by the control plane to choose one of four actions:
 
-       *  sending a copy of the packet to the controller;
        *  forwarding the packet to a particular output port;
        *  broadcasting the packet to all (non-controller) output ports;
        *  doing nothing
 
-    *  If a packet is sent on any output port (including to the control plane),
+       There's also an action which is initially not used called `copy_to_controller()`
+       which sends a copy of the current packet to the controller. (In addition,
+       the packet also undergoes normal processing.)
+
+    *  If a packet is sent on any output port (including to the controller),
        then MyEgress() runs. Currently this has logic which will:
 
        *   avoid sending the control-plane information header to non-control-plane ports
-       *   increment a counter to track how many bytes and packets are sent to each destination
+       *   increments counters to track how many bytes and packets are sent to each destination port
 
     *  Before packets are sent out, MyDeparser() runs, which converts headers back into bytes.
-
-# Hints
 
 ## Understanding mycontroller.py
 
