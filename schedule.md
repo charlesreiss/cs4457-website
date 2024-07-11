@@ -11,8 +11,9 @@ index_sort: 99
 
 "Readings" reference one of:
 
-*  Peterson and Davie, <i>[Computer Networks: A Systems Approach](https://book.systemsapproach.org/)</i>
-*  Dordal, <i>[An Introduction to Computer Neworks](http://intronetworks.cs.luc.edu/)</i>
+*  [PD] Peterson and Davie, <i>[Computer Networks: A Systems Approach](https://book.systemsapproach.org/)</i>
+*  [D] Dordal, <i>[An Introduction to Computer Neworks](http://intronetworks.cs.luc.edu/)</i>
+*  [FS] Fall and Stevens, <i>TCP/IP Illustrated: Vol. 1: The Protocols (2nd edition)</i> available online [through O'Reilly](https://learning.oreilly.com/library/view/tcp-ip-illustrated-volume/9780132808200/) (via UVa library; login/create account with your UVa email)
 
 <p id="weekJump" style="display: none"></p>
 <p id="hideOutline" style="display: none"></p>

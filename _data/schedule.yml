@@ -1,10 +1,40 @@
 - date: 2024-08-27
   week: 1
-  title: intro / layers / internet
+  title: intro / layers
+  reading: PD 1.2-1.4; FS 1.1-1.3.2, 1.4
+  description: | 
+    *  requirements, terminology
+       *  nodes, links, flows
+       *  frames/packets/segments
+       *  link types: point-to-point, multiple access
+       *  internetworks
+       *  (de)multiplexing
+       *  channel types: streams, datagrams, others?
+    *  building with layers
+       *  API between layers
+       *  layering models
+           *  Internet
+           *  OSI model (briefly)
+       *  end-to-end argument
+           *  Saltzer, Reed, and Clark, "[End-to-End Arugments in System Design](https://dl.acm.org/doi/pdf/10.1145/357401.357402)" (ACM Transactions on Computing Systems, 1984)
 
 - date: 2024-08-29
   week: 1
-  title: framing / multiplexing
+  title: performance / framing
+  reading: PD 1.5, 2.1-4
+  description: |
+    *  performance
+       *  bandwidth, latency, jitter
+       *  overhead
+    *  direct links
+       *  copper, fiber, radio
+    *  bits as voltage, timing
+       *  case-study: 10BASE-T
+    *  types of transmission errors
+    *  framing
+       *  headers and trailers
+       *  byte, bits, clocks
+    *  error detection
 
 - date: 2024-08-30
   week: 1
@@ -12,32 +42,80 @@
 - date: 2024-09-03
   week: 2
   title: "reliablity: ACKs / sliding windows"
+  reading: PD 2.5.1-2.5.2
+  description: |
+    *  stop-and-wait
+    *  need for sequence numbers
+    *  sliding window
+       *  size and bandwidth-delay product
+       *  duplicate ACKs
+       *  selective ACKs
 
 - date: 2024-09-05
   week: 2
-  title: "reliablity: sliding windows / bandwidth-delay"
+  title: "slack"
 
 - date: 2024-09-06
   week: 2
 
 - date: 2024-09-10
   week: 3
-  title: "combining point-to-point links: switches"
+  title: "switches"
+  reading: PD 3.1.1-3.1.2, 3.2-3.2.1, 3.2.4; 
+  description: |
+    *  switched networks
+    *  datagrams versus virtual circuits
+    *  P4 switch architecture
+       *  [SDN book, chapter 4](https://sdn.systemsapproach.org/switch.html)
+       *  control versus dataplane
+       *  match/action pipeline
+       *  tables
 
 - date: 2024-09-12
   week: 3
-  title: "MAC learning / ARP + ND"
+  title: "learning bridges, ARP + ND"
+  reading: PD 3.2.1, 3.3.6; FS 8.5
+  description: |
+    *  learning bridges
+    *  broadcast, basic multicast
+    *  ARP, ICMPv6 Neighbor Discovery
 
 - date: 2024-09-13
   week: 3
 
 - date: 2024-09-17
   week: 4
-  title: "autoconfiguration / congestion and switches"
+  title: "interworks / congestion and switches"
+  reading: PD 3.3.1-3.3.5, 6.1.1-6.1.3
+  description: |
+    (Reiss out of town)
+
+    *  internetworks
+    *  packet forwarding
+       *  preview: routing tables
+    *  subnetworks
+    *  fragments
+
+    *  flows, shared links
+    *  congestion problem
+    *  reservations v feedback
+    *  fairness in congestion
+
 
 - date: 2024-09-19
   week: 4
   title: "congestion control: AIMD / duplicate ACKs / slow start"
+  reading: PD 6.2.1, 6.3.1-3
+  description: |
+    *  FIFO; drop-tail
+
+    *  review: sliding windows
+       *  fixed sliding window and congestion?
+    *  additive increase/multiplicative decrease
+    *  duplicate ACKs
+    *  slow start
+    *  fast recovery
+
 
 - date: 2024-09-20
   week: 4
@@ -45,32 +123,76 @@
 - date: 2024-09-24
   week: 5
   title: "more congestion control / TCP"
+  reading: PD 6.3.1.4, 6.4.2
+  description: |
+    *  selective acknowledgments
+
+    *  (if time) CUBIC
+
+    *  (if time) delay-based congestion control (TCP Vegas, BBR)
 
 - date: 2024-09-26
   week: 5
   title: "revisiting switches: ECN, fair queuing, priority"
+  reading: PD 6.4.1-2, 6.2
+  description: |
+    *  explicit congestion notification
+       *  echoing back congestion signal
+    *  non-binary congestion signals (DCTCP)
+
+    *  queue discplines
+       *  strict priority
+       *  (weighted) fair queuing
 
 - date: 2024-09-27
   week: 5
 
 - date: 2024-10-01
   week: 6
-  title: "routing: routing tables, distribution of IPv4/6 addresses"
+  title: "routing: routing tables"
+  reading: PD 3.4, 3.2.3, 
+  description: |
+    *  network as a graph
+    *  revisiting broadcast: loops, spanning trees
+
+    *  routing tables
+    *  routing loops, asymmetric routes
+       *  time-to-live
+
 
 - date: 2024-10-03
   week: 6
-  title: "routing: distance vector"
+  title: "routing: distance vector / link state"
+  reading: PD 3.4.4, 3.4.2-3
+  description: |
+    *  routing metrics
+
+    *  distance vector routing
+       *  running centrally
+       *  distributed protocol
+
+    *  link state routing
+       *  running centrally
+       *  distributed protocol
 
 - date: 2024-10-04
   week: 6
 
 - date: 2024-10-08
   week: 7
-  title: "routing: spanning tree / SDN centralized"
+  title: "slack"
 
 - date: 2024-10-10
   week: 7
   title: "routing: BGP"
+  reading: PD 4.1.2
+  description: |
+    *  autonomous systems
+       *  graph structure
+       *  business relationships (customer/provider; content-delivery; peering)
+    *  BGP advertisements
+    *  interdomain and intradomain routing
+       *  (if time) iBGP
 
 - date: 2024-10-11
   week: 7
@@ -81,7 +203,18 @@
 
 - date: 2024-10-17
   week: 8
-  title: "socket API"
+  title: "UDP / TCP ; sockets"
+  reading: PD 5.1-2, 1.4
+  description: |
+    *  port numbers, 5-tuples
+    *  UDP
+
+    *  BSD sockets
+    *  socket / bind / connect
+    *  read/recv, write/send
+    *  server sockets --- listen, accept
+    *  recvfrom, sendto, ... <!-- FIXME: reading reference -->
+    *  aside: local sockets
 
 - date: 2024-10-18
   week: 8
@@ -89,10 +222,25 @@
 - date: 2024-10-22
   week: 9
   title: "DNS"
+  reading: PD 9.3.1; FS 11
+  description:
+    *  domain names
+       *  labels
+       *  gTLDs
+    *  record types
+    *  questions and answers
+       *  `dig` tool
+    *  name compression
+
 
 - date: 2024-10-24
   week: 9
   title: "SMTP"
+  reading: PD 9.1.1
+  description: |
+    *  SMTP message format
+    *  gateways and mail servers
+    *  MX records
 
 - date: 2024-10-25
   week: 9
@@ -100,10 +248,21 @@
 - date: 2024-10-29
   week: 10
   title: "peer-to-peer"
+  reading: PD 9.4.2
+  description: |
+    *  gossip protocols (Gnutella, etc.)
+    *  "distributed hash tables", Chord
+    *  BitTorrent
 
 - date: 2024-10-31
   week: 10
   title: "revisiting links: multiaccess media"
+  reading: PD 2.6, 2.7.1-2
+  description: |
+    *  carrier sense multiple access
+    *  collision detection
+       *  special concerns in wireless networks
+
 
 - date: 2024-11-01
   week: 10
@@ -115,24 +274,54 @@
 - date: 2024-11-07
   week: 11
   title: "wireless link-layer"
+  reading: PD 2.7.1-2
+  description: |
+    *  hidden terminals
+    *  ready-to-send / clear-to-send
+    *  multiple access points
+
+    *  scheduled wireless networks
+       *  time-division multiple access
+       *  frequency-division multiple access
 
 - date: 2024-11-08
   week: 11
 
 - date: 2024-11-12
   week: 12
-  title: "security: firewalls, encapsulation"
+  title: "network address translation / spoofing"
+  reading: ???
+  description: |
+   *  private and public networks
+   *  basic translation
+   *  violating the end-to-end principle
+
+   *  UPnP
+
+   *  spoofing, BCP38
 
 - date: 2024-11-14
   week: 12
-  title: "security: IDSs"
+  title: "security: firewalls, IDSs"
+  reading: PD 8.5.6
+  description: |
+    *  firewall placement
+    *  stateless firewalls
+    *  stateful firewalls
+    *  web application firewalls
+    *  intrusion detection systems
+    
+    *  firewalls versus NAT, routing
 
 - date: 2024-11-15
   week: 12
 
 - date: 2024-11-19
   week: 13
-  title: "security: BGP security"
+  title: "security: encapsulation"
+  reading: PD 8.5.4
+  description: |
+    *  tunnelling, IPSec
 
 - date: 2024-11-21
   week: 13
