@@ -220,7 +220,7 @@
   week: 9
   title: "DNS"
   reading: PD 9.3.1; FS 11
-  description:
+  description: |
     *  domain names
        *  labels
        *  gTLDs
