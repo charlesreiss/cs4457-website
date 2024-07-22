@@ -5,7 +5,11 @@ author: Charles Reiss
 
 # Your Task
 
-1.  Download the supplied skeleton code at TBA.
+1.  Download the supplied skeleton code [here](files/framing-skeleton.tgz)^[
+        If you want to work on portal or similar, you might find it useful to right-click the
+        link, select "copy link" or "copy URL" from the drop-down menu, then run the command
+        `wget THAT_URL`, where `THAT_URL` is the result of pasting the link/URL.
+    ] (last updated 22 July 2024).
 
 2.  In `sendrecv.py` complete an implementation of MySender and MyReceiver.
 
@@ -38,3 +42,23 @@ author: Charles Reiss
         2.  Other than possibly the next few messages or kilobytes of messages, future
             uncorrupted messages should be received correctly (regardless of where the
             corruption took place).
+
+    4.  Be your own code and use only functionality built-in to python or supplied as
+        part of its standard library. This means that it _is_ permissible to use
+        the `zlib` module's [`crc32` function](https://docs.python.org/3/library/zlib.html#zlib.crc32)
+        and the [`struct` module](https://docs.python.org/3/library/struct.html). But it
+        is _not_ permissible to use, for example, [python-pppd](https://pypi.org/project/python-pppd/)
+
+3.  Test your implementation using `test.py`. If you want to run additional tests, you might
+    find it useful to modify the list of tests in `TESTS` or pass the `--verbose` option to this script.
+
+    When grading, we may run additional tests and/or inspect your code by hand. Although
+    the supplied tests do not intentionally omit any cases you must handle, since they are randomized, they
+    may get "unlucky" and fail to detect an implementation which is actually broken.
+    (Also, it may be possible for them to spuriously fail on a correct implementation,
+    though I think that is unlikely.)
+
+4.  *Briefly* document in a comment or docstring near the top of your `sendrecv.py` the
+    frame format you choose.
+
+4.  Submit your `sendrecv.py` by *TBD*.
