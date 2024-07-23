@@ -43,7 +43,13 @@ author: Charles Reiss
             uncorrupted messages should be received correctly (regardless of where the
             corruption took place).
 
-    4.  Be your own code and use only functionality built-in to python or supplied as
+    4.  Not use too much space to send messages:
+        
+        *  The average size of a random message of N bytes at most 150 bytes
+           or N * 1.3 bytes, whichever is larger. (It's okay if some pathological messages
+           take up more space.)
+
+    5.  Be your own code and use only functionality built-in to python or supplied as
         part of its standard library. This means that it _is_ permissible to use
         the `zlib` module's [`crc32` function](https://docs.python.org/3/library/zlib.html#zlib.crc32)
         and the [`struct` module](https://docs.python.org/3/library/struct.html). But it
@@ -52,9 +58,11 @@ author: Charles Reiss
 3.  Test your implementation using `test.py`. If you want to run additional tests, you might
     find it useful to modify the list of tests in `TESTS` or pass the `--verbose` option to this script.
 
-    When grading, we may run additional tests and/or inspect your code by hand. Although
-    the supplied tests do not intentionally omit any cases you must handle, since they are randomized, they
-    may get "unlucky" and fail to detect an implementation which is actually broken.
+    When grading, we may run additional tests and/or inspect your code by hand.
+    Although the supplied tests do not intentionally omit functionality you must implement,
+    since the supplied tests are randomized, they
+    may get "unlucky" and fail to detect an implementation which is actually broken
+    and they do not test everything for all possible message sizes.
     (Also, it may be possible for them to spuriously fail on a correct implementation,
     though I think that is unlikely.)
 
@@ -62,3 +70,24 @@ author: Charles Reiss
     frame format you choose.
 
 4.  Submit your `sendrecv.py` by *TBD*.
+
+# Hints
+
+## Interpreting test output
+
+1.  The test will output a summary line like:
+        
+        three-message-clean: 0 extra; 0 corrupted; 0 missing; 27 bytes in 3 messages sent with 48 bytes
+
+    In this message:
+
+    *  `three-message-clean` is a test name from the `TESTS` array in test.py.
+    *  "0 extra" says that 0 is the number of messages received that were not sent
+    *  "0 corrupted" says that 0 is the number of messages received that were apparently changed
+    *  "0 missing" is the number of message sent that were not received
+    *  "27 bytes in 3 messages" means that send_message was called 3 times,
+       and the total number bytes passed across all calls was 27;
+    *  "with 48 bytes" means that `send_bytes` was called with a total of 48 bytes
+
+    The test uses Python's difflib, which implements an algorithm similar to the `diff` utility. In
+    some cases, this may get confused between corrupted and extra+missing messages.

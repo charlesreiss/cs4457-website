@@ -134,8 +134,6 @@ author: Charles Reiss (based on ...)
 
 # Running the Code
 
-## In simulator
-
 1.  You can run your implementation in a simulator, which allows you to use how your code deals with packet
     loss or corruption and uses a simulated clock for timeouts.
 
@@ -220,7 +218,3 @@ author: Charles Reiss (based on ...)
 
 # Hints
 
-
-<!-- FIXME:
-    packet -> frame
--->
