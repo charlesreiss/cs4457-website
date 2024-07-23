@@ -134,29 +134,6 @@ author: Charles Reiss (based on ...)
 
 # Running the Code
 
-<!--
-## running over UDP
-
-1.  We provide two ways of running ends.py:
-
-    *   One runs it over UDP/IP, allowing you to use the code on a real network. For this, run
-
-            python3 udp_server.py --host=HOST --port=PORT --data-output=FILE
-
-        to run a receiving UDP server on IP address (or DNS name) `HOST`, port number `PORT`, writing
-        the received data to `FILE`. Then run
-
-            python3 udp_client.py --host=HOST --port=PORT --data-input=FILE
-
-        to run a sending UDP client that will connect to `HOST`, port number `PORT`, and send `FILE`
-        in 20-byte chunks, followed by a special "END" segment.,
-
-        In this mode, the timeout-related functions use real time. `udp_client.py` will exit when there
-        are no pending timeouts after transmitting the special "END" segment. `udp_server.py` will exit
-        after receiving the special "END" segment.
-
--->
-
 ## In simulator
 
 1.  You can run your implementation in a simulator, which allows you to use how your code deals with packet
