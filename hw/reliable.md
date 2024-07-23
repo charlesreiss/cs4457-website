@@ -2,16 +2,9 @@
 title: reliable transport
 author: Charles Reiss (based on ...)
 ...
-
-<!-- FIXME: based on -->
-<!-- FIXME: 
-    maybe follow https://cseweb.ucsd.edu/classes/wi22/cse123-a
-    they do segment on framing, which might make more sense
-    -->
-
 # Your Task
 
-1.  Download the supplied simulator and skeleton code.
+1.  Download the supplied simulator and skeleton code [here](files/reliable-skeleton.tgz) (last updated 22 July 2024).
 
     In the skeleton code, you should only modify `ends.py`, which initially has code
     that implements transmission without any sort of reliablity.
