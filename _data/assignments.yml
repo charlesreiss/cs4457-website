@@ -2,6 +2,7 @@
   open: 2024-08-29
   due: 2024-09-06
   page: hw/framing.html
+  submit_file: sendrecv.py
   tentative: true
 
 - name: reliable part 1 (zero/one)

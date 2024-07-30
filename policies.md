@@ -31,8 +31,8 @@ You will be asked to:
 
 Task | Weight | Comments
 -----|--------|-----------------------------------------------------------------
-Quizzes | 30% | Drop lowest score
-Homeworks | 50% | 
+Quizzes | 20% | Drop lowest score
+Homeworks | 60% | 
 Final Exam | 20% |
 
 Your final grade is computed based on the percentage of points you have earned and then converted to a letter grade. At the end of the semester, I will decide on a mapping from points to letter grades based on the actual difficulty of homeworks, exams, etc. This mapping will give at least a D- for a 60%,  at least a C- for a 70%, at least a B- for an 80%, and at least a A- for a 90%.
