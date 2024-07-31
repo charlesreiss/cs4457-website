@@ -48,16 +48,18 @@ author: Charles Reiss (based on ...)
     *  `data`: up to 20 bytes (never None)
     *  `is_end`: a boolean field, which will be True if and only if this is the last message to be sent
 
-    You will need to write/modify code to construct Packet objects from Message objects and vice-versa.
+    We supply you with code that constructs Packet objects from Message objects and vice-versa.
+    However, this code does not implement any form of reliablity; you will need to modify or replace it.
 
-    The supplied code includes does not implement any form of reliability.
+    Note that your submissions will only include `ends.py`; we will test your submission with unmodified
+    versions of the other files.
 
 
 ## Part 1 (first submission)
 
 1.  Modify `ends.py`, so that when `config.MODE` is `one-zero`, it uses acknowledgments
     and a 1-bit sequence number (like in [section 2.5.1 of <i>Computer Networks:
-    A Systems Approach</i>](https://book.systemsapproach.org/direct/reliable.html#stop-and-wait),
+    A Systems Approach</i>](https://book.systemsapproach.org/direct/reliable.html#stop-and-wait)),
     and retransmits a packet (from the sender)
     indefinitely if an acknowledgment is not received config.TIMEOUT time units after a packet is sent.
 
