@@ -23,7 +23,7 @@
 - date: 2024-08-29
   week: 1
   title: framing
-  reading: 2.1-4
+  reading: PD 2.1-4
   slides_ref:
   - links
   - framing
@@ -36,7 +36,7 @@
     *  framing
        *  headers and trailers
        *  byte, bits, clocks
-    *  error detection
+    *  error detection --- checksums
 
 - date: 2024-08-30
   week: 1
@@ -53,12 +53,12 @@
 
     *  performance
        *  bandwidth, latency, jitter
-       *  overhead
 
 
 - date: 2024-09-05
   week: 2
   title: "reliablity: sliding windows"
+  reading: PD 2.5.1-2; FS 14
   slides_ref:
   - reliable
   description: |
@@ -73,12 +73,14 @@
 - date: 2024-09-10
   week: 3
   title: "switches"
-  reading: PD 3.1.1-3.1.2, 3.2-3.2.1, 3.2.4; 
+  reading: PD 3.1.1-3.1.2, 3.2-3.2.1, 3.2.4
   description: |
     *  switched networks
-    *  datagrams versus virtual circuits
+    *  packet versus circuit switching
+    *  software defined networks
+       *  see also: [Feamster et al, "The Road To SDN: An Intellectual History of Programmable Networks"](https://www.sigcomm.org/sites/default/files/ccr/papers/2014/April/0000000-0000012.pdf)
     *  P4 switch architecture
-       *  [SDN book, chapter 4](https://sdn.systemsapproach.org/switch.html)
+       *  see also: [SDN book, chapter 4](https://sdn.systemsapproach.org/switch.html)
        *  control versus dataplane
        *  match/action pipeline
        *  tables
@@ -91,7 +93,6 @@
     *  learning bridges
     *  broadcast, basic multicast
     *  ARP, ICMPv6 Neighbor Discovery
-    *  subnetworks
 
 - date: 2024-09-13
   week: 3
@@ -102,16 +103,10 @@
   reading: PD 3.3.1-3.3.5, 6.1.1-6.1.3
   description: |
     (Reiss out of town)
+    *  preview: internetworks, routing tables
 
-    *  internetworks
-    *  packet forwarding
-       *  preview: routing tables
-    *  fragments
-       *  path MTU discovery?
-
-    *  flows, shared links
     *  congestion problem
-    *  reservations v feedback
+    *  feedback
 
 
 - date: 2024-09-19
@@ -135,6 +130,7 @@
   title: "more congestion control / TCP"
   reading: PD 6.3.1.4, 6.4.2
   description: |
+    *  TCP sequence numbers
     *  slow start
     *  fast recovery
     *  (if time) selective acknowledgments
@@ -190,7 +186,10 @@
 
 - date: 2024-10-08
   week: 7
-  title: "slack"
+  title: "routing: fragments, MTU discovery"
+  description: |
+    *  fragments
+    *  path MTU discovery
 
 - date: 2024-10-10
   week: 7
@@ -218,6 +217,8 @@
   description: |
     *  port numbers, 5-tuples
     *  UDP
+
+    *  TCP connection establishment
 
     *  BSD sockets
     *  socket / bind / connect
