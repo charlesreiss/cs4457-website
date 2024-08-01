@@ -4,7 +4,7 @@ author: Charles Reiss (based on ...)
 ...
 # Your Task
 
-1.  Download the supplied simulator and skeleton code [here](files/reliable-skeleton.tgz) (last updated 22 July 2024).
+1.  Download the supplied simulator and skeleton code at TBA <!--[here](files/reliable-skeleton.tgz) (last updated 22 July 2024)-->.
 
     In the skeleton code, you should only modify `ends.py`, which initially has code
     that implements transmission without any sort of reliablity.
@@ -77,8 +77,6 @@ author: Charles Reiss (based on ...)
 
 ## Part 2 (second submission)
 
-<!-- FIXME: too much code for this supplied in book??? -->
-
 1.  Modify `ends.py`, so that when `config.MODE` is `sliding`, it uses a sliding window
     (like in [section 2.5.2 of <i>Computer Networks:
     A Systems Approach</i>](https://book.systemsapproach.org/direct/reliable.html#sliding-window))
@@ -86,8 +84,6 @@ author: Charles Reiss (based on ...)
     *  a window size equal to `config.INITIAL_WINDOW` (which will be at least 1)
     *  sequence numbers ranging from 0 to `config.MAXIMUM_SEQUENCE` inclusive
        (`config.MAXIMUM_SEQUENCE` will be at least `config.INITIAL_WINDOW * 2 - 1`).
-       To make your implementation simpler, we will gaurentee that MAXIMUM_SEQUENCE + 1 is a reasonable
-       size for a Python list
 
     In addition:
     *   the first packet by the sender 
@@ -98,41 +94,71 @@ author: Charles Reiss (based on ...)
     *   your implementation must call `self.to_application` on messages in the order they were sent
         (even if they are not received in order)
 
-    <!-- FIXME: fast retransmit -->
+    Optionally, you may chose to have your implementation resend packets immediately
+    after some number of duplicate ACKs.
 
 2.  Test your implementation:
 
     *  With no losses (loss rate 0) and a timeout substantially longer than twice the transmission delay,
        no more than two packets per packet of data + 1 or 2 extra packets should be sent in total.
-    *  With no or almost no losses, about config.MAXIMUM_SEQUENCE / 2 segments should
+    *  With no or almost no losses, about config.INITIAL_WINDOW / 2 segments should
        be transmitted per round-trip. With a `--delay=1` and
-       MAXIMUM_SEQUENCE of 10, this should resultin a transmission rate
-       of around 20 bytes*5 segments/(1*2 time unit) = 50 bytes per time unit
+       INITIAL_WINDOW of 10, this should resultin a transmission rate
+       of around 20 bytes * 5 segments/(1 * 2 time unit) = 50 bytes per time unit
+    *  Make sure you handle sequence number wraparound by sending more packets than maximum_sequence.
     *  Running the simulator with high loss rates should still result in everything being transmitted
        consistently.
 
 ## Part 3 (third submission)
 
 1.  Modify `ends.py`, so that when `config.MODE` is `variable-sliding`, it uses a variable sliding window,
-    with:
+    tracked by the sender with:
+
     *  a initial window size equal to `config.INITIAL_WINDOW` (which will be at least 1)
-    *  a maximum window size equal to `config.MAX_WINDOW` (which will be at least `config.INITIAL_WINDOW`)
-    *  sequence numbers ranging from 0 to `config.MAXIMUM_SEQUENCE` inclusive
-       (`config.MAXIMUM_SEQUENCE` will be at least `config.MAX_WINDOW * 2 - 1`).
-       To make your implementation simpler, we will gaurentee that MAXIMUM_SEQUENCE + 1 is a reasonable
-       size for a Python list
-    *  window size increasing by approximately one packet for each round trip time
-       (provided this does not exceed the maximum) when packets are not lost
-    *  when packets are lost, the window size is approximately halved (to a minimum of 1)
 
-2.  Test your implementation:
+    *  a maximum window size equal to `config.MAXIMUM_WINDOW` (which will be at least `config.INITIAL_WINDOW`)
 
-    *  Losses should be handled like the previous methods.
-    *  Regardless of the INITIAL_WINDOW setting, the transmission rate should be approximately determined
-       by the simulated bandwidth (provided that the buffer size is not too small or large relative
-       to the bandwidth-delay product).
+    *  window size increasing by approximately fixed number of packets for each round trip time
+       (provided this does not exceed the maximum) when packets are not lost.
 
-<!-- FIXME: something with varying buffer -->
+       If you track the window size as a floating point value, you can approximate this by setting
+       `window_size = min(window_size + INCREASE_PER_ROUND_TRIP / window_size, config.MAXIMUM_WINDOW)`.
+
+    *  when a packet transmission timeouts, the window sizes is divided by a fixed number
+
+    *  when the window size is decreased, some packets with pending retransmission timeouts will now
+       be outside the window. The pending retransmission timeouts for these packets should be temporarily ignored.
+       When the sender's window later includes these packets again (by the window size increasing
+       or by the last ack received increasing), then, they should be retransmitted.
+
+    Optionally, you may also:
+
+    *  on receiving some number of duplicate ACKs for a packet, immediately
+       decrease the window size and retransmit the following packet instead of waiting
+       for the following packet to timeout
+
+    *  implement some form of "slow start", where, while no congestion is experienced,
+       window sizes increase exponentially, and then window sizes increase according to
+       the additive increase/multiplicative decrease rule
+
+    To keep your implementation simpler, you may assume that the `config.MAXIMUM_SEQUENCE` is larger
+    than the number of messages sent.
+
+2.  Modify your `MySender` implementation to output to a `last-window-sizes.csv` comma-separated values
+    containing a time in the first column and the window size in the second column. (You may have additional
+    columns if you choose.) Output at least one row for every time the window size is changed.
+
+3.  Test your implementation:
+
+    *  Plotting the data in `last-window-sizes.csv` should show a sawtooth-type pattern. Note that the sawtooth
+       may span a quite large number of packets, especially if you do not implement slow-start (which would
+       make the "rising" part of the sawtooth initially faster) and retransmission on duplicate ACKs
+       (which would likely make the falling parts of the sawtooth less extreme by usually preventing multiple
+       timeouts from being experienced in a row)
+    *  The peak window size should be close to the bandwidth-delay product, taking into account queuing delay.
+       (For example with `--delay=3 --bandwith=5 --buffer=12`, packets take 3 time units traverse the link and
+       12 / 5 = 2.4 time units to be removed form a full buffer, so the total effective delay is 3 + 2.4 = 5.4 time units.
+       Thus, the bandwidth-delay product in this case would be 5.4 times 5 = 27 packets.)
 
 # Running the Code
 
