@@ -9,16 +9,28 @@ author: Charles Reiss, based on an assignment by Hyojoon Kim
 
 ## Part 1
 
-1.  Download the supplied VM image for Virtualbox (x86-64) at TBD 
-    <!-- or for UTM (ARM macOS) at TBD. -->
+1.  Download the supplied VM image for Virtualbox (x86-64) at <https://virginia.box.com/s/i4zcyv4hctz012u2mp3wl4p5as78f6iv>.
 
-    (or, install p4 according to the instructions at
-    <https://github.com/jafingerhut/p4-guide/blob/master/bin/README-install-troubleshooting.md>
-    and clone the git repository at TBD).
+    (or:
+
+    *  install p4 according to the instructions at <https://github.com/jafingerhut/p4-guide/blob/master/bin/README-install-troubleshooting.md> [which should work on arm64 VM running on UTM on OS X, but I have not
+       tested this personally], and then
+
+    *  move the "stock" P4 tutorials out of the way using
+
+            mv tutorials tutorials.orig
+
+    *  then copy our modified version of the p4 tutorials using
+
+            git clone -b cs4457-f24-base https://github.com/charlesreiss/p4tutorials.git ./tutorials
+
+    )
 
 2.  Run the VM and login (username/password p4/p4 for the Virtualbox image)
 
-2.  Go to the `p4tutorials/cs4457_f24` directory.
+2.  Go to the `tutorials/cs4457_f24` directory.
+
+    Run `git pull` to make sure you have the latest version of the skeleton code.
 
 2.  Following the instructions below, setup a simulated network with four
     simulated hosts (`h1`, `h2`, `h3`, and `h4`) one simulated switch (`s1`) running 
@@ -84,6 +96,8 @@ author: Charles Reiss, based on an assignment by Hyojoon Kim
     or `results.pdf`. Include any relevant output.
 
 3.  Submit your modified `mycontroller.py`, `mydataplane.p4` and `results.txt` or `results.pdf`.
+
+    (Note that this assignment will be manually graded.)
 
 # Part 2 recommendation
 
