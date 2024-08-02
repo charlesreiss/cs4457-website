@@ -167,7 +167,7 @@ author: Charles Reiss (based on ...)
 
     For example, a command like:
 
-       python3 simulator.py --generate-input=100 --delay=0.1
+       python3 main.py --generate-input=100 --delay=0.1
 
     will run the simulator:
 
