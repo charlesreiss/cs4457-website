@@ -1,7 +1,8 @@
 #eval "$(~/bin/rbenv init -)"
     
 umask 022
-python3 recordings_to_data.py # XXX
+python3 quizzes_to_data.py
+python3 recordings_to_data.py
 chmod -R a+r files
 chmod -R a+r oldquiz
 chmod -R a+r readings/files
