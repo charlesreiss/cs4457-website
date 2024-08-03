@@ -57,11 +57,13 @@ author: Charles Reiss (based on ...)
 
 ## Part 1 (first submission)
 
+### one/zero acknowledgments
+
 1.  Modify `ends.py`, so that when `config.MODE` is `one-zero`, it uses acknowledgments
     and a 1-bit sequence number (like in [section 2.5.1 of <i>Computer Networks:
     A Systems Approach</i>](https://book.systemsapproach.org/direct/reliable.html#stop-and-wait)),
     and retransmits a packet (from the sender)
-    indefinitely if an acknowledgment is not received config.TIMEOUT time units after a packet is sent.
+    indefinitely if an acknowledgment is not received config.INITIAL_TIMEOUT time units after a packet is sent.
 
 2.  If `from_network` cannot immediately transmit a message, then it should return False and not
     queue the message. (Our simulator/testing code will try resending it later.)
@@ -69,11 +71,48 @@ author: Charles Reiss (based on ...)
 2.  Test your implementation:
 
     *  With no losses (loss rate 0), two packets per packet of data + 1 or 2 extra packets should be sent
-       in total.
-    *  Running the simulator with high loss rates should still result in everything being transmitted
-       consistently.
-    *  With no or almost no losses, one segment should be transmitted per two delays, so running the simulator with
+       in total. For example:
+
+            python3 main.py --generate-input 1000 --delay 1 --initial-timeout 10
+
+       should result in everything being received and not much more than 100 frames sent.
+
+    *  Running the simulator with high loss rates (such as by adding `--drop 0.4`)
+       should still result in everything being transmitted consistently, though using more frames.
+
+    *  With no or almost no losses (such as `--drop 0.01`), one segment should be transmitted per two delays, so running the simulator with
        `--delay=1` should result in a transmission rate of about 20 bytes/(1*2 time units) = 10 bytes per time unit.
+
+### dynamic timeouts
+
+1.  Instead of just using `config.INITIAL_TIMEOUT`, compute the timeout dynamically based on the observed round-trip time.
+
+    My recommendation to do this would be:
+
+    *  sample the round-trip time using the `timestamp` field in packets. You can use the `now()` function to 
+       get the simulation timestamp.
+    *  take an exponentially weighted moving average of the sampled round-trip times
+    *  set the timeout to around twice that moving average
+
+2.  Test your implementation:
+
+    *  With no losses, setting the initial timeout low compared to the actual timeout should result in relatively few extra
+       messages sent, for example:
+
+            python3 main.py --generate-input 100 --initial-timeout 1 --delay 10
+
+       should result in not much more than 120 frames being sent in each direction, not something like 1000 frames.
+
+    *  With a relatively low loss rate, setting the initial timeout very high should result in transmission
+       taking not much longer than setting it more normally. For example,
+
+            python3 main.py --generate-input 10000 --drop 0.01 -- delay 1 --initial-timeout 100
+
+       should take somewhat more than 20000 time units, not anything larger than 30000 time units.
+
+### submission
+
+1.  Submit your `ends.py` on the submission site.
 
 ## Part 2 (second submission)
 
