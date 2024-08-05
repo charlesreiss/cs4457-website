@@ -5,7 +5,7 @@ author: Charles Reiss
 
 # Your Task
 
-1.  Download the template code at TBD.
+1.  Download the skeleton code [here](files/schedule-skeleton.tgz) (last updated 4 August 2024).
 
     This code includes a setup for a simulator (the same as for the `reliable` assignment),
     which is configured to have two connections, called "c1" and "c2", between the same two hosts.
