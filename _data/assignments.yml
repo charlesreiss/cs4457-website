@@ -69,7 +69,7 @@
 
 - name: wireless
   open: 2024-11-15
-  due: 2024-11-30
+  due: 2024-11-29
   FIXME: import from ...
   tentative: true
 
