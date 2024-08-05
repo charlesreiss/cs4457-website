@@ -13,7 +13,7 @@ author: Charles Reiss
     format a message to be sent as a sequence of bits, then call
     `self.channel.send_bits()` with those bytes.
 
-    In MyReceiver's `handle_byte_from_network` function, receive a byte from
+    In MyReceiver's `handle_bit_from_network` function, receive a bit from
     the network, then call `self.got_message_function()` when those bytes
     represent a full message passed to `MySender`'s `send_message` function.
 
