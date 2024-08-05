@@ -116,25 +116,23 @@ author: Charles Reiss (based on ...)
 
 ## Part 2 (second submission)
 
+### Sliding windows
+
 1.  Modify `ends.py`, so that when `config.MODE` is `sliding`, it uses a sliding window
     (like in [section 2.5.2 of <i>Computer Networks:
     A Systems Approach</i>](https://book.systemsapproach.org/direct/reliable.html#sliding-window))
     with:
+
     *  a window size equal to `config.INITIAL_WINDOW` (which will be at least 1)
-    *  sequence numbers ranging from 0 to `config.MAXIMUM_SEQUENCE` inclusive
-       (`config.MAXIMUM_SEQUENCE` will be at least `config.INITIAL_WINDOW * 2 - 1`).
 
     In addition:
-    *   the first packet by the sender 
-        sent should have a sequence number of 0, the second a sequence number of 1,
+    *   the first packet by the sender sent should have a sequence number of 0, the second a sequence number of 1,
         and so on (regardless of the size of the packet)
-    *   your implementation should retransmit packets (from the sender side) 
-        after config.TIMEOUT time units of not receiving an ACK;
     *   your implementation must call `self.to_application` on messages in the order they were sent
         (even if they are not received in order)
 
     Optionally, you may chose to have your implementation resend packets immediately
-    after some number of duplicate ACKs.
+    after some number of duplicate ACKs (or similar signal indicating missing packets).
 
 2.  Test your implementation:
 
@@ -144,9 +142,21 @@ author: Charles Reiss (based on ...)
        be transmitted per round-trip. With a `--delay=1` and
        INITIAL_WINDOW of 10, this should resultin a transmission rate
        of around 20 bytes * 5 segments/(1 * 2 time unit) = 50 bytes per time unit
-    *  Make sure you handle sequence number wraparound by sending more packets than maximum_sequence.
-    *  Running the simulator with high loss rates should still result in everything being transmitted
-       consistently.
+
+### Sequence number wrarpound
+
+1.  Make your implementation limit its sequence numbers to between 0 and `config.MAXIMUM_SEQUENCE`
+    and have this work when sequence nubmers need to wraparound.
+
+2.  Test your implementation:
+
+    *  Setting the MAXIMUM_SEQUENCE to a value much smaller the number of packets sent but more than
+       twice the INTIIAL_WINDOW.
+
+### submission
+
+1.  Submit your `ends.py` on the submission site.
+
 
 ## Part 3 (third submission)
 
@@ -198,6 +208,10 @@ author: Charles Reiss (based on ...)
        (For example with `--delay=3 --bandwith=5 --buffer=12`, packets take 3 time units traverse the link and
        12 / 5 = 2.4 time units to be removed form a full buffer, so the total effective delay is 3 + 2.4 = 5.4 time units.
        Thus, the bandwidth-delay product in this case would be 5.4 times 5 = 27 packets.)
+
+### submission
+
+1.  Submit your `ends.py` on the submission site.
 
 # Running the Code
 

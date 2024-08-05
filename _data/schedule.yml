@@ -31,7 +31,7 @@
     *  direct links
        *  copper, fiber, radio
     *  bits as voltage, timing
-       *  case-study: 10BASE-T
+       *  Manchester coding
     *  types of transmission errors
     *  framing
        *  headers and trailers
@@ -64,6 +64,7 @@
   description: |
     *  sliding window
        *  size and bandwidth-delay product
+       *  sequence number wraparound
        *  duplicate ACKs
        *  selective ACKs
 
@@ -92,6 +93,9 @@
   description: |
     *  learning bridges
     *  broadcast, basic multicast
+
+    *  IP versus MAC addresses
+
     *  ARP, ICMPv6 Neighbor Discovery
 
 - date: 2024-09-13
@@ -99,27 +103,33 @@
 
 - date: 2024-09-17
   week: 4
-  title: "interworks / congestion and switches"
+  title: "IP and TCP packet format"
   reading: PD 3.3.1-3.3.5, 6.1.1-6.1.3
   description: |
     (Reiss out of town)
-    *  preview: internetworks, routing tables
 
-    *  congestion problem
-    *  feedback
-
+    *  IP header
+       *  checksums
+    *  example: ICMP ping
+    *  TCP header
+       *  port numbers
+       *  byte-based sequence numbers
+       *  advertized windows
+       *  timestamps
+       *  seletive acknowledgments
+    *  TCP connection setup
 
 - date: 2024-09-19
   week: 4
-  title: "congestion control: AIMD / duplicate ACKs / slow start"
+  title: "congestion control: AIMD"
   reading: PD 6.2.1, 6.3.1-3
   description: |
-    *  FIFO; drop-tail
+    (Reiss out of town)
+    *  TCP state machine
 
-    *  review: sliding windows
-       *  fixed sliding window and congestion?
-    *  additive increase/multiplicative decrease
-    *  duplicate ACKs
+    *  congestion problem
+    *  congestion feedback
+    *  (start) additive increase/multiplicative decrease
 
 
 - date: 2024-09-20
@@ -127,13 +137,13 @@
 
 - date: 2024-09-24
   week: 5
-  title: "more congestion control / TCP"
+  title: "more congestion control"
   reading: PD 6.3.1.4, 6.4.2
   description: |
-    *  TCP sequence numbers
+    *  (finish) additive increase/multiplicative decrease
+
     *  slow start
     *  fast recovery
-    *  (if time) selective acknowledgments
     *  (if time) CUBIC and/or delay-based congestion control (TCP Vegas, BBR)
 
 - date: 2024-09-26
@@ -142,37 +152,50 @@
   reading: PD 6.4.1-2, 6.2
   description: |
     *  explicit congestion notification
+       *  early detection
        *  echoing back congestion signal
     *  non-binary congestion signals (DCTCP)
 
     *  queue discplines
        *  strict priority
-       *  (weighted) fair queuing
+       *  weighted fair queuing
 
 - date: 2024-09-27
   week: 5
 
 - date: 2024-10-01
   week: 6
-  title: "routing: routing tables"
+  title: "routing: routing tables, spanning trees, metrics"
   reading: PD 3.4, 3.2.3, 
   description: |
     *  network as a graph
-    *  revisiting broadcast: loops, spanning trees
-
     *  routing tables
-    *  routing loops, asymmetric routes
-       *  time-to-live
-    *  ICMP routing errors
+    *  spanning trees
+       *  spanning tree protocols
+
+    *  routing metrics
 
 
 - date: 2024-10-03
   week: 6
-  title: "routing: distance vector / link state"
+  title: "routing: errors, fragments, MTU"
   reading: PD 3.4.4, 3.4.2-3
   description: |
-    *  routing metrics
+    *  ICMP routing errors
+       *  time-to-live
+       *  unreachable
+       *  ping
 
+    *  fragments
+    *  path MTU discovery
+
+- date: 2024-10-04
+  week: 6
+
+- date: 2024-10-08
+  week: 7
+  title: "routing: distance vector, link state"
+  description: |
     *  distance vector routing
        *  running centrally
        *  distributed protocol
@@ -180,16 +203,6 @@
     *  link state routing
        *  running centrally
        *  distributed protocol
-
-- date: 2024-10-04
-  week: 6
-
-- date: 2024-10-08
-  week: 7
-  title: "routing: fragments, MTU discovery"
-  description: |
-    *  fragments
-    *  path MTU discovery
 
 - date: 2024-10-10
   week: 7
@@ -199,6 +212,7 @@
     *  autonomous systems
        *  graph structure
        *  business relationships (customer/provider; content-delivery; peering)
+
     *  BGP advertisements
     *  interdomain and intradomain routing
        *  (if time) iBGP
@@ -212,20 +226,20 @@
 
 - date: 2024-10-17
   week: 8
-  title: "UDP / TCP ; sockets"
+  title: "UDP; sockets"
   reading: PD 5.1-2, 1.4
   description: |
-    *  port numbers, 5-tuples
     *  UDP
 
-    *  TCP connection establishment
-
     *  BSD sockets
+
+    *  5-tuples, netstat
+    *  listening sockets
+    *  conneced/unconnected sockets
+
     *  socket / bind / connect
     *  read/recv, write/send
     *  server sockets --- listen, accept
-    *  recvfrom, sendto, ... <!-- FIXME: reading reference -->
-    *  aside: local sockets
 
 - date: 2024-10-18
   week: 8
@@ -235,6 +249,10 @@
   title: "DNS"
   reading: PD 9.3.1; FS 11
   description: |
+    *  recvfrom, sendto, ... <!-- FIXME: reading reference -->
+    *  broadcast with sockets
+    *  aside: local sockets
+
     *  domain names
        *  labels
        *  gTLDs
