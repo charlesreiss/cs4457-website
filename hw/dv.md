@@ -7,48 +7,157 @@ author: Charles Reiss
 
 1.  Download the skeleton code at TBA.
 
+## Part 1: distance vector 
+
 2.  Edit `entity.py` to implement a distributed distance vector algorithm using distributed
     Bellman-Ford, like is described in section
     [3.4.2](https://book.systemsapproach.org/internetworking/routing.html) of
     _Computer Networks: A Systems Approach_.
 
+    For the first part of this assignment, we will not handle updates a node's neighbors
+    (like from a link failing); we will just produce an initial set of routes.
+
     Our simulator will construct an instance of the `Entity` class to represent each
-    router on a simulated network. Each Entity will be assigned a 0-based index.
+    router ("entity") on a simulated network. Each Entity will be assigned a 0-based index.
+    The Entity has several methods which will be called by our simulation.
+    `entity.py` has docstrings for each these methods.
 
-    The Entity class includes the following methods:
+    For this part, you will need to change the `initialize_costs` and `update` methods.
 
-    *   a constructor (the `__init__` method) which stores the entity's index
-        and total number of entities. Our skeleton code also sets up a
-        instance variables to store a cost and next-hop table.
-        You may modify this to store the state differently, but if you do so,
-        you'll need to also modify the `forward_next_hop` method.
+    We will also use the `__init__`, `forward_next_hop`, and `get_all_costs` methods,
+    but I expect most students will not have a reason to modify the version of these methods
+    supplied with the skeleton code.
 
-    *  `initialize_costs`: called with a list of the neighboring routers and
-        the costs to reach them. This method should return a list of `Packet` objects
-        to send (to the routers specified by each packet's destination).
+    Provided that it does not change the interface the simulator expects to use,
+    you are welcome to modify any methods of the `Entity` class and add new utility
+    methods and functions.
 
-        Our skeleton code stores the costs in an instance variable and returns
-        an empty list of packets. You should modify it to return a non-empty list of
-        packets.
+    In the simulation, Entitys can send packets to each other. This is done by returning
+    those packets to the simulation as the return value of its methods. (Unlike with
+    sockets or some other assignments, your code will not call a function to send a packet.)
+    Your Entity instances should not other communicate with each other except by sending
+    packets.
 
-    *  `update`: called when a packet is received from another route.r Like the
-        `initialize_costs` method, it should return a (possibly empty) list of
-        `Packet` objects to send to other routers. 
-
-        Our skeleton code returns an empty list of packets. You should modify it to
-        process the packet sent and send any update packets needed to neighboring nodes.
-
-    *  `forward_next_hop`: return the next hop to use to reach a particular entity.
-       Our skeleton code reads from the next-hop table setup by `__init__`, so if you
-       use that table, you should not need to edit this method.
-
-    *  `get_all_costs`: return a table of all next-hop costs. We will not use this for testing,
-        but it may be helpful for debugging in combination with simulator's `display_forwarding_table`.
+    The simulation will first call the `initialize_costs` method of each entity
+    with an array of its neighbors.
+    This method will return a list of packets to sent. The simulator will
+    simulate these packets being transmitted to other entities with some delay. When
+    a packet is received by another entity.
+    A packet will be received by calling an entity's `update` method with a copy of the packet.
+    If the `update` method returns more packets to send, the simulator will simulate those being
+    sent. This simulator will keep going until no new packets are produced.
 
 3.  Test your submission by:
 
-    *  using or modifying `sample.py` to run the simulator by hand; and/or
+    *  using or modifying `sample_simple.py` to run the simulator by hand. Comments in this file
+       indicate the expected output. Note that you can change the debug level passed to it.
 
-    *  using `test.py` to run several automated test cases.
+    *  running `python3 test.py --exclude-link-changes`. These tests should be more thorough
+       than `sample_simple.py`. You can obtain more information about the test cases themselves using
 
-4.  Submit your code by TBD.
+            python3 test.py --verbose-tests --exclude-link-changes
+
+       and can run the test with less debug output using:
+
+            python3 test.py --debug 0 --exclude-link-changes
+
+       You can also combine these options. You can also temporarily edit the TESTS array in `test.py`
+       to change what is tested or to copy the test cases into a file like `sample_simple.py`
+
+## (might be optional???) Part 2: handling adding/removing links:
+
+1.  Implement `add_neighbor`, `delete_neighbor` and `periodic_update` in `entity.py`.
+
+    You do not need to handle cases which would involve the "count to infinity" problem. If you choose, however,
+    you may assume that the total cost of a route will never exceed 100r
+
+    To handle routes becoming longer from `delete_neighbor`, you may also need change `update`.
+
+    The packets triggered directly and indirectly by calling `delete_neighbor` should
+    ensure that the deleted link is not used anymore. However, as discussed in the hints
+    below, entities may not discover an alternate route until a periodic update happens.
+
+2.  Test your submission:
+    
+    *  using `sample_add.py`, `sample_remove1.py` and `sample_remove2.py`
+
+    *  running `test.py` without the `--exclude-link-changes` flag
+
+## Submission
+
+4.  Upload `entity.py` to the submission site.
+
+# Hints
+
+1.  To avoid duplicating code, I found it useful to have a utility method that generated a
+    list of packets for all the functions that return lists of packets.
+
+2.  When deleting a link to a neighbor, be sure to handle the case where you can send
+    directly a node where you'd previously forward through that neighbor. For example, with
+    this network:
+
+    *  A to/from B with cost 1
+    *  A to/from C with cost 8
+    *  B to/from C with cost 1
+    *  B to/from D with cost 2
+    *  C to/from D with cost 1
+
+    A's routing tables should be:
+
+    |to|next hop|cost|
+    |A|A|0|
+    |B|B|1|
+    |C|B|2|
+    |D|B|2|
+
+    After being informed the link from A to B went down, a natural thing to do might be to
+    remove all the routes that use a next hop of B:
+    
+    |to|next hop|cost|
+    |A|A|0|
+    |B|(none)|infinity|
+    |**C**|**~(none)~**|**~infinity~**|
+    |D|(none)|infinity|
+
+    But this ignores that A is responsible for knowing about the direct link from A to C, so instead
+    it should update to account for that:
+    
+    |to|next hop|cost|
+    |A|A|0|
+    |B|(none)|infinity|
+    |**C**|**C**|8|
+    |D|(none)|infinity|
+
+    A will need learn about new routes to B and to D by eventually receiving an update from C.
+
+    (In this particular case, that should happen as a result of updates triggered by the link going down:
+    C's routing table before the link went down included a route to A through B.
+    After the link goes down, B should send an updated routing table to C indicating that
+    it can no longer reach A. As a result, C should update its routing table and send
+    the updated version to A, allowing A to discover new routes to B and D.)
+
+3.  When deleting a link to a neighbor, sometimes the triggered updates won't be sufficient for
+    an entity to learn about alternate routes. For example,
+    with this network:
+
+    *  A to/from B with cost 1
+    *  A to/from C with cost 1
+    *  B to/from C with cost 1
+
+    Immediately after discovering the link is down A's routing table will be:
+
+    |to|next hop|cost|
+    |A|A|0|
+    |B|(none)|infinity|
+    |C|C|1|
+
+    and B's routing table will be:
+
+    |to|next hop|cost|
+    |A|(none)|infinity|
+    |B|B|0|
+    |C|C|1|
+
+    Both A and B will send their updated routing tables to C, but C's routing table will not change
+    as a result. So C will not automatically remind A or B that they can send messages to each other
+    through C. Instead, we need to wait for a periodic update to cause C to send the updated routing table
