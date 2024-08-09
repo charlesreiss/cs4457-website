@@ -73,63 +73,72 @@
 
 - date: 2024-09-10
   week: 3
-  title: "switches"
+  title: "relability: TCP realities / switches"
   reading: PD 3.1.1-3.1.2, 3.2-3.2.1, 3.2.4
+  slides_ref:
+  - reliable
+  - switches
   description: |
+    *  TCP realities
+        - sequence numbers are bytes
+        - TCP options
+
     *  switched networks
     *  packet versus circuit switching
     *  software defined networks
        *  see also: [Feamster et al, "The Road To SDN: An Intellectual History of Programmable Networks"](https://www.sigcomm.org/sites/default/files/ccr/papers/2014/April/0000000-0000012.pdf)
-    *  P4 switch architecture
-       *  see also: [SDN book, chapter 4](https://sdn.systemsapproach.org/switch.html)
-       *  control versus dataplane
-       *  match/action pipeline
-       *  tables
 
 - date: 2024-09-12
   week: 3
   title: "learning bridges, ARP + ND, subnets"
   reading: PD 3.2.1, 3.3.6; FS 8.5
+  slides_ref:
+  - switches
   description: |
+    *  P4 switch architecture (start)
+       *  see also: [SDN book, chapter 4](https://sdn.systemsapproach.org/switch.html)
+       *  control versus dataplane
+       *  match/action pipeline
+       *  tables
     *  learning bridges
-    *  broadcast, basic multicast
-
-    *  IP versus MAC addresses
-
-    *  ARP, ICMPv6 Neighbor Discovery
 
 - date: 2024-09-13
   week: 3
 
 - date: 2024-09-17
   week: 4
-  title: "IP and TCP packet format"
+  title: "MACs and IPs"
   reading: PD 3.3.1-3.3.5, 6.1.1-6.1.3
   description: |
     (Reiss out of town)
 
+    *  IP versus MAC addresses
+    *  broadcast, basic multicast
+       *  broadcast on ethernet
+       *  broadcast on IP
+    *  ARP
+    *  ICMPv6 Neighbor Discovery
+
     *  IP header
        *  checksums
     *  example: ICMP ping
-    *  TCP header
-       *  port numbers
-       *  byte-based sequence numbers
-       *  advertized windows
-       *  timestamps
-       *  seletive acknowledgments
-    *  TCP connection setup
+    *  interaction with TCP header
 
 - date: 2024-09-19
   week: 4
-  title: "congestion control: AIMD"
+  title: "congestion control: the problem"
   reading: PD 6.2.1, 6.3.1-3
   description: |
     (Reiss out of town)
-    *  TCP state machine
-
+    *  graph of throughput versus window size
     *  congestion problem
-    *  congestion feedback
-    *  (start) additive increase/multiplicative decrease
+       *  where queues are on the network
+          *  switches/routers
+          *  network interface cards
+       *  cross-traffic
+          *  "fair" sharing between multiple flows?
+       *  congestion on end-hosts
+    *  congestion versus flow control
 
 
 - date: 2024-09-20
@@ -137,54 +146,63 @@
 
 - date: 2024-09-24
   week: 5
-  title: "more congestion control"
-  reading: PD 6.3.1.4, 6.4.2
+  title: "congestion control: AIMD"
+  reading: PD 6.3.1.1-4, 6.4.2
   description: |
-    *  (finish) additive increase/multiplicative decrease
+    *  congestion feedback
+       *  what queues do when full
+
+    *  additive increase/multiplicative decrease
+       *  empirical status-quo with multiple connections
 
     *  slow start
-    *  fast recovery
-    *  (if time) CUBIC and/or delay-based congestion control (TCP Vegas, BBR)
 
 - date: 2024-09-26
   week: 5
   title: "revisiting switches: ECN, fair queuing, priority"
-  reading: PD 6.4.1-2, 6.2
+  reading: PD 6.4.1-2, 6.2, <!-- FS -->
   description: |
-    *  explicit congestion notification
-       *  early detection
-       *  echoing back congestion signal
-    *  non-binary congestion signals (DCTCP)
+    *  other congestion control heuristics:
+        *  fast recovery
+        *  delayed ACKs
 
-    *  queue discplines
+    *  alternate congestion signals:
+       *  explicit congestion notification
+           *  echoing back congestion signal
+       *  non-binary congestion signals (DCTCP)
+
+    *  queue discplines (start)
        *  strict priority
-       *  weighted fair queuing
 
 - date: 2024-09-27
   week: 5
 
 - date: 2024-10-01
   week: 6
-  title: "routing: routing tables, spanning trees, metrics"
-  reading: PD 3.4, 3.2.3, 
+  title: "fair queuing / routing: routing tables, spanning trees"
+  reading: PD 6.2, 3.4, 3.2.3
   description: |
+    *  queue discplines (finish)
+       *  fair queuing
+
     *  network as a graph
     *  routing tables
-    *  spanning trees
-       *  spanning tree protocols
 
-    *  routing metrics
+    *  spanning tree protocols
+       *  centralized
+       *  distributed
 
 
 - date: 2024-10-03
   week: 6
-  title: "routing: errors, fragments, MTU"
+  title: "routing: metrics, errors, fragments, MTU"
   reading: PD 3.4.4, 3.4.2-3
   description: |
+    *  routing metrics
+
     *  ICMP routing errors
        *  time-to-live
        *  unreachable
-       *  ping
 
     *  fragments
     *  path MTU discovery
