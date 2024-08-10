@@ -95,6 +95,20 @@ This includes not asking for/accepting code from students, stack overflow, gener
 the assignment).
 Beware of looking at other students code or code you find online: it is hard to unsee and can spoil your ability to compose your own solutions!
 
+#### on exceptions for libraries
+
+It is not the intention that students spend a lot of time implementing generic tasks
+that are not one of the topics in this class.
+For example, rather than spending a substantial amount of time
+implementing a priority queue in Python,
+we would expect students to use something like the Python standard
+library's `heapq` module.
+
+If the standard libraries (or other libraries/code mentioned in an assignment)
+don't provide a convenient option for a similar _generic_
+task, we may be willing to grant an exception to allow the use of other libraries or code.
+We will make these decisions on a case-by-case basis.
+
 ### Understand what you submit
 
 Working together can help you learn. But make sure you learned!
