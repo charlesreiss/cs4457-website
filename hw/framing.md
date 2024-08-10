@@ -95,3 +95,10 @@ author: Charles Reiss
 
     The test uses Python's difflib, which implements an algorithm similar to the `diff` utility. In
     some cases, this may get confused between corrupted and extra+missing messages.
+
+# Hints
+
+1.  You can reuse the supplied bit to byte and byte to bit conversions..
+
+2.  The `struct` modules `pack` or `unpack` to convert integers to bytes and vice-versa.
+
