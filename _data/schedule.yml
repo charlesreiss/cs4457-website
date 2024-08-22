@@ -108,7 +108,7 @@
 - date: 2024-09-17
   week: 4
   title: "MACs and IPs"
-  reading: PD 3.3.1-3.3.5, 6.1.1-6.1.3
+  reading: PD 3.3.2-3.3.7, 4.2.1-4.2.3
   description: |
     (Reiss out of town)
 
@@ -122,14 +122,16 @@
     *  IP header
        *  checksums
     *  example: ICMP ping
-    *  interaction with TCP header
+
+    *  autoconfiguration
 
 - date: 2024-09-19
   week: 4
   title: "congestion control: the problem"
-  reading: PD 6.2.1, 6.3.1-3
+  reading: PD 6.1, 6.3
   description: |
     (Reiss out of town)
+
     *  graph of throughput versus window size
     *  congestion problem
        *  where queues are on the network
