@@ -11,6 +11,6 @@ gem "minima", "~> 2.5"
 
 gem "nokogiri", "~> 1.12"
 
-gem "jekyll-pandoc", "~> 2.0"
-
 gem "pandoc-ruby", "~> 2.1"
+
+gem "jekyll-pandoc"

@@ -19,17 +19,12 @@ email: creiss@virginia.edu
 baseurl: "/~cr4bd/4457/F2024" # the subpath of your site, e.g. /blog
 url: "https://www.cs.virginia.edu" # the base hostname & protocol for your site, e.g. http://example.com
 
-#plugins:
-#  - jekyll-pandoc
+plugins:
+  - jekyll-pandoc
 
-#markdown: Pandoc
+markdown: Pandoc
 # Build settings
 pandoc:
-  format: html5
-  extensions: 
-    - from: markdown+smart+inline_code_attributes
-    - template: _template_inner.html5
-pandoc-document:
   format: html5
   extensions: 
     - from: markdown+smart+inline_code_attributes
