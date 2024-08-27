@@ -18,8 +18,8 @@
        *  layering models
            *  Internet
            *  OSI model (briefly)
-       *  end-to-end argument
-           *  Saltzer, Reed, and Clark, "[End-to-End Arugments in System Design](https://dl.acm.org/doi/pdf/10.1145/357401.357402)" (ACM Transactions on Computing Systems, 1984)
+       *  wireshark interlude
+          *  [packet trace](files/example-firefox-trace.pcapng)
 
 - date: 2024-08-29
   week: 1
@@ -29,6 +29,8 @@
   - physical
   - framing
   description: |
+    *  end-to-end argument
+       *  Saltzer, Reed, and Clark, "[End-to-End Arguments in System Design](https://dl.acm.org/doi/pdf/10.1145/357401.357402)" (ACM Transactions on Computing Systems, 1984)
     *  direct links
        *  copper, fiber, radio
     *  bits as voltage, timing
