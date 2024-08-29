@@ -7,6 +7,7 @@ author: Charles Reiss
 Changelog:
 
 *  29 August 2024: fix some bugs in `test.py`, particularly related to the test filtering options
+*  29 August 2024: mention that submission should use the submission site (see Canvas)
 </div>
 
 >  If you downloaded the skeleton code before around 5:45pm 29 August 2024, please get an updated version of `test.py` [here](files/framing/test.py)
@@ -80,7 +81,7 @@ Changelog:
 4.  *Briefly* document in a comment or docstring near the top of your `sendrecv.py` the
     frame format you choose.
 
-4.  Submit your `sendrecv.py` by *TBD*.
+4.  Submit your `sendrecv.py` by using the submission site.
 
 [^portal_note]: If you want to work on portal or similar, you might find it useful to right-click the link, select "copy link" or "copy URL" from the drop-down menu, then run the command `wget THAT_URL`, where `THAT_URL` is the result of pasting the link/URL.
 
