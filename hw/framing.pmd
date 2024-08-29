@@ -3,9 +3,18 @@ title: Framing
 author: Charles Reiss
 ...
 
+<div class="changelog">
+Changelog:
+
+*  29 August 2024: fix some bugs in `test.py`, particularly related to the test filtering options
+</div>
+
+>  If you downloaded the skeleton code before around 5:45pm 29 August 2024, please get an updated version of `test.py` [here](files/framing/test.py)
+>  that fixes some bugs that would cause the testing script to crash and not correctly handlesome of the test filtering options.
+
 # Your Task
 
-1.  Download the supplied skeleton code at [here](files/framing-skeleton.tgz).[^portal_note] (last updated 4 August 2024)
+1.  Download the supplied skeleton code at [here](files/framing-skeleton.tgz).[^portal_note] (last updated 29 August 2024 5:45pm)
 
 2.  In `sendrecv.py` complete an implementation of MySender and MyReceiver.
 
