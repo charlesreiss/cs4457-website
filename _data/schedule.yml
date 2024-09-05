@@ -113,6 +113,8 @@
   week: 4
   title: "MACs and IPs"
   reading: PD 3.3.2-3.3.7, 4.2.1-4.2.3
+  slides_ref:
+  - arp
   description: |
     (Reiss out of town)
 
@@ -128,24 +130,23 @@
     *  example: ICMP ping
 
     *  autoconfiguration
+       *  DHCP
+       *  SLAAC
 
 - date: 2024-09-19
   week: 4
   title: "congestion control: the problem"
   reading: PD 6.1, 6.3
+  slides_ref:
+  - congest
   description: |
     (Reiss out of town)
 
     *  graph of throughput versus window size
-    *  congestion problem
-       *  where queues are on the network
-          *  switches/routers
-          *  network interface cards
-       *  cross-traffic
-          *  "fair" sharing between multiple flows?
-       *  congestion on end-hosts
-    *  congestion versus flow control
-
+    *  history: congestion collapse
+    *  observing good/bad congestion
+    *  steady-state and changing cross-traffic
+    *  slow-increase/fast-decrease
 
 - date: 2024-09-20
   week: 4
@@ -154,25 +155,27 @@
   week: 5
   title: "congestion control: AIMD"
   reading: PD 6.3.1.1-4, 6.4.2
+  slides_ref:
+  - congest
   description: |
-    *  congestion feedback
-       *  what queues do when full
-
+    *  fair sharing
     *  additive increase/multiplicative decrease
-       *  empirical status-quo with multiple connections
-
-    *  slow start
+    *  min/max fairness
+    
+    *  fast retransmit and fast recovery
+    *  slow starrt
 
 - date: 2024-09-26
   week: 5
   title: "revisiting switches: ECN, fair queuing, priority"
   reading: PD 6.4.1-2, 6.2, <!-- FS -->
+  slides_ref:
+  - congest
   description: |
-    *  other congestion control heuristics:
-        *  fast recovery
-        *  delayed ACKs
+    *  bufferbloat: congestion makes queues deep
 
     *  alternate congestion signals:
+       *  delay/throughput-based
        *  explicit congestion notification
            *  echoing back congestion signal
        *  non-binary congestion signals (DCTCP)
