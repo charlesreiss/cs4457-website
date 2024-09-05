@@ -2,6 +2,13 @@
 title: reliable transport
 author: Charles Reiss (based on ...)
 ...
+
+<div class="changelog">
+Changelog:
+
+* 5 Sep 2024: be more explicit about how to dynamically set timeouts.
+</div>
+
 # Your Task
 
 1.  Download the supplied simulator and skeleton code at [here](files/reliable-skeleton.tgz) (last updated 4 August 2024).
@@ -89,10 +96,26 @@ author: Charles Reiss (based on ...)
 
     My recommendation to do this would be:
 
-    *  sample the round-trip time using the `timestamp` field in packets. You can use the `now()` function to 
-       get the simulation timestamp.
-    *  take an exponentially weighted moving average of the sampled round-trip times
-    *  set the timeout to around twice that moving average
+    *  sample the round-trip time using the `timestamp` field in packets:
+
+       Use the `now()` function to get the simulation timestamp and set this in the sender.
+
+       In the receiver, copy the timestamp from you receive into the acknowledgment packet.
+
+       In the sender, when you receive an ack subtract the timestamp you receive from `now()` to get
+       a sample of the round-tript time
+
+    *  take an exponentially weighted moving average^[This is the type of average typically used in TCP; other types of moving averages would also be fine.] of the sampled round-trip times:
+
+       *  initialize the average to the initial timeout or the first recorded RTT
+       *  choose an "alpha" to determine how much the average is weighted toward recent RTT measurements.
+          I recommend something like 0.2; higher values mean recent changes in RTT affect the average more.
+       *  each time you record a new RTT, update the average:
+
+            new avg = RTT * alpha + old avg * (1 - alpha)
+
+    *  set the timeout to around twice that moving average. (A more sophisticated approach would
+       estimate the variance of the RTT and use that information to set the timeout.)
 
 2.  Test your implementation:
 
