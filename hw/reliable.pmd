@@ -7,11 +7,12 @@ author: Charles Reiss (based on ...)
 Changelog:
 
 * 5 Sep 2024: be more explicit about how to dynamically set timeouts.
+* 5 Sep 2024 9pm: fix bug which sometimes caused simulator to crash (with error about `self.error()` call); also update simulator to output more statistics in `--json` mode (used by graidng scripts)
 </div>
 
 # Your Task
 
-1.  Download the supplied simulator and skeleton code at [here](files/reliable-skeleton.tgz) (last updated 4 August 2024).
+1.  Download the supplied simulator and skeleton code at [here](files/reliable-skeleton.tgz) (last updated 5 Sep 2024 9 pm).
 
     In the skeleton code, you should only modify `ends.py`, which initially has code
     that implements transmission without any sort of reliablity.
