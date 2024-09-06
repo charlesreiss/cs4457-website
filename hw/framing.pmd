@@ -9,6 +9,7 @@ Changelog:
 *  29 August 2024: fix some bugs in `test.py`, particularly related to the test filtering options
 *  29 August 2024: mention that submission should use the submission site (see Canvas)
 *  3 Sep 2024: make `test.py` consider too-long encodings of messages a test failure instead of just printing an error about them and saying the test passed; we will not deduct credit for these problems when grading.
+*  6 Sep 2024: add note re: trap of choosing ambiguous message delimiters
 </div>
 
 >  If you downloaded the skeleton code before around 5:45pm 29 August 2024, please get an updated version of `test.py` [here](files/framing/test.py)
@@ -115,3 +116,10 @@ Changelog:
 
 2.  The `struct` modules `pack` or `unpack` to convert integers to bytes and vice-versa.
 
+3.  <small>*[added 6 Sep 2024 5:15pm, copies Piazza post:]*</small>  Be careful about choosing ambiguous message delimters.
+
+    For example, let’s say you choose 0000 as a delimiter for messages and to escape 000 with 0001 and we try to send the message 111111100.
+
+    In this case, we’ll send 111111100 0000. There was no reason to escape anything. When we try to remove the delimiter from this, we’ll find the first 0000, and get 1111111, which is not our original message.
+
+    The problem here is that the escaping is not sufficient to handle the end-of-message edge case. We could fix this by escaping every 0 instead of every 000, but that’s pretty inefficient. A more space-efficient solution is to choose a delimiter pattern that has a distinctive transition from 0s to 1s that allows us to escape less frequently. The choice of 010 in lecture and 01111110 in the textbook (Systems Approach section 2.3) are examples of this.
