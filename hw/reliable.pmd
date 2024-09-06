@@ -8,6 +8,7 @@ Changelog:
 
 * 5 Sep 2024: be more explicit about how to dynamically set timeouts.
 * 5 Sep 2024 9:10pm: fix bug which sometimes caused simulator to crash (with error about `self.error()` call); also update simulator to output more statistics in `--json` mode (used by graidng scripts)
+* 6 Sep 2024: add note about common error of not resetting timestamp each time a packet is resent
 </div>
 
 # Your Task
@@ -100,6 +101,7 @@ Changelog:
     *  sample the round-trip time using the `timestamp` field in packets:
 
        Use the `now()` function to get the simulation timestamp and set this in the sender.
+       **Be sure to record a new time each time a packet is sent, even if it is resent from a timeout.**
 
        In the receiver, copy the timestamp from you receive into the acknowledgment packet.
 
@@ -323,3 +325,5 @@ Changelog:
 
 # Hints
 
+1.  If your timeouts are becoming very large, make sure you are setting a new timestamp each time you resend
+    a packet. Otherwise, you may end up measuring the timeout to set your timeout and causing it to get very large.
