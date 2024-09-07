@@ -176,7 +176,7 @@ Changelog:
 
 2.  Test your implementation:
 
-    *  Setting the MAXIMUM_SEQUENCE to a value much smaller the number of packets sent but more than
+    *  Set MAXIMUM_SEQUENCE to a value much smaller the number of packets sent but more than
        twice the INTIIAL_WINDOW.
 
 ### submission
