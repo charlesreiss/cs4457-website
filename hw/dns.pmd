@@ -68,4 +68,31 @@ In this JSON output:
 *  all IPv6 addresses must be represented as strings in one of the formats specified in RFC 4291, section 2.2^[RFC 4291 only gives examples with upper-case A-F, but we will allow both upper and lower case.] (examples: `2607:f8b0:4004:c21::63`, `2607:F8B0:4004:0C21:0000:0000:0000:0063`), and
 *  all domain names with labels seperated by `.`s and a trailing `.` (example: `www.cs.virginia.edu.`)
 
+# Hints
+
+## Testing
+
+1.  You can convert the output of
+
+        python3 dns.py --create-request HOSTNAME
+
+    to a PCAP file you can open with wireshark using the `text2pcap` utility.
+
+    One way to do this for a request for www.cs.virginia.edu:
+
+        python3 dns.py --create-request www.cs.virginia.edu > request.dat
+        od -Ax -tx1 -v < request.dat > request.od
+        text2pcap -u 53,53 request.od request.pcapng
+
+    The first command runs `python3 dns.py --create-request www.cs.virginia.edu`, but sends its output to the file `request.dat`.
+    The second command converts `request.dat` into a text-format (with hexadecimal) file that is saved in `request.od`.
+    The third takes `request.od` and converts it to a file that wireshark can open.
+
+    You can open up that file in a graphical version of wireshark. Also, on the command line on portal, you can get a dump of
+    the contents with all information with a command like
+
+        tshark -T json -r request.pcapng > request-as-json.json
+
+    which will output a meachine-readable JSON interpretaion to `request-as-json.json`.
+
 <!-- FIXME test cases -->
