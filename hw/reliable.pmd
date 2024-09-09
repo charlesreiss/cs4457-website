@@ -9,6 +9,7 @@ Changelog:
 * 5 Sep 2024: be more explicit about how to dynamically set timeouts.
 * 5 Sep 2024 9:10pm: fix bug which sometimes caused simulator to crash (with error about `self.error()` call); also update simulator to output more statistics in `--json` mode (used by graidng scripts)
 * 6 Sep 2024: add note about common error of not resetting timestamp each time a packet is resent
+* 9 Sep 2024: correct text about transmitting a message in "from_network" to text about transmitting a message in "from_application"; make frame count in reliable1 example match command line
 </div>
 
 # Your Task
@@ -74,7 +75,7 @@ Changelog:
     and retransmits a packet (from the sender)
     indefinitely if an acknowledgment is not received config.INITIAL_TIMEOUT time units after a packet is sent.
 
-2.  If `from_network` cannot immediately transmit a message, then it should return False and not
+2.  If MySender's `from_application` cannot immediately transmit a message, then it should return False and not
     queue the message. (Our simulator/testing code will try resending it later.)
 
 2.  Test your implementation:
@@ -84,7 +85,7 @@ Changelog:
 
             python3 main.py --generate-input 1000 --delay 1 --initial-timeout 10
 
-       should result in everything being received and not much more than 100 frames sent.
+       should result in everything being received and not much more than 1000 frames sent.
 
     *  Running the simulator with high loss rates (such as by adding `--drop 0.4`)
        should still result in everything being transmitted consistently, though using more frames.
