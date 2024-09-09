@@ -247,7 +247,7 @@ Changelog:
 
     For example, a command like:
 
-       python3 main.py --generate-input=100 --delay=0.1
+         python3 main.py --generate-input=100 --delay=0.1
 
     will run the simulator:
 
