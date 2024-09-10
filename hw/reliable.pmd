@@ -10,6 +10,7 @@ Changelog:
 * 5 Sep 2024 9:10pm: fix bug which sometimes caused simulator to crash (with error about `self.error()` call); also update simulator to output more statistics in `--json` mode (used by graidng scripts)
 * 6 Sep 2024: add note about common error of not resetting timestamp each time a packet is resent
 * 9 Sep 2024: correct text about transmitting a message in "from_network" to text about transmitting a message in "from_application"; make frame count in reliable1 example match command line
+* 10 Sep 2024: describe `trace()` function in hints; adjust part 2 due date; mention that adjusting buffer size for part 1/2 is probably not a good idea
 </div>
 
 # Your Task
@@ -302,6 +303,9 @@ Changelog:
        1/*bandwidth* time units after the previous one;
     *  otherwise, if less than *BUFFER* segments are pending transmission
 
+
+    I do not recommend changing the buffer size from the default until part 3.
+
 # API
 
 ## timers
@@ -323,6 +327,21 @@ Changelog:
         cancel_timer(self.resend_timer)
 
     Most likely your `from_network` implementation that receives acknowledgments will do something like this.
+
+## `trace()`
+
+1.  There is a `trace()` function you can call like
+
+        trace("some-name", "some message here")
+
+    if `some-name` in the set in config.py's `TRACE` variable, then this will cause `some message here` to be output.
+    If `some-name` is not in config.py's `TRACE` variable, nothing will be output.
+
+    You can also pass an option like
+
+        --trace=some-name,some-other-name,...
+
+    to override the value of `TRACE` from the comman dline.
 
 # Hints
 

@@ -14,12 +14,11 @@
 - name: reliable part 2 (sliding window)
   short_name: reliable2
   open: 2024-09-13
-  due: 2024-09-20
+  due: 2024-09-27
   page: hw/reliable.html
   submit_file: ends.py
-  tentative: true
 
-- name: P4 (two parts)
+- name: P4
   short_name: p4
   open: 2024-09-20
   due: 2024-10-04
