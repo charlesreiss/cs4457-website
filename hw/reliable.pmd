@@ -12,6 +12,7 @@ Changelog:
 * 9 Sep 2024: correct text about transmitting a message in "from_network" to text about transmitting a message in "from_application"; make frame count in reliable1 example match command line
 * 10 Sep 2024: describe `trace()` function in hints; adjust part 2 due date; mention that adjusting buffer size for part 1/2 is probably not a good idea
 * 12 Sep 2024: add description of common error of failing to handle when a packet times out multiple times to hints
+* 15 Sep 2024: change "sliding" to "sliding-window" to match what I did in autograder;note that both are accepted.
 </div>
 
 # Your Task
@@ -147,8 +148,8 @@ Changelog:
 
 ### Sliding windows
 
-1.  Modify `ends.py`, so that when `config.MODE` is `sliding`, it uses a sliding window
-    (like in [section 2.5.2 of <i>Computer Networks:
+1.  Modify `ends.py`, so that when `config.MODE` is `sliding-window` (because I originally wrote "sliding" here, we'll also accept that, but the autograder doesn't use this, so manual intervention in grading would be needed),
+    it uses a sliding window (like in [section 2.5.2 of <i>Computer Networks:
     A Systems Approach</i>](https://book.systemsapproach.org/direct/reliable.html#sliding-window))
     with:
 
