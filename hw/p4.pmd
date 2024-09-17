@@ -5,6 +5,12 @@ author: Charles Reiss, based on an assignment by Hyojoon Kim
 
 <!-- similar: https://github.com/2021-cs344/maclearning-exercise --->
 
+<div class="changelog">
+Changelog:
+
+*  17 Sep 2024: update skeleton code in git re: calling myutil.py decode_packet_in_metadata function with wrong number of arguments, and add note to about manual change for this below
+</div>
+
 # Your Task
 
 ## Part 1
@@ -133,6 +139,21 @@ author: Charles Reiss, based on an assignment by Hyojoon Kim
 
 3.  Modify `mydataplane.p4` to uncomment the call `copy_to_controller()`
     before `mac_dst_lpm.apply()`.
+
+    *[Edited 17 Sep 2024]:* 
+    Make sure the `process_packet` function contains the fixed code
+    (which it should if you ran `git pull` since 17 Sep 2024):
+
+        metadata = decode_packet_in_metadata(
+            p4info_helper,
+            switch,
+            packet.metadata
+        )
+
+    and not:
+
+        metadata = decode_packet_in_metadata(packet.metadata)
+
 
     After doing this (and restarting the network simulation),
     `mycontroller.py` should start outputting information about every packet sent
