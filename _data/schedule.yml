@@ -118,6 +118,8 @@
   description: |
     (Reiss out of town)
 
+    >  The recording is available on Canvas on the Panopto Video tab and will be copied here later.
+
     *  IP versus MAC addresses
     *  broadcast, basic multicast
        *  broadcast on ethernet
@@ -141,6 +143,8 @@
   - congest
   description: |
     (Reiss out of town)
+
+    >  The recording is available on Canvas on the Panopto Video tab and will be copied here later.
 
     *  graph of throughput versus window size
     *  history: congestion collapse
