@@ -137,9 +137,10 @@
 
 - date: 2024-09-19
   week: 4
-  title: "congestion control: the problem"
+  title: "autoconfiguration / congestion control: the problem"
   reading: PD 6.1, 6.3
   slides_ref:
+  - arp
   - congest
   description: |
     (Reiss out of town)
@@ -158,7 +159,7 @@
 - date: 2024-09-24
   week: 5
   title: "congestion control: AIMD"
-  reading: PD 6.3.1.1-4, 6.4.2
+  reading: PD 6.1, 6.3-4, 6.4.2
   slides_ref:
   - congest
   description: |
@@ -175,6 +176,7 @@
   reading: PD 6.4.1-2, 6.2, <!-- FS -->
   slides_ref:
   - congest
+  - queuing
   description: |
     *  bufferbloat: congestion makes queues deep
 
@@ -185,7 +187,7 @@
        *  non-binary congestion signals (DCTCP)
 
     *  queue discplines (start)
-       *  strict priority
+       *  droptail and problems
 
 - date: 2024-09-27
   week: 5
@@ -194,9 +196,13 @@
   week: 6
   title: "fair queuing / routing: routing tables, spanning trees"
   reading: PD 6.2, 3.4, 3.2.3
+  slides_ref:
+  - queuing
   description: |
     *  queue discplines (finish)
        *  fair queuing
+       *  strict priority
+       *  random early detection
 
     *  network as a graph
     *  routing tables

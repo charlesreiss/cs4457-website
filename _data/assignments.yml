@@ -28,7 +28,6 @@
   - mydataplane.p4
   - results.txt
   - results.pdf
-  tentative: true
 
 - name: reliable part 3 (variable window)
   short_name: reliable3
