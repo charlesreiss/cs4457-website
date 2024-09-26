@@ -10,6 +10,7 @@ Changelog:
 
 *  17 Sep 2024: update skeleton code in git re: calling myutil.py decode_packet_in_metadata function with wrong number of arguments, and add note to about manual change for this below
 *  26 Sep 2024: update skeleton code in git re: decode_packet_in_metadata being a buggy version
+*  26 Sep 2024: more detailed desription re: retrieving information from packets copied to the controller
 </div>
 
 # Your Task
@@ -175,15 +176,20 @@ Changelog:
     comes from a MAC address not yet handled and add entries to the tables to handle forwarding
     for that MAC address.
 
+    You can use `frame.src` and `frame.dst` to retrieve the MAC addresses stored in the incoming frames,
+    and `frame.dst`.
+
+    You can use `metadata['inPort'][0]` to retrieve the input port number of the packet.
+
     Verify that your solution makes it so that, after each host sends some traffic (such as because
     you ran `pingall`), each host does only receives packets destined for its own MAC address
-    (or packets sent to a broadcast/multicast MAC address). 
+    (or packets sent to a broadcast/multicast MAC address).
 
 ## Step 4: Limit which packets are sent to the controller
 
-6.  Add a new table `mac_port_src_lpm`, which is like `mac_dst_lpm`, but:
+6.  Add a new table `mac_src_lpm` or `mac_port_src_lpm`, which is like `mac_dst_lpm`, but:
  
-    *  matches based on the source mac address and input port instead of the destination mac address
+    *  matches based on the source mac address and (optionally) input port instead of the destination mac address
     *  has a default action of copy_to_controller and another possible actoin of `NoAction`
 
 7.  Replace the call to `copy_to_controller()` with an applicatoin of this table.
@@ -192,9 +198,9 @@ Changelog:
 
 8.  Modify `process_packet` to:
 
-    *  add a table entry to `mac_port_src_lpm` to override the default 
+    *  add a table entry to new table to override the default 
        `copy_to_controller` setting to `NoAction`, so the switch does not
-       receive future packets for that source MAC address and port, and
+       receive future packets for that source MAC address and (optionally) port, and
     *  (optional) if a machine changes from one port to another, to
        overwrite or delete any table mac_port_src_lpm entry added for the
        prior port. This will ensure that if the machine changes back
