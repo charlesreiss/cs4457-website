@@ -10,7 +10,7 @@ Changelog:
 
 *  17 Sep 2024: update skeleton code in git re: calling myutil.py decode_packet_in_metadata function with wrong number of arguments, and add note to about manual change for this below
 *  26 Sep 2024: update skeleton code in git re: decode_packet_in_metadata being a buggy version
-*  26 Sep 2024: more detailed desription re: retrieving information from packets copied to the controller
+*  26 Sep 2024: more detailed desription re: retrieving information from packets copied to the controller; add hint for verification step
 </div>
 
 # Your Task
@@ -100,6 +100,7 @@ Changelog:
     *  once the controller learns about a host, few packets from the host are sent to the controller (most packets are handled exclusively by the
         data plane "fast path" of the switch)
 
+
     Describe how you verified your implementation in a file called `results.txt`
     or `results.pdf`. Include any relevant output.
 
@@ -176,8 +177,8 @@ Changelog:
     comes from a MAC address not yet handled and add entries to the tables to handle forwarding
     for that MAC address.
 
-    You can use `frame.src` and `frame.dst` to retrieve the MAC addresses stored in the incoming frames,
-    and `frame.dst`.
+    You can use `frame.src` and `frame.dst` to retrieve the MAC addresses sent in the
+    incoming frames.
 
     You can use `metadata['inPort'][0]` to retrieve the input port number of the packet.
 
@@ -205,6 +206,19 @@ Changelog:
        overwrite or delete any table mac_port_src_lpm entry added for the
        prior port. This will ensure that if the machine changes back
        to the original port, then the controller will handle that operation.
+
+## Step 5: Verification
+
+1.  One way to verify that the correct behavior is happening is to run a bunch of `hX ping hY` commands
+    (where `hX` and `hY` would be h1 through h4) and examine the packet traces
+    in the `pcaps` directory. Note that each of these packet traces represent a *single direction*
+    on a link.
+
+    You can open these with wireshark or use a command like
+
+        tcpdump -er pcaps/FILE.pcap
+
+    to read them.
 
 # Hints
 
@@ -322,3 +336,4 @@ Changelog:
     The utility program uses the same code as `mycontroller.py` to connect to this switch, but does
     send any commands that would register it as the controller of the switch or any commands
     that would reconfigure the switch.
+
