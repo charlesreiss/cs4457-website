@@ -149,9 +149,6 @@
 
     *  graph of throughput versus window size
     *  history: congestion collapse
-    *  observing good/bad congestion
-    *  steady-state and changing cross-traffic
-    *  slow-increase/fast-decrease
 
 - date: 2024-09-20
   week: 4
@@ -163,23 +160,35 @@
   slides_ref:
   - congest
   description: |
+    *  observing good/bad congestion
+    *  steady-state and changing cross-traffic
+    *  slow-increase/fast-decrease
     *  fair sharing
     *  additive increase/multiplicative decrease
-    *  min/max fairness
-    
-    *  fast retransmit and fast recovery
-    *  slow starrt
 
 - date: 2024-09-26
   week: 5
-  title: "revisiting switches: ECN, fair queuing, priority"
+  title: "congestion control: fairness, fast recovery, slow start"
   reading: PD 6.4.1-2, 6.2, <!-- FS -->
+  slides_ref:
+  - congest
+  description: |
+    *  min/max fairness
+    *  fast retransmit and fast recovery
+    *  slow start
+
+- date: 2024-09-27
+  week: 5
+
+- date: 2024-10-01
+  week: 6
+  title: "congestion control: non-drop-based; queue disciplines"
+  reading: PD 6.2, 3.4, 3.2.3
   slides_ref:
   - congest
   - queuing
   description: |
     *  bufferbloat: congestion makes queues deep
-
     *  alternate congestion signals:
        *  delay/throughput-based
        *  explicit congestion notification
@@ -188,64 +197,53 @@
 
     *  queue discplines (start)
        *  droptail and problems
-
-- date: 2024-09-27
-  week: 5
-
-- date: 2024-10-01
-  week: 6
-  title: "fair queuing / routing: routing tables, spanning trees"
-  reading: PD 6.2, 3.4, 3.2.3
-  slides_ref:
-  - queuing
-  description: |
-    *  queue discplines (finish)
        *  fair queuing
        *  strict priority
        *  random early detection
 
+
+- date: 2024-10-03
+  week: 6
+  title: "routing: spanning tree, metrics"
+  reading: PD 3.4.4, 3.4.2-3
+  description: |
+    *  queue discplines (finish)
+       *  random early detection
+
     *  network as a graph
-    *  routing tables
+       *  review: routing tables
 
     *  spanning tree protocols
        *  centralized
        *  distributed
-
-
-- date: 2024-10-03
-  week: 6
-  title: "routing: metrics, errors, fragments, MTU"
-  reading: PD 3.4.4, 3.4.2-3
-  description: |
     *  routing metrics
-
-    *  ICMP routing errors
-       *  time-to-live
-       *  unreachable
-
-    *  fragments
-    *  path MTU discovery
 
 - date: 2024-10-04
   week: 6
 
 - date: 2024-10-08
   week: 7
-  title: "routing: distance vector, link state"
+  title: "routing: errors, fragments, distance vector, link state"
   description: |
+    *  ICMP routing errors
+       *  time-to-live
+       *  unreachable
+
+    *  fragments
+    *  path MTU discovery
     *  distance vector routing
        *  running centrally
        *  distributed protocol
 
-    *  link state routing
-       *  running centrally
-       *  distributed protocol
 
 - date: 2024-10-10
   week: 7
-  title: "routing: BGP"
+  title: "routing: link state / BGP"
   reading: PD 4.1.2
   description: |
+    *  link state routing
+       *  running centrally
+       *  distributed protocol
     *  autonomous systems
        *  graph structure
        *  business relationships (customer/provider; content-delivery; peering)
