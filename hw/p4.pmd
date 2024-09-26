@@ -9,6 +9,7 @@ author: Charles Reiss, based on an assignment by Hyojoon Kim
 Changelog:
 
 *  17 Sep 2024: update skeleton code in git re: calling myutil.py decode_packet_in_metadata function with wrong number of arguments, and add note to about manual change for this below
+*  26 Sep 2024: update skeleton code in git re: decode_packet_in_metadata being a buggy version
 </div>
 
 # Your Task
@@ -154,6 +155,9 @@ Changelog:
 
         metadata = decode_packet_in_metadata(packet.metadata)
 
+    *[Edited 26 Sep 2024]:* And make sure myutil.py is the latest version
+    from git (which it should be if you ran `git pull` since 26 Sep 2024,
+    or you can download from [here](https://github.com/charlesreiss/p4tutorials/blob/cs4457-f24-base/exercises/cs4457_f24/myutil.py))
 
     After doing this (and restarting the network simulation),
     `mycontroller.py` should start outputting information about every packet sent
