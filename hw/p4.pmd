@@ -11,6 +11,7 @@ Changelog:
 *  17 Sep 2024: update skeleton code in git re: calling myutil.py decode_packet_in_metadata function with wrong number of arguments, and add note to about manual change for this below
 *  26 Sep 2024: update skeleton code in git re: decode_packet_in_metadata being a buggy version
 *  26 Sep 2024: more detailed desription re: retrieving information from packets copied to the controller; add hint for verification step
+*  27 Sep 2024: add note about "extra" messages during network setup
 </div>
 
 # Your Task
@@ -165,6 +166,11 @@ Changelog:
     `mycontroller.py` should start outputting information about every packet sent
     when you run commands in mininet. This output is produced by the `process_packet`
     function that you will modify later.
+
+    (You might see some extra messages when mininet is getting setup from IPv6 autoconfiguration.
+    These messages can be sent before mininet finishes configuring the MAC addresses in
+    the hosts in the simulated topology, so they may use MAC addresses that aren't part of the
+    configured topology.)
 
     If you run a command like `h1 ping h2`, you should see ICMP echo request
     and ICMP echo reply messages.
