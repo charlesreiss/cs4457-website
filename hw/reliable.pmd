@@ -13,6 +13,7 @@ Changelog:
 * 10 Sep 2024: describe `trace()` function in hints; adjust part 2 due date; mention that adjusting buffer size for part 1/2 is probably not a good idea
 * 12 Sep 2024: add description of common error of failing to handle when a packet times out multiple times to hints
 * 15 Sep 2024: change "sliding" to "sliding-window" to match what I did in autograder;note that both are accepted.
+* 28 Sep 2024: for part 3, allow performing one decrease for multiple consecutive timeouts
 </div>
 
 # Your Task
@@ -203,7 +204,9 @@ Changelog:
        If you track the window size as a floating point value, you can approximate this by setting
        `window_size = min(window_size + INCREASE_PER_ROUND_TRIP / window_size, config.MAXIMUM_WINDOW)`.
 
-    *  when a packet transmission timeouts, the window sizes is divided by a fixed number
+    *  when a packet transmission timeouts, the window sizes is divided by a fixed number.
+       Optionally, you may detect when multiple consecutive or near-consecutive all timeout,
+       and only do one window size adjustment for all of these packets.
 
     *  when the window size is decreased, some packets with pending retransmission timeouts will now
        be outside the window. The pending retransmission timeouts for these packets should be temporarily ignored.
@@ -231,10 +234,11 @@ Changelog:
 
     *  Plotting the data in `last-window-sizes.csv` should show a sawtooth-type pattern. Note that the sawtooth
        may span a quite large number of packets, especially if you do not implement slow-start (which would
-       make the "rising" part of the sawtooth initially faster) and retransmission on duplicate ACKs
+       make the "rising" part of the sawtooth initially faster), retransmission on duplicate ACKs
        (which would likely make the falling parts of the sawtooth less extreme by usually preventing multiple
-       timeouts from being experienced in a row)
-    *  The peak window size should be close to the bandwidth-delay product, taking into account queuing delay.
+       timeouts from being experienced in a row), or limit window size reductions from consecutive timeouts.
+    *  The peak window size should be relatively close to the bandwidth-delay product,
+       taking into account queuing delay.
        (For example with `--delay=3 --bandwith=5 --buffer=12`, packets take 3 time units traverse the link and
        12 / 5 = 2.4 time units to be removed form a full buffer, so the total effective delay is 3 + 2.4 = 5.4 time units.
        Thus, the bandwidth-delay product in this case would be 5.4 times 5 = 27 packets.)
