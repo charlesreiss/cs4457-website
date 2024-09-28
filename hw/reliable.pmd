@@ -14,6 +14,7 @@ Changelog:
 * 12 Sep 2024: add description of common error of failing to handle when a packet times out multiple times to hints
 * 15 Sep 2024: change "sliding" to "sliding-window" to match what I did in autograder;note that both are accepted.
 * 28 Sep 2024: for part 3, allow performing one decrease for multiple consecutive timeouts
+* 28 Sep 2024: add hint with one strategy for handling sequence number wraparound
 </div>
 
 # Your Task
@@ -355,3 +356,9 @@ Changelog:
     a packet. Otherwise, you may end up measuring the timeout to set your timeout and causing it to get very large.
 
 1.  If your implementation for part 1 hangs, one possible reason can be failing to account for timeouts occuring multiple times. If you resend after a timeout, and then fail to receive an ACK again, you need to make sure you resend _again_ after a second timeout.
+
+1.  An inefficient but non-very-error-prone way to deal with sequence number wraparound is to construct a
+    function that computes the list of sequence numbers that is in the window. Then you can use an item in
+    list check for your conditions about sequence numbers. If you're having difficulty reasoning about how to
+    sequence number wraparound to work, I'd recommend starting with this approach, then possibly figuring out how to
+    make it more efficient.
