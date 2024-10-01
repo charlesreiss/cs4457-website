@@ -183,7 +183,7 @@
 - date: 2024-10-01
   week: 6
   title: "congestion control: non-drop-based; queue disciplines"
-  reading: PD 6.2, 3.4, 3.2.3
+  reading: PD 6.4, 6.2
   slides_ref:
   - congest
   - queuing
@@ -204,14 +204,22 @@
 
 - date: 2024-10-03
   week: 6
-  title: "routing: spanning tree, metrics"
-  reading: PD 3.4.4, 3.4.2-3
+  title: "queue disciplines 2 / routing: spanning tree, metrics"
+  reading: PD 6.2, 3.3.4, 3.3.8, 3.2.3, 3.4.1
+  slides_ref:
+  - queuing
+  - routing
   description: |
     *  queue discplines (finish)
        *  random early detection
 
     *  network as a graph
        *  review: routing tables
+    *  ICMP routing errors
+       *  time-to-live
+       *  unreachable
+    *  fragments
+    *  path MTU discovery
 
     *  spanning tree protocols
        *  centralized
@@ -225,12 +233,6 @@
   week: 7
   title: "routing: errors, fragments, distance vector, link state"
   description: |
-    *  ICMP routing errors
-       *  time-to-live
-       *  unreachable
-
-    *  fragments
-    *  path MTU discovery
     *  distance vector routing
        *  running centrally
        *  distributed protocol
