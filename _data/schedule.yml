@@ -182,77 +182,79 @@
 
 - date: 2024-10-01
   week: 6
-  title: "congestion control: non-drop-based; queue disciplines"
+  title: "congestion control: big buffers; high utilization is bad; ECN"
   reading: PD 6.4, 6.2
   slides_ref:
   - congest
-  - queuing
   description: |
+    *  quiz review
+
+    *  queuing theory interlude:
+       *  randomized arrivals means no 100% utilization
+       *  high variance from long queues
     *  bufferbloat: congestion makes queues deep
-    *  alternate congestion signals:
-       *  delay/throughput-based
+
+    *  timeout management
+       *  why estimate variance
+       *  exponential backoff idea
+
+    *  alternate congestion signals (start)
        *  explicit congestion notification
            *  echoing back congestion signal
-       *  non-binary congestion signals (DCTCP)
 
-    *  queue discplines (start)
+
+- date: 2024-10-03
+  week: 6
+  title: "queue disciplines"
+  reading: PD 6.4.2, 6.2
+  slides_ref:
+  - queuing
+  description: |
+    *  alternate congestion signals (finish)
+       *  delay-based congestion control
+
+    *  queue discplines
        *  droptail and problems
        *  fair queuing
        *  strict priority
        *  random early detection
 
 
-- date: 2024-10-03
+- date: 2024-10-04
   week: 6
-  title: "queue disciplines 2 / routing: spanning tree, metrics"
-  reading: PD 6.2, 3.3.4, 3.3.8, 3.2.3, 3.4.1
+
+- date: 2024-10-08
+  week: 7
+  title: "routing: forwarding errors; spanning tree"
+  reading: PD 3.3.4, 3.3.8, 3.2.3, 3.4.1
   slides_ref:
-  - queuing
   - routing
   description: |
-    *  queue discplines (finish)
-       *  random early detection
-
     *  network as a graph
        *  review: routing tables
     *  ICMP routing errors
        *  time-to-live
        *  unreachable
     *  fragments
-    *  path MTU discovery
 
     *  spanning tree protocols
        *  centralized
        *  distributed
+
     *  routing metrics
-
-- date: 2024-10-04
-  week: 6
-
-- date: 2024-10-08
-  week: 7
-  title: "routing: errors, fragments, distance vector, link state"
-  description: |
-    *  distance vector routing
-       *  running centrally
-       *  distributed protocol
 
 
 - date: 2024-10-10
   week: 7
-  title: "routing: link state / BGP"
-  reading: PD 4.1.2
+  title: "routing: distance vector / link state"
+  reading: PD 3.4.2-3
   description: |
+    *  distance vector routing
+       *  running centrally
+       *  distributed protocol
     *  link state routing
        *  running centrally
        *  distributed protocol
-    *  autonomous systems
-       *  graph structure
-       *  business relationships (customer/provider; content-delivery; peering)
-
-    *  BGP advertisements
-    *  interdomain and intradomain routing
-       *  (if time) iBGP
 
 - date: 2024-10-11
   week: 7
@@ -263,29 +265,36 @@
 
 - date: 2024-10-17
   week: 8
-  title: "UDP; sockets"
-  reading: PD 5.1-2, 1.4
+  title: "routing: BGP / UDP; sockets"
+  reading: PD 4.1.2; PD 5.1-5.2, 1.4
   description: |
+    *  autonomous systems
+       *  graph structure
+       *  business relationships (customer/provider; content-delivery; peering)
+
+    *  BGP advertisements
+    *  interdomain and intradomain routing
+       *  (if time) iBGP
+
     *  UDP
 
     *  BSD sockets
-
     *  5-tuples, netstat
     *  listening sockets
     *  conneced/unconnected sockets
 
-    *  socket / bind / connect
-    *  read/recv, write/send
-    *  server sockets --- listen, accept
 
 - date: 2024-10-18
   week: 8
 
 - date: 2024-10-22
   week: 9
-  title: "DNS"
+  title: "sockets / DNS"
   reading: PD 9.3.1; FS 11
   description: |
+    *  socket / bind / connect
+    *  read/recv, write/send
+    *  server sockets --- listen, accept
     *  recvfrom, sendto, ... <!-- FIXME: reading reference -->
     *  broadcast with sockets
     *  aside: local sockets
@@ -294,16 +303,17 @@
        *  labels
        *  gTLDs
     *  record types
-    *  questions and answers
-       *  `dig` tool
-    *  name compression
 
 
 - date: 2024-10-24
   week: 9
-  title: "SMTP"
+  title: "DNS / SMTP"
   reading: PD 9.1.1
   description: |
+    *  DNS con't
+        *  questions and answers
+           *  `dig` tool
+        *  name compression
     *  SMTP message format
     *  gateways and mail servers
     *  MX records
