@@ -12,6 +12,7 @@ Changelog:
 *  26 Sep 2024: update skeleton code in git re: decode_packet_in_metadata being a buggy version
 *  26 Sep 2024: more detailed desription re: retrieving information from packets copied to the controller; add hint for verification step
 *  27 Sep 2024: add note about "extra" messages during network setup
+*  1 Oct 2024: correct `tutorials/cs4457_f24` to `tutorials/exercises/cs4457_f24`
 </div>
 
 # Your Task
@@ -37,7 +38,7 @@ Changelog:
 
 2.  Run the VM and login (username/password p4/p4 for the Virtualbox image)
 
-2.  Go to the `tutorials/cs4457_f24` directory.
+2.  Go to the `tutorials/exercises/cs4457_f24` directory.
 
     Run `git pull` to make sure you have the latest version of the skeleton code.
 
