@@ -223,6 +223,9 @@
 - date: 2024-10-04
   week: 6
 
+- date: 2024-10-07
+  week: 7
+
 - date: 2024-10-08
   week: 7
   title: "routing: forwarding errors; spanning tree"
