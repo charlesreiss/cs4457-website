@@ -21,7 +21,7 @@
 - name: P4
   short_name: p4
   open: 2024-09-20
-  due: 2024-10-04
+  due: 2024-10-07
   page: hw/p4.html
   submit_files:
   - mycontroller.py
