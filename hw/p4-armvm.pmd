@@ -1,20 +1,22 @@
 ---
-title: P4
+title: ARM64 VM for P4
 ...
 
-# From Tavis Palmer:
+The following is via one of your fellow students Tavis Palmer:
+
+----
 
 I was able to set up a P4 VM for arm64 (for use with Apple Silicon Macs). I tried to match it as close as possible to the x86_64 one provided, including the user accounts, .bashrc, and tutorials folder.
 
 I couldn't get VirtualBox working on my Mac (despite there supposedly being an arm64 version now...), so here is an image compatible with VMWare Fusion (which is free now for personal use):
 
-    https://virginia.box.com/s/ip4urguxpf6gja4htcsnzygsmu6pcqza
+<https://virginia.box.com/s/ip4urguxpf6gja4htcsnzygsmu6pcqza>
 
 It's very hard to find the installation link for VMWare Fusion through their website, so I would recommend to just install it with Homebrew, i.e.
 
     brew install --cask vmware-fusion
 
-Alternatively, you can get the link directly from the Homebrew Cask: https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/13.6.0/24238079/universal/core/com.vmware.fusion.zip.tar
+Alternatively, you can get the link directly from the Homebrew Cask: <https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/13.6.0/24238079/universal/core/com.vmware.fusion.zip.tar>
 
 Below is a short tutorial for anyone unfamiliar with using VMWare Fusion:
 
