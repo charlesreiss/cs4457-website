@@ -13,6 +13,7 @@ Changelog:
 *  26 Sep 2024: more detailed desription re: retrieving information from packets copied to the controller; add hint for verification step
 *  27 Sep 2024: add note about "extra" messages during network setup
 *  1 Oct 2024: correct `tutorials/cs4457_f24` to `tutorials/exercises/cs4457_f24`
+*  2 Oct 2024: ARM64 VM instructions link
 </div>
 
 # Your Task
@@ -22,6 +23,8 @@ Changelog:
 1.  Download the supplied VM image for Virtualbox (x86-64) at <https://virginia.box.com/s/vl6jdfo27jooxbb07i3setll1l7tac14>
 
     (or:
+
+    *  follow [these instructions for an ARM64 VM for Apple Silicon Macs](p4-armvm.html).
 
     *  install p4 according to the instructions at <https://github.com/jafingerhut/p4-guide/blob/master/bin/README-install-troubleshooting.md> [which should work on arm64 VM running on UTM on OS X, but I have not
        tested this personally], and then
