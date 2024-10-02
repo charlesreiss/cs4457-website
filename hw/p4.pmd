@@ -14,6 +14,7 @@ Changelog:
 *  27 Sep 2024: add note about "extra" messages during network setup
 *  1 Oct 2024: correct `tutorials/cs4457_f24` to `tutorials/exercises/cs4457_f24`
 *  2 Oct 2024: ARM64 VM instructions link
+*  2 Oct 2024: note `print_counters.py` update
 </div>
 
 # Your Task
@@ -342,6 +343,8 @@ Changelog:
     and retrieve counts of how many packets and bytes have been sent on each port.
 
     You can run it in a separate terminal using `python3 print_counters.py`.
+    (Note that you will need a version from git on/after 2 October because it previously expected filenames
+    in `build/` that didn't match `mydataplane.p4`.)
 
     The utility program uses the same code as `mycontroller.py` to connect to this switch, but does
     send any commands that would register it as the controller of the switch or any commands
