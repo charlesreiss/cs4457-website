@@ -2,6 +2,19 @@
 title: ARM64 VM for P4
 ...
 
+*[added 4 Oct:]* An addendum to the below:
+
+----
+
+There is an error (probably caused by some version differences between utilities on the VM below), so after installation you might get an Python error
+about 'no field named "initial_default_action". Per the [github link](https://github.com/p4lang/tutorials/issues/631) on [this Piazza post](https://piazza.com/class/m08uxn41qau2ps/post/43_f1),
+the fix is:
+
+* in /home/p4/tutorials/utils/p4runtime_lib/helper.py file that is referred to by the stack trace (probably 29), add , allow_unknown_field=True to the google.protobuf.text_format.Merge call that is referred to by the stack trace. 
+
+----
+
+
 The following is via one of your fellow students Tavis Palmer:
 
 ----
