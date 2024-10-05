@@ -3,9 +3,17 @@ title: packet scheduling/queuing discpline
 author: Charles Reiss
 ...
 
+<div class="changelog">
+Changelog:
+
+*  5 Oct 2024: add variable-size packets (updating skeleton code and writeup below substantially);
+   add requirement for "smart" dropping in WeightedFairQueuingBuffer case
+*  5 Oct 2024: add advice on using heapq, making comparable Python objects
+</div>
+
 # Your Task
 
-1.  Download the skeleton code [here](files/schedule-skeleton.tgz) (last updated 4 August 2024).
+1.  Download the skeleton code [here](files/schedule-skeleton.tgz) (last updated 5 October 2024 3:30pm).
 
     This code includes a setup for a simulator (the same as for the `reliable` assignment),
     which is configured to have two connections, called "c1" and "c2", between the same two hosts.
@@ -47,9 +55,20 @@ author: Charles Reiss
 2.  Add a new buffer implementation in buffer.py called WeightedFairQueuingBuffer.
 
     In this implementation, implement weighted fair queuing, where packets from connection c1
-    get twice the bandwidth as packets from connection c2. You can identify which connection
-    a packet is from using `packet.label` which will be `c1` for connection c1
-    and `c2` for connection c2.
+    get twice the bandwidth as packets from connection c2.
+
+    You can identify which connection a packet is from using `packet.label` which will be
+    `c1` for connection c1 and `c2` for connection c2.
+
+    Since our simulated packets have variable size, you will need to retrieve the packet sizes using
+    `packet.size`.
+
+    When a packet is inserted in the buffer and the buffer has reached its capacity,
+    you should
+
+    *  drop the incoming packet if its scheduled transmission time (as computed using the "virtual time"
+       method discussed in lecture would be higher than any packet currently in the buffer;
+    *  drop the packet with the highest scheduled tranmission time currently in the buffer otherwise.
 
     If you are successful:
 
@@ -69,28 +88,113 @@ author: Charles Reiss
 1.  When you run `main.py`, it will run the simulation with default settings and output information about what
     happened and the configuration:
 
-        forward link: 10.0 packets/sec; link delay 1.0 +/- 0.0; 10-entry buffer.DropTailBuffer
-        c1: generated 5.0 packets/sec
-        c1: received 23517 in 5000.0 (4.7 messages/time unit)
-        c1: latency: mean 1.47  +/- sd 0.30
-        c1: 1158 messages skipped, 9 not received at end, 0 corrupt or received out-of-order
-        c2: generated 5.0 packets/sec
-        c2: received 23824 in 5000.0 (4.8 messages/time unit)
-        c2: latency: mean 1.47  +/- sd 0.30
-        c2: 1132 messages skipped, 9 not received at end, 0 corrupt or received out-of-order
+        forward link: 1000.0 size units/sec; link delay 1.0 +/- 0.0; 60-entry buffer.DropTailBuffer
+        c1: generated 5.0 packets/sec with average size 100
+        c1: received 2302 packets (126679 total size) in 5000.2 (25.3 size units/time unit; 0.5 messages/time unit)
+        c1: latency: mean 1.00  +/- sd 0.01
+        c1: 22851 messages skipped, 9 not received at end, 0 corrupt or received out-of-order
+        c2: generated 5.0 packets/sec with average size 100
+        c2: received 2236 packets (123110 total size) in 5000.2 (24.6 size units/time unit; 0.4 messages/time unit)
+        c2: latency: mean 1.00  +/- sd 0.01
+        c2: 22513 messages skipped, 26 not received at end, 0 corrupt or received out-of-order
 
     In this default configuration, the rate of messages being sent seem like they should exactly fill the link.
-    But, there is randomness in the interval between packets. This means that sometimes packets cluster up enough
+    But, there is randomness in the interval between packets and the exact size of packets.
+    This means that sometimes packets cluster up enough
     to cause some to be dropped and sometimes there are periods when the link is underutilized.
 
 2.  You can edit the simulation parameters with the various options listed with `python3 main.py --help`.
 
-    You should notice that, with the default DropTailBuffer strategy, increasing the rate for one connection
+2.  The two connections are controlled by two parameters:
+
+    *  `--cX-rate=RATE`: the mean number of packets to send per unit time. The actual time between packets
+       will be determined using a exponential distribution.
+    *  `--cX-size=SIZE`: the mean size of packets (in arbitrary "size units");
+       the actual size will vary from 50% and 150% of SIZE, chosen uniformly for each packet.
+       The minimum supported size is 40.
+
+2.  You should notice that, with the default DropTailBuffer strategy, increasing the rate for one connection
     while leaving the other the same will cause both connections to drop a larger portion of packets ("messages skipped"),
     and will result in the higher sending rate connnection achieving a higher effective bandwidth.
 
     If these connections used TCP-style congestion control, then most likely both settle on approximately the same bandwidth.
-    (The simulation supports plugging in your reliable part 3 implementation using the `--sender-class` and `--receiver-class`
+    (The simulation should support
+    plugging in your reliable part 3 implementation using the `--sender-class` and `--receiver-class`
     options, but that is not part of this assignment.)
 
+
 3.  You can use the `--buffer-class=...` option to change to your own buffers in `buffer.py`.
+
+# Hints/Notes
+
+1.  Unrealistically, our supplied DropTailBuffer and what we require you to implement have a capacity measured
+    in packets, not size units. So you do not need to take into account packet size when deciding whether
+    to drop packets.
+
+2.  We don't have a particular performance requirement, so it's okay if your weighted fair queuing 
+    implementation doesn't use an optimal data structure.
+
+    I found Python's [heapq](https://docs.python.org/3/library/heapq.html) library helpful --- it's
+    an efficient data structure for insertion and removing the minimum item. It, unfortunately, is not
+    efficient for removing the maximum item (needed for drops).
+    I did some inefficient in that case.
+
+    If you use `heapq`, you need to supply values that can be compared with `<` --- see the heading "Comparable
+    custom types in Python" for some options to do this.
+
+    A better solution would use something like a balanced binary tree to store the list of items,
+    but that is not required.
+
+## Comparable custom types in Python
+
+1.  Python tuples implement the `<` operator automatically, so for example:
+
+        return (a, b, c) < (d, e, f)
+
+    is basically equivalent to:
+
+        if a < d:
+            return True
+        elif a == d and b < e:
+            return True
+        elif a == d and b == e and c < f:
+            return True
+        else:
+            return False
+
+    Note that this triggers an error when it's not possible to compare some the values used.
+    To help make this strategy possible, `Packet` objects in the skeleton code implement
+    a `<` operator that choses an arbitrary order.
+
+1.  You can make a custom type in Python that has a custom `<` operation using something like:
+
+        class MyType(object):
+            def __init__(self, field1, field2, non_compared_field):
+                self.field1 = field1
+                self.field2 = field2
+                self.non_compared_field = non_compared_field
+
+            def __lt__(self, other):
+                if self.field1 < other.field1:
+                    return True
+                elif self.field1 == other.field1 and self.field2 < other.field2:
+                    return True
+                else:
+                    return False
+
+    Then you can create instances of MyType using something like `variable = MyType(field1=10, field2=20, non_compared_field=30)`
+    and access the fields using `variable.field1` and `variable.field2` and `variable.non_compared_field`.
+
+    Alternately, the standard `dataclasses` module can automate this process for you:
+
+        from dataclasses import dataclass, field
+
+        ...
+
+        @dataclass(order=True)
+        class MyType:
+            field1 = field()
+            field2 = field()
+            non_compared_field = field(compare=False)
+
+
