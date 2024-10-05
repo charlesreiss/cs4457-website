@@ -15,7 +15,7 @@ Changelog:
 *  1 Oct 2024: correct `tutorials/cs4457_f24` to `tutorials/exercises/cs4457_f24`
 *  2 Oct 2024: ARM64 VM instructions link
 *  2 Oct 2024: note `print_counters.py` update
-*  4 Oct 2024: split out advice about using wireshark to separate hints section and refer to it from all the steps, not just the last one. Also note that if checking `print_counters.py`, there will be packets from autoconfiguraiton, etc. counted there too in step 1 instructions.
+*  5 Oct 2024: split out advice about using wireshark to separate hints section and refer to it from all the steps, not just the last one. Also note that if checking `print_counters.py`, there will be packets from autoconfiguraiton, etc. counted there too in step 1 instructions.
 </div>
 
 # Your Task
@@ -209,7 +209,7 @@ Changelog:
 6.  Add a new table `mac_src_lpm` or `mac_port_src_lpm`, which is like `mac_dst_lpm`, but:
  
     *  matches based on the source mac address and (optionally) input port instead of the destination mac address
-    *  has a default action of copy_to_controller and another possible actoin of `NoAction`
+    *  has a default action of copy_to_controller and another possible action of `NoAction`
 
 7.  Replace the call to `copy_to_controller()` with an applicatoin of this table.
     Since the default action in the table is copy_to_controller, this will initially
