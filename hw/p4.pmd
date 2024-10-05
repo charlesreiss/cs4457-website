@@ -15,6 +15,7 @@ Changelog:
 *  1 Oct 2024: correct `tutorials/cs4457_f24` to `tutorials/exercises/cs4457_f24`
 *  2 Oct 2024: ARM64 VM instructions link
 *  2 Oct 2024: note `print_counters.py` update
+*  4 Oct 2024: split out advice about using wireshark to separate hints section and refer to it from all the steps, not just the last one. Also note that if checking `print_counters.py`, there will be packets from autoconfiguraiton, etc. counted there too in step 1 instructions.
 </div>
 
 # Your Task
@@ -103,9 +104,9 @@ Changelog:
 2.  Verify that in your implementation:
 
     *  packets are directed to the correct port rather than being broadcast (without the MAC addresses being hard-coded in the switch in advance)
+
     *  once the controller learns about a host, few packets from the host are sent to the controller (most packets are handled exclusively by the
         data plane "fast path" of the switch)
-
 
     Describe how you verified your implementation in a file called `results.txt`
     or `results.pdf`. Include any relevant output.
@@ -137,8 +138,12 @@ Changelog:
             }
         )
 
-   Verify that this change causes packets destined for `h1` not to b
+   Verify that this change causes packets destined for `h1` not to be
    duplicated on other ports but should still leave h1 reachable.
+
+   I would suggest examining the `pcaps` files as [described below under the heading "Examining pcaps"](#pcaps)
+   to do this. Alternately, you can send pings and see how it changes the values from `print_counters.py`, but note that its counts
+   includes autoconfiguration packets, not just your pings and the like.
 
    In later steps rather than hard-coding the MAC address of `h1`
    and its corresponding port, you will infer that information from
@@ -197,6 +202,8 @@ Changelog:
     you ran `pingall`), each host does only receives packets destined for its own MAC address
     (or packets sent to a broadcast/multicast MAC address).
 
+    (Like with step 1, I would suggest examining the pcaps files to do this.)
+
 ## Step 4: Limit which packets are sent to the controller
 
 6.  Add a new table `mac_src_lpm` or `mac_port_src_lpm`, which is like `mac_dst_lpm`, but:
@@ -222,18 +229,32 @@ Changelog:
 
 1.  One way to verify that the correct behavior is happening is to run a bunch of `hX ping hY` commands
     (where `hX` and `hY` would be h1 through h4) and examine the packet traces
-    in the `pcaps` directory. Note that each of these packet traces represent a *single direction*
+    in the `pcaps` directory as [described below under the heading "Examining pcaps"](#pcaps). Note that each of these packet traces represent a *single direction*
     on a link.
-
-    You can open these with wireshark or use a command like
-
-        tcpdump -er pcaps/FILE.pcap
-
-    to read them.
 
 # Hints
 
-# Understanding mydataplane.p4:
+## Examining pcaps {#pcaps}
+
+1.  As mentioned above the simulation produces a bunch of packet traces in the `pcaps` subdirectory
+    of the `tutorials/exercises/cs4457_f24` directory.
+    Each one represents the packets sent in *one direction* from the switch.
+
+    You can open these with wireshark:
+
+    *  type `wireshark` or `wireshark &` at the command line to open wireshark;
+
+    *  use File > Open to find the .pcap files in wireshark;
+
+    *  if you want to view traffic going in both directions to one of the ports, you can open the "in" file with File > Open, then
+       open the "out" file with File > Merge. You should then examine both of the traces;
+
+    You can also examine these from the command line with a command like:
+
+        tcpdump -er pcaps/FILE.pcap
+
+
+## Understanding mydataplane.p4:
 
 2.  `mydataplane.p4`: This contains an implementation of the data plane
     of a very simple switch:
