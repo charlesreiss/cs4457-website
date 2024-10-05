@@ -42,6 +42,7 @@
   open: 2024-10-11
   due: 2024-10-18
   page: hw/schedule.html
+  submit_file: buffer.py
   tentative: true
 
 - name: DV routing
