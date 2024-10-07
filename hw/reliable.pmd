@@ -15,11 +15,12 @@ Changelog:
 * 15 Sep 2024: change "sliding" to "sliding-window" to match what I did in autograder;note that both are accepted.
 * 28 Sep 2024: for part 3, allow performing one decrease for multiple consecutive timeouts
 * 28 Sep 2024: add hint with one strategy for handling sequence number wraparound
+*  7 Oct 2024: discuss to_network() not copying `packet` argument; update skeleton code to do this
 </div>
 
 # Your Task
 
-1.  Download the supplied simulator and skeleton code at [here](files/reliable-skeleton.tgz) (last updated 5 Sep 2024 9:10pm).
+1.  Download the supplied simulator and skeleton code at [here](files/reliable-skeleton.tgz) (last updated 7 Oct 2024).
 
     In the skeleton code, you should only modify `ends.py`, which initially has code
     that implements transmission without any sort of reliablity.
@@ -33,7 +34,8 @@ Changelog:
        (If you return False, do not attempt to transmit the message in the future; our code will
        call `from_application` again later.)
     *  Given a Packet object `p`, you can call `self.to_network(p)` to send it to the receiver.
-       (You will probably do this from the `from_application` method.
+       (You will probably do this from the `from_application` method. I would recommend making
+       a new Packet object for each call (see below).)
     *  Whenever you are ready to receive more data from the application (after having
        returned False from `from_application`), you must call `self.ready_for_more_from_application()`.
        It is okay if you call this method more times than necessary.
@@ -314,6 +316,13 @@ Changelog:
     I do not recommend changing the buffer size from the default until part 3.
 
 # API
+
+## to_network
+
+1.  Before 7 Oct 2024, the supplied simulator does not make copies of the Packet object passed to
+    `to_network`, so (unless you updated your copy of the simulator)
+    making changes to the object after calling `to_network` may mess up
+    the simulation. I would recommend passing a new Packet object each time to `to_network`.
 
 ## timers
 
