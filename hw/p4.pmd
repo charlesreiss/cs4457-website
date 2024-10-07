@@ -16,6 +16,7 @@ Changelog:
 *  2 Oct 2024: ARM64 VM instructions link
 *  2 Oct 2024: note `print_counters.py` update
 *  5 Oct 2024: split out advice about using wireshark to separate hints section and refer to it from all the steps, not just the last one. Also note that if checking `print_counters.py`, there will be packets from autoconfiguraiton, etc. counted there too in step 1 instructions.
+*  7 Oct 2024: note that step 1 is intended to be done main() (not something that won't consistently run)
 </div>
 
 # Your Task
@@ -119,7 +120,7 @@ Changelog:
 
 ## Step 1: Setting a fixed table entry
 
-2.  Modify `mycontroller.py` to make the following call
+2.  Modify `mycontroller.py` to make the following call in main()
     to `write_or_overwrite_table_entry` to make it so packets destined to 08:00:00:00:01:01
     (`h1`'s MAC address in `topology.json`)
     are sent to port 1:
