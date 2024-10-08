@@ -9,6 +9,7 @@ Changelog:
 *  5 Oct 2024: add variable-size packets (updating skeleton code and writeup below substantially);
    add requirement for "smart" dropping in WeightedFairQueuingBuffer case
 *  5 Oct 2024: add advice on using heapq, making comparable Python objects
+*  7 Oct 2024: mention idea of keeping multiple subqueues; make it clearer that comparable Pyhton objects also applies to Python sorting functions; make hints not suggest you should necessairily use heapq
 </div>
 
 # Your Task
@@ -134,16 +135,27 @@ Changelog:
 2.  We don't have a particular performance requirement, so it's okay if your weighted fair queuing 
     implementation doesn't use an optimal data structure.
 
-    I found Python's [heapq](https://docs.python.org/3/library/heapq.html) library helpful --- it's
-    an efficient data structure for insertion and removing the minimum item. It, unfortunately, is not
-    efficient for removing the maximum item (needed for drops).
-    I did some inefficient in that case.
+3.  One strategy for storing the queue for the priority queue and the weighted fair queuing part is to
+    keep two separate sub-queues for each of the two classes. Another would be keep one sorted list,
+    perhaps using something like a heap or balanced binary tree.
 
-    If you use `heapq`, you need to supply values that can be compared with `<` --- see the heading "Comparable
-    custom types in Python" for some options to do this.
+4.  If you want a list you can efficiently add/remove from both ends up, the [deque](https://docs.python.org/3/library/collections.html#collections.deque)
+    class provided by Python's collections library is useful.
 
-    A better solution would use something like a balanced binary tree to store the list of items,
-    but that is not required.
+5.  If you want an implementation of a heap (a data structure that can efficiently remove the minimum item), you can use
+    Pyhton's [heapq](https://docs.python.org/3/library/heapq.html).
+    It, unfortunately, is not efficient for removing the maximum item (which you might want for drops).
+    The way Python's heap is implemented, however, you can inefficiently remove the maximum item by sorting it and then
+    truncating the last item
+
+5.  To control how Python sorts values by default, you can define a custom `<` operator or just represent your values as careful ordered tuples or similar.
+    See the heading "Comparable custom types in Python" for some options to do this.
+
+    For using `heapq`, this seems to be the only way to control the sort order. For Python's sorting functions, you can also change the sort
+    order with the `key` or `cmp` arguments.
+
+6.  I wish I could point to a convenient balanced binary tree in Python standard library (that could provide efficient removal of both minimum and maximum values),
+    but I do not believe there is one.
 
 ## Comparable custom types in Python
 
