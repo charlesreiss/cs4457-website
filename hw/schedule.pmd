@@ -10,6 +10,7 @@ Changelog:
    add requirement for "smart" dropping in WeightedFairQueuingBuffer case
 *  5 Oct 2024: add advice on using heapq, making comparable Python objects
 *  7 Oct 2024: mention idea of keeping multiple subqueues; make it clearer that comparable Pyhton objects also applies to Python sorting functions; make hints not suggest you should necessairily use heapq; clarify "performance requirement" to "compute-time requirement" in hints
+*  8 Oct 2024: mention `--time-limit` option.
 </div>
 
 # Your Task
@@ -104,7 +105,11 @@ Changelog:
     This means that sometimes packets cluster up enough
     to cause some to be dropped and sometimes there are periods when the link is underutilized.
 
-2.  You can edit the simulation parameters with the various options listed with `python3 main.py --help`.
+2.  Unlike the reliable assignment, the
+    length of the simulation is controlled by the `--time-limit` parameter, by default this is 5000;
+    you can adjust it to something shorter like `--time-limit=100` if you want a faster simulation.
+
+2.  You can edit the other simulation parameters with the various options listed with `python3 main.py --help`.
 
 2.  The two connections are controlled by two parameters:
 
