@@ -35,7 +35,6 @@
   due: 2024-10-11
   page: hw/reliable.html
   submit_file: ends.py
-  tentative: true
 
 - name: packet scheduling
   short_name: schedule
@@ -43,7 +42,6 @@
   due: 2024-10-18
   page: hw/schedule.html
   submit_file: buffer.py
-  tentative: true
 
 - name: DV routing
   open: 2024-10-18
