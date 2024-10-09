@@ -17,7 +17,8 @@ Changelog:
 * 28 Sep 2024: add hint with one strategy for handling sequence number wraparound
 *  7 Oct 2024: discuss to_network() not copying `packet` argument; update skeleton code to do this
 *  8 Oct 2024: mention and encourage the window size increase/decrease of TCP (1 packet per round trip increase, halving to decrease)
-*  8 Oct 2024: explictly mention window size should not become 0
+*  8 Oct 2024: explictly mention window size should not become 0; note about choice to keep window size as int v float
+*  8 Oct 2024: add note about how Python lambdas can inadvertantly capture the "wrong" thing
 </div>
 
 # Your Task
@@ -351,6 +352,7 @@ Changelog:
 
     Most likely your `from_network` implementation that receives acknowledgments will do something like this.
 
+
 ## `trace()`
 
 1.  There is a `trace()` function you can call like
@@ -367,6 +369,24 @@ Changelog:
     to override the value of `TRACE` from the comman dline.
 
 # Hints
+
+## timers doing the wrong thing
+
+1.  If you do something like:
+
+        def bar():
+            if True:
+                x = 1
+                some_timer = create_timer(10, lambda: foo(x))
+            ...
+            if True:
+                ...
+                x = 2
+
+    then the timer will call foo with `2`, not `1`. One way to avoid this is to call function with its own local variables to create timers.
+
+
+## Part 1
 
 1.  If your timeouts are becoming very large, make sure you are setting a new timestamp each time you resend
     a packet. Otherwise, you may end up measuring the timeout to set your timeout and causing it to get very large.
