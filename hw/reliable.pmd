@@ -16,6 +16,8 @@ Changelog:
 * 28 Sep 2024: for part 3, allow performing one decrease for multiple consecutive timeouts
 * 28 Sep 2024: add hint with one strategy for handling sequence number wraparound
 *  7 Oct 2024: discuss to_network() not copying `packet` argument; update skeleton code to do this
+*  8 Oct 2024: mention and encourage the window size increase/decrease of TCP (1 packet per round trip increase, halving to decrease)
+*  8 Oct 2024: explictly mention window size should not become 0
 </div>
 
 # Your Task
@@ -207,9 +209,14 @@ Changelog:
        If you track the window size as a floating point value, you can approximate this by setting
        `window_size = min(window_size + INCREASE_PER_ROUND_TRIP / window_size, config.MAXIMUM_WINDOW)`.
 
-    *  when a packet transmission timeouts, the window sizes is divided by a fixed number.
+       I'd suggest around 1 packet per round-trip-time, like standard TCP.
+
+    *  when a packet transmission timeouts, the window sizes is divided by a fixed number
+       (but with a minimum size of 1).
        Optionally, you may detect when multiple consecutive or near-consecutive all timeout,
        and only do one window size adjustment for all of these packets.
+ 
+       I'd suggest halving the window size, like standard TCP.
 
     *  when the window size is decreased, some packets with pending retransmission timeouts will now
        be outside the window. The pending retransmission timeouts for these packets should be temporarily ignored.
