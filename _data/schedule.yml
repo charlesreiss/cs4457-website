@@ -306,6 +306,8 @@
   week: 9
   title: "sockets / DNS / SMTP"
   reading: PD 9.1.1; FS 11
+  slides_ref:
+  - sockets
   description: |
     *  server sockets --- listen, accept
     *  recvfrom, sendto, ... <!-- FIXME: reading reference -->
