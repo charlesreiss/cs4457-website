@@ -269,16 +269,16 @@
 
 - date: 2024-10-17
   week: 8
-  title: "routing: link state / BGP"
+  title: "routing: distance vector (finish) / link state"
   reading: PD 4.1.2; PD 5.1-5.2
   description: |
+    *  distance vector (con't)
+       *  handling link removal
+       *  count-to-infinity problem
+
     *  link state routing
        *  running centrally
        *  distributed protocol
-    *  autonomous systems
-       *  graph structure
-       *  business relationships (customer/provider; content-delivery; peering)
-    *  BGP advertisements
 
 
 - date: 2024-10-18
@@ -286,15 +286,27 @@
 
 - date: 2024-10-22
   week: 9
-  title: "sockets / DNS"
-  reading: PD 1.4, 9.3.1; FS 11;
+  title: "BGP/ sockets"
+  reading: PD 1.4, 9.3.1
   description: |
+    *  autonomous systems
+       *  graph structure
+       *  business relationships (customer/provider; content-delivery; peering)
+    *  BGP advertisements
+
     *  BSD sockets
     *  5-tuples, netstat
     *  listening sockets
     *  conneced/unconnected sockets
     *  socket / bind / connect
     *  read/recv, write/send
+
+
+- date: 2024-10-24
+  week: 9
+  title: "sockets / DNS / SMTP"
+  reading: PD 9.1.1; FS 11
+  description: |
     *  server sockets --- listen, accept
     *  recvfrom, sendto, ... <!-- FIXME: reading reference -->
     *  broadcast with sockets
@@ -304,13 +316,6 @@
        *  labels
        *  gTLDs
     *  record types
-
-
-- date: 2024-10-24
-  week: 9
-  title: "DNS / SMTP"
-  reading: PD 9.1.1
-  description: |
     *  DNS con't
         *  questions and answers
            *  `dig` tool
