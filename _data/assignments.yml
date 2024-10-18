@@ -44,6 +44,7 @@
   submit_file: buffer.py
 
 - name: DV routing
+  short_name: dv
   open: 2024-10-18
   due: 2024-10-25
   page: hw/dv.html
