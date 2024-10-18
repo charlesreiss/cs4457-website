@@ -11,6 +11,7 @@ Changelog:
 *  5 Oct 2024: add advice on using heapq, making comparable Python objects
 *  7 Oct 2024: mention idea of keeping multiple subqueues; make it clearer that comparable Pyhton objects also applies to Python sorting functions; make hints not suggest you should necessairily use heapq; clarify "performance requirement" to "compute-time requirement" in hints
 *  8 Oct 2024: mention `--time-limit` option.
+*  18 Oct 2024: add hint about common mistake of not handling drops when computing virtual times
 </div>
 
 # Your Task
@@ -69,7 +70,7 @@ Changelog:
     you should
 
     *  drop the incoming packet if its scheduled transmission time (as computed using the "virtual time"
-       method discussed in lecture would be higher than any packet currently in the buffer;
+       method discussed in lecture would be higher than any packet currently in the buffer);
     *  drop the packet with the highest scheduled tranmission time currently in the buffer otherwise.
 
     If you are successful:
@@ -160,6 +161,11 @@ Changelog:
 
 6.  I wish I could point to a convenient balanced binary tree in Python standard library (that could provide efficient removal of both minimum and maximum values),
     but I do not believe there is one.
+
+## Common issues computing virtual times
+
+1.  In weighted fair queuing, we often compute a packet's virtual time based on a previous packet's virtual time. A common mistake is to use the virtual time
+    of packet which has been dropped from the queue for this rather than finding the correct packet to use in the queue.
 
 ## Comparable custom types in Python
 
