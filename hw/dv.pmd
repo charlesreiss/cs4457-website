@@ -6,12 +6,14 @@ author: Charles Reiss
 <div class="changelog">
 Changelog:
 
-*  17 Oct 2024 9:20pm: fix bug in test.py that caused Python error for certain test failures
+*  17 Oct 2024 9:20pm: fix bug in test.py that caused a Python error for certain test failures
 </div>
 
 # Your Task
 
 1.  Download the skeleton code [here](files/dv-skeleton.tgz) [last updated 17 Oct 2024 9:20pm]
+
+    >  If you downloaded the skeleton code before 17 Oct 2024, you can get an updated [test.py](files/dv/test.py).
 
 ## Part 1: distance vector 
 
