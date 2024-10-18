@@ -47,7 +47,7 @@
   open: 2024-10-18
   due: 2024-10-25
   page: hw/dv.html
-  tentative: true
+  submit_file: entity.py
 
 - name: DNS
   short_name: dns
