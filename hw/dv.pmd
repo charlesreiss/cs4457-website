@@ -5,7 +5,7 @@ author: Charles Reiss
 
 # Your Task
 
-1.  Download the skeleton code at TBA.
+1.  Download the skeleton code [here](files/dv-skeleton.tgz).
 
 ## Part 1: distance vector 
 
@@ -64,7 +64,7 @@ author: Charles Reiss
        You can also combine these options. You can also temporarily edit the TESTS array in `test.py`
        to change what is tested or to copy the test cases into a file like `sample_simple.py`
 
-## (might be optional???) Part 2: handling adding/removing links:
+## Part 2: handling adding/removing links:
 
 1.  Implement `add_neighbor`, `delete_neighbor` and `periodic_update` in `entity.py`.
 
