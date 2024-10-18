@@ -3,9 +3,15 @@ title: distance vector routing
 author: Charles Reiss
 ...
 
+<div class="changelog">
+Changelog:
+
+*  17 Oct 2024 9:20pm: fix bug in test.py that caused Python error for certain test failures
+</div>
+
 # Your Task
 
-1.  Download the skeleton code [here](files/dv-skeleton.tgz).
+1.  Download the skeleton code [here](files/dv-skeleton.tgz) [last updated 17 Oct 2024 9:20pm]
 
 ## Part 1: distance vector 
 
