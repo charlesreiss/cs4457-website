@@ -75,6 +75,20 @@ In this JSON output:
 *  all IPv6 addresses must be represented as strings in one of the formats specified in RFC 4291, section 2.2^[RFC 4291 only gives examples with upper-case A-F, but we will allow both upper and lower case.] (examples: `2607:f8b0:4004:c21::63`, `2607:F8B0:4004:0C21:0000:0000:0000:0063`), and
 *  all domain names with labels seperated by `.`s and a trailing `.` (example: `www.cs.virginia.edu.`)
 
+# some DNS references
+
+1.  Official specifications:
+    
+    *  term definitions: [RFC 9499](https://www.rfc-editor.org/rfc/rfc9499)
+    *  concepts and facilities: [RFC1034](https://www.rfc-editor.org/rfc/rfc1034)
+    *  implementation and specification: [RFC1035](https://www.rfc-editor.org/rfc/rfc1035)
+    *  DNS extensions to support IP Version 6: [RFC3596](https://datatracker.ietf.org/doc/html/rfc3596)
+
+2.  TCP/IP Illustrated, Volume 2, Chapter 11 (available via UVa library through [O'Reilly](https://learning.oreilly.com/library/view/tcp-ip-illustrated-volume/9780132808200/);
+    login/create an account with your UVa email)
+
+3.  
+
 # Hints
 
 ## Testing
