@@ -40,7 +40,7 @@ simulator.display_forwarding_table(2)
 print("Ran simulation after deleting link, but without periodic update....")
 if input("Continue? (Y/n)") == 'N':
     sys.exit(0)
-simulator.trigger_periodic_update()
+simulator.trigger_periodic_updates()
 simulator.run()
 simulator.display_forwarding_table(0)
 simulator.display_forwarding_table(1)
