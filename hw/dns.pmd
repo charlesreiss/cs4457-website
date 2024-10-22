@@ -8,6 +8,7 @@ Changelog:
 
 *  19 Oct 2024: don't require generating request with multiple questions, since that's apparently
    prohibited by RFC 9619
+*  21 Oct 2024: specify that you may assume --process-response's answer only includes responsive records
 </div>
 
 # Your Task
@@ -56,17 +57,18 @@ When processing a response, output a JSON dictionary with the entries with the f
 keys and corresponding values:
 
 *  `kind` --- one of:
-    *  `error` (if a non-zero response status is returned), 
-    *  `address` (if an IPv4 and IPv6 address exited in the answer section),
-    *  `next-name` (if a CNAME was found in the answer section),
-    *  `next-server` (if no addresses or CNAME were in the answer section, but names and/or addresses were specified in the authority or additional section), or
+    *  `error` (if a non-zero response status is returned) 
+    *  `address` (if an A or AAAA record existed in the answer section)
+    *  `next-name` (if a CNAME was found in the answer section and no addresses were found in the answer section)
+    *  `next-server` (if no addresses or CNAMEs were found in the answer section and NS records were found in the authority section)
     *  `malformed` (if the response was missing or malformed in some way)
 *  `addresses` (only required if `kind` is `address`): a list of the IPv4 addresses and IPv6 addresses
-*  `next-name` (only required if `kind` is `next-name`): the domain name from the CNAME record
+*  `next-name` (only required if `kind` is `next-name`): the domain name from the last CNAME record
 *  `next-server-names` (only required if `kind` is `next-server`): a list of the domain names of the next servers from the NS records
 *  `next-server-addresses` (only required if `kind` is `next-server`): a list of DNS server IPv4 and IPv6 addresses
 
-In addition, you may include extra entries in the dictionary at your discretion.
+In addition, you may include extra entries in the dictionary at your discretion. You may assume that any returned records in the answer
+or authority are responsive to the query. (For example, we won't include an A record for an unrelated domain in the answer section.)
 
 In this JSON output:
 
@@ -116,4 +118,4 @@ In this JSON output:
 
     which will output a meachine-readable JSON interpretaion to `request-as-json.json`.
 
-<!-- FIXME test cases -->
+
