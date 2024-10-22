@@ -65,7 +65,7 @@ def run_test(
             trigger_periodic_updates=trigger_periodic_updates,
             seed=seed, debug=debug,
         )
-    except e:
+    except:
         import traceback
         traceback.print_exc(file=out_fh)
         actual_next_hops = None
@@ -77,7 +77,10 @@ def run_test(
         print("Expected next hop table:", file=out_fh)
         print_next_hop_table(expected_next_hops, out_fh)
         print("Actual next hop table:", file=out_fh)
-        print_next_hop_table(actual_next_hops, out_fh)
+        if actual_next_hops != None:
+            print_next_hop_table(actual_next_hops, out_fh)
+        else:
+            print("  <not available>", file=out_fh)
     if mismatch:
         print_next_hop_table_delta(actual_next_hops, expected_next_hops, out_fh)
         passed = False

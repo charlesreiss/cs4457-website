@@ -8,13 +8,14 @@ Changelog:
 
 *  17 Oct 2024 9:20pm: fix bug in test.py that caused a Python error for certain test failures
 *  20 Oct 2024: update "5-line test" in test.py to have weights that match diagram (should not affect test results)
+*  22 Oct 2024 8:25am: fix "test.py" to produce less confusing errors when entity.py crashes
 </div>
 
 # Your Task
 
-1.  Download the skeleton code [here](files/dv-skeleton.tgz) [last updated 20 Oct 2024]
+1.  Download the skeleton code [here](files/dv-skeleton.tgz) [last updated 22 Oct 2024]
 
-    >  If you downloaded the skeleton code before 17 Oct 2024 9:20pm, you can get an updated [test.py](files/dv/test.py).
+    >  If you downloaded the skeleton code before 22 Oct, you can get an updated [test.py](files/dv/test.py).
 
 ## Part 1: distance vector 
 
