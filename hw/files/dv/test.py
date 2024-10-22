@@ -67,7 +67,10 @@ def run_test(
         )
     except:
         import traceback
+        print("EXCEPTION OCCURRED DURING SIMULATION",file=out_fh)
+        print("---------",file=out_fh)
         traceback.print_exc(file=out_fh)
+        print("---------",file=out_fh)
         actual_next_hops = None
     actual_next_hops = normalize_next_hops(actual_next_hops)
     expected_next_hops = normalize_next_hops(expected_next_hops)
@@ -82,7 +85,8 @@ def run_test(
         else:
             print("  <not available>", file=out_fh)
     if mismatch:
-        print_next_hop_table_delta(actual_next_hops, expected_next_hops, out_fh)
+        if actual_next_hops != None:
+            print_next_hop_table_delta(actual_next_hops, expected_next_hops, out_fh)
         passed = False
     else:
         print(f"Passed test {label}\n")
