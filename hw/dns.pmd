@@ -9,6 +9,7 @@ Changelog:
 *  19 Oct 2024: don't require generating request with multiple questions, since that's apparently
    prohibited by RFC 9619
 *  21 Oct 2024: specify that you may assume --process-response's answer only includes responsive records
+*  23 Oct 2024: have create-request responses prefixed with size for consistency with response handling; change text2pcap advice accordingly
 </div>
 
 # Your Task
@@ -17,7 +18,9 @@ Changelog:
 
     *  `python3 dns.py --create-request HOSTNAME --ipv4`
        creates a DNS query message that requests the IPv4 addresses of HOSTNAME with
-       recursion disabled, and writes it to stdout (as in using `sys.stdout.buffer` in Python3).
+       recursion disabled, and writes it to stdout (as in using `sys.stdout.buffer` in Python3)
+       prefixed by the request size as a 2-byte big endian number (like would be used when
+       sending a DNS request over TCP).
 
        `python3 dns,py --create-request HOSTNAME --ipv6`
        should do the same, but request the IPv6 address.
@@ -63,12 +66,12 @@ keys and corresponding values:
     *  `next-server` (if no addresses or CNAMEs were found in the answer section and NS records were found in the authority section)
     *  `malformed` (if the response was missing or malformed in some way)
 *  `addresses` (only required if `kind` is `address`): a list of the IPv4 addresses and IPv6 addresses
-*  `next-name` (only required if `kind` is `next-name`): the domain name from the last CNAME record
+*  `next-name` (only required if `kind` is `next-name`): the domain name from CNAME record; if there are a chain of CNAME records, from the last CNAME record in the chain. (You may assume the CNAME records are present in the answer in order.)
 *  `next-server-names` (only required if `kind` is `next-server`): a list of the domain names of the next servers from the NS records
 *  `next-server-addresses` (only required if `kind` is `next-server`): a list of DNS server IPv4 and IPv6 addresses
 
 In addition, you may include extra entries in the dictionary at your discretion. You may assume that any returned records in the answer
-or authority are responsive to the query. (For example, we won't include an A record for an unrelated domain in the answer section.)
+or authority are responsive to the query. (For example, we won't include an A record or CNAME record for an unrelated domain in the answer section.)
 
 In this JSON output:
 
@@ -89,11 +92,14 @@ In this JSON output:
 2.  TCP/IP Illustrated, Volume 2, Chapter 11 (available via UVa library through [O'Reilly](https://learning.oreilly.com/library/view/tcp-ip-illustrated-volume/9780132808200/);
     login/create an account with your UVa email)
 
-3.  
+# sample DNS responses
+
+1.  [Here] is an archive of DNS responses suitable for
 
 # Hints
 
-## Testing
+
+## Checking requests in wireshark
 
 1.  You can convert the output of
 
@@ -105,17 +111,17 @@ In this JSON output:
 
         python3 dns.py --create-request www.cs.virginia.edu > request.dat
         od -Ax -tx1 -v < request.dat > request.od
-        text2pcap -u 53,53 request.od request.pcapng
+        text2pcap -T 53,53 request.od request.pcapng
 
     The first command runs `python3 dns.py --create-request www.cs.virginia.edu`, but sends its output to the file `request.dat`.
     The second command converts `request.dat` into a text-format (with hexadecimal) file that is saved in `request.od`.
-    The third takes `request.od` and converts it to a file that wireshark can open.
+    The third takes `request.od` and converts it to a file that wireshark can open by adding an ethernet and TCP header using source and destination port 53. (If you used -u 53,53, it would wrap it in a UDP header instead.)
 
     You can open up that file in a graphical version of wireshark. Also, on the command line on portal, you can get a dump of
     the contents with all information with a command like
 
-        tshark -T json -r request.pcapng > request-as-json.json
+        tshark -T text -V -r request.pcapng > request-as-text.txt
 
-    which will output a meachine-readable JSON interpretaion to `request-as-json.json`.
+    which will output a meachine-reaable text representation as `request-as-text.txt`
 
 
