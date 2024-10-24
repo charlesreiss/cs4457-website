@@ -10,6 +10,7 @@ Changelog:
    prohibited by RFC 9619
 *  21 Oct 2024: specify that you may assume --process-response's answer only includes responsive records
 *  23 Oct 2024: have create-request responses prefixed with size for consistency with response handling; change text2pcap advice accordingly
+*  23 Oct 2024: add link to dns samples; --send-request testing instructions
 </div>
 
 # Your Task
@@ -94,10 +95,60 @@ In this JSON output:
 
 # sample DNS responses
 
-1.  [Here] is an archive of DNS responses suitable for
+1.  [Here](files/dns-samples.tgz) is an archive of DNS responses suitable for passing to 
+    `python3 --process-response`. The `.dat` files are the DNS responses, which you can test with
+    something like
+
+        python3 --process-response <file.dat
+
+    the `.txt` files are created by running a command like
+
+        od -Ax -tx1 -v file.dat | text2pcap -T 53,53 - - | tshark -T text -r - -V >file.txt
+
+    to have `tshark` (command-line version of wireshark) process the DNS response (from `file.dat`
+    into `file.txt), then extracting the relevant part of the output.
+
+    The `.reference.json` files are the responses our reference implementation generated.
+
+# testing --send-request
+
+1.  You can test send-request using the `nc` utility, which can act as a simple TCP server.
+
+    For example, you can run
+
+        nc -l -p 0 -s 127.0.0.1 -v <input.dat > output.dat
+
+    in one terminal. (The `-l` option says to listen for (act as a server) instead of making connections
+    (act as a client). The `-p` option selects the input port number to bind to; binding to port 0
+    has the OS select a port number. The `-s 127.0.0.1` selects an IP address of 127.0.0.1, which is an IP
+    address for "localhost" --- it only contacts the current machine.)
+
+    This commad will output a message like
+
+        Listening on 127.0.0.1 46245
+
+    Pay special attention to the port number listed after the IP address.
+    Then in another terminal on the same machine you can run a command like
+
+        python3 dns.py --send-request www.cs.virginia.edu --server 127.0.0.1 --port 46245
+
+    (If you are connecting to portal.cs.virginia.edu, see note below regarding getting two 
+    terminals on the same machine.)
+
+    When your `dns.py` connects to `nc`, it will receive the contents of `input.dat`
+    and whatever it sends will be written to `output.dat`
+
+    Regarding portal.cs.virginia.edu: `ssh user@portal.cs.virginia.edu` connects you to one of several
+    machines, names `portal01` through `portal11`. You can tell which of those machines you are logged
+    in using your command prompt and/or by running the `hostname` command. Once logged into one portal
+    machine or sufficiently on the UVa network, you can log into a particular portal machine using
+    `ssh portalXX.cs.virginia.edu` where `portallXX` is the name of the machine with the number.
+    With some SSH clients (probably including Linux/OS X's), you can have the SSH client login to
+    portal.cs.virginia.edu and then SSH from that machine to portalXX.cs.virginia.edu with a command like
+    `ssh -J user@portal.cs.virginia.edu user@portalXX.cs.virginia.edu`. (See also [OpenSSH's manapage](https://man.openbsd.org/ssh)'s section on the -J option.)
+
 
 # Hints
-
 
 ## Checking requests in wireshark
 
@@ -124,4 +175,29 @@ In this JSON output:
 
     which will output a meachine-reaable text representation as `request-as-text.txt`
 
+    You can combine all of these into one command with something like:
+
+        python3 dns.py --create-request www.cs.virginia.edu | od -Ax -tx1 -v - | text2pcap -T 53,53 - - | tshark -T text -V -r - > request-as-text.txt
+
+## Encoding/decoding big-endian values
+
+1.  The standard Python [struct](https://docs.python.org/3/library/struct.html) library is convenient
+    for converting two and from big-endian integers.
+
+## Opening/using TCP connections
+
+1.  You can use the [socket](https://docs.python.org/3/library/socket.html) library to create
+    TCP connections. Most simple is using `create_connection` followed by `sendall` and `recv`:
+
+        import socket
+        ...
+        sock = socket.create_connection(('host', port))
+        sock.sendall(b'The bytes to send')
+        data = sock.recv(size)
+
+    (`sendall` is like send, but in case not all bytes can be sent at once, it calls send repeatedly
+    until they all are or there is an error.)
+
+    Note that you may need to call `recv` multiple times in case only some of the bytes you
+    request are available initially.
 
