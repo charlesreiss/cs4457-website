@@ -55,7 +55,7 @@
   open: 2024-10-25
   due: 2024-11-01
   page: hw/dns.html
-  tentative: true
+  submit_file: dns.py
 
 - name: webserver
   open: 2024-11-01
