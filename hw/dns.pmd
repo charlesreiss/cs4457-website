@@ -11,6 +11,7 @@ Changelog:
 *  21 Oct 2024: specify that you may assume --process-response's answer only includes responsive records
 *  23 Oct 2024: have create-request responses prefixed with size for consistency with response handling; change text2pcap advice accordingly
 *  23 Oct 2024: add link to dns samples; --send-request testing instructions
+*  25 Oct 2024: add nxdomain to dns samples + seperate link
 </div>
 
 # Your Task
@@ -109,6 +110,9 @@ In this JSON output:
     into `file.txt), then extracting the relevant part of the output.
 
     The `.reference.json` files are the responses our reference implementation generated.
+
+1.  The original version of the DNS samples archive did not contain a sample for "name not found";
+    it now does, or you can download the extra [dat](files/dns-samples/nxdomain.dat) file here.
 
 # testing --send-request
 
