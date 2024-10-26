@@ -288,8 +288,7 @@
 
 - date: 2024-10-22
   week: 9
-  title: "BGP / DNS"
-  reading: PD 9.3.1; FS 11
+  title: "BGP"
   slides_ref:
   - routing
   - dns
@@ -302,22 +301,33 @@
     *  domain names
        *  hierarchy
        *  zones
-    *  recursive v authoritative
-    *  record types, format
-       *  name compression
-    *  DNS questions and answers
-    *  reverse lookups
-    *  cache poisoning
-    *  IDNs
 
 
 - date: 2024-10-24
   week: 9
-  title: "sockets"
-  reading: PD 1.4, 9.3.1
+  title: "DNS"
+  reading: PD 9.3.1; FS 11
+  slides_ref:
+  - dns
+  description: |
+    *  recursive v authoritative
+    *  record types, format
+       *  name compression
+    *  DNS questions and answers
+
+- date: 2024-10-25
+  week: 9
+
+- date: 2024-10-29
+  week: 10
+  title: "Sockets"
   slides_ref:
   - sockets
-  description: |
+  reading: PD 1.4, 9.3.1
+    *  IDNs
+    *  reverse lookups
+    *  preview: cache poisoning, DNSSEC
+
     *  BSD sockets
     *  5-tuples, netstat
     *  listening sockets
@@ -329,25 +339,25 @@
     *  broadcast with sockets
     *  aside: local sockets
 
-- date: 2024-10-25
-  week: 9
-
-- date: 2024-10-29
-  week: 10
-  title: "HTTP; HTTP caches"
-
-
 - date: 2024-10-31
   week: 10
-  title: "network address translation"
-  reading: ???
+  title: "HTTP 1"
   description: |
-   *  private and public networks
-   *  basic translation
-   *  violating the end-to-end principle
+    *  HTTP/1.1
+    *  URL/URI parts
+    *  request headers, bodies
+    *  request methods (GET, HEAD, POST, OPTIONS)
+    *  connection keep-alive
 
-   *  UPnP
-    
+    *  HTTP caching
+    *  detecting if up-to-date
+
+    *  HTTP proxies, reverse proxies
+
+    *  HTTP/2 and HTTP/3
+
+    *  other protocols over HTTP
+       *  HTTP live streaming
 
 - date: 2024-11-01
   week: 10
@@ -358,9 +368,11 @@
 
 - date: 2024-11-07
   week: 11
-  title: "multiaccess / wireless link-layer"
+  title: "HTTP 2 / wireless link-layer"
   reading: PD 2.6, 2.7.1-2
   description: |
+    *  HTTP (finish)
+
     *  carrier sense multiple access
     *  collision detection
        *  special concerns in wireless networks
@@ -368,29 +380,39 @@
     *  ready-to-send / clear-to-send
     *  multiple access points
 
-    *  scheduled wireless networks
-       *  time-division multiple access
-       *  frequency-division multiple access
 
 - date: 2024-11-08
   week: 11
 
 - date: 2024-11-12
   week: 12
-  title: "multiaccess / wireless 2"
+  title: "wireless 2"
+  description: |
+    *  scheduled wireless networks
+       *  time-division multiple access
+       *  frequency-division multiple access
 
 - date: 2024-11-14
   week: 12
-  title: SMTP
+  title: "wireless 3"
 
 - date: 2024-11-15
   week: 12
 
 - date: 2024-11-19
   week: 13
-  title: "security: firewalls, IDSs"
+  title: SMTP
+
+- date: 2024-11-21
+  week: 13
+  title: "network address translation / security: firewalls, IDSs"
   reading: PD 8.5.6
   description: |
+   *  private and public networks
+   *  basic translation
+   *  violating the end-to-end principle
+
+   *  UPnP
     *  firewall placement
     *  stateless firewalls
     *  stateful firewalls
@@ -399,19 +421,15 @@
     
     *  firewalls versus NAT, routing
 
-- date: 2024-11-21
-  week: 13
-  title: "security: encapsulation"
-  reading: PD 8.5.4
-  description: |
-    *  tunnelling, IPSec
-
 - date: 2024-11-22
   week: 13
 
 - date: 2024-11-26
   week: 14
-  title: "slack"
+  title: "security: encapsulation"
+  reading: PD 8.5.4
+  description: |
+    *  tunnelling, IPSec
 
 - date: 2024-11-28
   week: 14
