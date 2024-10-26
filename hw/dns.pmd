@@ -13,6 +13,7 @@ Changelog:
 *  23 Oct 2024: add link to dns samples; --send-request testing instructions
 *  25 Oct 2024: add nxdomain to dns samples + seperate link
 *  26 Oct 2024: allow trailing . or not in json domain name output since the dns-samples are not consistent about this
+*  26 Oct 2024: update dns-samples to fix cname-to-aaaa and cname-to-aaaa2 being duplicates
 </div>
 
 # Your Task
@@ -114,6 +115,10 @@ In this JSON output:
 
 1.  The original version of the DNS samples archive did not contain a sample for "name not found";
     it now does, or you can download the extra [dat](files/dns-samples/nxdomain.dat) file here.
+
+    It also contained duplicate records for cname-to-aaaa and cname-to-aaaa2; this is now
+    corrected; you can download an actually different cname-to-aaaa2 [dat](files/dns-samples/cname-to-aaaa2.dat)
+    and [txt](files/dns-samples/cname-to-aaaa2.txt) file.
 
 # testing --send-request
 

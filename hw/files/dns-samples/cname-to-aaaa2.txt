@@ -1,6 +1,6 @@
 
-Length: 218
-Transaction ID: 0x45af
+Length: 138
+Transaction ID: 0x2185
 Flags: 0x8400 Standard query response, No error
     1... .... .... .... = Response: Message is a response
     .000 0... .... .... = Opcode: Standard query (0)
@@ -14,8 +14,8 @@ Flags: 0x8400 Standard query response, No error
     .... .... .... 0000 = Reply code: No error (0)
 Questions: 1
 Answer RRs: 2
-Authority RRs: 1
-Additional RRs: 1
+Authority RRs: 0
+Additional RRs: 0
 Queries
     other.foo.example: type AAAA, class IN
         Name: other.foo.example
@@ -38,21 +38,5 @@ Answers
         Time to live: 1000 (16 minutes, 40 seconds)
         Data length: 16
         AAAA Address: 2607:db8::f
-Authoritative nameservers
-    otherother: type NS, class IN, ns ns.foo.example
-        Name: otherother
-        Type: NS (authoritative Name Server) (2)
-        Class: IN (0x0001)
-        Time to live: 1000 (16 minutes, 40 seconds)
-        Data length: 16
-        Name Server: ns.foo.example
-Additional records
-    ns.foo.example: type AAAA, class IN, addr 3fff::1
-        Name: ns.foo.example
-        Type: AAAA (IPv6 Address) (28)
-        Class: IN (0x0001)
-        Time to live: 1000 (16 minutes, 40 seconds)
-        Data length: 16
-        AAAA Address: 3fff::1
 [Unsolicited: True]
 
