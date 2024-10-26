@@ -12,6 +12,7 @@ Changelog:
 *  23 Oct 2024: have create-request responses prefixed with size for consistency with response handling; change text2pcap advice accordingly
 *  23 Oct 2024: add link to dns samples; --send-request testing instructions
 *  25 Oct 2024: add nxdomain to dns samples + seperate link
+*  26 Oct 2024: allow trailing . or not in json domain name output since the dns-samples are not consistent about this
 </div>
 
 # Your Task
@@ -80,7 +81,7 @@ In this JSON output:
 *  all lists must be represented as JSON arrays
 *  all IPv4 addresses must be represented as strings in dotted-quad format (example: `128.143.67.11`),
 *  all IPv6 addresses must be represented as strings in one of the formats specified in RFC 4291, section 2.2^[RFC 4291 only gives examples with upper-case A-F, but we will allow both upper and lower case.] (examples: `2607:f8b0:4004:c21::63`, `2607:F8B0:4004:0C21:0000:0000:0000:0063`), and
-*  all domain names with labels seperated by `.`s and a trailing `.` (example: `www.cs.virginia.edu.`)
+*  all domain names with labels seperated by `.`s and optionally a trailing `.` (examples: `www.cs.virginia.edu.`, `www.cs.virginia.edu`)
 
 # some DNS references
 
