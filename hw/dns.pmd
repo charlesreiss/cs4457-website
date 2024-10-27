@@ -14,6 +14,7 @@ Changelog:
 *  25 Oct 2024: add nxdomain to dns samples + seperate link
 *  26 Oct 2024: allow trailing . or not in json domain name output since the dns-samples are not consistent about this
 *  26 Oct 2024: update dns-samples to fix cname-to-aaaa and cname-to-aaaa2 being duplicates
+*  26 Oct 2024: mention argparse in hints
 </div>
 
 # Your Task
@@ -159,6 +160,10 @@ In this JSON output:
 
 
 # Hints
+
+## Python argument parsing
+
+1.  If found Python's standard [argparse](https://docs.python.org/3/library/argparse.html) library helpful.
 
 ## Checking requests in wireshark
 
