@@ -15,7 +15,7 @@ Changelog:
 *  26 Oct 2024: allow trailing . or not in json domain name output since the dns-samples are not consistent about this
 *  26 Oct 2024: update dns-samples to fix cname-to-aaaa and cname-to-aaaa2 being duplicates
 *  26 Oct 2024: mention argparse in hints
-*  28 Oct 2024: provide examples of using sys.stdout.buffer and sys.stdin.buffer
+*  28 Oct 2024: provide examples of using sys.stdout.buffer and sys.stdin.buffer + correct after first version had typo
 </div>
 
 # Your Task
@@ -206,7 +206,7 @@ In this JSON output:
 
     You can use them write or read bytes from stdin and stdout with something like
 
-        sys.stdout.buffer(bytes([1,2,3,4]))
+        sys.stdout.buffer.write(bytes([1,2,3,4]))
 
     or
 
