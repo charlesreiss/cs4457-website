@@ -324,6 +324,7 @@
   slides_ref:
   - sockets
   reading: PD 1.4, 9.3.1
+  description: |
     *  IDNs
     *  reverse lookups
     *  preview: cache poisoning, DNSSEC
@@ -348,15 +349,13 @@
     *  HTTP/1.1
     *  URL/URI parts
     *  request headers, bodies
-    *  request methods (GET, HEAD, POST, OPTIONS)
-    *  connection keep-alive
+    *  request methods (GET, HEAD, POST, ...)
+    *  connection keep-alive, pipelining, multiple streams
 
     *  HTTP caching
     *  detecting if up-to-date
 
     *  HTTP proxies, reverse proxies
-
-    *  HTTP/2 and HTTP/3
 
     *  other protocols over HTTP
        *  HTTP live streaming
