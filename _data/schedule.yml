@@ -323,7 +323,7 @@
   title: "Sockets"
   slides_ref:
   - sockets
-  reading: PD 1.4, 9.3.1
+  reading: PD 1.4,1
   description: |
     *  IDNs
     *  reverse lookups
@@ -345,6 +345,7 @@
   title: "HTTP 1"
   slides_ref:
   - http
+  reading: PD 1.4, 9.1.2-3; [MDN's section on HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP)
   description: |
     *  HTTP/1.1
     *  URL/URI parts
@@ -357,8 +358,7 @@
 
     *  HTTP proxies, reverse proxies
 
-    *  other protocols over HTTP
-       *  HTTP live streaming
+    *  REST
 
 - date: 2024-11-01
   week: 10
