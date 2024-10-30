@@ -17,6 +17,7 @@ Changelog:
 *  26 Oct 2024: mention argparse in hints
 *  28 Oct 2024: provide examples of using sys.stdout.buffer and sys.stdin.buffer + correct after first version had typo
 *  29 Oct 2024: always show --ipv4 or --ipv6 being passed when --create-request is used
+*  30 Oct 2024: make it extra clear that you cannot call tshark in your dns.py
 </div>
 
 # Your Task
@@ -34,7 +35,8 @@ Changelog:
 
     *  `python3 dns.py --process-response`
        reads a DNS query response (for a query asking for an IPv4 and/or IPv6 address for a hostname)
-       from stdin (as in using `sys.stdin.buffer` in Python3). The input DNS query response
+       from stdin (as in using `sys.stdin.buffer` in Python3) and parses it (you may not use a DNS library
+       or call out to another program for this). The input DNS query response
        will be prefixed by its size in bytes, as happens when it is sent by a DNS server.
 
        Then, outputs JSON in the format specified in the "[output format](#format)" section below
@@ -107,7 +109,7 @@ In this JSON output:
 
         python3 --process-response <file.dat
 
-    the `.txt` files are created by running a command like
+    the `.txt` files show a human-readable version which is created by running a command like
 
         od -Ax -tx1 -v file.dat | text2pcap -T 53,53 - - | tshark -T text -r - -V >file.txt
 
@@ -169,7 +171,7 @@ In this JSON output:
 
 ## Checking requests in wireshark
 
-1.  You can convert the output of
+1.  For debugging, you can convert the output of
 
         python3 dns.py --create-request HOSTNAME ...
 
