@@ -35,11 +35,11 @@ Changelog:
 
     *  `python3 dns.py --process-response`
        reads a DNS query response (for a query asking for an IPv4 and/or IPv6 address for a hostname)
-       from stdin (as in using `sys.stdin.buffer` in Python3) and parses it (you may not use a DNS library
-       or call out to another program to do the parsing or request generation). The input DNS query response
+       from stdin (as in using `sys.stdin.buffer` in Python3) and parses it. (You may not use a DNS library
+       or call out to another program to do the parsing or request generation.) The input DNS query response
        will be prefixed by its size in bytes, as happens when it is sent by a DNS server.
 
-       Then, outputs JSON in the format specified in the "[output format](#format)" section below
+       Then, it outputs JSON in the format specified in the "[output format](#format)" section below
        identifying:
 
        *  if it's an error;
