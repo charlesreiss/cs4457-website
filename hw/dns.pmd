@@ -18,6 +18,7 @@ Changelog:
 *  28 Oct 2024: provide examples of using sys.stdout.buffer and sys.stdin.buffer + correct after first version had typo
 *  29 Oct 2024: always show --ipv4 or --ipv6 being passed when --create-request is used
 *  30 Oct 2024: make it extra clear that you cannot call tshark in your dns.py, it must do its own parsing
+*  30 Oct 2024; explicit mention where to submit code
 </div>
 
 # Your Task
@@ -61,7 +62,7 @@ Changelog:
        process the result as in `--process-response`, outputting the corresponding JSON
        to stdout.
 
-5.  Submit your code by TBD.
+5.  Submit your code by uploading dns.py to the submission site.
 
 # output format
 
