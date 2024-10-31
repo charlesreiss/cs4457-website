@@ -15,7 +15,7 @@ author: Charles Reiss
     *  listen on IP address 127.0.0.1, port number PORT, and look for files in 
        `webroot` directory in the directory where it is run from
     *  implement HTTP/1.1, where
-       *  only the GET method is supported; requests using any other method always return
+       *  only the GET or HEAD methods is supported; requests using any other method always return
           a "405 Method Not Allowed" error.
        *  GET requests for the path `/FOO` are handled as follows:
           *  if `FOO` contains any `/`s *or* the file `FOO` does not exist in `webroot`,
@@ -24,12 +24,15 @@ author: Charles Reiss
              (or text of your choice if that file does not exist)
           *  if `FOO` is `redirect-example`, returns a 301 Moved Permanently response
              with a Location header specifying /redirect-target.html
+             and text of your choice as the repsones body
           *  if `FOO` exists in webroot but is not readable,
              the webserver returns a "403 Not Authorized" response whose
              body is the contents of `403.html` in the webroot directory
-             (or text of your choice if that file does not exist)
+             (or text of your choice if that file does not exist or is not readable)
           *  otherwise, the webserver returns "200 OK" response whose
              body is the contents of the file `FOO` in webroot
+       *  HEAD requests for the path `/FOO` are handled like GET requests, except no response body
+          is returned.
        *  When returning a file from a GET request, if its extension `html` or `htm`,
           the `Content-Type` header is set to `text/html`; if its extension is `txt`,
           the `Content-Type` header is set to `text/plain`. Otherwise, the
@@ -37,6 +40,7 @@ author: Charles Reiss
        *  When returning a response with a message body, either include
           a correct `Content-Length` or use the `chunked` transfer encoding
           for the message body.
+       *  Support multiple requests in the same connection.
 
      Your webserver only need to handle one connection at a time.
 
