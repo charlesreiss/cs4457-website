@@ -16,7 +16,8 @@ author: Charles Reiss
     receives from each of 11 channels (frequencies). To simplify the assignmet, we will assume
     that acknowledgments are always received reliably.
 
-    Your job is to improve the MAC protocol used by the stations.
+    Your job is to improve the MAC protocol used by the stations to send a specified number of packets
+    within a "goal" time computed by `project.py`.
 
     In the initial implementation, the stations make three attempts to transmit packets on wireless channel 1
     at 0 dB of power.
@@ -36,6 +37,7 @@ author: Charles Reiss
 
 3.  Test your code and produce a graph of your results as the number of stations used varies
     from 10 to 100 in increments of 5, graphing the total time needed to receive 150 packets.
+    Label the axes of your graph.
 
     Place this graph in a file called `graph.pdf` or `graph.png`
 
