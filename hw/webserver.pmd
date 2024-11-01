@@ -86,22 +86,32 @@ Changelog:
 
     will make a GET request for foo.html.
 
-    You can get more information about what's sent over the connection with
-    the `--verbose` option:
+    You can also:
 
-        curl --verbose http://127.0.0.1:12345/foo.html
+    *  get more information about what's sent over the connection with
+       the `--verbose` option:
 
-    You can change the method of the request to HEAD with the --head option
+            curl --verbose http://127.0.0.1:12345/foo.html
 
-        curl --head http://127.0.0.1:12345/foo.html
+    *  change the method of the request to HEAD with the --head option
 
-    And you can make multiple requests by including multiple URLs on the command
-    line:
+            curl --head http://127.0.0.1:12345/foo.html
 
-        curl --verbose http://127.0.0.1:12345/foo.html http://127.0.0.1:12345/bar.html
+    *  make multiple requests by including multiple URLs on the command line:
 
-    and curl's output will indicate whether it reused the same connection
-    or it reconnected.
+            curl --verbose http://127.0.0.1:12345/foo.html http://127.0.0.1:12345/bar.html
+
+       and read curl's output will indicate whether it reused the same connection
+       or it reconnected.
+
+    *  change the method to something other than GET or HEAD with the -X option:
+
+            curl --request DELETE --verbose http://127.0.0.1:12345/someplace
+
+        and pass a request body while doing with the --data option:
+
+            curl --request POST --data 'This is the request body' --verbose http://127.0.0.1:12345/someplace
+
 
 # Hints
 
