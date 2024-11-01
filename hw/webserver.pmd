@@ -3,6 +3,13 @@ title: Webserver
 author: Charles Reiss
 ...
 
+<div class="changelog">
+Changelog:
+
+*  31 Oct 2024: add requirement for HEAD + multiple request per connection support; remove requirement for particular error documents.
+*  31 Oct 2024: add suggestions for testing with `curl`
+</div>
+
 # Your Task
 
 1.  Using the standard Python [socket](https://docs.python.org/3/library/socket.html) library,
@@ -20,15 +27,13 @@ author: Charles Reiss
        *  GET requests for the path `/FOO` are handled as follows:
           *  if `FOO` contains any `/`s *or* the file `FOO` does not exist in `webroot`,
              then the webserver returns a "404 Not Found" response whose body
-             is the contents of `404.html` in the webroot directory
-             (or text of your choice if that file does not exist)
+             contains text of your choice.
           *  if `FOO` is `redirect-example`, returns a 301 Moved Permanently response
              with a Location header specifying /redirect-target.html
-             and text of your choice as the repsones body
+             and text of your choice as the response body
           *  if `FOO` exists in webroot but is not readable,
-             the webserver returns a "403 Not Authorized" response whose
-             body is the contents of `403.html` in the webroot directory
-             (or text of your choice if that file does not exist or is not readable)
+             the webserver returns a "403 Not Authorized" response
+             whose body contains text of your choice.
           *  otherwise, the webserver returns "200 OK" response whose
              body is the contents of the file `FOO` in webroot
        *  HEAD requests for the path `/FOO` are handled like GET requests, except no response body
@@ -40,13 +45,14 @@ author: Charles Reiss
        *  When returning a response with a message body, either include
           a correct `Content-Length` or use the `chunked` transfer encoding
           for the message body.
-       *  Support multiple requests in the same connection.
+       *  Your server supports multiple requests in the same connection,
+          as long as all of those requests are GET and HEAD requests.
 
      Your webserver only need to handle one connection at a time.
 
-2.  Test your server using TBD.
+2.  Test your server, probably by using a utility like `curl`.
 
-3.  Submit your server by TBD.
+3.  Submit your webserver.py to the submission site.
 
 # References
 
@@ -61,9 +67,41 @@ author: Charles Reiss
     socket chat lab from CSO1, you may notice that since the Python socket library
     wraps the C API you used in CSO1, it follows the same structure.
 
-    The socket API shows creating server sockets using `socket.scoket` and `bind`; you
+    The socket API shows creating server sockets using `socket.socket` and `bind`; you
     might find it easier to use the `create_server` utility function as more readable
     shorthand.
+
+# Testing your server
+
+1.  If you are testing on a shared server and aren't sure what ports are free,
+    you can bind to port 0 to ask the OS to select port. Then you can use
+   `ssock.getsockname()` (where `ssock` is your srever name)
+    to find out which port the OS selected.
+
+2.  You can use the `curl` utility to make requests to your server.
+
+    For example:
+
+        curl http://127.0.0.1:12345/foo.html
+
+    will make a GET request for foo.html.
+
+    You can get more information about what's sent over the connection with
+    the `--verbose` option:
+
+        curl --verbose http://127.0.0.1:12345/foo.html
+
+    You can change the method of the request to HEAD with the --head option
+
+        curl --head http://127.0.0.1:12345/foo.html
+
+    And you can make multiple requests by including multiple URLs on the command
+    line:
+
+        curl --verbose http://127.0.0.1:12345/foo.html http://127.0.0.1:12345/bar.html
+
+    and curl's output will indicate whether it reused the same connection
+    or it reconnected.
 
 # Hints
 
@@ -92,12 +130,12 @@ author: Charles Reiss
     I would recommend calling `recv` in a loop, accumulating the bytes received into a buffer, until
     the buffer contains a doubled CRLF. At that point, you would have a full set of request headers.
 
-2.  Clients can send multiple requests to your server in a single connection.
-    If you only want to handle one request per connection (which would be simpler), then
-    you can close the connection after responding to the first request.
+2.  When dealing with multiple requests, note that it's possible
+    that you can read parts of multiple requests in a single `recv` call.
 
-    (You could also handle multiple requests per connection.
-    If you do so, note that some non-GET requests may have request bodies, which you would
-    need to skip over to find the next request.)
+    In my implementatoin, I dealt with this by adding the result of the `recv`
+    calls to the end of a buffer. Then, I would check if that buffer contained
+    a full request. If it did, I would remove that request from the beginning
+    of the buffer, but keep the buffer around for the next request.
 
 
