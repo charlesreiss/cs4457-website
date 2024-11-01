@@ -19,6 +19,7 @@ Changelog:
 *  29 Oct 2024: always show --ipv4 or --ipv6 being passed when --create-request is used
 *  30 Oct 2024: make it extra clear that you cannot call tshark in your dns.py, it must do its own parsing
 *  30 Oct 2024; explicit mention where to submit code
+*  1 Nov 2024: note potential issues using powershell
 </div>
 
 # Your Task
@@ -110,6 +111,9 @@ In this JSON output:
 
         python3 --process-response <file.dat
 
+    (Note that there are reports that these command do not work without modificaiton in Powershell (probably because
+    it treats `file.dat` as a text instead of binary file). I know they will work on portal.cs.virginia.edu.)
+
     the `.txt` files show a human-readable version which is created by running a command like
 
         od -Ax -tx1 -v file.dat | text2pcap -T 53,53 - - | tshark -T text -r - -V >file.txt
@@ -183,6 +187,9 @@ In this JSON output:
         python3 dns.py --create-request www.cs.virginia.edu --ipv4 > request.dat
         od -Ax -tx1 -v < request.dat > request.od
         text2pcap -T 53,53 request.od request.pcapng
+    
+    (Note that there are reports that these command do not work without modificaiton in Powershell (probably because
+    it treats `request.dat` as a text instead of binary file). I know they will work on portal.cs.virginia.edu.)
 
     The first command runs `python3 dns.py --create-request www.cs.virginia.edu`, but sends its output to the file `request.dat`.
     The second command converts `request.dat` into a text-format (with hexadecimal) file that is saved in `request.od`.
