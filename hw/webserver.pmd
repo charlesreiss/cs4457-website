@@ -8,6 +8,7 @@ Changelog:
 
 *  31 Oct 2024: add requirement for HEAD + multiple request per connection support; remove requirement for particular error documents.
 *  31 Oct 2024: add suggestions for testing with `curl`
+*  1 Nov 2024: add suggestions for testing with `nc`
 </div>
 
 # Your Task
@@ -78,6 +79,8 @@ Changelog:
    `ssock.getsockname()` (where `ssock` is your srever name)
     to find out which port the OS selected.
 
+## Using `curl`
+
 2.  You can use the `curl` utility to make requests to your server.
 
     For example:
@@ -111,6 +114,26 @@ Changelog:
         and pass a request body while doing with the --data option:
 
             curl --request POST --data 'This is the request body' --verbose http://127.0.0.1:12345/someplace
+
+## Using `nc`
+
+2.  You can use the `nc` utility to connect to your server and send arbitrary data.
+
+    If you run `nc -C 127.0.0.1 PORTNUMBER` (where `PORTNUMBER` is the port your server is running on),
+    you can type a request like:
+
+        GET / HTTP/1.1<enter>
+        Host: 127.0.0.1<enter>>
+        <enter>
+
+    and `nc` will send it, including CRLFs, and show you any response. On a Linux machine, you can
+    type control-D to close the connection.
+
+    You could also enter your request(s) into a text file and run a command like
+
+        nc -C 127.0.0.1 PORTNUMBER < some-text-file.txt
+
+    to send `some-text-file.txt` to the server, followed by closing the connection.
 
 
 # Hints
