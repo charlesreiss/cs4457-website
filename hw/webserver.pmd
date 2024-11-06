@@ -9,6 +9,7 @@ Changelog:
 *  31 Oct 2024: add requirement for HEAD + multiple request per connection support; remove requirement for particular error documents.
 *  31 Oct 2024: add suggestions for testing with `curl`
 *  1 Nov 2024: add suggestions for testing with `nc`
+*  6 Nov 2024: add note about testing with web browsers
 </div>
 
 # Your Task
@@ -135,6 +136,17 @@ Changelog:
 
     to send `some-text-file.txt` to the server, followed by closing the connection.
 
+## Using a web browser
+
+1.  Provided that your web browser is running on the same machine as your server, you should be able to go
+    to `http://127.0.0.1:PORTNUMBER/name.html` (where `PORTNUMBER` is the port your server is running on) and make
+    a GET request for `/name.html`
+
+    In most web browsers, you can use "developer tools" to see which HTTP requests are being made, what HTTP resposnes
+    were received and other details about them. Usually you can access these tools by using the menu, then going
+    to "More tools", then to an item labeled "Developer tools" or "Web Developer Tools". After this, there will usually
+    be a "Networking" tab on the developer tools that will show the relevant information (that fills in as you visit pages;
+    it won't show requests/resposnes retroactively).
 
 # Hints
 
