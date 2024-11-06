@@ -367,6 +367,9 @@
   week: 11
   title: "HTTP 2 / wireless link-layer"
   reading: PD 2.6, 2.7.1-2
+  slides_ref:
+  - http
+  - multiaccess
   description: |
     *  HTTP (finish)
         *  HTTP proxies, reverse proxies
