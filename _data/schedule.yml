@@ -366,7 +366,7 @@
 - date: 2024-11-07
   week: 11
   title: "HTTP 2 / wireless link-layer"
-  reading: PD 2.6, 2.7.1-2
+  reading: PD 2.6, 2.7.1-2; D 2.1.5, 4
   slides_ref:
   - http
   - multiaccess
