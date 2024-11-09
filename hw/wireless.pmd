@@ -106,15 +106,24 @@ packets from each station:
 ```
 
 
+
 ## Simulator Specifics
 
 There are a few helpful details about the simulator environment that are useful
 to know. These are simplifications that make the situation easier to model
 without compromising the ability to compare different MAC protocols.
 
-- Unlike the other network simulators we have seen in this class, this simulator
-  runs in "real-time". That is, if a single station wants to send 100 packets at
-  1 pkt/sec, it will take 100 actual seconds for that simulation to run.
+- This simulator uses a simulated clock controlled by the included `simtime`
+  module. This includes a `sleep()` function that sleeps for an amount
+  of simulated time.
+
+  In the default mode, the clock will only advanced when all threads
+  are either sleeping or waiting on a queue. Then, the simulator will
+  figure out the next time threads would wake up from sleeping,
+  advance the clock to that time and wake up those threads.
+
+  Alternately, there is a "real time" mode you can enable with `--real-time`.
+  In this mode the `sleep()` function calls the "real" `time.sleep()` function.
 
 - Transmitting a `DATA` packet takes 10 ms.
 
