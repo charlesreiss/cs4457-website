@@ -9,7 +9,7 @@ author: Charles Reiss
 
 # Your Task
 
-1.  Download the skeleton code at TBA.
+1.  Download the skeleton code at [here](files/wireless-skeleton.tgz)
 
     The skeleton code includes a simulator for a network where several randomly placed "stations" need to transmit
     packets to a central access point. The access point implements per-packet acknowledgments and simulatenously
