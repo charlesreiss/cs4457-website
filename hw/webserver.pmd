@@ -10,6 +10,7 @@ Changelog:
 *  31 Oct 2024: add suggestions for testing with `curl`
 *  1 Nov 2024: add suggestions for testing with `nc`
 *  6 Nov 2024: add note about testing with web browsers
+*  11 Nov 2024: note when talking about testing with `curl`, that the command PowerShell provides called `curl` is not what we mean
 </div>
 
 # Your Task
@@ -82,7 +83,10 @@ Changelog:
 
 ## Using `curl`
 
-2.  You can use the `curl` utility to make requests to your server.
+2.  You can use the Linux `curl` utility to make requests to your server.
+    (<small>*[added 11 Nov 2024]:*</small> Confusingly, Windows PowerShell provides a command
+    called `curl` which is missing many featuers we use in the commands below, and so will
+    **not** work.)
 
     For example:
 
