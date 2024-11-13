@@ -11,6 +11,7 @@ Changelog:
 *  1 Nov 2024: add suggestions for testing with `nc`
 *  6 Nov 2024: add note about testing with web browsers
 *  11 Nov 2024: note when talking about testing with `curl`, that the command PowerShell provides called `curl` is not what we mean
+*  13 Nov 2024: consistently use `--request` for `curl` option and not its alias `-X`; correct typo in getservname() instructions
 </div>
 
 # Your Task
@@ -78,7 +79,7 @@ Changelog:
 
 1.  If you are testing on a shared server and aren't sure what ports are free,
     you can bind to port 0 to ask the OS to select port. Then you can use
-   `ssock.getsockname()` (where `ssock` is your srever name)
+   `ssock.getsockname()` (where `ssock` is your server socket name)
     to find out which port the OS selected.
 
 ## Using `curl`
@@ -112,7 +113,7 @@ Changelog:
        and read curl's output will indicate whether it reused the same connection
        or it reconnected.
 
-    *  change the method to something other than GET or HEAD with the -X option:
+    *  change the method to something other than GET or HEAD with the --request option:
 
             curl --request DELETE --verbose http://127.0.0.1:12345/someplace
 
