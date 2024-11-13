@@ -12,6 +12,7 @@ Changelog:
 *  6 Nov 2024: add note about testing with web browsers
 *  11 Nov 2024: note when talking about testing with `curl`, that the command PowerShell provides called `curl` is not what we mean
 *  13 Nov 2024: consistently use `--request` for `curl` option and not its alias `-X`; correct typo in getservname() instructions
+*  13 Nov 2024: point to RFC 9112 as a more specific HTTP/1.1 reference
 </div>
 
 # Your Task
@@ -60,7 +61,7 @@ Changelog:
 
 # References
 
-1.  [RFC 9110](https://www.rfc-editor.org/rfc/rfc9110.html) is the official specification for HTTP.
+1.  [RFC 9112](https://www.rfc-editor.org/rfc/rfc9112.html) is the official specification for HTTP/1.1 (and [RFC 9110](https://www.rfc-editor.org/rfc/rfc9110.html) is an official specification for HTTP more generally).
     You can find a friendlier introduction in [Section 9.1.2 of <i>Computer Networks: A Systems Approach</i>](https://book.systemsapproach.org/applications/traditional.html#world-wide-web-http) 
 
 2.  The reference documentation for the Python socket library is
