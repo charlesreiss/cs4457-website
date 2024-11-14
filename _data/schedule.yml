@@ -376,11 +376,7 @@
         *  REST
 
     *  carrier sense multiple access
-    *  collision detection
-       *  special concerns in wireless networks
-    *  hidden terminals
-    *  ready-to-send / clear-to-send
-    *  multiple access points
+    *  collision probabilities
 
 
 - date: 2024-11-08
@@ -389,49 +385,61 @@
 - date: 2024-11-12
   week: 12
   title: "wireless 2"
+  slides_ref:
+  - multiaccess
   description: |
-    *  scheduled wireless networks
-       *  time-division multiple access
-       *  frequency-division multiple access
+    *  collision detection
+    *  wireles signal propoation
+    *  hidden terminals
+    *  ready-to-send / clear-to-send
 
 - date: 2024-11-14
   week: 12
   title: "wireless 3"
+  slides_ref:
+  - multiaccess
+  - fire
+  description: | 
+    *  collision detection revisited
+    *  multiple access points
+    *  scheduled wireless networks
+    
+    *  firewall placement
+    *  stateless firewalls
 
 - date: 2024-11-15
   week: 12
 
 - date: 2024-11-19
   week: 13
-  title: SMTP
+  title: "security: firewalls"
+  reading: PD 8.5.6
+  slides_ref:
+  - fire
+  description: |
+    *  firewall placement
+    *  stateless firewalls
+    *  intrusion detection systems
+    
 
 - date: 2024-11-21
   week: 13
-  title: "network address translation / security: firewalls, IDSs"
-  reading: PD 8.5.6
+  title: "NAT / security: encapsulation"
+  reading: PD 8.5.4
+  slides_ref:
+  - encap
   description: |
-   *  private and public networks
-   *  basic translation
-   *  violating the end-to-end principle
+   *  firewalls versus NAT, routing
+   *  NAT traversal
 
-   *  UPnP
-    *  firewall placement
-    *  stateless firewalls
-    *  stateful firewalls
-    *  web application firewalls
-    *  intrusion detection systems
-    
-    *  firewalls versus NAT, routing
+   *  encapsulation
 
 - date: 2024-11-22
   week: 13
 
 - date: 2024-11-26
   week: 14
-  title: "security: encapsulation"
-  reading: PD 8.5.4
-  description: |
-    *  tunnelling, IPSec
+  title: "TBD"
 
 - date: 2024-11-28
   week: 14
@@ -443,7 +451,7 @@
 
 - date: 2024-12-03
   week: 15
-  title: "slack"
+  title: "TBD"
 
 - date: 2024-12-05
   week: 15
