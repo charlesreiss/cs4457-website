@@ -3,11 +3,17 @@ title: Wireless
 author: Charles Reiss
 ...
 
+<div class="changelog">
+Changelog:
+
+*  14 Nov 2024: fix bug in `access_point.py` where sense() might sometimes crash
+</div>
+
 > This is based on an assignment originally constructed by Brad Campbell.
 
 # Your Task
 
-1.  Download the skeleton code at [here](files/wireless-skeleton.tgz)
+1.  Download the skeleton code at [here](files/wireless-skeleton.tgz) *[last updated 2024-11-14 11:15am]*
 
     The skeleton code includes a simulator for a network where several randomly placed "stations" need to transmit
     packets to a central access point. The access point implements per-packet acknowledgments and simulatenously
