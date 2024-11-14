@@ -62,14 +62,15 @@
   due: 2024-11-15
   page: hw/webserver.html
   submit_file: webserver.py
-  submit_describe: |
-    <p>At the moment, there is not an active grading script for this assignment, so you won't receive immediate feedback.
-    <p>(I intend to get one setup soon.)
 
 - name: wireless
   open: 2024-11-15
   due: 2024-12-03
   page: hw/wireless.html
+  submit_files:
+  - mac.py
+  - graph.png
+  - graph.pdf
   tentative: true
 
 - name: (dropped) tcp-trace

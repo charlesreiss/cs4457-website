@@ -3,8 +3,6 @@ title: Wireless
 author: Charles Reiss
 ...
 
-<div class="oldsite">This assignment write is tentative.</div>
-
 > This is based on an assignment originally constructed by Brad Campbell.
 
 # Your Task
@@ -33,7 +31,7 @@ author: Charles Reiss
     features like RTS/CTS.
 
 2.  Write a brief description of your chosen MAC protocol and how choose those settings;
-    place this in a comment in your `mac.py`.
+    place this in a comment at the top in your `mac.py`.
 
 3.  Test your code and produce a graph of your results as the number of stations used varies
     from 10 to 100 in increments of 5, graphing the total time needed to receive 150 packets.
@@ -41,7 +39,7 @@ author: Charles Reiss
 
     Place this graph in a file called `graph.pdf` or `graph.png`
 
-5.  Submit your modified `mac.py` and your graph to the submission site.
+5.  Submit your modified `mac.py` (with the comment) and your graph to the submission site.
 
 # Simulation Interface
 
