@@ -13,7 +13,7 @@ Changelog:
 *  11 Nov 2024: note when talking about testing with `curl`, that the command PowerShell provides called `curl` is not what we mean
 *  13 Nov 2024: consistently use `--request` for `curl` option and not its alias `-X`; correct typo in getservname() instructions
 *  13 Nov 2024: point to RFC 9112 as a more specific HTTP/1.1 reference
-*  15 Nov 2024: correct CRLF expansion
+*  15 Nov 2024: correct hex/decimal confusion in CRLF expansion footnote
 </div>
 
 # Your Task
