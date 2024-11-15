@@ -71,7 +71,6 @@
   - mac.py
   - graph.png
   - graph.pdf
-  tentative: true
 
 - name: (dropped) tcp-trace
   short_name: tcp-trace

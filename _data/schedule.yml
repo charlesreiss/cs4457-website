@@ -398,14 +398,10 @@
   title: "wireless 3"
   slides_ref:
   - multiaccess
-  - fire
   description: | 
     *  collision detection revisited
     *  multiple access points
     *  scheduled wireless networks
-    
-    *  firewall placement
-    *  stateless firewalls
 
 - date: 2024-11-15
   week: 12
@@ -415,8 +411,11 @@
   title: "security: firewalls"
   reading: PD 8.5.6
   slides_ref:
+  - multiaccess
   - fire
   description: |
+    *  scheduled wireless networks
+    
     *  firewall placement
     *  stateless firewalls
     *  intrusion detection systems
