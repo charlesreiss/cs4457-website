@@ -387,6 +387,7 @@
   title: "wireless 2"
   slides_ref:
   - multiaccess
+  reading: PD 2.7.1-2; D 2.1.5, 4
   description: |
     *  collision detection
     *  wireles signal propoation
@@ -398,6 +399,7 @@
   title: "wireless 3"
   slides_ref:
   - multiaccess
+  reading: PD 2.7.1-2; D 2.1.5, 4
   description: | 
     *  collision detection revisited
     *  multiple access points
