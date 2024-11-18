@@ -412,7 +412,7 @@
 - date: 2024-11-19
   week: 13
   title: "security: firewalls"
-  reading: PD 8.5.6
+  reading: PD 2.8.2, PD 8.5.6
   slides_ref:
   - multiaccess
   - fire
@@ -426,22 +426,35 @@
 
 - date: 2024-11-21
   week: 13
-  title: "NAT / security: encapsulation"
-  reading: PD 8.5.4
+  title: "NAT / encapsulation"
+  reading: PD 8.5.4, D 9.7, PD 3.3.9, PD 4.4
   slides_ref:
+  - fire
   - encap
   description: |
    *  firewalls versus NAT, routing
    *  NAT traversal
 
    *  encapsulation
+      *  use cases
+      *  mechanics of capturing traffic
+      *  proxies, tunnels
+      *  buffering/congetsion control issues
+      *  examples: GRE, MPLS
 
 - date: 2024-11-22
   week: 13
 
 - date: 2024-11-26
   week: 14
-  title: "TBD"
+  title: "encapsulation / overlay and peer-to-peer"
+  description: |
+   *  encapsulation (continued)
+
+   *  overlay and peer-to-peer motivations
+   *  Gnutella-style search
+   *  consistent hashing
+   *  DHT routing, content-addressable networks
 
 - date: 2024-11-28
   week: 14
@@ -453,7 +466,7 @@
 
 - date: 2024-12-03
   week: 15
-  title: "TBD"
+  title: "peer-to-peer or TBD"
 
 - date: 2024-12-05
   week: 15
