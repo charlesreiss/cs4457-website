@@ -400,7 +400,7 @@
   slides_ref:
   - multiaccess
   reading: PD 2.7.1-2; D 2.1.5, 4
-  description: | 
+  description: |
     *  collision detection revisited
     *  multiple access points
     *  scheduled wireless networks
@@ -420,7 +420,6 @@
   - fire
   description: |
     *  scheduled wireless networks
-    
     *  firewall placement
     *  stateless firewalls
     *  intrusion detection systems
