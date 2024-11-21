@@ -8,6 +8,8 @@ Changelog:
 
 *  14 Nov 2024: fix bug in `access_point.py` where sense() might sometimes crash
 *  20 Nov 2024: fix major bug in `simtime.py` where time would advance too quickly.
+*  21 Nov 2024: modify supplied mac.py to not `import time` to avoid confusion
+*  21 Nov 2024: specify recommended testing with around 20 packets/second to test with
 </div>
 
 > This is based on an assignment originally constructed by Brad Campbell.
@@ -44,7 +46,7 @@ Changelog:
 
 3.  Test your code and produce a graph of your results as the number of stations used varies
     from 10 to 100 in increments of 5, graphing the total time needed to receive 150 packets.
-    Label the axes of your graph.
+    Label the axes of your graph. We recommend testing with around 20 packets/second.
 
     Place this graph in a file called `graph.pdf` or `graph.png`
 
