@@ -426,7 +426,7 @@
 
 - date: 2024-11-21
   week: 13
-  title: "NAT / encapsulation"
+  title: "firewalls 2 / NAT"
   reading: PD 8.5.4, D 9.7, PD 3.3.9, PD 4.4
   slides_ref:
   - fire
@@ -442,18 +442,15 @@
 
 - date: 2024-11-26
   week: 14
-  title: "encapsulation / overlay and peer-to-peer"
-  slides_re:
+  title: "encapsulation 1"
+  slides_ref:
   - encap
   description: |
    *  encapsulation motivations
    *  "transparent" tunnels/proxy
+   *  encapsulation techniques
    *  transport-layer proxies
-      *  SOCKS, Tor
-   *  network-layer tunnels
-      *  TCP in TCP sidenote
-   *  VLANs
-   *  MPLS
+      *  SOCKS, Tor (start)
 
 - date: 2024-11-28
   week: 14
@@ -465,18 +462,15 @@
 
 - date: 2024-12-03
   week: 15
-  title: "peer-to-peer or TBD"
+  title: "encapuslation 2"
   slides_ref:
   - encap
-  - p2p
   description: |
-   *  encapsulation (finish)
-
-   *  if time:
-       *  overlay and peer-to-peer motivations
-       *  Gnutella-style search
-       *  consistent hashing
-       *  DHT routing
+   *  Tor (finish)
+   *  network-layer tunnels
+      *  TCP in TCP sidenote
+   *  VLANs
+   *  (if time) MPLS
 
 - date: 2024-12-05
   week: 15
