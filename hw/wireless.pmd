@@ -10,6 +10,7 @@ Changelog:
 *  20 Nov 2024: fix major bug in `simtime.py` where time would advance too quickly.
 *  21 Nov 2024: modify supplied mac.py to not `import time` to avoid confusion
 *  21 Nov 2024: specify recommended testing with around 20 packets/second to test with
+*  3 Dec 2024: use `--mac` argument correctly in examples
 </div>
 
 > This is based on an assignment originally constructed by Brad Campbell.
@@ -103,7 +104,7 @@ The simulator exposes many configuration options via the command line.
 The generic interface looks like:
 
 ```
-./project.py <# stations> <pkts/s> <pkts> <mac>
+./project.py <# stations> <pkts/s> <pkts> --mac <mac>
 ```
 
 For example, to specify a stations transmission rate of 20 packets/second from
@@ -111,7 +112,7 @@ eighteen stations using YourMac, where the access point is trying to collect 200
 packets from each station:
 
 ```
-./project.py 18 20 200 YourMac
+./project.py 18 20 200 --mac YourMac
 ```
 
 
