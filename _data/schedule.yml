@@ -475,6 +475,8 @@
 - date: 2024-12-05
   week: 15
   title: "exam review"
+  description: |
+   * [notes](recordings/20241205-notes.txt)
 
 - date: 2024-12-17
   week: 16
