@@ -1,4 +1,4 @@
-- date: 2024-08-27
+- date: 2025-08-26
   week: 1
   title: intro / layers
   reading: PD 1.2-1.4; FS 1.1-1.3.2, 1.4
@@ -21,7 +21,7 @@
        *  wireshark interlude
           *  [packet trace](files/example-firefox-trace.pcapng)
 
-- date: 2024-08-29
+- date: 2025-08-28
   week: 1
   title: framing
   reading: PD 2.1-4
@@ -42,10 +42,10 @@
        *  byte, bits, clocks
     *  error detection --- checksums
 
-- date: 2024-08-30
+- date: 2025-08-29
   week: 1
 
-- date: 2024-09-03
+- date: 2025-09-02
   week: 2
   title: "reliablity: ACKs / performance metrics"
   reading: PD 2.5.1-2.5.2, PD 1.5
@@ -59,7 +59,7 @@
        *  bandwidth, latency, jitter
 
 
-- date: 2024-09-05
+- date: 2025-09-04
   week: 2
   title: "reliablity: sliding windows"
   reading: PD 2.5.1-2; FS 14
@@ -72,10 +72,10 @@
        *  duplicate ACKs
        *  selective ACKs
 
-- date: 2024-09-06
+- date: 2025-09-05
   week: 2
 
-- date: 2024-09-10
+- date: 2025-09-09
   week: 3
   title: "relability: TCP realities / switches"
   reading: PD 3.1.1-3.1.2, 3.2-3.2.1, 3.2.4
@@ -92,7 +92,7 @@
     *  software defined networks
        *  see also: [Feamster et al, "The Road To SDN: An Intellectual History of Programmable Networks"](https://www.sigcomm.org/sites/default/files/ccr/papers/2014/April/0000000-0000012.pdf)
 
-- date: 2024-09-12
+- date: 2025-09-11
   week: 3
   title: "learning bridges, ARP + ND, subnets"
   reading: PD 3.2.1, 3.3.6; FS 8.5
@@ -106,10 +106,10 @@
        *  tables
     *  learning bridges
 
-- date: 2024-09-13
+- date: 2025-09-12
   week: 3
 
-- date: 2024-09-17
+- date: 2025-09-16
   week: 4
   title: "MACs and IPs"
   reading: PD 3.3.2-3.3.7, 4.2.1-4.2.3
@@ -135,7 +135,7 @@
        *  DHCP
        *  SLAAC
 
-- date: 2024-09-19
+- date: 2025-09-18
   week: 4
   title: "autoconfiguration / congestion control: the problem"
   reading: PD 6.1, 6.3
@@ -143,17 +143,13 @@
   - arp
   - congest
   description: |
-    (Reiss out of town)
-
-    >  The recording is available on Canvas on the Panopto Video tab and will be copied here later.
-
     *  graph of throughput versus window size
     *  history: congestion collapse
 
-- date: 2024-09-20
+- date: 2025-09-19
   week: 4
 
-- date: 2024-09-24
+- date: 2025-09-23
   week: 5
   title: "congestion control: AIMD"
   reading: PD 6.1, 6.3-4, 6.4.2, FS 16
@@ -166,7 +162,7 @@
     *  fair sharing
     *  additive increase/multiplicative decrease
 
-- date: 2024-09-26
+- date: 2025-09-25
   week: 5
   title: "congestion control: fairness, fast recovery, slow start"
   reading: PD 6.4.1-2, 6.2, FS 16
@@ -177,10 +173,10 @@
     *  fast retransmit and fast recovery
     *  slow start
 
-- date: 2024-09-27
+- date: 2025-09-26
   week: 5
 
-- date: 2024-10-01
+- date: 2025-09-30
   week: 6
   title: "congestion control: big buffers; high utilization is bad; ECN"
   reading: PD 6.4, 6.2
@@ -203,7 +199,7 @@
            *  echoing back congestion signal
 
 
-- date: 2024-10-03
+- date: 2025-10-02
   week: 6
   title: "queue disciplines"
   reading: PD 6.4.2, 6.2, 
@@ -220,13 +216,10 @@
        *  random early detection
 
 
-- date: 2024-10-04
+- date: 2025-10-03
   week: 6
 
-- date: 2024-10-07
-  week: 7
-
-- date: 2024-10-08
+- date: 2025-10-07
   week: 7
   title: "routing: forwarding errors; spanning tree"
   reading: PD 3.3.4, 3.3.8, 3.2.3, 3.4.1, FS 8, D 3.1
@@ -243,7 +236,7 @@
     *  spanning tree protocols (start)
 
 
-- date: 2024-10-10
+- date: 2025-10-09
   week: 7
   title: "routing: spanning tree / distance vector"
   reading: PD 3.4.2-3, D 13.1-3; D 13.5
@@ -260,14 +253,14 @@
        *  running centrally
        *  distributed protocol
 
-- date: 2024-10-11
+- date: 2025-10-10
   week: 7
 
-- date: 2024-10-15
+- date: 2025-10-14
   week: 8
   no_class: true
 
-- date: 2024-10-17
+- date: 2025-10-16
   week: 8
   title: "routing: distance vector (finish) / link state"
   slides_ref:
@@ -283,10 +276,10 @@
        *  distributed protocol
 
 
-- date: 2024-10-18
+- date: 2025-10-17
   week: 8
 
-- date: 2024-10-22
+- date: 2025-10-21
   week: 9
   title: "BGP"
   slides_ref:
@@ -303,7 +296,7 @@
        *  zones
 
 
-- date: 2024-10-24
+- date: 2025-10-23
   week: 9
   title: "DNS"
   reading: PD 9.3.1; FS 11
@@ -315,10 +308,10 @@
        *  name compression
     *  DNS questions and answers
 
-- date: 2024-10-25
+- date: 2025-10-24
   week: 9
 
-- date: 2024-10-29
+- date: 2025-10-28
   week: 10
   title: "Sockets"
   slides_ref:
@@ -340,7 +333,7 @@
     *  broadcast with sockets
     *  aside: local sockets
 
-- date: 2024-10-31
+- date: 2025-10-30
   week: 10
   title: "HTTP 1"
   slides_ref:
@@ -356,14 +349,14 @@
     *  HTTP caching
     *  detecting if up-to-date
 
-- date: 2024-11-01
+- date: 2025-10-31
   week: 10
 
-- date: 2024-11-05
+- date: 2025-11-04
   week: 11
   no_class: true
 
-- date: 2024-11-07
+- date: 2025-11-06
   week: 11
   title: "HTTP 2 / wireless link-layer"
   reading: PD 2.6, 2.7.1-2; D 2.1.5, 4
@@ -379,10 +372,10 @@
     *  collision probabilities
 
 
-- date: 2024-11-08
+- date: 2025-11-07
   week: 11
 
-- date: 2024-11-12
+- date: 2025-11-11
   week: 12
   title: "wireless 2"
   slides_ref:
@@ -394,7 +387,7 @@
     *  hidden terminals
     *  ready-to-send / clear-to-send
 
-- date: 2024-11-14
+- date: 2025-11-13
   week: 12
   title: "wireless 3"
   slides_ref:
@@ -405,13 +398,10 @@
     *  multiple access points
     *  scheduled wireless networks
 
-- date: 2024-11-15
+- date: 2025-11-14
   week: 12
 
-- date: 2024-11-18
-  week: 13
-
-- date: 2024-11-19
+- date: 2025-11-18
   week: 13
   title: "security: firewalls"
   reading: PD 2.8.2, PD 8.5.6
@@ -424,7 +414,7 @@
     *  stateless firewalls
     
 
-- date: 2024-11-21
+- date: 2025-11-20
   week: 13
   title: "firewalls 2 / NAT"
   reading: PD 8.5.4, D 9.7, PD 3.3.9, PD 4.4
@@ -437,10 +427,10 @@
    *  NAT traversal
    *  IDS
 
-- date: 2024-11-22
+- date: 2025-11-21
   week: 13
 
-- date: 2024-11-26
+- date: 2025-11-25
   week: 14
   title: "encapsulation 1"
   slides_ref:
@@ -452,15 +442,15 @@
    *  transport-layer proxies
       *  SOCKS, Tor (start)
 
-- date: 2024-11-28
+- date: 2025-11-27
   week: 14
   no_class: true
 
-- date: 2024-11-29
+- date: 2025-11-28
   week: 14
   no_class: true
 
-- date: 2024-12-03
+- date: 2025-12-02
   week: 15
   title: "encapuslation 2"
   slides_ref:
@@ -472,14 +462,15 @@
    *  VLANs
    *  (if time) MPLS
 
-- date: 2024-12-05
+- date: 2025-12-04
+  week: 15
+
+- date: 2025-12-09
   week: 15
   title: "exam review"
-  description: |
-   * [notes](recordings/20241205-notes.txt)
 
-- date: 2024-12-17
+- date: 2025-12-16
   week: 16
   title: "final exam"
   description: |
-    2PM-5PM (last exam slot)
+    9AM-12PM

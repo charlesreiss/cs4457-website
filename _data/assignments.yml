@@ -1,28 +1,32 @@
 - name: framing
-  open: 2024-08-29
-  due: 2024-09-06
+  open: 2025-08-28
+  due: 2025-09-05
   page: hw/framing.html
   submit_file: sendrecv.py
+  tentative: true
 
 - name: reliable part 1 (zero/one)
   short_name: reliable1
-  open: 2024-09-06
-  due: 2024-09-13
+  open: 2025-09-05
+  due: 2025-09-12
   page: hw/reliable.html
   submit_file: ends.py
+  tentative: true
 
 - name: reliable part 2 (sliding window)
   short_name: reliable2
-  open: 2024-09-13
-  due: 2024-09-27
+  open: 2025-09-12
+  due: 2025-09-26
   page: hw/reliable.html
   submit_file: ends.py
+  tentative: true
 
 - name: P4
   short_name: p4
-  open: 2024-09-20
-  due: 2024-10-07
+  open: 2025-09-19
+  due: 2025-10-03
   page: hw/p4.html
+  tentative: true
   submit_files:
   - mycontroller.py
   - mydataplane.p4
@@ -31,42 +35,47 @@
 
 - name: reliable part 3 (variable window)
   short_name: reliable3
-  open: 2024-10-04
-  due: 2024-10-11
+  open: 2025-10-03
+  due: 2025-10-10
   page: hw/reliable.html
+  tentative: true
   submit_file: ends.py
 
 - name: packet scheduling
   short_name: schedule
-  open: 2024-10-11
-  due: 2024-10-18
+  open: 2025-10-10
+  due: 2025-10-17
   page: hw/schedule.html
   submit_file: buffer.py
 
 - name: DV routing
   short_name: dv
-  open: 2024-10-18
-  due: 2024-10-25
+  open: 2025-10-17
+  due: 2025-10-24
   page: hw/dv.html
+  tentative: true
   submit_file: entity.py
 
 - name: DNS
   short_name: dns
-  open: 2024-10-25
-  due: 2024-11-01
+  open: 2025-10-24
+  due: 2025-10-31
   page: hw/dns.html
+  tentative: true
   submit_file: dns.py
 
 - name: webserver
-  open: 2024-11-01
-  due: 2024-11-18
+  open: 2025-10-31
+  due: 2025-11-14
   page: hw/webserver.html
+  tentative: true
   submit_file: webserver.py
 
 - name: wireless
-  open: 2024-11-15
-  due: 2024-12-03
+  open: 2025-11-14
+  due: 2025-12-02
   page: hw/wireless.html
+  tentative: true
   submit_files:
   - mac.py
   - graph.png
@@ -74,8 +83,9 @@
 
 - name: (dropped) tcp-trace
   short_name: tcp-trace
-  XXXopen: 2024-09-13
-  XXXdue: 2024-09-20
+  XXXopen: 2025-09-13
+  XXXdue: 2025-09-20
   page: hw/trace.html
   tentative: true
+  hide: true
 
