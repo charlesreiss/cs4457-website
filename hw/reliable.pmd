@@ -3,24 +3,6 @@ title: reliable transport
 author: Charles Reiss (based on ...)
 ...
 
-<div class="changelog">
-Changelog:
-
-* 5 Sep 2024: be more explicit about how to dynamically set timeouts.
-* 5 Sep 2024 9:10pm: fix bug which sometimes caused simulator to crash (with error about `self.error()` call); also update simulator to output more statistics in `--json` mode (used by graidng scripts)
-* 6 Sep 2024: add note about common error of not resetting timestamp each time a packet is resent
-* 9 Sep 2024: correct text about transmitting a message in "from_network" to text about transmitting a message in "from_application"; make frame count in reliable1 example match command line
-* 10 Sep 2024: describe `trace()` function in hints; adjust part 2 due date; mention that adjusting buffer size for part 1/2 is probably not a good idea
-* 12 Sep 2024: add description of common error of failing to handle when a packet times out multiple times to hints
-* 15 Sep 2024: change "sliding" to "sliding-window" to match what I did in autograder;note that both are accepted.
-* 28 Sep 2024: for part 3, allow performing one decrease for multiple consecutive timeouts
-* 28 Sep 2024: add hint with one strategy for handling sequence number wraparound
-*  7 Oct 2024: discuss to_network() not copying `packet` argument; update skeleton code to do this
-*  8 Oct 2024: mention and encourage the window size increase/decrease of TCP (1 packet per round trip increase, halving to decrease)
-*  8 Oct 2024: explictly mention window size should not become 0; note about choice to keep window size as int v float
-*  8 Oct 2024: add note about how Python lambdas can inadvertantly capture the "wrong" thing
-</div>
-
 # Your Task
 
 1.  Download the supplied simulator and skeleton code at [here](files/reliable-skeleton.tgz) (last updated 7 Oct 2024).
@@ -87,6 +69,8 @@ Changelog:
 
 2.  If MySender's `from_application` cannot immediately transmit a message, then it should return False and not
     queue the message. (Our simulator/testing code will try resending it later.)
+
+3.  Your implementation must send acknowledgment with an `ack_num` equal to the most recently received message.
 
 2.  Test your implementation:
 
@@ -155,7 +139,7 @@ Changelog:
 
 ### Sliding windows
 
-1.  Modify `ends.py`, so that when `config.MODE` is `sliding-window` (because I originally wrote "sliding" here, we'll also accept that, but the autograder doesn't use this, so manual intervention in grading would be needed),
+1.  Modify `ends.py`, so that when `config.MODE` is `sliding`,
     it uses a sliding window (like in [section 2.5.2 of <i>Computer Networks:
     A Systems Approach</i>](https://book.systemsapproach.org/direct/reliable.html#sliding-window))
     with:
@@ -163,32 +147,34 @@ Changelog:
     *  a window size equal to `config.INITIAL_WINDOW` (which will be at least 1)
 
     In addition:
-    *   the first packet by the sender sent should have a sequence number of 0, the second a sequence number of 1,
+
+    *   the first data packet by the sender sent should have a sequence number of 0, the second a sequence number of 1,
         and so on (regardless of the size of the packet)
+
     *   your implementation must call `self.to_application` on messages in the order they were sent
         (even if they are not received in order)
 
-    Optionally, you may chose to have your implementation resend packets immediately
-    after some number of duplicate ACKs (or similar signal indicating missing packets).
+    *   when sending acknowledgments, your implementation must use *cumulative acknolwedgments* with `ack_num`
+        set to the highest sequence number such that that data packet and all previous data packets were also
+        successfully received.
+
+        (For example, if sequence numbers 0, 1, 2, 3, 5, 6 have been received, you should send an `ack_num` of 3; after
+        sequence number 4 is received, you should send an `ack_num` of 6.)
+
+    Optionally: you may chose to:
+
+    *  have your implementation resend packets immediately after some number of duplicate ACKs (or similar signal indicating missing packets).
+
+    *  use the `sack` field of packets to indicate provide "selective acknowledgment" information about additional frames that have been received
+       after `ack_num` to avoid some retransmissions.
 
 2.  Test your implementation:
 
     *  With no losses (loss rate 0) and a timeout substantially longer than twice the transmission delay,
        no more than two packets per packet of data + 1 or 2 extra packets should be sent in total.
-    *  With no or almost no losses, about config.INITIAL_WINDOW / 2 segments should
-       be transmitted per round-trip. With a `--delay=1` and
-       INITIAL_WINDOW of 10, this should resultin a transmission rate
-       of around 20 bytes * 5 segments/(1 * 2 time unit) = 50 bytes per time unit
 
-### Sequence number wrarpound
-
-1.  Make your implementation limit its sequence numbers to between 0 and `config.MAXIMUM_SEQUENCE`
-    and have this work when sequence nubmers need to wraparound.
-
-2.  Test your implementation:
-
-    *  Set MAXIMUM_SEQUENCE to a value much smaller the number of packets sent but more than
-       twice the INTIIAL_WINDOW.
+    *  With no or almost no losses, about config.INITIAL_WINDOW / 2 segments should be transmitted per round-trip. With a `--delay=1` and
+       INITIAL_WINDOW of 10, this should resultin a transmission rate of around 20 bytes * 5 segments/(1 * 2 time unit) = 50 bytes per time unit
 
 ### submission
 
@@ -393,8 +379,3 @@ Changelog:
 
 1.  If your implementation for part 1 hangs, one possible reason can be failing to account for timeouts occuring multiple times. If you resend after a timeout, and then fail to receive an ACK again, you need to make sure you resend _again_ after a second timeout.
 
-1.  An inefficient but non-very-error-prone way to deal with sequence number wraparound is to construct a
-    function that computes the list of sequence numbers that is in the window. Then you can use an item in
-    list check for your conditions about sequence numbers. If you're having difficulty reasoning about how to
-    sequence number wraparound to work, I'd recommend starting with this approach, then possibly figuring out how to
-    make it more efficient.
