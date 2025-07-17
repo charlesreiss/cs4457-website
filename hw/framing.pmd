@@ -2,24 +2,9 @@
 title: Framing
 author: Charles Reiss
 ...
-
-<div class="changelog">
-Changelog:
-
-*  29 August 2024: fix some bugs in `test.py`, particularly related to the test filtering options
-*  29 August 2024: mention that submission should use the submission site (see Canvas)
-*  3 Sep 2024: make `test.py` consider too-long encodings of messages a test failure instead of just printing an error about them and saying the test passed; we will not deduct credit for these problems when grading.
-*  6 Sep 2024: add note re: trap of choosing ambiguous message delimiters
-</div>
-
->  If you downloaded the skeleton code before around 5:45pm 29 August 2024, please get an updated version of `test.py` [here](files/framing/test.py)
->  that fixes some bugs that would cause the testing script to crash and not correctly handlesome of the test filtering options. Until around 12:10pm
->  3 Sep 2024, the testing script would report an "error" when messages' encoding was too long but not consider this a test failure. We will
->  not deduct credit for this when grading, but the test script will correctly consider this an error.
-
 # Your Task
 
-1.  Download the supplied skeleton code at [here](files/framing-skeleton.tgz).[^portal_note] (last updated 3 Sep 2024 12:10pm)
+1.  Download the supplied skeleton code at [here](files/framing-skeleton.tgz).[^portal_note] (last update 17 July 2025)
 
 2.  In `sendrecv.py` complete an implementation of MySender and MyReceiver.
 
@@ -70,16 +55,40 @@ Changelog:
         and the [`struct` module](https://docs.python.org/3/library/struct.html). But it
         is _not_ permissible to use, for example, [python-pppd](https://pypi.org/project/python-pppd/)
 
-3.  Test your implementation using `test.py`. If you want to run additional tests, you might
-    find it useful to modify the list of tests in `TESTS` or pass the `--verbose` option to this script,
-    or run only specific tests with the `--only-test` and/or `--only-subtest` options.
+3.  Test your implementation using `test.py`:
+
+    *  You can use `python3 test.py send ...` to send sample messages:
+
+            python3 test.py --input-format binary --output-format binary 00001111 11110000
+            
+            python3 test.py --input-format hex --output-format hex FF00FF00 809080908090
+
+    *  You can use `python3 test.py recv ...` to receive bits:
+
+            python3 test.py --input-format binary --output-format binary 111100011110000111111
+            python3 test.py --input-format hex --output-format hex FF00FFFFFFF
+
+    *  You can use `python3 test.py suite ...` to run a test suite:
+
+            python3 test.py suite
+            python3 test.py suite --verbose
+
+    *  You can specify to only run parts of test suites by passing a [regular expression](https://docs.python.org/3/howto/regex.html#regex-howto) to --only-test
+       and/or --only-subtest:
+
+            python3 test.py suite --only-test=empty-clean
+            python3 test.py suite --only-test=tiny.*
+            python3 test.py suite --only-test=corrupt-first-recovery-tiny1 --only-subtest='delete bit #.*'
+            python3 test.py suite --only-test=corrupt-first-recovery-tiny1 --only-subtest='delete bit #2'
+
+    If you want to run additional tests, you might find it useful to modify the list of tests in `TESTS`.
 
     When grading, we may run additional tests and/or inspect your code by hand.
     Although the supplied tests do not intentionally omit functionality you must implement,
-    since the supplied tests are randomized, they
-    may get "unlucky" and fail to detect an implementation which is actually broken
+    they may get "unlucky" and fail to detect an implementation which is actually broken
     and they do not test everything for all possible message sizes.
-    (Also, it may be possible for them to spuriously fail on a correct implementation,
+    (Also, because some requirements deal with chances of corruption,
+    it may be possible for them to spuriously fail on a correct implementation,
     though I think that is unlikely.)
 
 4.  *Briefly* document in a comment or docstring near the top of your `sendrecv.py` the
@@ -91,32 +100,11 @@ Changelog:
 
 # Hints
 
-## Interpreting test output
-
-1.  The test will output a summary line like:
-        
-        three-message-clean: 0 extra; 0 corrupted; 0 missing; 27 bytes in 3 messages sent with 48.0 bytes
-
-    In this message:
-
-    *  `three-message-clean` is a test name from the `TESTS` array in test.py.
-    *  "0 extra" says that 0 is the number of messages received that were not sent
-    *  "0 corrupted" says that 0 is the number of messages received that were apparently changed
-    *  "0 missing" is the number of message sent that were not received
-    *  "27 bytes in 3 messages" means that send_message was called 3 times,
-       and the total number bytes passed across all calls was 27;
-    *  "with 48.0 bytes" means that `send_bytes` was called with a total of 48 bytes
-
-    The test uses Python's difflib, which implements an algorithm similar to the `diff` utility. In
-    some cases, this may get confused between corrupted and extra+missing messages.
-
-# Hints
-
 1.  You can reuse the supplied bit to byte and byte to bit conversions..
 
 2.  The `struct` modules `pack` or `unpack` to convert integers to bytes and vice-versa.
 
-3.  <small>*[added 6 Sep 2024 5:15pm, copies Piazza post:]*</small>  Be careful about choosing ambiguous message delimters.
+3.  Be careful about choosing ambiguous message delimters.
 
     For example, let’s say you choose 0000 as a delimiter for messages and to escape 000 with 0001 and we try to send the message 111111100.
 
