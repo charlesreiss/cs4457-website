@@ -61,11 +61,21 @@ author: Charles Reiss (based on ...)
 
 ### one/zero acknowledgments
 
-1.  Modify `ends.py`, so that when `config.MODE` is `one-zero`, it uses acknowledgments
-    and a 1-bit sequence number (like in [section 2.5.1 of <i>Computer Networks:
-    A Systems Approach</i>](https://book.systemsapproach.org/direct/reliable.html#stop-and-wait)),
-    and retransmits a packet (from the sender)
-    indefinitely if an acknowledgment is not received config.INITIAL_TIMEOUT time units after a packet is sent.
+1.  Modify `ends.py`, so that when `config.MODE` is `one-zero`:
+    
+    *  it does not send a new message until the previous is acknowledged (like in [section 2.5.1 of <i>Computer Networks:
+       A Systems Approach</i>](https://book.systemsapproach.org/direct/reliable.html#stop-and-wait)),
+       and retransmits a packet (from the sender)
+
+    *  if a message is not acknowledged, it is resent (as many times as needed) config.INITIAL_TIMEOUT time units after a packet is sent.
+
+    *  the acknowledgment number of an acknowledgment matches the sequence number of the message being acknowledged
+
+    *  sequence numbers either:
+
+       *  alternate between 0 and 1, or
+
+       *  start at some value and increase indefinitely
 
 2.  If MySender's `from_application` cannot immediately transmit a message, then it should return False and not
     queue the message. (Our simulator/testing code will try resending it later.)
@@ -148,8 +158,9 @@ author: Charles Reiss (based on ...)
 
     In addition:
 
-    *   the first data packet by the sender sent should have a sequence number of 0, the second a sequence number of 1,
-        and so on (regardless of the size of the packet)
+    *   messages are assigned consecutive sequence numbers; so if data packets for the first message
+        are assigned sequence number 0, then the next should be sequence number 1, then 2, and so on
+        (regardless of the size of the messages)
 
     *   your implementation must call `self.to_application` on messages in the order they were sent
         (even if they are not received in order)
@@ -158,15 +169,17 @@ author: Charles Reiss (based on ...)
         set to the highest sequence number such that that data packet and all previous data packets were also
         successfully received.
 
-        (For example, if sequence numbers 0, 1, 2, 3, 5, 6 have been received, you should send an `ack_num` of 3; after
-        sequence number 4 is received, you should send an `ack_num` of 6.)
+        (For example, if sequence numbers 0, 1, 2, 3, 4, 5, and 6 were sent, but only 0, 1, 2, 3, 5, and 6 were received,
+        you should send an `ack_num` of 3; after sequence number 4 is received, you should send an `ack_num` of 6.)
 
     Optionally: you may chose to:
 
     *  have your implementation resend packets immediately after some number of duplicate ACKs (or similar signal indicating missing packets).
 
-    *  use the `sack` field of packets to indicate provide "selective acknowledgment" information about additional frames that have been received
-       after `ack_num` to avoid some retransmissions.
+    *  use the `sack` field of packets to provide "selective acknowledgment" information about additional frames that have been received
+       after `ack_num` to avoid some retransmissions
+
+    *  choose to wraparound sequence numbers at some point (as long as there are more than 2 times the window size plus 1 sequence numbers)
 
 2.  Test your implementation:
 
