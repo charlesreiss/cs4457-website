@@ -178,13 +178,11 @@
 
 - date: 2025-09-30
   week: 6
-  title: "congestion control: big buffers; high utilization is bad; ECN"
+  title: "congestion control: big buffers; high utilization is bad"
   reading: PD 6.4, 6.2
   slides_ref:
   - congest
   description: |
-    *  quiz review
-
     *  queuing theory interlude:
        *  randomized arrivals means no 100% utilization
        *  high variance from long queues
@@ -194,19 +192,26 @@
        *  why estimate variance
        *  exponential backoff idea
 
-    *  alternate congestion signals (start)
-       *  explicit congestion notification
-           *  echoing back congestion signal
 
 
 - date: 2025-10-02
   week: 6
-  title: "queue disciplines"
+  title: "simulating TCP / NS-3 as example"
+
+
+- date: 2025-10-03
+  week: 6
+
+- date: 2025-10-07
+  title: "ECN; queue disciplines"
   reading: PD 6.4.2, 6.2, 
   slides_ref:
+  - congest
   - queuing
   description: |
-    *  alternate congestion signals (finish)
+    *  alternate congestion signals
+       *  explicit congestion notification
+           *  echoing back congestion signal
        *  delay-based congestion control
 
     *  queue discplines
@@ -214,12 +219,10 @@
        *  fair queuing
        *  strict priority
        *  random early detection
+  week: 7
 
 
-- date: 2025-10-03
-  week: 6
-
-- date: 2025-10-07
+- date: 2025-10-09
   week: 7
   title: "routing: forwarding errors; spanning tree"
   reading: PD 3.3.4, 3.3.8, 3.2.3, 3.4.1, FS 8, D 3.1
@@ -235,9 +238,15 @@
 
     *  spanning tree protocols (start)
 
-
-- date: 2025-10-09
+- date: 2025-10-10
   week: 7
+
+- date: 2025-10-14
+  week: 8
+  no_class: true
+
+- date: 2025-10-16
+  week: 8
   title: "routing: spanning tree / distance vector"
   reading: PD 3.4.2-3, D 13.1-3; D 13.5
   slides_ref:
@@ -253,15 +262,12 @@
        *  running centrally
        *  distributed protocol
 
-- date: 2025-10-10
-  week: 7
 
-- date: 2025-10-14
+- date: 2025-10-17
   week: 8
-  no_class: true
 
-- date: 2025-10-16
-  week: 8
+- date: 2025-10-21
+  week: 9
   title: "routing: distance vector (finish) / link state"
   slides_ref:
   - routing
@@ -276,10 +282,7 @@
        *  distributed protocol
 
 
-- date: 2025-10-17
-  week: 8
-
-- date: 2025-10-21
+- date: 2025-10-23
   week: 9
   title: "BGP"
   slides_ref:
@@ -295,9 +298,11 @@
        *  hierarchy
        *  zones
 
-
-- date: 2025-10-23
+- date: 2025-10-24
   week: 9
+
+- date: 2025-10-28
+  week: 10
   title: "DNS"
   reading: PD 9.3.1; FS 11
   slides_ref:
@@ -308,10 +313,7 @@
        *  name compression
     *  DNS questions and answers
 
-- date: 2025-10-24
-  week: 9
-
-- date: 2025-10-28
+- date: 2025-10-30
   week: 10
   title: "Sockets"
   slides_ref:
@@ -333,8 +335,15 @@
     *  broadcast with sockets
     *  aside: local sockets
 
-- date: 2025-10-30
+- date: 2025-10-31
   week: 10
+
+- date: 2025-11-04
+  week: 11
+  no_class: true
+
+- date: 2025-11-06
+  week: 11
   title: "HTTP 1"
   slides_ref:
   - http
@@ -349,15 +358,12 @@
     *  HTTP caching
     *  detecting if up-to-date
 
-- date: 2025-10-31
-  week: 10
 
-- date: 2025-11-04
+- date: 2025-11-07
   week: 11
-  no_class: true
 
-- date: 2025-11-06
-  week: 11
+- date: 2025-11-11
+  week: 12
   title: "HTTP 2 / wireless link-layer"
   reading: PD 2.6, 2.7.1-2; D 2.1.5, 4
   slides_ref:
@@ -371,11 +377,7 @@
     *  carrier sense multiple access
     *  collision probabilities
 
-
-- date: 2025-11-07
-  week: 11
-
-- date: 2025-11-11
+- date: 2025-11-13
   week: 12
   title: "wireless 2"
   slides_ref:
@@ -387,8 +389,11 @@
     *  hidden terminals
     *  ready-to-send / clear-to-send
 
-- date: 2025-11-13
+- date: 2025-11-14
   week: 12
+
+- date: 2025-11-18
+  week: 13
   title: "wireless 3"
   slides_ref:
   - multiaccess
@@ -397,11 +402,9 @@
     *  collision detection revisited
     *  multiple access points
     *  scheduled wireless networks
+    
 
-- date: 2025-11-14
-  week: 12
-
-- date: 2025-11-18
+- date: 2025-11-20
   week: 13
   title: "security: firewalls"
   reading: PD 2.8.2, PD 8.5.6
@@ -412,10 +415,12 @@
     *  scheduled wireless networks
     *  firewall placement
     *  stateless firewalls
-    
 
-- date: 2025-11-20
+- date: 2025-11-21
   week: 13
+
+- date: 2025-11-25
+  week: 14
   title: "firewalls 2 / NAT"
   reading: PD 8.5.4, D 9.7, PD 3.3.9, PD 4.4
   slides_ref:
@@ -427,21 +432,6 @@
    *  NAT traversal
    *  IDS
 
-- date: 2025-11-21
-  week: 13
-
-- date: 2025-11-25
-  week: 14
-  title: "encapsulation 1"
-  slides_ref:
-  - encap
-  description: |
-   *  encapsulation motivations
-   *  "transparent" tunnels/proxy
-   *  encapsulation techniques
-   *  transport-layer proxies
-      *  SOCKS, Tor (start)
-
 - date: 2025-11-27
   week: 14
   no_class: true
@@ -452,6 +442,18 @@
 
 - date: 2025-12-02
   week: 15
+  title: "encapsulation 1"
+  slides_ref:
+  - encap
+  description: |
+   *  encapsulation motivations
+   *  "transparent" tunnels/proxy
+   *  encapsulation techniques
+   *  transport-layer proxies
+      *  SOCKS, Tor (start)
+
+- date: 2025-12-04
+  week: 15
   title: "encapuslation 2"
   slides_ref:
   - encap
@@ -461,9 +463,6 @@
       *  TCP in TCP sidenote
    *  VLANs
    *  (if time) MPLS
-
-- date: 2025-12-04
-  week: 15
 
 - date: 2025-12-09
   week: 15

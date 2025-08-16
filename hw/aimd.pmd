@@ -1,0 +1,121 @@
+---
+title: AIMD
+author: Charles Reiss
+...
+
+<div class="oldsite">
+This assignment is a work in progress and may change substantially before it is released.
+</div>
+
+# Your Task
+
+1.  Download our copy of NS-3 (link TBA) with additions described below.
+
+2.  Make sure you can run the `scratch/mytcpvother` simulation. (This is described below.)
+
+    Note that completion time achieved for the MyTCP variant versus fixed
+    with default settings.
+
+## Part 1
+
+1.  Using (and modifying, if you want) `mytcpvother` produce:
+
+    *  A graph of congestion window size over time (for the MyTCP flow)
+       with default settings.
+
+    *  A table with at least two rows, each of which represents a different
+       `maxBytes` parameter, and columsn representing:
+
+       *  the `maxBytes` parameter;
+       *  the average "goodput" (rate of data bytes usefully transmitted) for each flow;
+       *  the average *combined* goodput for both flows
+
+       You may, at your option, include additional columns.
+
+2.  Modify the `mytcpvother` to support changing the delay of the shared link. Then,
+
+    *  Produce a graph of the congestion window size over time (for the MyTCP flow)
+       with a different link delay; and
+
+    *  Add a column of shared link delay to the table from the previous part, and
+       a new row wtih a different delay than the others.
+
+3.  Based on your goodput results, estimate an emperical formula for how goodput
+    changes. Briefly explain:
+
+       *  how you derived your formula;
+
+       *  what factor(s) you think you make goodput change in the way your formula specifies;
+
+3.  Submit your graphs, table, formula, and the explanations to the two points above, and any code modifications via TBD.
+
+## Part 2
+
+1.  Customize the `MyTcpCongestionOps` so that (on a simulation with default settings, except as otherwise stated):
+
+    *  when the "myTcpMode" parameter is 1, the MyTCP flow completes at least 10% faster in the `mytcpvother` simulation 
+
+    *  when the "myTcpMode" parameter is 2, the other flow completes at least 10% faster and the MyTCP flow completes no more than 30% slower;
+
+3.  Include in a report (in text, HTML, or PDF format; preferably with seperate sections
+    for each of the below items):
+
+    *  What changes you made to MyTcpCongestionOps.
+
+    *  graphs of the congestion window size over time for MyTCP with your modifications (one for each added "mode");
+
+    *  How you decided to make those changes. If your changes involve selecting numerical parameters,
+       describe how you choose those parameters. (If you choose the parameters thorugh experimentation,
+       that's fine; explain what you tried to decide on the final values.)
+
+    *  Your assessment (ideally based on some experimentation)
+       of what extent your technique could easily be extended to a substantially larger/smaller speed difference
+
+4.  Submit your report and your code modifications via TBD.
+    
+# Our NS-3 additions
+
+## MyTcpCongestionOps
+
+In `contrib/mytcp/mytcp.cc`, we've created `MyTcpCongestionOps`. This implements a customizable
+congestion control policy. 
+To change the congestion control policy, I would recommend changing `IncreaseWindow` and `GetSsThresh` functions.
+
+We have arranged so the `myTcpMode` value is available as an instance variable.
+
+## mytcpvother
+
+This simulation program is located in `scratch/mytcpvother.cc`.
+
+You can run this with
+
+    ./ns3 run scratch/mytcpvother
+
+You can provide command line options to the simulation; see
+
+    ./ns3 run scratch/mytcpvother -- --help
+
+to see what options are available --- or look at the code in main() that asks for the options.
+
+You can pass values for options by doing something like
+
+    ./ns3 run scratch/mytcpvother -- --maxBytes=180000000
+
+The simulations uses a topology with 4 nodes, which is configured by the `SetupTopology` function:
+
+*  Node 1 and 2 are the source of flows (meaning it only sends data);
+*  Node 3 is a sink for the flows (meaning it only receives data)
+*  Node 0 is a router connected to all other nodes using point-to-point links.
+
+The simulation sets a TCP connection from node 1 to node 3 using the `MyTcpCongestionOps` TCP implementation,
+and a connection from node 2 to node 3 using the `NewRenoTcp` implementation.
+
+If you passing the `--tracing` option, the simulation will produce output files:
+
+*  `mytcpvother-X-Y.pcap`: a packet capture file for packets sent from node X's interface number Y
+*  `mytcpvother.tr`: a text file listing all the events in the simulation
+*  `mytcpvother-cwnd-X.csv`, `mytcpvother-ssthresh-X.csv`: CSV files containing the values of the cwnd (congestion window size)
+    and ssthresh (slow start threshold) values for node X's TCP connections; the columns of the CSV file are time (in nanoseconds), socket number,
+    and value.
+
+

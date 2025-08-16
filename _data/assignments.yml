@@ -16,7 +16,7 @@
 - name: reliable part 2 (sliding window)
   short_name: reliable2
   open: 2025-09-12
-  due: 2025-09-26
+  due: 2025-09-19
   page: hw/reliable.html
   submit_file: ends.py
   tentative: true
@@ -33,40 +33,48 @@
   - results.txt
   - results.pdf
 
-- name: reliable part 3 (variable window)
-  short_name: reliable3
+- name: NS-3 / AIMD part 1
+  short_name: reliable2
   open: 2025-10-03
   due: 2025-10-10
-  page: hw/reliable.html
+  page: hw/aimd.html
+  submit_files: ASK-REISS-TO-FIX
   tentative: true
-  submit_file: ends.py
+
+- name: NS-3 / AIMD part 2
+  short_name: reliable2
+  open: 2025-10-10
+  due: 2025-10-17
+  page: hw/aimd.html
+  submit_files: ASK-REISS-TO-FIX
+  tentative: true
 
 - name: packet scheduling
   short_name: schedule
-  open: 2025-10-10
-  due: 2025-10-17
+  open: 2025-10-17
+  due: 2025-10-24
   page: hw/schedule.html
   submit_file: buffer.py
   tentative: true
 
 - name: DV routing
   short_name: dv
-  open: 2025-10-17
-  due: 2025-10-24
+  open: 2025-10-24
+  due: 2025-10-31
   page: hw/dv.html
   tentative: true
   submit_file: entity.py
 
 - name: DNS
   short_name: dns
-  open: 2025-10-24
-  due: 2025-10-31
+  open: 2025-10-31
+  due: 2025-11-14
   page: hw/dns.html
   tentative: true
   submit_file: dns.py
 
 - name: webserver
-  open: 2025-10-31
+  open: 2025-11-07
   due: 2025-11-14
   page: hw/webserver.html
   tentative: true
@@ -90,3 +98,8 @@
   tentative: true
   hide: true
 
+- name: (tentatively dropped) reliable part 3 (variable window)
+  short_name: reliable3
+  page: hw/reliable.html
+  tentative: true
+  submit_file: ends.py
