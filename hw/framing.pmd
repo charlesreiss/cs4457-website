@@ -4,7 +4,7 @@ author: Charles Reiss
 ...
 # Your Task
 
-1.  Download the supplied skeleton code at [here](files/framing-skeleton.tgz).[^portal_note] (last update 17 July 2025)
+1.  Download the supplied skeleton code at [here](files/framing-skeleton.tgz).[^portal_note] (last update 21 August 2025)
 
 2.  In `sendrecv.py` complete an implementation of MySender and MyReceiver.
 
@@ -36,7 +36,7 @@ author: Charles Reiss
 
         1.  You should detect this and avoid calling `got_message_function` with data
             that does not represent a valid message at least 99.99% of the time.
-            (You should be able to achieve this with a 2 or more-byte checksum.)
+            You should be able to achieve this with a 2 or more-byte checksum.
 
         2.  Other than possibly the next few messages or couple kilobytes of messages, future
             uncorrupted messages should be received correctly (regardless of where the
@@ -52,6 +52,7 @@ author: Charles Reiss
     5.  Be your own code and use only functionality built-in to python or supplied as
         part of its standard library. This means that it _is_ permissible to use
         the `zlib` module's [`crc32` function](https://docs.python.org/3/library/zlib.html#zlib.crc32)
+        or the [`hashlib`' module](https://docs.python.org/3/library/hashlib.html)
         and the [`struct` module](https://docs.python.org/3/library/struct.html). But it
         is _not_ permissible to use, for example, [python-pppd](https://pypi.org/project/python-pppd/)
 
