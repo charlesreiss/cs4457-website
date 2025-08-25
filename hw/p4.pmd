@@ -5,20 +5,6 @@ author: Charles Reiss, based on an assignment by Hyojoon Kim
 
 <!-- similar: https://github.com/2021-cs344/maclearning-exercise --->
 
-<div class="changelog">
-Changelog:
-
-*  17 Sep 2024: update skeleton code in git re: calling myutil.py decode_packet_in_metadata function with wrong number of arguments, and add note to about manual change for this below
-*  26 Sep 2024: update skeleton code in git re: decode_packet_in_metadata being a buggy version
-*  26 Sep 2024: more detailed desription re: retrieving information from packets copied to the controller; add hint for verification step
-*  27 Sep 2024: add note about "extra" messages during network setup
-*  1 Oct 2024: correct `tutorials/cs4457_f24` to `tutorials/exercises/cs4457_f24`
-*  2 Oct 2024: ARM64 VM instructions link
-*  2 Oct 2024: note `print_counters.py` update
-*  5 Oct 2024: split out advice about using wireshark to separate hints section and refer to it from all the steps, not just the last one. Also note that if checking `print_counters.py`, there will be packets from autoconfiguraiton, etc. counted there too in step 1 instructions.
-*  7 Oct 2024: note that step 1 is intended to be done main() (not something that won't consistently run)
-</div>
-
 # Your Task
 
 ## Part 1

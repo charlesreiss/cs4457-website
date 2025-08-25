@@ -21,7 +21,14 @@
   submit_file: ends.py
   tentative: true
 
-- name: P4
+- name: P4 part 1 (no submission)
+  short_name: p4
+  open: 2025-09-19
+  due: 2025-09-26
+  page: hw/p4.html
+  no_assignments_json: true
+
+- name: P4 part 2
   short_name: p4
   open: 2025-09-19
   due: 2025-10-03
