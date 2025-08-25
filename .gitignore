@@ -1,4 +1,5 @@
 vendor
 Gemfile.lock
-_data/quizzes.yml
+_data/quizzes.yaml
+_data/recordings.yaml
 jekyll-dir
