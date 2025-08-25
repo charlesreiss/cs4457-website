@@ -60,14 +60,14 @@ author: Charles Reiss
 
     *  You can use `python3 test.py send ...` to send sample messages:
 
-            python3 test.py --input-format binary --output-format binary 00001111 11110000
+            python3 test.py send --input-format binary --output-format binary 00001111 11110000
             
-            python3 test.py --input-format hex --output-format hex FF00FF00 809080908090
+            python3 test.py send --input-format hex --output-format hex FF00FF00 809080908090
 
     *  You can use `python3 test.py recv ...` to receive bits:
 
-            python3 test.py --input-format binary --output-format binary 111100011110000111111
-            python3 test.py --input-format hex --output-format hex FF00FFFFFFF
+            python3 test.py recv --input-format binary --output-format binary 111100011110000111111
+            python3 test.py recv --input-format hex --output-format hex FF00FFFFFFF
 
     *  You can use `python3 test.py suite ...` to run a test suite:
 
