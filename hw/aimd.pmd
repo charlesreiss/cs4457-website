@@ -9,12 +9,11 @@ This assignment is a work in progress and may change substantially before it is 
 
 # Your Task
 
-1.  Download our copy of NS-3 (link TBA) with additions described below.
+1.  Download our copy of NS-3 with additions described below:
 
-2.  Make sure you can run the `scratch/mytcpvother` simulation. (This is described below.)
+        git clone -b cs4457-dist https://github.com/charlesreiss/ns-3-dev ./ns-3-dev
 
-    Note that completion time achieved for the MyTCP variant versus fixed
-    with default settings.
+2.  Make sure you can run the `scratch/mytcpvother` simulation; see instructions below.
 
 ## Part 1
 
@@ -75,7 +74,26 @@ This assignment is a work in progress and may change substantially before it is 
        of what extent your technique could easily be extended to a substantially larger/smaller speed difference
 
 4.  Submit your report and your code modifications via TBD.
-    
+
+# Setting up NS-3 on portal
+
+1.  NS-3 needs `cmake` and `ninja` to build. These are available on portal through the `module` system:
+
+        module load gcc cmake ninja
+
+2.  Before you first run NS-3, you need to configure it with
+
+        ./ns3 configure
+
+    (from the ns-3-dev directory)
+
+3.  You can run our example simulation (source code in `scratch/mytcpvother.cc`) using
+
+        ./ns3 run scratch/mytcpvother
+
+    The first time you do this, NS-3 will need to compile and link everything, which will take a while.
+    NS-3 should avoid recompiling things that don't change.
+
 # Our NS-3 additions
 
 ## MyTcpCongestionOps
