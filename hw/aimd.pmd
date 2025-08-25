@@ -51,11 +51,14 @@ This assignment is a work in progress and may change substantially before it is 
 
 ## Part 2
 
-1.  Customize the `MyTcpCongestionOps` so that (on a simulation with default settings, except as otherwise stated):
+1.  Customize the `MyTcpCongestionOps` so that on a simulation with default settings or with `--linkBandwidth=10Mbps`:
 
     *  when the "myTcpMode" parameter is 1, the MyTCP flow completes at least 10% faster in the `mytcpvother` simulation 
 
     *  when the "myTcpMode" parameter is 2, the other flow completes at least 10% faster and the MyTCP flow completes no more than 30% slower;
+
+    (Your customizations may not query information not ordinarily sent to the MyTcpCongestionOps object, like the exact configuration
+    of the simulated links.)
 
 3.  Include in a report (in text, HTML, or PDF format; preferably with seperate sections
     for each of the below items):
@@ -117,5 +120,4 @@ If you passing the `--tracing` option, the simulation will produce output files:
 *  `mytcpvother-cwnd-X.csv`, `mytcpvother-ssthresh-X.csv`: CSV files containing the values of the cwnd (congestion window size)
     and ssthresh (slow start threshold) values for node X's TCP connections; the columns of the CSV file are time (in nanoseconds), socket number,
     and value.
-
 

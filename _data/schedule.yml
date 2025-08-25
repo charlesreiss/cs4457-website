@@ -116,10 +116,6 @@
   slides_ref:
   - arp
   description: |
-    (Reiss out of town)
-
-    >  The recording is available on Canvas on the Panopto Video tab and will be copied here later.
-
     *  IP versus MAC addresses
     *  broadcast, basic multicast
        *  broadcast on ethernet
@@ -203,6 +199,7 @@
   week: 6
 
 - date: 2025-10-07
+  week: 7
   title: "ECN; queue disciplines"
   reading: PD 6.4.2, 6.2, 
   slides_ref:
@@ -219,7 +216,6 @@
        *  fair queuing
        *  strict priority
        *  random early detection
-  week: 7
 
 
 - date: 2025-10-09
@@ -465,7 +461,7 @@
    *  (if time) MPLS
 
 - date: 2025-12-09
-  week: 15
+  week: 16
   title: "exam review"
 
 - date: 2025-12-16
