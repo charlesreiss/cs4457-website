@@ -18,8 +18,6 @@
        *  layering models
            *  Internet
            *  OSI model (briefly)
-       *  wireshark interlude
-          *  [packet trace](files/example-firefox-trace.pcapng)
 
 - date: 2025-08-28
   week: 1
@@ -30,17 +28,19 @@
   - physical
   - framing
   description: |
+    *  wireshark interlude
+       *  [packet trace](files/example-firefox-trace.pcapng)
     *  end-to-end argument
        *  Saltzer, Reed, and Clark, "[End-to-End Arguments in System Design](https://dl.acm.org/doi/pdf/10.1145/357401.357402)" (ACM Transactions on Computing Systems, 1984)
     *  direct links
        *  copper, fiber, radio
     *  bits as voltage, timing
        *  Manchester coding
+    *  error detection --- checksums
     *  types of transmission errors
     *  framing
        *  headers and trailers
        *  byte, bits, clocks
-    *  error detection --- checksums
 
 - date: 2025-08-29
   week: 1
