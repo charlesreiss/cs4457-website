@@ -91,7 +91,7 @@ index_sort: 99
   {%- endif -%}
 {%- endif -%}
 {%- if video -%}
-      | screencapture (<a href="/~cr4bd/videoplayer/?4457/F2024/recordings/{{ file_prefix }}-video-and-audio">browser</a>&nbsp; or download <a href="recordings/{{ file_prefix }}-video-and-audio.mp4">mp4</a> <a href="recordings/{{ file_prefix }}-video-and-audio.webm">webm</a> <a href="recordings//{{ file_prefix }}-audio.mp3">audio</a>
+      | screencapture (<a href="/~cr4bd/videoplayer/?4457/F2025/recordings/{{ file_prefix }}-video-and-audio">browser</a>&nbsp; or download <a href="recordings/{{ file_prefix }}-video-and-audio.mp4">mp4</a> <a href="recordings/{{ file_prefix }}-video-and-audio.webm">webm</a> <a href="recordings//{{ file_prefix }}-audio.mp3">audio</a>
     )
 {%- else -%}
     {%- if day.video_mp4 -%}

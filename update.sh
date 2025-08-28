@@ -7,7 +7,7 @@ chmod -R a+r files
 chmod -R a+r oldquiz
 chmod -R a+r readings/files
 chmod -R a+r slides
-chmod -R a+rX ~/public_html/4457/F2024/recordings
+chmod -R a+rX ~/public_html/4457/F2025/recordings
 
 BUNDLE=bundle
 pd=pandoc
