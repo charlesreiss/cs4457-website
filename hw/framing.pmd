@@ -2,9 +2,19 @@
 title: Framing
 author: Charles Reiss
 ...
+
+<div class="changelog">
+Changelog:
+
+*  28 August 2025: fix bug in `test.py`'s  parsing for the `send` command where it only read the first byte in the hex or binary formats
+</div>
+
+>  If you downloaded the skeleton code before 28 August 2025 around 9:30pm, the `test.py` had a bug in the `send` command; you can download
+>  an updated version of test.py [here]](files/framing/test.py).
+
 # Your Task
 
-1.  Download the supplied skeleton code at [here](files/framing-skeleton.tgz).[^portal_note] (last update 21 August 2025)
+1.  Download the supplied skeleton code at [here](files/framing-skeleton.tgz).[^portal_note] (last update 28 August 2025)
 
 2.  In `sendrecv.py` complete an implementation of MySender and MyReceiver.
 
@@ -57,6 +67,9 @@ author: Charles Reiss
         is _not_ permissible to use, for example, [python-pppd](https://pypi.org/project/python-pppd/)
 
 3.  Test your implementation using `test.py`:
+
+    >  If you downloaded `test.py` before 28 August 2025 around 9:30pm, you should get [an updated test.py](files/framing/test.py) to fix
+    >  a bug with reading hex/binary input for `send`.
 
     *  You can use `python3 test.py send ...` to send sample messages:
 
