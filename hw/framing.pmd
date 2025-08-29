@@ -10,7 +10,7 @@ Changelog:
 </div>
 
 >  If you downloaded the skeleton code before 28 August 2025 around 9:30pm, the `test.py` had a bug in the `send` command; you can download
->  an updated version of test.py [here]](files/framing/test.py).
+>  an updated version of test.py [here](files/framing/test.py).
 
 # Your Task
 
@@ -62,7 +62,7 @@ Changelog:
     5.  Be your own code and use only functionality built-in to python or supplied as
         part of its standard library. This means that it _is_ permissible to use
         the `zlib` module's [`crc32` function](https://docs.python.org/3/library/zlib.html#zlib.crc32)
-        or the [`hashlib`' module](https://docs.python.org/3/library/hashlib.html)
+        and the [`hashlib` module](https://docs.python.org/3/library/hashlib.html)
         and the [`struct` module](https://docs.python.org/3/library/struct.html). But it
         is _not_ permissible to use, for example, [python-pppd](https://pypi.org/project/python-pppd/)
 
