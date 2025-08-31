@@ -51,7 +51,6 @@
   reading: PD 2.5.1-2.5.2, PD 1.5
   slides_ref:
   - reliable
-  - perf
   description: |
     *  stop-and-wait
     *  need for sequence numbers
