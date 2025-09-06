@@ -3,6 +3,12 @@ title: reliable transport
 author: Charles Reiss (based on ...)
 ...
 
+<div class="changelog">
+Changelog:
+
+*  6 Sep 2025: supply updated config.py; more fully remove references to MAXIMUM_SEQUENCE from the writeup since it's just set to a huge number
+</div>
+
 >  If you downloaded the skeleton code before 6 Septemer 2025 around 5pm, you may need an [updated version of config.py](files/reliable/config.py).
 
 # Your Task
@@ -43,8 +49,8 @@ author: Charles Reiss (based on ...)
 
     *  `data`: up to 20 bytes, or the special value None to indicate no data is present
     *  `is_end`: a boolean field
-    *  `seq_num`: an integer sequence number which must be between 0 and config.MAX_SEQUENCE  inclusive
-    *  `ack_num`: an integer ack number which must be between 0 and config.MAX_SEQUENCE inclusive
+    *  `seq_num`: an integer sequence number
+    *  `ack_num`: an integer ack numbe
         or the special value None to specify no ack number
 
     Message objects which have the following fields:
