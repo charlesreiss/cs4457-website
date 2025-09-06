@@ -3,9 +3,11 @@ title: reliable transport
 author: Charles Reiss (based on ...)
 ...
 
+>  If you downloaded the skeleton code before 6 Septemer 2025 around 5pm, you may need an [updated version of config.py](files/reliable/config.py).
+
 # Your Task
 
-1.  Download the supplied simulator and skeleton code at [here](files/reliable-skeleton.tgz) (last updated 4 August 2025).
+1.  Download the supplied simulator and skeleton code at [here](files/reliable-skeleton.tgz) (last updated 6 September 2025).
 
     In the skeleton code, you should only modify `ends.py`, which initially has code
     that implements transmission without any sort of reliablity.
