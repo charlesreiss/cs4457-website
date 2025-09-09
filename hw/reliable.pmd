@@ -8,14 +8,14 @@ Changelog:
 
 *  6 Sep 2025: supply updated config.py; more fully remove references to MAXIMUM_SEQUENCE from the writeup since it's just set to a huge number
 *  8 Sep 2025: correct ReliableSender/ReliableReceiver to MySender/MyReceiver; note explicitly that to_network exists in MyReceiver like in MySender
-*  8 Sep 2025: update config.py in reliable skeleton to default to `one-zero` and not list `no-ack` mode that new error-checking code does not support
+*  9 Sep 2025: update config.py in reliable skeleton to default to `one-zero` and not list `no-ack` mode that new error-checking code does not support
 </div>
 
 >  If you downloaded the skeleton code before 6 Septemer 2025 around 5pm, you may need an [updated version of config.py](files/reliable/config.py).
 
 # Your Task
 
-1.  Download the supplied simulator and skeleton code at [here](files/reliable-skeleton.tgz) (last updated 8 September 2025).
+1.  Download the supplied simulator and skeleton code at [here](files/reliable-skeleton.tgz) (last updated 9 September 2025).
 
     In the skeleton code, you should only modify `ends.py`, which initially has code
     that implements transmission without any sort of reliablity.
