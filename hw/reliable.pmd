@@ -7,7 +7,7 @@ author: Charles Reiss (based on ...)
 Changelog:
 
 *  6 Sep 2025: supply updated config.py; more fully remove references to MAXIMUM_SEQUENCE from the writeup since it's just set to a huge number
-*  8 Sep 2025: correct ReliableSender/ReliableReceiver to MySender/MyReceiver; note explicitly that to_network exists in MyReceiver
+*  8 Sep 2025: correct ReliableSender/ReliableReceiver to MySender/MyReceiver; note explicitly that to_network exists in MyReceiver like in MySender
 </div>
 
 >  If you downloaded the skeleton code before 6 Septemer 2025 around 5pm, you may need an [updated version of config.py](files/reliable/config.py).
@@ -42,7 +42,7 @@ Changelog:
        does not matter.)
     *  Given a Message object `m`, you can call `self.to_application(m)` to send that message to the
        application.
-    *  You can call `self.to_network` to send a Packet to the network, like in the MySender class.
+    *  Like with `MyReceiver`, you can call `self.to_network` to send a Packet to the network, like in the MySender class.
 
     In `config.py`, we set global variables that will control your implementation,
     a variable `FOO` in this file is references as `config.FOO` below.
@@ -72,7 +72,7 @@ Changelog:
 ### one/zero acknowledgments
 
 1.  Modify `ends.py`, so that when `config.MODE` is `one-zero`:
-    
+
     *  it does not send a new message until the previous is acknowledged (like in [section 2.5.1 of <i>Computer Networks:
        A Systems Approach</i>](https://book.systemsapproach.org/direct/reliable.html#stop-and-wait)),
        and retransmits a packet (from the sender)
@@ -90,7 +90,7 @@ Changelog:
 2.  If MySender's `from_application` cannot immediately transmit a message, then it should return False and not
     queue the message. (Our simulator/testing code will try resending it later.)
 
-3.  Your implementation must send acknowledgment with an `ack_num` equal to the most recently received message.
+3.  Your implementation must send acknowledgment with an `ack_num` equal to the number for the most recently received message.
 
 2.  Test your implementation:
 
@@ -204,6 +204,10 @@ Changelog:
 1.  Submit your `ends.py` on the submission site.
 
 # API
+
+## sending/making packets
+
+1.  From both `MySender`/`MyReceiver`, you can send packets with the `to_network` method (that we will inject in those classes).
 
 ## timers
 
