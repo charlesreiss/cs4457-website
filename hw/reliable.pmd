@@ -7,6 +7,7 @@ author: Charles Reiss (based on ...)
 Changelog:
 
 *  6 Sep 2025: supply updated config.py; more fully remove references to MAXIMUM_SEQUENCE from the writeup since it's just set to a huge number
+*  8 Sep 2025: correct ReliableSender/ReliableReceiver to MySender/MyReceiver; note explicitly that to_network exists in MyReceiver
 </div>
 
 >  If you downloaded the skeleton code before 6 Septemer 2025 around 5pm, you may need an [updated version of config.py](files/reliable/config.py).
@@ -18,7 +19,7 @@ Changelog:
     In the skeleton code, you should only modify `ends.py`, which initially has code
     that implements transmission without any sort of reliablity.
 
-    In `ends.py`, `ReliableSender` receives messages from its simulated application layer
+    In `ends.py`, `MySender` receives messages from its simulated application layer
     then transmits them using the simulated network layer:
 
     *  We will call the `from_application` method with each message to be sent.
@@ -33,7 +34,7 @@ Changelog:
        returned False from `from_application`), you must call `self.ready_for_more_from_application()`.
        It is okay if you call this method more times than necessary.
 
-    Then `ReliableReceiver` receives those messages from its simulated network layer
+    Then `MyReceiver` receives those messages from its simulated network layer
     (in the `from_network` method),
     and forwards them to its simulated application layer:
 
@@ -41,6 +42,7 @@ Changelog:
        does not matter.)
     *  Given a Message object `m`, you can call `self.to_application(m)` to send that message to the
        application.
+    *  You can call `self.to_network` to send a Packet to the network, like in the MySender class.
 
     In `config.py`, we set global variables that will control your implementation,
     a variable `FOO` in this file is references as `config.FOO` below.
