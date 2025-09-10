@@ -17,7 +17,6 @@
   due: 2025-09-19
   page: hw/reliable.html
   submit_file: ends.py
-  tentative: true
 
 - name: P4 part 1 (no submission)
   short_name: p4
