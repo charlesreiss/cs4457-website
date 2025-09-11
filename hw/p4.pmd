@@ -6,8 +6,8 @@ author: Charles Reiss, based on an assignment by Hyojoon Kim
 <!-- similar: https://github.com/2021-cs344/maclearning-exercise --->
 
 <div class="oldsite">
-This homework will be updated to point to newer VM images for this year and to replace `f24` with `f25` and to make some technical changes needed to work
-with a newer P4 version. This likely includes eliminating the print_counters.py program and adding instructions on how to do the same within mycontroller.py.
+This homework will be updated to point to newer VM images for this year and to replace `f24` with `f25` and to make some technical changes in the skeleton code
+needed to work with a newer P4 version. This likely includes eliminating the print_counters.py program and adding instructions on how to do the same within mycontroller.py.
 
 Otherwise I do not expect the assignment to change.
 </div>
