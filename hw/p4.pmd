@@ -5,6 +5,10 @@ author: Charles Reiss, based on an assignment by Hyojoon Kim
 
 <!-- similar: https://github.com/2021-cs344/maclearning-exercise --->
 
+<div class="oldsite">
+This homework will be updated to point to newer VM images for this year and to replace `f24` with `f25`, but otherwise I do not expect it to change.
+</div>
+
 # Your Task
 
 ## Part 1
@@ -24,13 +28,15 @@ author: Charles Reiss, based on an assignment by Hyojoon Kim
 
     *  then copy our modified version of the p4 tutorials using
 
-            git clone -b cs4457-f24-base https://github.com/charlesreiss/p4tutorials.git ./tutorials
+            git clone -b cs4457-f25-base https://github.com/charlesreiss/p4tutorials.git ./tutorials
 
     )
 
 2.  Run the VM and login (username/password p4/p4 for the Virtualbox image)
 
-2.  Go to the `tutorials/exercises/cs4457_f24` directory.
+2.  Go to the `tutorials` directory and run `git pull` to make sure you have the latest version of the skeleton code.
+
+2.  Go to the `tutorials/exercises/cs4457_f25` directory. (If there is a `cs4457_f24` directory but not a `cs4457_f25` directory, run `git checkout cs4457-f25-base`.)
 
     Run `git pull` to make sure you have the latest version of the skeleton code.
 
