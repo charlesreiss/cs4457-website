@@ -38,7 +38,7 @@
   - results.pdf
 
 - name: NS-3 / AIMD part 1
-  short_name: reliable2
+  short_name: aimd1
   open: 2025-10-03
   due: 2025-10-10
   page: hw/aimd.html
@@ -46,7 +46,7 @@
   tentative: true
 
 - name: NS-3 / AIMD part 2
-  short_name: reliable2
+  short_name: aimd2
   open: 2025-10-10
   due: 2025-10-17
   page: hw/aimd.html
