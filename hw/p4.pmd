@@ -5,25 +5,16 @@ author: Charles Reiss, based on an assignment by Hyojoon Kim
 
 <!-- similar: https://github.com/2021-cs344/maclearning-exercise --->
 
-<div class="oldsite">
-This homework will be updated to point to newer VM images for this year and to replace `f24` with `f25` and to make some technical changes in the skeleton code
-needed to work with a newer P4 version. This likely includes eliminating the print_counters.py program and adding instructions on how to do the same within mycontroller.py.
-
-Otherwise I do not expect the assignment to change.
-</div>
-
 # Your Task
 
 ## Part 1
 
-1.  Download the supplied VM image for Virtualbox (x86-64) at <https://virginia.box.com/s/vl6jdfo27jooxbb07i3setll1l7tac14>
+1.  Download the supplied VM image for Virtualbox (x86-64) at <https://virginia.box.com/s/uka089z32eozkbyd6skod1acev8ogxy9>
 
-    (or:
+    or:
 
-    *  follow [these instructions for an ARM64 VM for Apple Silicon Macs](p4-armvm.html).
-
-    *  install p4 according to the instructions at <https://github.com/jafingerhut/p4-guide/blob/master/bin/README-install-troubleshooting.md> [which should work on arm64 VM running on UTM on OS X, but I have not
-       tested this personally], and then
+    *  install p4 or download a VM with P4 installed according to the instructions at <https://github.com/jafingerhut/p4-guide/blob/master/bin/README-install-troubleshooting.md> [which should work on arm64 VM running on UTM on OS X,
+        but I have not tested this personally], and then
 
     *  move the "stock" P4 tutorials out of the way using
 
@@ -32,8 +23,6 @@ Otherwise I do not expect the assignment to change.
     *  then copy our modified version of the p4 tutorials using
 
             git clone -b cs4457-f25-base https://github.com/charlesreiss/p4tutorials.git ./tutorials
-
-    )
 
 2.  Run the VM and login (username/password p4/p4 for the Virtualbox image)
 
@@ -122,7 +111,7 @@ Otherwise I do not expect the assignment to change.
 
         write_or_overwrite_table_entry(
             p4info_helper=p4info_helper,
-            switch=s1,
+            switch=switch,
             table_name='MyIngress.mac_dst_lpm',
             match_fields={
                 # first 48 bits match this MAC address
@@ -138,10 +127,27 @@ Otherwise I do not expect the assignment to change.
    duplicated on other ports but should still leave h1 reachable.
 
    I would suggest examining the `pcaps` files as [described below under the heading "Examining pcaps"](#pcaps)
-   to do this. Alternately, you can send pings and see how it changes the values from `print_counters.py`, but note that its counts
-   includes autoconfiguration packets, not just your pings and the like.
+   to do this.
 
-   In later steps rather than hard-coding the MAC address of `h1`
+   (Alternately, you can use the counters that are mainted by the egress processing in the supplied mydataplane.p4.
+   `mycontroller.py` contains a `print_egress_counters` function that will read and output the values for these counters.
+   If you want the controller to do that periodically, you can write a function 
+   that does that:
+
+        def print_loop(p4info_helper, switch):
+            while True:
+                print_egress_counters(p4info_helper, switch)
+                sleep(30)
+
+    And then run it in a separate thread:
+
+        import threading
+        thread = threading.Thread(target=print_counter_loop, args=(p4info_helper, s1))
+        thread.start()
+
+   )
+
+   Later, instead of hard-coding the MAC address of `h1`
    and its corresponding port, you will infer that information from
    packets the switch receives.
 
@@ -150,31 +156,19 @@ Otherwise I do not expect the assignment to change.
 3.  Modify `mydataplane.p4` to uncomment the call `copy_to_controller()`
     before `mac_dst_lpm.apply()`.
 
-    *[Edited 17 Sep 2024]:* 
-    Make sure the `process_packet` function contains the fixed code
-    (which it should if you ran `git pull` since 17 Sep 2024):
-
         metadata = decode_packet_in_metadata(
             p4info_helper,
             switch,
             packet.metadata
         )
 
-    and not:
-
-        metadata = decode_packet_in_metadata(packet.metadata)
-
-    *[Edited 26 Sep 2024]:* And make sure myutil.py is the latest version
-    from git (which it should be if you ran `git pull` since 26 Sep 2024,
-    or you can download from [here](https://github.com/charlesreiss/p4tutorials/blob/cs4457-f24-base/exercises/cs4457_f24/myutil.py))
-
     After doing this (and restarting the network simulation),
     `mycontroller.py` should start outputting information about every packet sent
     when you run commands in mininet. This output is produced by the `process_packet`
     function that you will modify later.
 
-    (You might see some extra messages when mininet is getting setup from IPv6 autoconfiguration.
-    These messages can be sent before mininet finishes configuring the MAC addresses in
+    (You might see some extra messages when mininet is getting setup from IPv6 autoconfiguration
+    and mDNS.  These messages can be sent before mininet finishes configuring the MAC addresses in
     the hosts in the simulated topology, so they may use MAC addresses that aren't part of the
     configured topology.)
 
