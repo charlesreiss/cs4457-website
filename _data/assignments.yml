@@ -72,7 +72,7 @@
 - name: DNS
   short_name: dns
   open: 2025-10-31
-  due: 2025-11-14
+  due: 2025-11-07
   page: hw/dns.html
   tentative: true
   submit_file: dns.py
