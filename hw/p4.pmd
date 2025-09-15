@@ -49,10 +49,6 @@ author: Charles Reiss, based on an assignment by Hyojoon Kim
        the switch (using commands like `h1 ping h2` or `pingall` or `iperfudp 1M h1 h2` in mininet);
     *  allows all hosts to be reachable from each other when the switch is initialize
     *  broadcasts all frames sent by any simulated host to all other simulated hosts. This means:
-       *  running the command `python3 print_counters.py` in a separate terminal will show
-          a count of the number of packets and bytes sent to each of the switch's output ports.
-          You should see that ports 1 through 4 all have the same number of packets/bytes output, no
-          matter what commands you run.
        *  the packet traces in pcaps/s1-ethX_out.pcap will show what the switch outputted to each
           port. Examined with wireshark or with a command like `tcpdump -er pcaps/s1-ethX_out.pcap`,
           they should show that each port received the same data.
@@ -134,12 +130,12 @@ author: Charles Reiss, based on an assignment by Hyojoon Kim
    If you want the controller to do that periodically, you can write a function 
    that does that:
 
-        def print_loop(p4info_helper, switch):
+        def print_counter_loop(p4info_helper, switch):
             while True:
                 print_egress_counters(p4info_helper, switch)
                 sleep(30)
 
-    And then run it in a separate thread:
+   And then run it in a separate thread:
 
         import threading
         thread = threading.Thread(target=print_counter_loop, args=(p4info_helper, s1))
@@ -227,7 +223,7 @@ author: Charles Reiss, based on an assignment by Hyojoon Kim
 ## Examining pcaps {#pcaps}
 
 1.  As mentioned above the simulation produces a bunch of packet traces in the `pcaps` subdirectory
-    of the `tutorials/exercises/cs4457_f24` directory.
+    of the `tutorials/exercises/cs4457_f25` directory.
     Each one represents the packets sent in *one direction* from the switch.
 
     You can open these with wireshark:
@@ -290,10 +286,10 @@ author: Charles Reiss, based on an assignment by Hyojoon Kim
        the process_packet function
 
 4.  Initially, the loop that receives packets from the switch won't do anything because
-    the cs4457_f24.p4 does not run the `copy_to_controller` action.
+    the mydataplane.p4 does not run the `copy_to_controller` action.
 
-5.  The `process_packet` function decodes some "metadata" fields that are setup by `cs4457_f24.p4`.
-    These are defined in the `header packet_in_header_t` in `cs4457_f24.p4` and set
+5.  The `process_packet` function decodes some "metadata" fields that are setup by `mydataplane.p4`.
+    These are defined in the `header packet_in_header_t` in `mydataplane.p4` and set
     in `MyIngress` (by modifying `hdr.packet_in`).
 
     To prevent the "metadata" fields from being output as part of packets sent to the simulated
@@ -304,7 +300,7 @@ author: Charles Reiss, based on an assignment by Hyojoon Kim
     local variables for your convenience later. When the fields are sent to the controller,
     each metadata field is sent separately, but without only an index instead of a name,
     and without information about the size or format of the field. This means that if you modify
-    the metadata fields in `cs4457_f24.p4` without corresponding modifications to `mycontroller.py`,
+    the metadata fields in `mydataplane.p4` without corresponding modifications to `mycontroller.py`,
     mycontroller will read the wrong data.
 
 ## Running the simulated network
@@ -349,15 +345,4 @@ author: Charles Reiss, based on an assignment by Hyojoon Kim
     You can run `python3 mycontroller.py` in another terminal to do this.
 
     Note that exiting `mininet` or terminating the python3 program will stop the network.
-
-1.  We provide a utility program called `print_counters.py` which will contact the emulated switch
-    and retrieve counts of how many packets and bytes have been sent on each port.
-
-    You can run it in a separate terminal using `python3 print_counters.py`.
-    (Note that you will need a version from git on/after 2 October because it previously expected filenames
-    in `build/` that didn't match `mydataplane.p4`.)
-
-    The utility program uses the same code as `mycontroller.py` to connect to this switch, but does
-    send any commands that would register it as the controller of the switch or any commands
-    that would reconfigure the switch.
 
