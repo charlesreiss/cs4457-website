@@ -11,6 +11,7 @@ Changelog:
 *  9 Sep 2025: update config.py in reliable skeleton to default to `one-zero` and not list `no-ack` mode that new error-checking code does not support
 *  15 Sep 2025: note about using config settings and not using "from config import ..."
 *  16 Sep 2025: correct "sliding" to "sliding-window" to match connection.py
+*  16 Sep 2025: update config.py in skeleton code not to refer to wrong "sliding" setting
 </div>
 
 >  If you downloaded the skeleton code before 6 Septemer 2025 around 5pm, you may need an [updated version of config.py](files/reliable/config.py).
