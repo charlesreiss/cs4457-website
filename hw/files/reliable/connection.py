@@ -61,7 +61,7 @@ class Connection:
         self._generate_count = 0
         if config.MODE == 'one-zero':
             maximum_window = 1
-        elif config.MODE == 'sliding-window':
+        elif config.MODE == 'sliding-window' or config.MODE == 'sliding':
             maximum_window = config.INITIAL_WINDOW
             assert maximum_window != None
         elif config.MODE == 'variable-sliding':

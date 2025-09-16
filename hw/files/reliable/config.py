@@ -1,9 +1,9 @@
 ## all the options here can be overriden on the command-line ##
 
-"""one of 'one-zero', 'sliding', 'variable-sliding'"""
+"""one of 'one-zero' or 'sliding-window' or 'variable-sliding'"""
 MODE = 'one-zero'
 
-"""initial window size for 'sliding' and 'variable-sliding' mode"""
+"""initial window size for 'sliding-window' mode"""
 INITIAL_WINDOW = 5
 
 
