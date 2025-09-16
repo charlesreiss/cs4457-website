@@ -10,6 +10,7 @@ Changelog:
 *  8 Sep 2025: correct ReliableSender/ReliableReceiver to MySender/MyReceiver; note explicitly that to_network exists in MyReceiver like in MySender
 *  9 Sep 2025: update config.py in reliable skeleton to default to `one-zero` and not list `no-ack` mode that new error-checking code does not support
 *  15 Sep 2025: note about using config settings and not using "from config import ..."
+*  16 Sep 2025: correct "sliding" to "sliding-window" to match connection.py
 </div>
 
 >  If you downloaded the skeleton code before 6 Septemer 2025 around 5pm, you may need an [updated version of config.py](files/reliable/config.py).
@@ -161,7 +162,7 @@ Changelog:
 
 ### Sliding windows
 
-1.  Modify `ends.py`, so that when `config.MODE` is `sliding`,
+1.  Modify `ends.py`, so that when `config.MODE` is `sliding-window`,
     it uses a sliding window (like in [section 2.5.2 of <i>Computer Networks:
     A Systems Approach</i>](https://book.systemsapproach.org/direct/reliable.html#sliding-window))
     with:
