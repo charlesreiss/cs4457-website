@@ -20,7 +20,7 @@ Changelog:
 
 # Your Task
 
-1.  Download the supplied simulator and skeleton code at [here](files/reliable-skeleton.tgz) (last updated 9 September 2025).
+1.  Download the supplied simulator and skeleton code at [here](files/reliable-skeleton.tgz) (last updated 18 September 2025).
 
     In the skeleton code, you should only modify `ends.py`, which initially has code
     that implements transmission without any sort of reliablity.
