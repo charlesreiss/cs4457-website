@@ -33,6 +33,19 @@ def run(args, messages):
         drop_rules=[random_backward_drop_rule, seqack_drop_rule],
         label='backward'
     )
+    if args.check_timeout:
+        check_timeout_limit = args.check_timeout
+    else:
+        check_timeout_limit = max(
+                args.delay * 2 + args.delay_variance * 2 +
+                min(args.buffer, len(messages)) / args.bandwidth_forward * 2 +
+                min(args.buffer, len(messages)) / args.bandwidth_backward * 2  + 1,
+                config.INITIAL_TIMEOUT + 1,
+            )
+        if config.MODE.startswith('sliding'):
+            # Sloppy way to permit assumption that we only retransmit first missing packet,
+            # so we'll need extra round-trips in worst-case loss scenario
+            check_timeout_limit *= config.INITIAL_WINDOW
     connection = _simulator.new_connection(
         label='main',
         sender=sender,
@@ -40,14 +53,7 @@ def run(args, messages):
         forward_link_name='forward',
         backward_link_name='backward',
         check_packets=args.check_packets,
-        check_timeout_limit=args.check_timeout if args.check_timeout else (
-            max(
-                args.delay * 2 + args.delay_variance * 4 +
-                min(args.buffer, len(messages)) / args.bandwidth_forward * 2 +
-                min(args.buffer, len(messages)) / args.bandwidth_backward * 2  + 1,
-                config.INITIAL_TIMEOUT + 1,
-            )
-        ),
+        check_timeout_limit=check_timeout_limit,
     )
     _simulator.add_event(
         Event(

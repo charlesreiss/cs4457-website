@@ -12,9 +12,11 @@ Changelog:
 *  15 Sep 2025: note about using config settings and not using "from config import ..."
 *  16 Sep 2025: correct "sliding" to "sliding-window" to match connection.py
 *  16 Sep 2025: update config.py in skeleton code not to refer to wrong "sliding" setting
+*  18 Sep 2025: update main.py to be more permissive about timeout enforcement in sliding-window setting
 </div>
 
 >  If you downloaded the skeleton code before 6 Septemer 2025 around 5pm, you may need an [updated version of config.py](files/reliable/config.py).
+>  Also after the morning of 18 September 2025, there is [an updated main.py](files/reliable/main,py) was updated to be more permissive about timeout enforcement for the sliding window case, which would likely be relevant for solutions attempting to selective acknowledgments or similar.
 
 # Your Task
 
