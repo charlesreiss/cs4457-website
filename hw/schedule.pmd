@@ -6,12 +6,7 @@ author: Charles Reiss
 <div class="changelog">
 Changelog:
 
-*  5 Oct 2024: add variable-size packets (updating skeleton code and writeup below substantially);
-   add requirement for "smart" dropping in WeightedFairQueuingBuffer case
-*  5 Oct 2024: add advice on using heapq, making comparable Python objects
-*  7 Oct 2024: mention idea of keeping multiple subqueues; make it clearer that comparable Pyhton objects also applies to Python sorting functions; make hints not suggest you should necessairily use heapq; clarify "performance requirement" to "compute-time requirement" in hints
-*  8 Oct 2024: mention `--time-limit` option.
-*  18 Oct 2024: add hint about common mistake of not handling drops when computing virtual times; correct ) placement
+*  1 Oct 2025: adjust for weighted fair queueing with separate subqueues
 </div>
 
 # Your Task
@@ -57,7 +52,12 @@ Changelog:
 
 2.  Add a new buffer implementation in buffer.py called WeightedFairQueuingBuffer.
 
-    In this implementation, implement weighted fair queuing, where packets from connection c1
+    In this implementation, store the packets from connection c1 in a separate
+    buffer from the packets for connection c2. For each of these buffers,
+    have fixed limit on their size, and drop the incoming packets if those
+    buffers are full.
+
+    In this queue, implement weighted fair queuing, where packets from connection c1
     get twice the bandwidth as packets from connection c2.
 
     You can identify which connection a packet is from using `packet.label` which will be
@@ -65,13 +65,6 @@ Changelog:
 
     Since our simulated packets have variable size, you will need to retrieve the packet sizes using
     `packet.size`.
-
-    When a packet is inserted in the buffer and the buffer has reached its capacity,
-    you should
-
-    *  drop the incoming packet if its scheduled transmission time (as computed using the "virtual time"
-       method discussed in lecture) would be higher than any packet currently in the buffer;
-    *  drop the packet with the highest scheduled tranmission time currently in the buffer otherwise.
 
     If you are successful:
 

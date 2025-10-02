@@ -150,8 +150,8 @@
 
 - date: 2025-09-23
   week: 5
-  title: "congestion control: AIMD"
-  reading: PD 6.1, 6.3-4, 6.4.2, FS 16, D 19.1
+  title: "congestion control: AIMD, fairness"
+  reading: PD 6.1, 6.3-4, 6.4.2, FS 16, D 19.1, 20.2-20.3
   slides_ref:
   - congest
   description: |
@@ -163,26 +163,14 @@
     *  slow-increase/fast-decrease
     *  additive increase/multiplicative decrease
 
-- date: 2025-09-25
-  week: 5
-  title: "congestion control: fairness, slow start"
-  reading: PD 6.4.1-2, 6.2, FS 16, D 20, D 19.2-4
-  slides_ref:
-  - congest
-  description: |
     *  actual TCP outline
     *  fair sharing
     *  min/max fairness
 
-    *  slow start
-
-- date: 2025-09-26
+- date: 2025-09-25
   week: 5
-
-- date: 2025-09-30
-  week: 6
-  title: "congestion control: fast recovery, big buffers; high utilization is bad"
-  reading: PD 6.4, 6.2; (D 19-20)
+  title: "congestion control: fairness, slow start, fast recovery"
+  reading: PD 6.3.2-3, FS 16, D 19.2-4
   slides_ref:
   - congest
   description: |
@@ -193,15 +181,44 @@
        *  high variance from long queues
     *  bufferbloat: congestion makes queues deep
 
-    *  timeout management
-       *  why estimate variance
-       *  exponential backoff idea
+    *  slow start
+
+
+- date: 2025-09-26
+  week: 5
+
+- date: 2025-09-30
+  week: 6
+  title: "congestion control: alternate congestion signals / simulators"
+  reading: PD 6.3.4, 6.4.1-6.4.2; (D 19-20); D 32
+  slides_ref:
+  - congest
+  - sim
+  description: |
+    *  CUBIC
+
+    *  alternate congestion signals
+       *  explicit congestion notification
+           *  echoing back congestion signal
+       *  delay-based congestion control
+
+    *  discrete event simulators
 
 
 
 - date: 2025-10-02
   week: 6
-  title: "simulating TCP / NS-3 as example"
+  title: "simulating TCP / queuing"
+  slides_ref:
+  - sim
+  - queuing
+  reading: PD 6.2, D 32
+  description: | 
+    *  discrete event simulators
+
+    *  queue discplines
+       *  droptail and problems
+       *  strict priority
 
 
 - date: 2025-10-03
@@ -210,21 +227,15 @@
 - date: 2025-10-07
   week: 7
   title: "ECN; queue disciplines"
-  reading: PD 6.4.2, 6.2, 
+  reading: PD 6.2, 6.4.2
   slides_ref:
-  - congest
   - queuing
   description: |
-    *  alternate congestion signals
-       *  explicit congestion notification
-           *  echoing back congestion signal
-       *  delay-based congestion control
-
-    *  queue discplines
-       *  droptail and problems
+    *  queue discplines (con't)
        *  fair queuing
-       *  strict priority
        *  random early detection
+
+    
 
 
 - date: 2025-10-09
