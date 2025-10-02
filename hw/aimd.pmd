@@ -3,10 +3,6 @@ title: AIMD
 author: Charles Reiss
 ...
 
-<div class="oldsite">
-This assignment is a work in progress and may change substantially before it is released.
-</div>
-
 # Your Task
 
 1.  Download our copy of NS-3 with additions described below:
@@ -139,3 +135,6 @@ If you passing the `--tracing` option, the simulation will produce output files:
     and ssthresh (slow start threshold) values for node X's TCP connections; the columns of the CSV file are time (in nanoseconds), socket number,
     and value.
 
+# Resources
+
+In addition to the [official NS-3 website](https://nsnam.org) and our slides, you might refer to [Doral's chapter on NS-3](https://intronetworks.cs.luc.edu/current2/html/ns3.html)
