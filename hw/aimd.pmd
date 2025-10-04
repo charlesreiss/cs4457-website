@@ -42,7 +42,7 @@ author: Charles Reiss
 
        *  what factor(s) you think you make goodput change in the way your formula specifies;
 
-3.  Submit your graphs, table, formula, and the explanations to the two points above, and any code modifications via TBD.
+3.  Submit your graphs, table, formula, and the explanations to the two points above, and any code modifications via the submission site.
 
 ## Part 2
 
@@ -69,7 +69,7 @@ author: Charles Reiss
     *  Your assessment (ideally based on some experimentation)
        of what extent your technique could easily be extended to a substantially larger/smaller speed difference
 
-4.  Submit your report and your code modifications via TBD.
+4.  Submit your report and your code modifications via the submission site.
 
 # Setting up NS-3 on portal
 
