@@ -101,7 +101,7 @@ Changelog:
 
 ## MyTcpCongestionOps
 
-In `contrib/mytcp/mytcp.cc`, we've created `MyTcpCongestionOps`. This implements a customizable
+In `contrib/mytcp/model/mytcp.cc`, we've created `MyTcpCongestionOps`. This implements a customizable
 congestion control policy. 
 To change the congestion control policy, I would recommend changing `IncreaseWindow` and `GetSsThresh` functions.
 
