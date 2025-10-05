@@ -3,6 +3,13 @@ title: AIMD
 author: Charles Reiss
 ...
 
+<div class="changelog">
+Changelog:
+
+*  4 Oct 2025: update git repository to actually contain contrib/mytcp
+*  4 Oct 2025: correct path to contrib/mytcp/model/mytcp.cc (from erroneous contrib/mytcp/mytcp.cc)
+</div>
+
 # Your Task
 
 1.  Download our copy of NS-3 with additions described below:
