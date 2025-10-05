@@ -212,7 +212,7 @@
   slides_ref:
   - sim
   - queuing
-  reading: PD 6.2, D 32
+  reading: PD 6.2, D 32, D 23.5.1-23.5.3
   description: | 
     *  discrete event simulators
 
@@ -226,33 +226,35 @@
 
 - date: 2025-10-07
   week: 7
-  title: "ECN; queue disciplines"
-  reading: PD 6.2, 6.4.2
+  title: "ECN; queue disciplines / routing : start"
+  reading: PD 6.2, 6.4.2, D 23.5.1-23.5.3, 21.5.4
   slides_ref:
   - queuing
+  - routing
   description: |
     *  queue discplines (con't)
        *  fair queuing
        *  random early detection
 
-    
+    *  network as a graph
+       *  review: routing tables
 
+    *  ICMP routing errors
+       *  time-to-live
+       *  unreachable
 
 - date: 2025-10-09
   week: 7
-  title: "routing: forwarding errors; spanning tree"
+  title: "routing: spanning tree"
   reading: PD 3.3.4, 3.3.8, 3.2.3, 3.4.1, FS 8, D 3.1
   slides_ref:
   - routing
   description: |
-    *  network as a graph
-       *  review: routing tables
-    *  ICMP routing errors
-       *  time-to-live
-       *  unreachable
-    *  fragments
+    *  ICMP routing errors (finish)
 
-    *  spanning tree protocols (start)
+    *  spanning tree protocols
+       *  centralized
+       *  distributed
 
 - date: 2025-10-10
   week: 7
@@ -263,15 +265,11 @@
 
 - date: 2025-10-16
   week: 8
-  title: "routing: spanning tree / distance vector"
+  title: "routing: metrics / distance vector"
   reading: PD 3.4.2-3, D 13.1-3; D 13.5
   slides_ref:
   - routing
   description: |
-    *  spanning tree protocols (finish)
-       *  centralized
-       *  distributed
-
     *  routing metrics
 
     *  distance vector routing
