@@ -8,6 +8,9 @@ Changelog:
 
 *  4 Oct 2025: update git repository to actually contain contrib/mytcp
 *  4 Oct 2025: correct path to contrib/mytcp/model/mytcp.cc (from erroneous contrib/mytcp/mytcp.cc)
+*  6 Oct 2025: explicitly specify that the goodput formula can be done visually/imprecisely and that we
+   don't expect any real mathematical modelling to be involved; also phrase things to indicate that if
+   there's no significant change in goodput that's not necessarily a problem
 </div>
 
 # Your Task
@@ -40,10 +43,13 @@ Changelog:
        with a different link delay; and
 
     *  Add a column of shared link delay to the table from the previous part, and
-       a new row wtih a different delay than the others.
+       at least one new row with a different delay than the others.
 
 3.  Based on your goodput results, estimate an emperical formula for how goodput
-    changes. Briefly explain:
+    changes (or does not change) as delay varies.
+    An example way to do this would include plotting the results and estimating
+    the regression line visually. (We are not expecting any mathematical modeling.)
+    Briefly explain:
 
        *  how you derived your formula;
 
