@@ -11,6 +11,7 @@ Changelog:
 *  6 Oct 2025: explicitly specify that the goodput formula can be done visually/imprecisely and that we
    don't expect any real mathematical modelling to be involved; also phrase things to indicate that if
    there's no significant change in goodput that's not necessarily a problem
+*  6 Oct 2025: add some hints about computing goodput
 </div>
 
 # Your Task
@@ -32,7 +33,7 @@ Changelog:
        `maxBytes` parameter, and columsn representing:
 
        *  the `maxBytes` parameter;
-       *  the average "goodput" (rate of data bytes usefully transmitted) for each flow;
+       *  the average "goodput" (rate of data bytes usefully transmitted) for each flow (there are some hints below about this);
        *  the average *combined* goodput for both flows
 
        You may, at your option, include additional columns.
@@ -151,3 +152,14 @@ If you passing the `--tracing` option, the simulation will produce output files:
 # Resources
 
 In addition to the [official NS-3 website](https://nsnam.org) and our slides, you might refer to [Doral's chapter on NS-3](https://intronetworks.cs.luc.edu/current2/html/ns3.html)
+
+# Hints
+
+## Computing goodput
+
+1.  The reason we are asking for goodput and not throughput is that we don't want to include the bandwidth used for TCP and IP headers, retransmissions, and other "overhead".
+
+2.  You can figure out the total number of bytes received from main()'s output and the option supplied for maxBytes, or by looking at the packet traces in wireshark (to count how many bytes are received in the TCP connections).
+
+3.  main() prints out the time the last byte was received, or you can look at when the last byte was received in the packet traces.
+
