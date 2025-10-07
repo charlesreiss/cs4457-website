@@ -33,7 +33,7 @@ Changelog:
        `maxBytes` parameter, and columsn representing:
 
        *  the `maxBytes` parameter;
-       *  the average "goodput" (rate of data bytes usefully transmitted) for each flow (there are some hints below about this);
+       *  the average "goodput" (rate of data bytes usefully transmitted) for each flow;
        *  the average *combined* goodput for both flows
 
        You may, at your option, include additional columns.
