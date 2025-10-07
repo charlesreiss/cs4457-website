@@ -218,7 +218,7 @@
 
     *  queue discplines
        *  droptail and problems
-       *  strict priority
+       *  fair queuing (start)
 
 
 - date: 2025-10-03
@@ -227,13 +227,14 @@
 - date: 2025-10-07
   week: 7
   title: "ECN; queue disciplines / routing : start"
-  reading: PD 6.2, 6.4.2, D 23.5.1-23.5.3, 21.5.4
+  reading: PD 6.2, 6.4.1, 3.4.1, 3.3.4, 3.3.8, D 23.5.1-3, 21.5.4, 9.4, 10.4, 12.2
   slides_ref:
   - queuing
   - routing
   description: |
     *  queue discplines (con't)
-       *  fair queuing
+       *  fair queuing (finish)
+       *  strict priority
        *  random early detection
 
     *  network as a graph
@@ -246,7 +247,7 @@
 - date: 2025-10-09
   week: 7
   title: "routing: spanning tree"
-  reading: PD 3.3.4, 3.3.8, 3.2.3, 3.4.1, FS 8, D 3.1
+  reading: PD 3.3.8, 3.2.3, FS 8, D 3.1
   slides_ref:
   - routing
   description: |
@@ -266,7 +267,7 @@
 - date: 2025-10-16
   week: 8
   title: "routing: metrics / distance vector"
-  reading: PD 3.4.2-3, D 13.1-3; D 13.5
+  reading: PD 3.4.4, 3.4.2, D 13.1-3
   slides_ref:
   - routing
   description: |
@@ -285,7 +286,7 @@
   title: "routing: distance vector (finish) / link state"
   slides_ref:
   - routing
-  reading: PD 4.1.2; PD 5.1-5.2
+  reading: PD 3.4.2, 3.4.3, 4.1.1; D 13.5, 13.7
   description: |
     *  distance vector (con't)
        *  handling link removal
@@ -302,6 +303,7 @@
   slides_ref:
   - routing
   - dns
+  reading: PD 4.1.2; D 15
   description: |
     *  autonomous systems
        *  graph structure
