@@ -260,6 +260,9 @@
 - date: 2025-10-10
   week: 7
 
+- date: 2025-10-13
+  week: 8
+
 - date: 2025-10-14
   week: 8
   no_class: true

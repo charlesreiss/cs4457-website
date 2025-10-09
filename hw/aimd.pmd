@@ -12,6 +12,7 @@ Changelog:
    don't expect any real mathematical modelling to be involved; also phrase things to indicate that if
    there's no significant change in goodput that's not necessarily a problem
 *  6 Oct 2025: add some hints about computing goodput
+*  7 Oct 2025: mention ns3 clean for troubleshooting for setting up NS-3 under portal
 </div>
 
 # Your Task
@@ -103,6 +104,12 @@ Changelog:
 
     The first time you do this, NS-3 will need to compile and link everything, which will take a while.
     NS-3 should avoid recompiling things that don't change.
+
+4.  If you have compilation trouble or similar, it might be fixed by rebuilding things by running
+
+        ./ns3 clean
+
+    then rerunnning `./ns3 configure`
 
 # Our NS-3 additions
 

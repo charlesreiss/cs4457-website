@@ -7,6 +7,7 @@ author: Charles Reiss
 Changelog:
 
 *  1 Oct 2025: adjust for weighted fair queueing with separate subqueues
+*  7 Oct 2025: specify that precise handling of packets arriving in the middle of other packets
 </div>
 
 # Your Task
@@ -59,6 +60,11 @@ Changelog:
 
     In this queue, implement weighted fair queuing, where packets from connection c1
     get twice the bandwidth as packets from connection c2.
+
+    To keep this assignment simpler, your implementation does not need to account for
+    adjustments to virtual time based on one packet being in the middle of being transmitted
+    when another is received. For example, this means you can compute the "current" virtual
+    time based on the virtual time of the last transmitted packet.
 
     You can identify which connection a packet is from using `packet.label` which will be
     `c1` for connection c1 and `c2` for connection c2.
