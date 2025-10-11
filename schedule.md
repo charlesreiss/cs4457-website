@@ -35,7 +35,7 @@ index_sort: 99
 {%- else -%}
     {%- assign video = false %}
 {%- endif -%}
-{%- if week_day == "Fri" or week_day == "Sat" or week_day == "Sun" -%}
+{%- if week_day == "Mon" or week_day == "Fri" or week_day == "Sat" or week_day == "Sun" -%}
 {%- assign non_lecture_day = true -%}
 {%- else -%}
 {%- assign non_lecture_day = false -%}
