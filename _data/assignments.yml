@@ -68,7 +68,6 @@
   due: 2025-10-24
   page: hw/schedule.html
   submit_file: buffer.py
-  tentative: true
 
 - name: DV routing
   short_name: dv
