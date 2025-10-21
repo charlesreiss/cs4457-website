@@ -8,11 +8,12 @@ Changelog:
 
 *  1 Oct 2025: adjust for weighted fair queueing with separate subqueues
 *  7 Oct 2025: specify that precise handling of packets arriving in the middle of other packets
+*  20 October 2025: make skeleton code correctly use "from util import trace"
 </div>
 
 # Your Task
 
-1.  Download the skeleton code [here](files/schedule-skeleton.tgz) (last updated 5 October 2024 3:30pm).
+1.  Download the skeleton code [here](files/schedule-skeleton.tgz) (last updated 20 October 2024 11pm).
 
     This code includes a setup for a simulator (the same as for the `reliable` assignment),
     which is configured to have two connections, called "c1" and "c2", between the same two hosts.
