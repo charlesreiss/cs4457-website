@@ -9,7 +9,7 @@ Changelog:
 *  1 Oct 2025: adjust for weighted fair queueing with separate subqueues
 *  7 Oct 2025: specify that precise handling of packets arriving in the middle of other packets
 *  20 October 2025: make skeleton code correctly use "from util import trace"
-*  22 October 2025: remove use of size_in_buffer in skeleton code
+*  22 October 2025: remove use of size_in_buffer in skeleton code and correct corresponding misaccounting in trace() prints
 </div>
 
 # Your Task
