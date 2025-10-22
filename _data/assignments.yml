@@ -74,7 +74,6 @@
   open: 2025-10-24
   due: 2025-10-31
   page: hw/dv.html
-  tentative: true
   submit_file: entity.py
 
 - name: DNS
