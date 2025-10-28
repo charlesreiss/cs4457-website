@@ -313,10 +313,6 @@
        *  business relationships (customer/provider; content-delivery; peering)
     *  BGP advertisements
 
-    *  domain names
-       *  hierarchy
-       *  zones
-
 - date: 2025-10-24
   week: 9
 
@@ -327,6 +323,9 @@
   slides_ref:
   - dns
   description: |
+    *  domain names
+       *  hierarchy
+       *  zones
     *  recursive v authoritative
     *  record types, format
        *  name compression
@@ -339,10 +338,6 @@
   - sockets
   reading: PD 1.4,1
   description: |
-    *  IDNs
-    *  reverse lookups
-    *  preview: cache poisoning, DNSSEC
-
     *  BSD sockets
     *  5-tuples, netstat
     *  listening sockets
@@ -363,19 +358,22 @@
 
 - date: 2025-11-06
   week: 11
-  title: "HTTP 1"
+  title: "DNS misc / HTTP 1"
   slides_ref:
+  - dns
   - http
   reading: PD 1.4, 9.1.2-3; [MDN's section on HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP)
   description: |
+    *  IDNs
+    *  reverse lookups
+    *  preview: cache poisoning, DNSSEC
+
     *  HTTP/1.1
     *  URL/URI parts
     *  request headers, bodies
     *  request methods (GET, HEAD, POST, ...)
     *  connection keep-alive, pipelining, multiple streams
 
-    *  HTTP caching
-    *  detecting if up-to-date
 
 
 - date: 2025-11-07
@@ -383,41 +381,40 @@
 
 - date: 2025-11-11
   week: 12
-  title: "HTTP 2 / wireless link-layer"
-  reading: PD 2.6, 2.7.1-2; D 2.1.5, 4
+  title: "HTTP 2"
   slides_ref:
   - http
-  - multiaccess
+  reading: PD 1.4, 9.1.2-3; [MDN's section on HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP)
   description: |
-    *  HTTP (finish)
-        *  HTTP proxies, reverse proxies
-        *  REST
-
-    *  carrier sense multiple access
-    *  collision probabilities
+    *  HTTP caching
+    *  detecting if up-to-date
+    *  HTTP proxies, reverse proxies
+    *  REST
 
 - date: 2025-11-13
   week: 12
-  title: "wireless 2"
+  title: "wireless 1"
   slides_ref:
   - multiaccess
   reading: PD 2.7.1-2; D 2.1.5, 4
   description: |
+    *  carrier sense multiple access
+    *  collision probabilities
     *  collision detection
     *  wireles signal propoation
-    *  hidden terminals
-    *  ready-to-send / clear-to-send
 
 - date: 2025-11-14
   week: 12
 
 - date: 2025-11-18
   week: 13
-  title: "wireless 3"
+  title: "wireless 2"
   slides_ref:
   - multiaccess
   reading: PD 2.7.1-2; D 2.1.5, 4
   description: |
+    *  hidden terminals
+    *  ready-to-send / clear-to-send
     *  collision detection revisited
     *  multiple access points
     *  scheduled wireless networks
