@@ -1,0 +1,72 @@
+---
+title: Wireless
+author: Charles Reiss
+...
+
+# Your Task
+
+1.  Clone the "cs4457-wireless-dist" branch of the git repository (same as used in AIMD1).
+
+2.  Look at the simulation of a wireless networking scenario with four nodes, where
+    node 1 transmits to node 2 and node 3 transmits to node 4.
+
+    The simulation has various parameters affecting the data rate transmitted and
+    the wireless network configuration.
+
+    In this assignment, we'll be measuring the total number of bytes received
+    by nodes 2 and 4.
+
+3.  Your goal is to manipulate
+    the position of the nodes to be most advantageous for particular network configurations.
+
+    Update the `SetupPositions` function so that:
+
+    *  (--mode=1) at least ____ more bytes are received when using
+
+            --mode=1 --physicalMode=DsssRate1Mbps --sendRate=0.9Mbps --rtsCts=false --txPower=10
+
+       compared to
+
+            --mode=1 --physicalMode=DsssRate1Mbps --sendRate=0.9Mbps --rtsCts=false --txPower=16
+
+    *  (--mode=2) at least ____ more bytes are received when using
+
+            --mode=2 --physicalMode=DsssRate1Mbps --sendRate=0.45Mbps --rtsCts=false
+
+       compared to
+
+            --mode=2 --physicalMode=DsssRate5Mbps --sendRate=0.45Mbps --rtsCts=false
+
+       AND at least 0.1Mbps are received in both scenarios
+
+    *  (--mode=3) at least 200% more bytes are received when using
+
+            --mode=3 --physicalMode=DsssRate1Mbps --sendRate=0.45Mbps --rtsCts=true
+
+       compared to
+
+            --mode=3 --physicalMode=DsssRate1Mbps --sendRate=0.45Mbps --rtsCts=false
+
+    *  (--mode=4) at least 130% more bytes are received when using
+
+            --mode=4 --physicalMode=DsssRate1Mbps --sendRate=0.9Mbps --rtsCts=false
+
+       compared to
+
+            --mode=4 --physicalMode=DsssRate1Mbps --sendRate=0.9Mbps --rtsCts=true
+
+    *  (--mode=5) at least ____ more bytes are received when using
+
+            --mode=5 --physicalMode=DsssRate5Mbps --sendRate=0.45Mbps --rtsCts=false
+
+       compared to
+
+            --mode=5 --physicalMode=DsssRate1Mbps --sendRate=0.45Mbps --rtsCts=false
+
+# The simulation
+
+`scratch/wireless-ex.cc` implements a simulation of a wireless scenario with 4 nodes.
+<!-- FIXME: more description -->
+
+## Simulation command line flags
+<!-- FIXME: more description -->
