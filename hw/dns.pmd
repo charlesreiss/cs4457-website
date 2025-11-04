@@ -8,6 +8,7 @@ Changelog:
 
 *  19 Oct 2024-1 Nov 2024: (various adjustments made last semester)
 *  3 Nov 2025: remove notes about correted versions of the DNS samples archive, since the original version this semester has those corerections already; also remove last semester's changelog entries to cleanup assignment
+*  3 Nov 2025: adjust formatting on note about portal.cs.virginia.edu in "testing --send-request" section
 </div>
 
 # Your Task
@@ -139,14 +140,15 @@ In this JSON output:
     When your `dns.py` connects to `nc`, it will receive the contents of `input.dat`
     and whatever it sends will be written to `output.dat`
 
-    Regarding portal.cs.virginia.edu: `ssh user@portal.cs.virginia.edu` connects you to one of several
-    machines, names `portal01` through `portal11`. You can tell which of those machines you are logged
-    in using your command prompt and/or by running the `hostname` command. Once logged into one portal
-    machine or sufficiently on the UVa network, you can log into a particular portal machine using
-    `ssh portalXX.cs.virginia.edu` where `portallXX` is the name of the machine with the number.
-    With some SSH clients (probably including Linux/OS X's), you can have the SSH client login to
-    portal.cs.virginia.edu and then SSH from that machine to portalXX.cs.virginia.edu with a command like
-    `ssh -J user@portal.cs.virginia.edu user@portalXX.cs.virginia.edu`. (See also [OpenSSH's manapage](https://man.openbsd.org/ssh)'s section on the -J option.)
+    > Regarding portal.cs.virginia.edu: `ssh user@portal.cs.virginia.edu` connects you to one of several
+    > machines, names `portal01` through `portal11`. You can tell which of those machines you are logged
+    > in using your command prompt and/or by running the `hostname` command. Once logged into one portal
+    > machine or sufficiently on the UVa network, you can log into a particular portal machine using
+    > `ssh portalXX.cs.virginia.edu` where `portallXX` is the name of the machine with the number.
+    >
+    > With some SSH clients (probably including Linux/OS X's), you can also have the SSH client login to
+    > portal.cs.virginia.edu and then SSH from that machine to portalXX.cs.virginia.edu with a command like
+    > `ssh -J user@portal.cs.virginia.edu user@portalXX.cs.virginia.edu`. (See also [OpenSSH's manapage](https://man.openbsd.org/ssh)'s section on the -J option.)
 
 
 # Hints
