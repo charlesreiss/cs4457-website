@@ -6,20 +6,8 @@ author: Charles Reiss
 <div class="changelog">
 Changelog:
 
-*  19 Oct 2024: don't require generating request with multiple questions, since that's apparently
-   prohibited by RFC 9619
-*  21 Oct 2024: specify that you may assume --process-response's answer only includes responsive records
-*  23 Oct 2024: have create-request responses prefixed with size for consistency with response handling; change text2pcap advice accordingly
-*  23 Oct 2024: add link to dns samples; --send-request testing instructions
-*  25 Oct 2024: add nxdomain to dns samples + seperate link
-*  26 Oct 2024: allow trailing . or not in json domain name output since the dns-samples are not consistent about this
-*  26 Oct 2024: update dns-samples to fix cname-to-aaaa and cname-to-aaaa2 being duplicates
-*  26 Oct 2024: mention argparse in hints
-*  28 Oct 2024: provide examples of using sys.stdout.buffer and sys.stdin.buffer + correct after first version had typo
-*  29 Oct 2024: always show --ipv4 or --ipv6 being passed when --create-request is used
-*  30 Oct 2024: make it extra clear that you cannot call tshark in your dns.py, it must do its own parsing
-*  30 Oct 2024; explicit mention where to submit code
-*  1 Nov 2024: note potential issues using powershell
+*  19 Oct 2024-1 Nov 2024: (various adjustments made last semester)
+*  3 Nov 2025: remove notes about correted versions of the DNS samples archive, since the original version this semester has those corerections already; also remove last semester's changelog entries to cleanup assignment
 </div>
 
 # Your Task
@@ -122,13 +110,6 @@ In this JSON output:
     into `file.txt), then extracting the relevant part of the output.
 
     The `.reference.json` files are the responses our reference implementation generated.
-
-1.  The original version of the DNS samples archive did not contain a sample for "name not found";
-    it now does, or you can download the extra [dat](files/dns-samples/nxdomain.dat) file here.
-
-    It also contained duplicate records for cname-to-aaaa and cname-to-aaaa2; this is now
-    corrected; you can download an actually different cname-to-aaaa2 [dat](files/dns-samples/cname-to-aaaa2.dat)
-    and [txt](files/dns-samples/cname-to-aaaa2.txt) file.
 
 # testing --send-request
 
