@@ -21,7 +21,7 @@ author: Charles Reiss
 
     Update the `SetupPositions` function so that:
 
-    *  (--mode=1) at least ____ more bytes are received when using
+    *  (--mode=1) at least 150% more bytes are received when using
 
             --mode=1 --physicalMode=DsssRate1Mbps --sendRate=0.9Mbps --rtsCts=false --txPower=10
 
@@ -35,7 +35,7 @@ author: Charles Reiss
 
        compared to
 
-            --mode=2 --physicalMode=DsssRate5Mbps --sendRate=0.45Mbps --rtsCts=false
+            --mode=2 --physicalMode=DsssRate2Mbps --sendRate=0.45Mbps --rtsCts=false
 
        AND at least 0.1Mbps are received in both scenarios
 
@@ -57,7 +57,7 @@ author: Charles Reiss
 
     *  (--mode=5) at least ____ more bytes are received when using
 
-            --mode=5 --physicalMode=DsssRate5Mbps --sendRate=0.45Mbps --rtsCts=false
+            --mode=5 --physicalMode=DsssRate2Mbps --sendRate=0.45Mbps --rtsCts=false
 
        compared to
 
