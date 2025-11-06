@@ -87,7 +87,6 @@
   open: 2025-11-07
   due: 2025-11-14
   page: hw/webserver.html
-  tentative: true
   submit_file: webserver.py
 
 - name: wireless

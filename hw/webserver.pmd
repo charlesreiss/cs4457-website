@@ -6,14 +6,7 @@ author: Charles Reiss
 <div class="changelog">
 Changelog:
 
-*  31 Oct 2024: add requirement for HEAD + multiple request per connection support; remove requirement for particular error documents.
-*  31 Oct 2024: add suggestions for testing with `curl`
-*  1 Nov 2024: add suggestions for testing with `nc`
-*  6 Nov 2024: add note about testing with web browsers
-*  11 Nov 2024: note when talking about testing with `curl`, that the command PowerShell provides called `curl` is not what we mean
-*  13 Nov 2024: consistently use `--request` for `curl` option and not its alias `-X`; correct typo in getservname() instructions
-*  13 Nov 2024: point to RFC 9112 as a more specific HTTP/1.1 reference
-*  15 Nov 2024: correct hex/decimal confusion in CRLF expansion footnote; (and 10:45pm) actually correct it to have the right order
+*  6 Nov 2025: remove defunct changelog entries from last semester
 </div>
 
 # Your Task
