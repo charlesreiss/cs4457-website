@@ -7,9 +7,11 @@ author: Charles Reiss
 
 # Your Task
 
-1.  Clone the TBD branch of the git repository (same as used in AIMD1).
+1.  Download our copy of NS-3 (same git repository as for AIMD):
 
-2.  Look at the simulation in `scratch/wireless-ex` of a wireless networking scenario with four nodes, where
+        git clone -b cs4457-dist https://github.com/charlesreiss/ns-3-dev ./ns-3-dev
+
+2.  Look at the simulation in `scratch/wireless-ex.cc` of a wireless networking scenario with four nodes, where
     node 1 transmits to node 2 and node 3 transmits to node 4.
 
     The simulation has various parameters affecting the data rate transmitted and
