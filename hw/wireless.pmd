@@ -24,8 +24,8 @@ author: Charles Reiss
     the nodes so that one network configuration achieves better performance than
     another. 
 
-    As you do so, if you perform experiments to determine your calculations, please
-    record them so you can write a brief report later.
+    In addition to completing the code for SetupPositions, you need to describe how you did so (see below),
+    so make sure you keep track of any experiments or calculations you performed.
 
     We have 5 scenarios for you to choose position for, which are documented
     by running `./ns3 run scratch/wireless-ex  -- --listScenarios=true`:
@@ -66,8 +66,10 @@ author: Charles Reiss
     *  a brief description of why you think your scenario results in the desired bytes-received difference. (For example,
         what is happening the low-performance case that is not happening in the high-performance case.)
 
-    *  a brief description of any experiments you performed to tweak numbers. For example, if you tried to find out the
-       maximum range of a transmission, describe what you determined and how you varied positions to do so.
+    *  a brief description of any calculations or experiments you performed to find the exact numerical numbers.
+       For example, if you tried to find out the maximum range of a transmission by trying a bunch of positions,
+       describe what result you determined, how you varied positions to do so, and what measurements you got
+       doing this.
 
 5.  Submit your code (as a .cc file) and your report to the submission site.
 
@@ -117,8 +119,19 @@ author: Charles Reiss
     or similar, then that message will be output, including the actual value of the `scenarioId` variable.
 
 3.  You can use `--verbose` to enable lots of logging of wireless behavior and the production of pcap files. <!-- FIXME: specific pcap option -->
+
 2.  You can use
 
         ./ns3 run scratch/wireless-ex -- --assignmentTestScenario=1
 
     to test both the high performance/low performance case
+
+# Notes on simulation models
+
+1.  The simulation uses (an approximation of) the 802.11b MAC protocol. The simulated links are all in "ad-hoc" mode, so there is not access point (base station); nodes just
+    transmit directly to other nodes in range. There is no routing.
+
+1.  The simulation determines the tranmission strength received using NS-3's Friis propoagation los s model, documented [here](https://www.nsnam.org/docs/release/3.17/doxygen/classns3_1_1_friis_propagation_loss_model.html)
+
+2.  The simulation ends up using NS_3's DSSS (802.11b bit encoding) error rate model, described [here](https://www.nsnam.org/~pei/80211b.pdf). In particular, figure 1.2 shows the bit error rate (BER)
+    used by the model for various transmission rates based on the signal to noise ratio (labeled SIR); figure 1.3 shows the packet reception rate versus signal strength when there is no interference.
