@@ -95,9 +95,10 @@
   page: hw/wireless.html
   tentative: true
   submit_files:
-  - mac.py
-  - graph.png
-  - graph.pdf
+  - "*.cc"
+  - "*.txt"
+  - "*.pdf"
+  - "*.html"
 
 - name: (dropped) tcp-trace
   short_name: tcp-trace
@@ -107,8 +108,17 @@
   tentative: true
   hide: true
 
-- name: (tentatively dropped) reliable part 3 (variable window)
+- name: (dropped) reliable part 3 (variable window)
   short_name: reliable3
   page: hw/reliable.html
-  tentative: true
   submit_file: ends.py
+
+
+- name: (old version) wireless
+  short_name: oldwireless
+  page: hw/wireless.html
+  submit_files:
+  - mac.py
+  - graph.png
+  - graph.pdf
+

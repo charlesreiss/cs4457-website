@@ -3,144 +3,120 @@ title: Wireless
 author: Charles Reiss
 ...
 
-> This assignment is likely to be replaced by something very differnt for this semester.
-
-<div class="changelog">
-Changelog:
-
-*  14 Nov 2024: fix bug in `access_point.py` where sense() might sometimes crash
-*  20 Nov 2024: fix major bug in `simtime.py` where time would advance too quickly.
-*  21 Nov 2024: modify supplied mac.py to not `import time` to avoid confusion
-*  21 Nov 2024: specify recommended testing with around 20 packets/second to test with
-*  3 Dec 2024: use `--mac` argument correctly in examples
-</div>
-
-> This is based on an assignment originally constructed by Brad Campbell.
-
-> If you downloaded `simtime.py` before noon 20 Nov, get an updated version [here](files/simtime.py)
+> The assignemnt description below is currently incomplete.
 
 # Your Task
 
-1.  Download the skeleton code at [here](files/wireless-skeleton.tgz) *[last updated 2024-11-20 noon]*
+1.  Clone the TBD branch of the git repository (same as used in AIMD1).
 
-    The skeleton code includes a simulator for a network where several randomly placed "stations" need to transmit
-    packets to a central access point. The access point implements per-packet acknowledgments and simulatenously
-    receives from each of 11 channels (frequencies). To simplify the assignmet, we will assume
-    that acknowledgments are always received reliably.
+2.  Look at the simulation in `scratch/wireless-ex` of a wireless networking scenario with four nodes, where
+    node 1 transmits to node 2 and node 3 transmits to node 4.
 
-    Your job is to improve the MAC protocol used by the stations to send a specified number of packets
-    within a "goal" time computed by `project.py`.
+    The simulation has various parameters affecting the data rate transmitted and
+    the wireless network configuration.
 
-    In the initial implementation, the stations make three attempts to transmit packets on wireless channel 1
-    at 0 dB of power.
+    In this assignment, we'll be measuring the total number of bytes received
+    by nodes 2 and 4.
 
-    You can edit the code for the stations to more intelligently choose
+3.  Your goal is to manipulate the `SetupPositions` functions to set the positions of
+    the nodes so that one network configuration achieves better performance than
+    another. 
 
-    *  when to (re)transmit;
-    *  which channels to use;
-    *  the transmit power;
-    *  how many time to retransmit.
+    As you do so, if you perform experiments to determine your calculations, please
+    record them so you can write a brief report later.
 
-    Unfortunately, you don't have the capability to modify the access point, so you can't implement
-    features like RTS/CTS.
+    We have 5 scenarios for you to choose position for, which are documented
+    by running `./ns3 run scratch/wireless-ex  -- --listScenarios=true`:
 
-2.  Write a brief description of your chosen MAC protocol and how choose those settings;
-    place this in a comment at the top in your `mac.py`.
+        Scenario #1
+        With
+          --physicalMode=DsssRate1Mbps --sendRate=0.9Mbps --rtsCts=false --txPower=3 --retryCount=7 --useTcp=false
+        send at least 150.0% of the bytes sent with
+          --physicalMode=DsssRate1Mbps --sendRate=0.9Mbps --rtsCts=false --txPower=16 --retryCount=7 --useTcp=false
 
-3.  Test your code and produce a graph of your results as the number of stations used varies
-    from 10 to 100 in increments of 5, graphing the total time needed to receive 150 packets.
-    Label the axes of your graph. We recommend testing with around 20 packets/second.
+        Scenario #2
+        With
+          --physicalMode=DsssRate1Mbps --sendRate=0.9Mbps --rtsCts=true --txPower=16.0206 --retryCount=7 --useTcp=false
+        send at least 150.0% of the bytes sent with
+          --physicalMode=DsssRate5_5Mbps --sendRate=0.9Mbps --rtsCts=true --txPower=16.0206 --retryCount=7 --useTcp=false
 
-    Place this graph in a file called `graph.pdf` or `graph.png`
+        Scenario #3
+        With
+          --physicalMode=DsssRate1Mbps --sendRate=0.45Mbps --rtsCts=true --txPower=16.0206 --retryCount=7 --useTcp=false
+        send at least 180.0% of the bytes sent with
+          --physicalMode=DsssRate1Mbps --sendRate=0.45Mbps --rtsCts=false --txPower=16.0206 --retryCount=7 --useTcp=false
 
-5.  Submit your modified `mac.py` (with the comment) and your graph to the submission site.
+        Scenario #4
+        With
+          --physicalMode=DsssRate1Mbps --sendRate=0.9Mbps --rtsCts=false --txPower=16.0206 --retryCount=7 --useTcp=false
+        send at least 130.0% of the bytes sent with
+          --physicalMode=DsssRate1Mbps --sendRate=0.9Mbps --rtsCts=true --txPower=16.0206 --retryCount=7 --useTcp=false
 
-# Simulation Interface
-
-
-The simulator uses a few files:
-
-- `project.py`: The top level file that sets up the simulation and starts it.
-  You shouldn't need to modify this.
-
-- `access_point.py`: The code that simulates the access point that receives all
-  packets. Again, you shouldn't need to modify this.
-
-- `station.py`: A helper file that implements the low level functions for
-  stations in the context of the simulator. This includes the functions you will
-  call to implement the MAC protocols. You shouldn't need to modify this file.
-
-- `mac.py`: Where you will actually implement your MAC protocol. The MAC
-  protocol is its own class, and is a subclass of the generic `Station` class.
-  The rough template is sketched out for you.
-
-## Station Interface
-
-Inside of `mac.py` there are three functions provided by the generic station
-class that you will use to implement each MAC protocol. The `NullMac`
-implementation provides a simple example.
-
-- `void self.wait_for_next_transmission()`: This function blocks until a packet
-  is ready to be sent by the station. Each MAC protocol should wait on this
-  function to return in a loop. When it does return, the MAC protocol
-  implementation should use the correct approach (based on which MAC protocol it
-  is) to transmit a packet to the access point. The return value is a packet
-  that you should pass to `send()`.
-
-- `string self.send(packet, tx_power, channel)`. Send a packet (retrieved from
-  `wait_for_next_transmission()`) to the access point. TX power should be the
-  transmit power in dB with a maximum of 20 dB (reasonable for WiFi). Channel is
-  a WiFi channel number between 1 and 11 (inclusive).
-
-  If the packet transmission was successful this will return `'ACK'`. If not,
-  `send()` will return `'NOACK'`.
-
-- `bool self.sense(channel)`. Sense the specific wireless channel (between 1 and 11) to
-  see if there are any detectable active transmissions. Returns `True` if the
-  channel is busy, `False` otherwise.
+        Scenario #5
+        With
+          --physicalMode=DsssRate1Mbps --sendRate=0.25Mbps --rtsCts=false --txPower=16.0206 --retryCount=7 --useTcp=true
+        send at least 150.0% of the bytes sent with
+          --physicalMode=DsssRate1Mbps --sendRate=0.25Mbps --rtsCts=false --txPower=16.0206 --retryCount=1 --useTcp=true
 
 
-## Command Line Interface
+4.  Produce a report in a text, HTML, or PDF file with, for each scenario:
 
-The simulator exposes many configuration options via the command line.
-The generic interface looks like:
+    *  a brief description of why you think your scenario results in the desired bytes-received difference. (For example,
+        what is happening the low-performance case that is not happening in the high-performance case.)
 
-```
-./project.py <# stations> <pkts/s> <pkts> --mac <mac>
-```
+    *  a brief description of any experiments you performed to tweak numbers. For example, if you tried to find out the
+       maximum range of a transmission, describe what you determined and how you varied positions to do so.
 
-For example, to specify a stations transmission rate of 20 packets/second from
-eighteen stations using YourMac, where the access point is trying to collect 200
-packets from each station:
+5.  Submit your code (as a .cc file) and your report to the submission site.
 
-```
-./project.py 18 20 200 --mac YourMac
-```
+# Using the simulation
+
+1.  You can use a command like
+
+        ./ns3 run scratch/wireless-ex -- --scenarioId=1 --physicalMode=DsssRate1Mbps --sendRate=0.9Mbps --rtsCts=false --txPower=3 --retryCount=7 --useTcp=false
+
+    to run with a specific set of parameters.
+
+2.  You can adjust the duration with an option like `--duration=1s` if you want a shorter test to limit debug output.
+
+3.  There are various options you can use to get more detailed debug output:
+
+    1.  You can use `--flowDump=true` to get a count of the bytes sent between each pair of IP addresses, including differences between transmitted
+        and received bytes/packets.
+
+    2.  You can use `--enablePcaps=true` to have pcap files written for each node. The files will be named like `wireless-ex-N-0.pcap', where
+        N is the node number. (The `0` is a device number; each node has one network device, its simulated wireless link.)
+
+    3.  You can use `--retransmitCountDump=true` to get a count of the number of packets retransmitted by each node.
+
+    4.  You can use `--enableWifiLogging=true` to get very detailed logging of events in the wifi simulation.
 
 
+4.  As documented in [the reelvant section of  NS-3 manual](https://www.nsnam.org/docs/manual/html/logging-asserts.html),
+    you can set the NS_LOG enviroment variable to control what logging is enabled in NS-3.
 
-## Simulator Specifics
+    For example, since `scratch/wireless-ex.cc` declares `NS_LOG_COMPONENT_DEFINE("WirelessEx");` at the top,
+    if you type
 
-There are a few helpful details about the simulator environment that are useful
-to know. These are simplifications that make the situation easier to model
-without compromising the ability to compare different MAC protocols.
+        NS_LOG_INFO("This is a message where scenarioId = " << scenarioId);
 
-- This simulator uses a simulated clock controlled by the included `simtime`
-  module. This includes a `sleep()` function that sleeps for an amount
-  of simulated time.
+    and run scratch/wireless-ex like
 
-  In the default mode, the clock will only advanced when all threads
-  are either sleeping or waiting on a queue. Then, the simulator will
-  figure out the next time threads would wake up from sleeping,
-  advance the clock to that time and wake up those threads.
+        NS_LOG="WirelessEx" ./ns3 run scratch/wireless-ex ...
 
-  Alternately, there is a "real time" mode you can enable with `--real-time`.
-  In this mode the `sleep()` function calls the "real" `time.sleep()` function.
+    or
+        NS_LOG="WirelessEx=level_info" ./ns3 run scratch/wireless-ex ...
 
-- Transmitting a `DATA` packet takes 10 ms.
+    or
+        export NS_LOG=WirelessEx
+        ...
+        ./ns3 run scratch/wireless-ex ...
 
-- For simplicity, packets from the access point to a station take no time and
-  are never lost.
+    or similar, then that message will be output, including the actual value of the `scenarioId` variable.
 
-- The stations should continue to transmit at the same rate even after the
-  access point has received the minimum number of packets it is looking for.
+3.  You can use `--verbose` to enable lots of logging of wireless behavior and the production of pcap files. <!-- FIXME: specific pcap option -->
+2.  You can use
+
+        ./ns3 run scratch/wireless-ex -- --assignmentTestScenario=1
+
+    to test both the high performance/low performance case
