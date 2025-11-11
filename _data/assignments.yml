@@ -91,7 +91,7 @@
 
 - name: wireless
   open: 2025-11-14
-  due: 2025-12-02
+  due: 2025-12-05
   page: hw/wireless.html
   tentative: true
   submit_files:
