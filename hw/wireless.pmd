@@ -32,29 +32,35 @@ author: Charles Reiss
 
         Scenario #1
         With
+          --physicalMode=DsssRate1Mbps --sendRate=0.9Mbps --rtsCts=false --txPower=16 --retryCount=7 --useTcp=false
+        send at least 150.0% of the bytes sent with
+          --physicalMode=DsssRate1Mbps --sendRate=0.9Mbps --rtsCts=false --txPower=3 --retryCount=7 --useTcp=false
+
+        Scenario #2
+        With
           --physicalMode=DsssRate1Mbps --sendRate=0.9Mbps --rtsCts=false --txPower=3 --retryCount=7 --useTcp=false
         send at least 150.0% of the bytes sent with
           --physicalMode=DsssRate1Mbps --sendRate=0.9Mbps --rtsCts=false --txPower=16 --retryCount=7 --useTcp=false
 
-        Scenario #2
+        Scenario #3
         With
           --physicalMode=DsssRate1Mbps --sendRate=0.9Mbps --rtsCts=true --txPower=16.0206 --retryCount=7 --useTcp=false
         send at least 150.0% of the bytes sent with
           --physicalMode=DsssRate5_5Mbps --sendRate=0.9Mbps --rtsCts=true --txPower=16.0206 --retryCount=7 --useTcp=false
 
-        Scenario #3
+        Scenario #4
         With
           --physicalMode=DsssRate1Mbps --sendRate=0.45Mbps --rtsCts=true --txPower=16.0206 --retryCount=7 --useTcp=false
         send at least 180.0% of the bytes sent with
           --physicalMode=DsssRate1Mbps --sendRate=0.45Mbps --rtsCts=false --txPower=16.0206 --retryCount=7 --useTcp=false
 
-        Scenario #4
+        Scenario #5
         With
           --physicalMode=DsssRate1Mbps --sendRate=0.9Mbps --rtsCts=false --txPower=16.0206 --retryCount=7 --useTcp=false
         send at least 130.0% of the bytes sent with
           --physicalMode=DsssRate1Mbps --sendRate=0.9Mbps --rtsCts=true --txPower=16.0206 --retryCount=7 --useTcp=false
 
-        Scenario #5
+        Scenario #6
         With
           --physicalMode=DsssRate1Mbps --sendRate=0.25Mbps --rtsCts=false --txPower=16.0206 --retryCount=7 --useTcp=true
         send at least 150.0% of the bytes sent with
