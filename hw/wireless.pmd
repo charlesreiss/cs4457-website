@@ -3,6 +3,12 @@ title: Wireless
 author: Charles Reiss
 ...
 
+<div class="changelog">
+Changelog:
+
+*  19 Nov 2025: adjust some formatting issues
+</div>
+
 # Your Task
 
 1.  Download our copy of NS-3 (same git repository as for AIMD):
@@ -81,7 +87,8 @@ author: Charles Reiss
 
 1.  You can use a command like
 
-        ./ns3 run scratch/wireless-ex -- --scenarioId=1 --physicalMode=DsssRate1Mbps --sendRate=0.9Mbps --rtsCts=false --txPower=3 --retryCount=7 --useTcp=false
+        ./ns3 run scratch/wireless-ex -- --scenarioId=1 --physicalMode=DsssRate1Mbps \
+            --sendRate=0.9Mbps --rtsCts=false --txPower=3 --retryCount=7 --useTcp=false
 
     to run with a specific set of parameters.
 
@@ -92,7 +99,7 @@ author: Charles Reiss
     1.  You can use `--flowDump=true` to get a count of the bytes sent between each pair of IP addresses, including differences between transmitted
         and received bytes/packets.
 
-    2.  You can use `--enablePcaps=true` to have pcap files written for each node. The files will be named like `wireless-ex-N-0.pcap', where
+    2.  You can use `--enablePcaps=true` to have pcap files written for each node. The files will be named like `wireless-ex-N-0.pcap`, where
         N is the node number. (The `0` is a device number; each node has one network device, its simulated wireless link.)
 
     3.  You can use `--retransmitCountDump=true` to get a count of the number of packets retransmitted by each node.
