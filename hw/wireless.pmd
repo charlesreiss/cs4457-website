@@ -7,6 +7,8 @@ author: Charles Reiss
 Changelog:
 
 *  19 Nov 2025: adjust some formatting issues
+*  19 Nov 2025: update supplied git repository to use "higher target throughput" instead of "higher rate" in messages for better clarity; mention explicitly that --assignmentTestScenario runs the two configurations and compares the bytes sent
+*  20 Nov 2025: update supplied git repository to populate ARP tables, which prevents getting 0 bytes sent if ARP messages are lost, which can be somewhat random
 </div>
 
 # Your Task
@@ -135,7 +137,7 @@ Changelog:
 
         ./ns3 run scratch/wireless-ex -- --assignmentTestScenario=1
 
-    to test both the high performance/low performance case
+    to test both the high target throughput/low target throughput case and see how their achieved bytes sent compares.
 
 # Notes on simulation models
 
