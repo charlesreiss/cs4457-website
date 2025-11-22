@@ -9,6 +9,7 @@ Changelog:
 *  19 Nov 2025: adjust some formatting issues
 *  19 Nov 2025: update supplied git repository to use "higher target throughput" instead of "higher rate" in messages for better clarity; mention explicitly that --assignmentTestScenario runs the two configurations and compares the bytes sent
 *  20 Nov 2025: update supplied git repository to populate ARP tables, which prevents getting 0 bytes sent if ARP messages are lost, which can be somewhat random
+*  21 Nov 2025: add some (arguable) hints
 </div>
 
 # Your Task
@@ -148,3 +149,9 @@ Changelog:
 
 2.  The simulation ends up using NS_3's DSSS (802.11b bit encoding) error rate model, described [here](https://www.nsnam.org/~pei/80211b.pdf). In particular, figure 1.2 shows the bit error rate (BER)
     used by the model for various transmission rates based on the signal to noise ratio (labeled SIR); figure 1.3 shows the packet reception rate versus signal strength when there is no interference.
+
+# Hints
+
+1.  I found it helpful to modify the .cc file to sweep through a bunch of distances after having an idea of a kind of placement that should be helpful, but not having it be immediately apparent what distances would work.
+
+2.  The distance at which signals may interfere with each other is not the same as the distance at which they can be received.
