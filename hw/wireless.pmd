@@ -154,4 +154,4 @@ Changelog:
 
 1.  I found it helpful to modify the .cc file to sweep through a bunch of distances after having an idea of a kind of placement that should be helpful, but not having it be immediately apparent what distances would work.
 
-2.  The distance at which signals may interfere with each other is not the same as the distance at which they can be received.
+2.  The distance at which signals may interfere with each other is not the same as the distance at which they can be received well.
