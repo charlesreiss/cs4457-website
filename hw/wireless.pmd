@@ -10,6 +10,7 @@ Changelog:
 *  19 Nov 2025: update supplied git repository to use "higher target throughput" instead of "higher rate" in messages for better clarity; mention explicitly that --assignmentTestScenario runs the two configurations and compares the bytes sent
 *  20 Nov 2025: update supplied git repository to populate ARP tables, which prevents getting 0 bytes sent if ARP messages are lost, which can be somewhat random
 *  21 Nov 2025: add some (arguable) hints
+*  23 Nov 2025: added hint re: thinking about number of frames that must be sent per segment
 </div>
 
 # Your Task
@@ -155,3 +156,5 @@ Changelog:
 1.  I found it helpful to modify the .cc file to sweep through a bunch of distances after having an idea of a kind of placement that should be helpful, but not having it be immediately apparent what distances would work.
 
 2.  The distance at which signals may interfere with each other is not the same as the distance at which they can be received well.
+
+3.  If a configuration requires us to exchange more frames successfully/promptly to send one segment of data, then it's likely to be more sensitive to poor reception/interference.
