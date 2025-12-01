@@ -11,6 +11,7 @@ Changelog:
 *  20 Nov 2025: update supplied git repository to populate ARP tables, which prevents getting 0 bytes sent if ARP messages are lost, which can be somewhat random
 *  21 Nov 2025: add some (arguable) hints
 *  23 Nov 2025: added hint re: thinking about number of frames that must be sent per segment
+*  1 Dec 2025: change "5 scenarios" to "6 scenarios"
 </div>
 
 # Your Task
@@ -35,7 +36,7 @@ Changelog:
     In addition to completing the code for SetupPositions, you need to describe how you did so (see below),
     so make sure you keep track of any experiments or calculations you performed.
 
-    We have 5 scenarios for you to choose position for, which are documented
+    We have 6 scenarios for you to choose position for, which are documented
     by running `./ns3 run scratch/wireless-ex  -- --listScenarios=true`:
 
         Scenario #1
@@ -80,7 +81,7 @@ Changelog:
     *  a brief description of why you think your scenario results in the desired bytes-received difference. (For example,
         what is happening the low-performance case that is not happening in the high-performance case.)
 
-    *  a brief description of any calculations or experiments you performed to find the exact numerical numbers.
+    *  a brief description of any calculations or experiments you performed to find the exact numerical values.
        For example, if you tried to find out the maximum range of a transmission by trying a bunch of positions,
        describe what result you determined, how you varied positions to do so, and what measurements you got
        doing this.
