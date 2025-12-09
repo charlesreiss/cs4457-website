@@ -9,6 +9,7 @@ Changelog:
 *  19 Oct 2024-1 Nov 2024: (various adjustments made last semester)
 *  3 Nov 2025: remove notes about correted versions of the DNS samples archive, since the original version this semester has those corerections already; also remove last semester's changelog entries to cleanup assignment
 *  3 Nov 2025: adjust formatting on note about portal.cs.virginia.edu in "testing --send-request" section
+*  9 Dec 2025: "sent by DNS server" -> " sent by DNS server over TCP"
 </div>
 
 # Your Task
@@ -28,7 +29,7 @@ Changelog:
        reads a DNS query response (for a query asking for an IPv4 and/or IPv6 address for a hostname)
        from stdin (as in using `sys.stdin.buffer` in Python3) and parses it. (You may not use a DNS library
        or call out to another program to do the parsing or request generation.) The input DNS query response
-       will be prefixed by its size in bytes, as happens when it is sent by a DNS server.
+       will be prefixed by its size in bytes, as happens when it is sent by a DNS server over TCP.
 
        Then, it outputs JSON in the format specified in the "[output format](#format)" section below
        identifying:
