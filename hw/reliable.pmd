@@ -13,6 +13,7 @@ Changelog:
 *  16 Sep 2025: correct "sliding" to "sliding-window" to match connection.py
 *  16 Sep 2025: update config.py in skeleton code not to refer to wrong "sliding" setting
 *  18 Sep 2025: update main.py to be more permissive about timeout enforcement in sliding-window setting
+*  17 Dec 2025 (for future semesters): don't say to set moving average to initial timeout
 </div>
 
 >  If you downloaded the skeleton code before 6 Septemer 2025 around 5pm, you may need an [updated version of config.py](files/reliable/config.py).
@@ -131,7 +132,7 @@ Changelog:
 
     *  take an exponentially weighted moving average^[This is the type of average typically used in TCP; other types of moving averages would also be fine.] of the sampled round-trip times:
 
-       *  initialize the average to the initial timeout or the first recorded RTT
+       *  initialize the average based on your initial timeout or the first recorded RTT
        *  choose an "alpha" to determine how much the average is weighted toward recent RTT measurements.
           I recommend something like 0.2; higher values mean recent changes in RTT affect the average more.
        *  each time you record a new RTT, update the average:
