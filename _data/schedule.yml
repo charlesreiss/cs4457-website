@@ -1,4 +1,4 @@
-- date: 2025-08-26
+- date: 2026-08-25
   week: 1
   title: intro / layers
   reading: PD 1.2-1.4; FS 1.1-1.3.2, 1.4
@@ -19,10 +19,10 @@
            *  Internet
            *  OSI model (briefly)
 
-- date: 2025-08-28
+- date: 2026-08-27
   week: 1
-  title: framing
-  reading: PD 2.1-4
+  title: "reliablity: checksums / ACKs / performance"
+  reading: PD 2.1, 2.4-2.5.2, 1.5
   slides_ref:
   - intro
   - physical
@@ -32,37 +32,20 @@
        *  [packet trace](files/example-firefox-trace.pcapng)
     *  end-to-end argument
        *  Saltzer, Reed, and Clark, "[End-to-End Arguments in System Design](https://dl.acm.org/doi/pdf/10.1145/357401.357402)" (ACM Transactions on Computing Systems, 1984)
-    *  direct links
-       *  copper, fiber, radio
-    *  bits as voltage, timing
-       *  Manchester coding
     *  error detection --- checksums
-    *  types of transmission errors
-    *  framing
-       *  headers and trailers
-       *  byte, bits, clocks
-
-- date: 2025-08-29
-  week: 1
-
-- date: 2025-09-02
-  week: 2
-  title: "reliablity: ACKs / performance metrics"
-  reading: PD 2.5.1-2.5.2, PD 1.5
-  slides_ref:
-  - reliable
-  description: |
     *  stop-and-wait
     *  need for sequence numbers
-
     *  performance
        *  bandwidth, latency, jitter
 
 
-- date: 2025-09-04
+- date: 2026-08-28
+  week: 1
+
+- date: 2026-09-01
   week: 2
-  title: "reliablity: sliding windows"
-  reading: PD 2.5.1-2; FS 14
+  title: "reliablity: performance metrics / sliding window"
+  reading: PD 2.5.1-2.5.2, PD 1.5
   slides_ref:
   - reliable
   description: |
@@ -72,13 +55,11 @@
        *  duplicate ACKs
        *  selective ACKs
 
-- date: 2025-09-05
-  week: 2
 
-- date: 2025-09-09
-  week: 3
-  title: "relability: TCP realities / switches"
-  reading: PD 3.1.1-3.1.2, 3.2-3.2.1, 3.2.4
+- date: 2026-09-03
+  week: 2
+  title: "reliablity: TCP realities / switching"
+  reading: PD 5.2-5.2.2; FS 14; PD 2.6.1-2.6.2, 3.1.1-3.1.2, 3.2-3.2.1, 3.2.4
   slides_ref:
   - reliable
   - switches
@@ -87,36 +68,37 @@
         - sequence numbers are bytes
         - TCP options
 
+    *  interlude: "switch" v "router"; "forwarding" v "routing"
     *  switched networks
     *  packet versus circuit switching
     *  software defined networks
        *  see also: [Feamster et al, "The Road To SDN: An Intellectual History of Programmable Networks"](https://www.sigcomm.org/sites/default/files/ccr/papers/2014/April/0000000-0000012.pdf)
 
-- date: 2025-09-11
+
+- date: 2026-09-04
+  week: 2
+
+- date: 2026-09-08
   week: 3
-  title: "switches 2 / P4"
-  reading: PD 3.2-3.21, 3.2.4
+  title: "switches"
+  reading: PD 3.2-3.2.1, 3.2.4
   slides_ref:
   - switches
   description: |
-    *  P4 switch architecture (start)
+    *  P4 switch architecture
        *  see also: [SDN book, chapter 4](https://sdn.systemsapproach.org/switch.html)
        *  control versus dataplane
        *  match/action pipeline
        *  tables
+    *  P4 controllers
 
-- date: 2025-09-12
+- date: 2026-09-10
   week: 3
-
-- date: 2025-09-16
-  week: 4
-  title: "ARP + ND, subnets, MACs and IPs"
-  reading: PD 3.2.1-3.3.7, 4.2.1-4.2.3
+  title: "Ethernet briefly / ARP + ND, subnets, MACs and IPs"
+  reading: PD 2.6.2, 3.2.1-3.3.7, 4.2.1-4.2.3
   slides_ref:
   - arp
   description: |
-    *  P4 controllers
-
     *  learning bridges
 
     *  IP header
@@ -129,7 +111,10 @@
 
     *  ARP
 
-- date: 2025-09-18
+- date: 2026-09-11
+  week: 3
+
+- date: 2026-09-15
   week: 4
   title: "IPs con't / autoconfiguration / congestion control: the problem"
   reading: PD 3.3.2-3.3.7, 4.2.1-4.2.3
@@ -144,12 +129,8 @@
        *  DHCP
        *  SLAAC
 
-
-- date: 2025-09-19
+- date: 2026-09-17
   week: 4
-
-- date: 2025-09-23
-  week: 5
   title: "congestion control: AIMD, fairness"
   reading: PD 6.1, 6.3-4, 6.4.2, FS 16, D 19.1, 20.2-20.3
   slides_ref:
@@ -167,7 +148,10 @@
     *  fair sharing
     *  min/max fairness
 
-- date: 2025-09-25
+- date: 2026-09-18
+  week: 4
+
+- date: 2026-09-22
   week: 5
   title: "congestion control: fairness, slow start, fast recovery"
   reading: PD 6.3.2-3, FS 16, D 19.2-4
@@ -183,12 +167,8 @@
 
     *  slow start
 
-
-- date: 2025-09-26
+- date: 2026-09-24
   week: 5
-
-- date: 2025-09-30
-  week: 6
   title: "congestion control: alternate congestion signals / simulators"
   reading: PD 6.3.4, 6.4.1-6.4.2; (D 19-20); D 32
   slides_ref:
@@ -204,9 +184,10 @@
 
     *  discrete event simulators
 
+- date: 2026-09-25
+  week: 5
 
-
-- date: 2025-10-02
+- date: 2026-09-29
   week: 6
   title: "simulating TCP / queuing"
   slides_ref:
@@ -221,11 +202,8 @@
        *  fair queuing (start)
 
 
-- date: 2025-10-03
+- date: 2026-10-01
   week: 6
-
-- date: 2025-10-07
-  week: 7
   title: "ECN; queue disciplines / routing : start"
   reading: PD 6.2, 6.4.1, 3.4.1, 3.3.4, 3.3.8, D 23.5.1-3, 21.5.4, 9.4, 10.4, 12.2
   slides_ref:
@@ -244,7 +222,14 @@
        *  time-to-live
        *  unreachable
 
-- date: 2025-10-09
+- date: 2026-10-02
+  week: 6
+
+- date: 2026-10-06
+  week: 7
+  no_class: true
+
+- date: 2026-10-08
   week: 7
   title: "routing: spanning tree"
   reading: PD 3.3.8, 3.2.3, FS 8, D 3.1
@@ -257,17 +242,10 @@
        *  centralized
        *  distributed
 
-- date: 2025-10-10
+- date: 2026-10-09
   week: 7
 
-- date: 2025-10-13
-  week: 8
-
-- date: 2025-10-14
-  week: 8
-  no_class: true
-
-- date: 2025-10-16
+- date: 2026-10-13
   week: 8
   title: "routing: metrics / distance vector"
   reading: PD 3.4.4, 3.4.2, D 13.1-3
@@ -281,11 +259,8 @@
        *  distributed protocol
 
 
-- date: 2025-10-17
+- date: 2026-10-15
   week: 8
-
-- date: 2025-10-21
-  week: 9
   title: "routing: distance vector (finish) / link state"
   slides_ref:
   - routing
@@ -300,7 +275,10 @@
        *  distributed protocol
 
 
-- date: 2025-10-23
+- date: 2026-10-16
+  week: 8
+
+- date: 2026-10-20
   week: 9
   title: "BGP"
   slides_ref:
@@ -313,11 +291,8 @@
        *  business relationships (customer/provider; content-delivery; peering)
     *  BGP advertisements
 
-- date: 2025-10-24
+- date: 2026-10-22
   week: 9
-
-- date: 2025-10-28
-  week: 10
   title: "DNS"
   reading: PD 9.3.1; FS 11
   slides_ref:
@@ -331,43 +306,42 @@
        *  name compression
     *  DNS questions and answers
 
-- date: 2025-10-30
+- date: 2026-10-23
+  week: 9
+
+- date: 2026-10-27
   week: 10
-  title: "Sockets"
+  title: "DNS misc / sockets 1"
   slides_ref:
+  - dns
   - sockets
-  reading: PD 1.4,1
+  reading: PD 9.3.1, 1.4; FS 11
   description: |
+    *  IDNs
+    *  reverse lookups
+    *  preview: cache poisoning, DNSSEC
+
     *  BSD sockets
     *  5-tuples, netstat
     *  listening sockets
     *  conneced/unconnected sockets
     *  socket / bind / connect
     *  read/recv, write/send
+
+
+- date: 2026-10-29
+  week: 11
+  title: "sockets 2 / HTTP 1"
+  slides_ref:
+  - sockets
+  - http
+  reading: PD 1.4, 9.1.2-3; [MDN's section on HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP)
+  description: |
     *  server sockets --- listen, accept
     *  recvfrom, sendto, ... <!-- FIXME: reading reference -->
     *  broadcast with sockets
     *  aside: local sockets
-
-- date: 2025-10-31
-  week: 10
-
-- date: 2025-11-04
-  week: 11
-  no_class: true
-
-- date: 2025-11-06
-  week: 11
-  title: "DNS misc / HTTP 1"
-  slides_ref:
-  - dns
-  - http
-  reading: PD 1.4, 9.1.2-3; [MDN's section on HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP)
-  description: |
-    *  IDNs
-    *  reverse lookups
-    *  preview: cache poisoning, DNSSEC
-
+    
     *  HTTP/1.1
     *  URL/URI parts
     *  request headers, bodies
@@ -375,12 +349,15 @@
     *  connection keep-alive, pipelining, multiple streams
 
 
+- date: 2026-10-30
+  week: 10
 
-- date: 2025-11-07
+- date: 2026-11-03
   week: 11
+  no_class: true
 
-- date: 2025-11-11
-  week: 12
+- date: 2026-11-05
+  week: 11
   title: "HTTP 2"
   slides_ref:
   - http
@@ -391,7 +368,13 @@
     *  HTTP proxies, reverse proxies
     *  REST
 
-- date: 2025-11-13
+- date: 2026-11-06
+  week: 11
+
+- date: 2026-11-10
+  week: 12
+
+- date: 2026-11-12
   week: 12
   title: "wireless 1"
   slides_ref:
@@ -403,10 +386,10 @@
     *  collision detection
     *  wireles signal propoation
 
-- date: 2025-11-14
+- date: 2026-11-13
   week: 12
 
-- date: 2025-11-18
+- date: 2026-11-18
   week: 13
   title: "wireless 2"
   slides_ref:
@@ -420,7 +403,7 @@
     *  scheduled wireless networks
     
 
-- date: 2025-11-20
+- date: 2026-11-20
   week: 13
   title: "security: firewalls"
   reading: PD 2.8.2, PD 8.5.6
@@ -432,10 +415,10 @@
     *  firewall placement
     *  stateless firewalls
 
-- date: 2025-11-21
+- date: 2026-11-21
   week: 13
 
-- date: 2025-11-25
+- date: 2026-11-25
   week: 14
   title: "firewalls 2 / NAT"
   reading: PD 8.5.4, D 9.7, PD 3.3.9, PD 4.4
@@ -448,15 +431,15 @@
    *  NAT traversal
    *  IDS
 
-- date: 2025-11-27
+- date: 2026-11-26
   week: 14
   no_class: true
 
-- date: 2025-11-28
+- date: 2026-11-27
   week: 14
   no_class: true
 
-- date: 2025-12-02
+- date: 2026-12-01
   week: 15
   title: "encapsulation 1"
   slides_ref:
@@ -468,7 +451,7 @@
    *  transport-layer proxies
       *  SOCKS, Tor (start)
 
-- date: 2025-12-04
+- date: 2026-12-03
   week: 15
   title: "encapuslation 2"
   slides_ref:
@@ -480,17 +463,17 @@
    *  VLANs
    *  (if time) MPLS
 
-- date: 2025-12-05
+- date: 2026-12-04
   week: 15
 
-- date: 2025-12-09
+- date: 2026-12-08
   week: 16
   title: "exam review"
   description: |
     *  [notes](recordings/20251209-notes.txt)
 
-- date: 2025-12-16
+- date: 2026-12-12
   week: 16
   title: "final exam"
   description: |
-    9AM-12PM
+    2PM-5PM

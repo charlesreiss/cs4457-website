@@ -1,34 +1,28 @@
-- name: framing
-  open: 2025-08-28
-  due: 2025-09-05
-  page: hw/framing.html
-  submit_file: sendrecv.py
-
 - name: reliable part 1 (zero/one)
   short_name: reliable1
-  open: 2025-09-05
-  due: 2025-09-12
+  open: 2026-08-28
+  due: 2026-09-04
   page: hw/reliable.html
   submit_file: ends.py
 
 - name: reliable part 2 (sliding window)
   short_name: reliable2
-  open: 2025-09-11
-  due: 2025-09-19
+  open: 2026-09-04
+  due: 2026-09-11
   page: hw/reliable.html
   submit_file: ends.py
 
 - name: P4 part 1 (no submission)
   short_name: p4
-  open: 2025-09-19
-  due: 2025-09-26
+  open: 2026-09-11
+  due: 2026-09-18
   page: hw/p4.html
   no_assignments_json: true
 
 - name: P4 part 2
   short_name: p4
-  open: 2025-09-19
-  due: 2025-10-03
+  open: 2026-09-18
+  due: 2026-09-25
   page: hw/p4.html
   submit_files:
   - mycontroller.py
@@ -38,8 +32,8 @@
 
 - name: NS-3 / AIMD part 1
   short_name: aimd1
-  open: 2025-10-03
-  due: 2025-10-13
+  open: 2026-09-25
+  due: 2026-10-02
   page: hw/aimd.html
   submit_files:
   - "*.pdf"
@@ -51,8 +45,8 @@
 
 - name: NS-3 / AIMD part 2
   short_name: aimd2
-  open: 2025-10-10
-  due: 2025-10-17
+  open: 2026-10-02
+  due: 2026-10-09
   page: hw/aimd.html
   submit_files:
   - "*.pdf"
@@ -64,34 +58,38 @@
 
 - name: packet scheduling
   short_name: schedule
-  open: 2025-10-17
-  due: 2025-10-24
+  open: 2026-10-09
+  due: 2026-10-16
   page: hw/schedule.html
   submit_file: buffer.py
 
 - name: DV routing
   short_name: dv
-  open: 2025-10-24
-  due: 2025-10-31
+  open: 2026-10-16
+  due: 2026-10-23
   page: hw/dv.html
   submit_file: entity.py
 
 - name: DNS
   short_name: dns
-  open: 2025-10-31
-  due: 2025-11-07
+  open: 2026-10-23
+  due: 2026-11-30
   page: hw/dns.html
   submit_file: dns.py
 
 - name: webserver
-  open: 2025-11-07
-  due: 2025-11-14
+  open: 2026-10-30
+  due: 2026-11-06
   page: hw/webserver.html
   submit_file: webserver.py
 
+- name: smtp
+  open: 2026-10-06
+  due: 2026-11-13
+
 - name: wireless
-  open: 2025-11-14
-  due: 2025-12-05
+  open: 2026-11-13
+  due: 2026-12-04
   page: hw/wireless.html
   submit_files:
   - "*.cc"
@@ -101,8 +99,8 @@
 
 - name: (dropped) tcp-trace
   short_name: tcp-trace
-  XXXopen: 2025-09-13
-  XXXdue: 2025-09-20
+  XXXopen: 2026-09-13
+  XXXdue: 2026-09-20
   page: hw/trace.html
   tentative: true
   hide: true
