@@ -328,9 +328,8 @@
     *  socket / bind / connect
     *  read/recv, write/send
 
-
 - date: 2026-10-29
-  week: 11
+  week: 10
   title: "sockets 2 / HTTP 1"
   slides_ref:
   - sockets
@@ -347,7 +346,6 @@
     *  request headers, bodies
     *  request methods (GET, HEAD, POST, ...)
     *  connection keep-alive, pipelining, multiple streams
-
 
 - date: 2026-10-30
   week: 10
