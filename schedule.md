@@ -65,7 +65,11 @@ index_sort: 99
   {%- if day.slides_ref -%}
       slides:&nbsp;
       {%- for slide_ref in day.slides_ref -%}
-          <a href="slides/{{slide_ref}}.pdf">{{slide_ref}}</a>{%- unless forloop.last -%},&nbsp;{%- endunless -%}
+          {%- assign slide_infos = site.data.slides | where:"name",slide_ref -%}
+          {%- for slide_info in slide_infos -%}
+              {{ slide_info.link }}
+          {%- endfor -%}
+          {%- unless forloop.last -%},&nbsp;{%- endunless -%}
       {%- endfor -%}
   {%- else -%}
       <a href="slides/{{ file_prefix }}-slides.pdf">{%- if day.slides_tentative or day.slides_prelim -%}&nbsp;tentative&nbsp;{%- else -%} <!-- -->{%- endif -%}slides</a>
@@ -91,7 +95,7 @@ index_sort: 99
   {%- endif -%}
 {%- endif -%}
 {%- if video -%}
-      | screencapture (<a href="/~cr4bd/videoplayer/?4457/F2025/recordings/{{ file_prefix }}-video-and-audio">browser</a>&nbsp; or download <a href="recordings/{{ file_prefix }}-video-and-audio.mp4">mp4</a> <a href="recordings/{{ file_prefix }}-video-and-audio.webm">webm</a> <a href="recordings//{{ file_prefix }}-audio.mp3">audio</a>
+      | screencapture (<a href="/~cr4bd/videoplayer/?4457/F2026/recordings/{{ file_prefix }}-video-and-audio">browser</a>&nbsp; or download <a href="recordings/{{ file_prefix }}-video-and-audio.mp4">mp4</a> <a href="recordings/{{ file_prefix }}-video-and-audio.webm">webm</a> <a href="recordings//{{ file_prefix }}-audio.mp3">audio</a>
     )
 {%- else -%}
     {%- if day.video_mp4 -%}
