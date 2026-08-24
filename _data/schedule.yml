@@ -390,7 +390,7 @@
 - date: 2026-11-13
   week: 12
 
-- date: 2026-11-18
+- date: 2026-11-17
   week: 13
   title: "wireless 2"
   slides_ref:
@@ -404,7 +404,7 @@
     *  scheduled wireless networks
     
 
-- date: 2026-11-20
+- date: 2026-11-19
   week: 13
   title: "security: firewalls"
   reading: PD 2.8.2, PD 8.5.6
@@ -416,7 +416,7 @@
     *  firewall placement
     *  stateless firewalls
 
-- date: 2026-11-21
+- date: 2026-11-20
   week: 13
 
 - date: 2026-11-25
@@ -470,8 +470,6 @@
 - date: 2026-12-08
   week: 16
   title: "exam review"
-  description: |
-    *  [notes](recordings/20251209-notes.txt)
 
 - date: 2026-12-12
   week: 16
