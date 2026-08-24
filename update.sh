@@ -3,11 +3,12 @@
 umask 022
 python3 quizzes_to_data.py
 python3 recordings_to_data.py
+python3 slides_to_data.py
 chmod -R a+r files
 chmod -R a+r oldquiz
 chmod -R a+r readings/files
 chmod -R a+r slides
-chmod -R a+rX ~/public_html/4457/F2025/recordings
+chmod -R a+rX ~/public_html/4457/F2026/recordings
 
 BUNDLE=bundle
 pd=pandoc
