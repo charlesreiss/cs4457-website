@@ -4,6 +4,7 @@
   due: 2026-09-04
   page: hw/reliable.html
   submit_file: ends.py
+  tentative: true
 
 - name: reliable part 2 (sliding window)
   short_name: reliable2
@@ -11,6 +12,7 @@
   due: 2026-09-11
   page: hw/reliable.html
   submit_file: ends.py
+  tentative: true
 
 - name: P4 part 1 (no submission)
   short_name: p4
@@ -18,12 +20,14 @@
   due: 2026-09-18
   page: hw/p4.html
   no_assignments_json: true
+  tentative: true
 
 - name: P4 part 2
   short_name: p4
   open: 2026-09-18
   due: 2026-09-25
   page: hw/p4.html
+  tentative: true
   submit_files:
   - mycontroller.py
   - mydataplane.p4
@@ -35,6 +39,7 @@
   open: 2026-09-25
   due: 2026-10-02
   page: hw/aimd.html
+  tentative: true
   submit_files:
   - "*.pdf"
   - "*.html"
@@ -48,6 +53,7 @@
   open: 2026-10-02
   due: 2026-10-09
   page: hw/aimd.html
+  tentative: true
   submit_files:
   - "*.pdf"
   - "*.html"
@@ -61,6 +67,7 @@
   open: 2026-10-09
   due: 2026-10-16
   page: hw/schedule.html
+  tentative: true
   submit_file: buffer.py
 
 - name: DV routing
@@ -68,6 +75,7 @@
   open: 2026-10-16
   due: 2026-10-23
   page: hw/dv.html
+  tentative: true
   submit_file: entity.py
 
 - name: DNS
@@ -75,22 +83,26 @@
   open: 2026-10-23
   due: 2026-11-30
   page: hw/dns.html
+  tentative: true
   submit_file: dns.py
 
 - name: webserver
   open: 2026-10-30
   due: 2026-11-06
   page: hw/webserver.html
+  tentative: true
   submit_file: webserver.py
 
 - name: smtp
   open: 2026-10-06
   due: 2026-11-13
+  tentative: true
 
 - name: wireless
   open: 2026-11-13
   due: 2026-12-04
   page: hw/wireless.html
+  tentative: true
   submit_files:
   - "*.cc"
   - "*.txt"
