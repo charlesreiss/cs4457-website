@@ -92,6 +92,7 @@ author: Charles Reiss
 1.  To avoid duplicating code, I found it useful to have a utility method that generated a
     list of packets for all the functions that return lists of packets.
 
+
 2.  When deleting a link to a neighbor, be sure to handle the case where you can send
     directly a node where you'd previously forward through that neighbor. For example, with
     this network:
@@ -105,28 +106,31 @@ author: Charles Reiss
     A's routing tables should be:
 
     |to|next hop|cost|
-    |A|A|0|
-    |B|B|1|
-    |C|B|2|
-    |D|B|2|
+    |--|--------|----|
+    |A |A       |0   |
+    |B |B       |1   |
+    |C |B       |2   |
+    |D |B       |2   |
 
     After being informed the link from A to B went down, a natural thing to do might be to
     remove all the routes that use a next hop of B:
     
-    |to|next hop|cost|
-    |A|A|0|
-    |B|(none)|infinity|
+    |to   |next hop    |cost          |
+    |-----|------------|--------------|
+    |A    |A           |0             |
+    |B    |(none)      |infinity      |
     |**C**|**~(none)~**|**~infinity~**|
-    |D|(none)|infinity|
+    |D    |(none)      |infinity      |
 
     But this ignores that A is responsible for knowing about the direct link from A to C, so instead
     it should update to account for that:
     
-    |to|next hop|cost|
-    |A|A|0|
-    |B|(none)|infinity|
-    |**C**|**C**|8|
-    |D|(none)|infinity|
+    |to   |next hop|cost    |
+    |-----|--------|--------|
+    |A    |A       |0       |
+    |B    |(none)  |infinity|
+    |**C**|**C**   |8       |
+    |D    |(none)  |infinity|
 
     A will need learn about new routes to B and to D by eventually receiving an update from C.
 
@@ -147,6 +151,7 @@ author: Charles Reiss
     Immediately after discovering the link is down A's routing table will be:
 
     |to|next hop|cost|
+    |--|--------|----|
     |A|A|0|
     |B|(none)|infinity|
     |C|C|1|
@@ -154,6 +159,7 @@ author: Charles Reiss
     and B's routing table will be:
 
     |to|next hop|cost|
+    |--|--------|----|
     |A|(none)|infinity|
     |B|B|0|
     |C|C|1|
