@@ -16,9 +16,6 @@ Changelog:
 *  17 Dec 2025 (for future semesters): don't say to set moving average to initial timeout
 </div>
 
->  If you downloaded the skeleton code before 6 Septemer 2025 around 5pm, you may need an [updated version of config.py](files/reliable/config.py).
->  Also after the morning of 18 September 2025, there is [an updated main.py](files/reliable/main,py) was updated to be more permissive about timeout enforcement for the sliding window case, which would likely be relevant for solutions attempting to selective acknowledgments or similar.
-
 # Your Task
 
 1.  Download the supplied simulator and skeleton code at [here](files/reliable-skeleton.tgz) (last updated 18 September 2025).
