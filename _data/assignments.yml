@@ -4,7 +4,6 @@
   due: 2026-09-04
   page: hw/reliable.html
   submit_file: ends.py
-  tentative: true
 
 - name: reliable part 2 (sliding window)
   short_name: reliable2
