@@ -257,21 +257,13 @@ class Connection:
                             # ACK indicating first packet not received can have arbitrary number
                             pass
                     elif delta > 0:
-                        if packet.ack_num < self._check_can_ack:
-                            error(f'sending ack #{packet.ack_num} (~ '
-                                  f'{packet.ack_num + self._check_wraparound} after '
-                                  f' accounting for apparent wraparound at {self._check_wraparound})'
-                                  f', but can only acknowledge up to seq #{self._check_can_ack}')
-                        else:
-                            error(f'sending ack #{packet.ack_num}, but can only acknowledge up to seq #{self._check_can_ack}')
+                        error(f'sending ack #{packet.ack_num}, but could acknowledge up to seq #{self._check_can_ack} recvd seqs {list(sorted(self._check_last_recv_seq_time.keys()))}')
                     elif delta < 0:
                         if packet.ack_num > self._check_can_ack:
-                            error(f'sending ack #{packet.ack_num}, but could ack '
-                                  f'#{self._check_can_ack} (delta {delta})' +
-                                  f'(~ #{self._check_can_ack + self._check_wraparound} '
-                                  f'accounting for apparent wraparound at {self._check_wraparound})')
+                            error(f'sending ack #{packet.ack_num}, but can only ack '
+                                  f'#{self._check_can_ack} (delta {delta})')
                         else:
-                            error(f'sending ack #{packet.ack_num}, but could ack #{self._check_can_ack} (delta {delta})')
+                            error(f'sending ack #{packet.ack_num}, but could only ack #{self._check_can_ack} (delta {delta})')
                     else:
                         trace('check', f'got ACK {packet.ack_num} after ACK {prev_ack}')
                         if prev_ack != None:

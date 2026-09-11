@@ -40,7 +40,7 @@ def run(args, messages):
                 args.delay * 2 + args.delay_variance * 2 +
                 min(args.buffer, len(messages)) / args.bandwidth_forward * 2 +
                 min(args.buffer, len(messages)) / args.bandwidth_backward * 2  + 1,
-                config.INITIAL_TIMEOUT + 1,
+                config.INITIAL_TIMEOUT * 2 + 1,
             )
         if config.MODE.startswith('sliding'):
             # Sloppy way to permit assumption that we only retransmit first missing packet,
@@ -86,7 +86,7 @@ def run(args, messages):
             print(f'ERROR --- did not get a chance to send {len(connection._pending_messages)}')
         if len(connection._in_flight_messages) > 0:
             print(f'ERROR --- {len(connection._in_flight_messages)} messages sent but not received')
-        print(f'received {connection._total_received} messages; finished after {_simulator.time()} time units')
+        print(f'received {connection._total_received} messages; finished after {_simulator.last_time()} time units')
         print(f"{_simulator._links['forward']._total_sent} frames sent to receiver; {_simulator._links['backward']._total_sent} frames sent to sender")
 
 def _convert_bool(s: str) -> bool:
