@@ -124,10 +124,6 @@
   slides_ref:
   - arp
   description: |
-    *  broadcast, basic multicast
-       *  broadcast on ethernet
-       *  broadcast on IP
-
     *  ARP
     *  example: ICMP ping
 
