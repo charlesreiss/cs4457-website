@@ -14,11 +14,12 @@ Changelog:
 *  16 Sep 2025: update config.py in skeleton code not to refer to wrong "sliding" setting
 *  18 Sep 2025: update main.py to be more permissive about timeout enforcement in sliding-window setting
 *  17 Dec 2025 (for future semesters): don't say to set moving average to initial timeout
+*  11 Sep 2026: update skeleton to report last non-cancelled event as total time in non --json mode rather than last event time including cancelled events
 </div>
 
 # Your Task
 
-1.  Download the supplied simulator and skeleton code at [here](files/reliable-skeleton.tgz) (last updated 18 September 2025).
+1.  Download the supplied simulator and skeleton code at [here](files/reliable-skeleton.tgz) (last updated 11 September 2026).
 
     In the skeleton code, you should only modify `ends.py`, which initially has code
     that implements transmission without any sort of reliablity.
