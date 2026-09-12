@@ -18,14 +18,12 @@
   due: 2026-09-18
   page: hw/p4.html
   no_assignments_json: true
-  tentative: true
 
 - name: P4 part 2
   short_name: p4
   open: 2026-09-18
   due: 2026-09-25
   page: hw/p4.html
-  tentative: true
   submit_files:
   - mycontroller.py
   - mydataplane.p4
