@@ -139,7 +139,7 @@
   reading: PD 6.1, 6.3-4, 6.4.2, FS 16, D 19.1, 20.2-20.3
   slides_ref:
   - arp
-  - congest
+  - congest-intro
   description: |
     *  autoconfiguration (finish)
 
@@ -150,10 +150,7 @@
     *  steady-state and changing cross-traffic
     *  slow-increase/fast-decrease
     *  additive increase/multiplicative decrease
-
     *  actual TCP outline
-    *  fair sharing
-    *  min/max fairness
 
 - date: 2026-09-18
   week: 4
@@ -163,8 +160,12 @@
   title: "congestion control: fairness, slow start, fast recovery"
   reading: PD 6.3.2-3, FS 16, D 19.2-4
   slides_ref:
-  - congest
+  - congest-sharing
+  - congest-opt
   description: |
+    *  fair sharing
+    *  min/max fairness
+
     *  fast retransmit and fast recovery
 
     *  queuing theory interlude:
