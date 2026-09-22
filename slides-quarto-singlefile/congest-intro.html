@@ -1402,12 +1402,13 @@ margin-right: 0; }
 </ul></li>
 <li><i>recovery</i> (known loss)
 <ul>
-<li>retransmit packet after third duplicate ACK of previous packet <br> (or timeout)</li>
+<li>retransmit on timeout</li>
+<li>“fast retransmit”: retransmit packet after third duplicate ACK of previous packet</li>
 </ul></li>
 <li><i>‘‘slow start’’</i> (cwnd &lt; ssthresh)
 <ul>
 <li>intuition: not in ‘‘steady state’’ yet</li>
-<li>want to get there quickly, but with overloading network</li>
+<li>want to get there quickly, but without overloading network</li>
 <li>we’ll give details later</li>
 </ul></li>
 </ul>
@@ -1547,19 +1548,21 @@ notsent:2345760 minrtt:0.219
 <section id="non-congestion-losses" class="slide level3 smaller">
 <h3>non-congestion losses</h3>
 <ul>
-<li><p>we were ignoring non-congestion losses</p></li>
-<li><p>suppose <em>1%</em> loss rate from transmission errors</p></li>
-<li><p>if huge bandwidth, 50 ms RTT</p></li>
-<li><p>with TCP heuristics (+1 packet/RTT, half on loss)…</p></li>
-<li><p>normal window size? achieved bandwidth (pkts/sec)?</p>
+<li>we were ignoring non-congestion losses</li>
+<li>suppose <em>1%</em> loss rate from transmission errors</li>
+<li>if huge bandwidth, 50 ms RTT</li>
+<li>with TCP heuristics (+1 packet/RTT, half on loss)…</li>
+<li>normal window size? achieved bandwidth (pkts/sec)?</li>
+</ul>
+<div class="fragment fade-in">
 <ul>
 <li>window size increases for about 100 packets, then halves</li>
 <li>starting at window size 8:</li>
 <li>8, 9 (17 total), 10 (27), 11 (38), 12 (50), 13 (63), 14 (77), 15 (92), 16 (&gt;100)</li>
 <li><span class="math inline">\(\rightarrow\)</span> window size fluctuates from around 8 to 16</li>
 <li>12 pkts/50 ms = 240 pkts/sec</li>
-</ul></li>
 </ul>
+</div>
 </section>
 <section id="non-congestion-losses-and-congestion-control" class="slide level3">
 <h3>non-congestion losses and congestion control</h3>
@@ -1986,12 +1989,13 @@ notsent:2345760 minrtt:0.219
 </ul></li>
 <li><i>recovery</i> (known loss)
 <ul>
-<li>retransmit packet after third duplicate ACK of previous packet <br> (or timeout)</li>
+<li>retransmit on timeout</li>
+<li>“fast retransmit”: retransmit packet after third duplicate ACK of previous packet</li>
 </ul></li>
 <li><i>‘‘slow start’’</i> (cwnd &lt; ssthresh)
 <ul>
 <li>intuition: not in ‘‘steady state’’ yet</li>
-<li>want to get there quickly, but with overloading network</li>
+<li>want to get there quickly, but without overloading network</li>
 <li>we’ll give details later</li>
 </ul></li>
 </ul>
@@ -2131,19 +2135,21 @@ notsent:2345760 minrtt:0.219
 <section id="non-congestion-losses-1" class="slide level3 smaller">
 <h3>non-congestion losses</h3>
 <ul>
-<li><p>we were ignoring non-congestion losses</p></li>
-<li><p>suppose <em>1%</em> loss rate from transmission errors</p></li>
-<li><p>if huge bandwidth, 50 ms RTT</p></li>
-<li><p>with TCP heuristics (+1 packet/RTT, half on loss)…</p></li>
-<li><p>normal window size? achieved bandwidth (pkts/sec)?</p>
+<li>we were ignoring non-congestion losses</li>
+<li>suppose <em>1%</em> loss rate from transmission errors</li>
+<li>if huge bandwidth, 50 ms RTT</li>
+<li>with TCP heuristics (+1 packet/RTT, half on loss)…</li>
+<li>normal window size? achieved bandwidth (pkts/sec)?</li>
+</ul>
+<div class="fragment fade-in">
 <ul>
 <li>window size increases for about 100 packets, then halves</li>
 <li>starting at window size 8:</li>
 <li>8, 9 (17 total), 10 (27), 11 (38), 12 (50), 13 (63), 14 (77), 15 (92), 16 (&gt;100)</li>
 <li><span class="math inline">\(\rightarrow\)</span> window size fluctuates from around 8 to 16</li>
 <li>12 pkts/50 ms = 240 pkts/sec</li>
-</ul></li>
 </ul>
+</div>
 </section>
 <section id="non-congestion-losses-and-congestion-control-1" class="slide level3">
 <h3>non-congestion losses and congestion control</h3>
