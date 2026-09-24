@@ -149,8 +149,6 @@
     *  observing good/bad congestion
     *  steady-state and changing cross-traffic
     *  slow-increase/fast-decrease
-    *  additive increase/multiplicative decrease
-    *  actual TCP outline
 
 - date: 2026-09-18
   week: 4
@@ -163,47 +161,49 @@
   - congest-sharing
   - congest-opt
   description: |
+    *  additive increase/multiplicative decrease
+    *  actual TCP outline
     *  fair sharing
     *  min/max fairness
+    *  "slow start"
 
-    *  fast retransmit and fast recovery
+
+- date: 2026-09-24
+  week: 5
+  title: "congestion control: fast recovery / simuatlors / congestion control: buffer bloat, CUBIC"
+  reading: PD 6.3.4, 6.4.1-6.4.2; (D 19-20); D 32
+  slides_ref:
+  - congest-opt
+  - sim
+  description: |
+    *  fast recovery
+
+    *  discrete event simulators
 
     *  queuing theory interlude:
        *  randomized arrivals means no 100% utilization
        *  high variance from long queues
+    *  better RTT estimation
+
     *  bufferbloat: congestion makes queues deep
 
-    *  slow start
-
-- date: 2026-09-24
-  week: 5
-  title: "congestion control: alternate congestion signals / simulators"
-  reading: PD 6.3.4, 6.4.1-6.4.2; (D 19-20); D 32
-  slides_ref:
-  - congest
-  - sim
-  description: |
     *  CUBIC
-
-    *  alternate congestion signals
-       *  explicit congestion notification
-           *  echoing back congestion signal
-       *  delay-based congestion control
-
-    *  discrete event simulators
 
 - date: 2026-09-25
   week: 5
 
 - date: 2026-09-29
   week: 6
-  title: "simulating TCP / queuing"
+  title: "congestion control: non-loss-based methods / queuing"
   slides_ref:
-  - sim
+  - congest-opt
   - queuing
   reading: PD 6.2, D 32, D 23.5.1-23.5.3
   description: | 
-    *  discrete event simulators
+    *  alternate congestion signals
+       *  explicit congestion notification
+           *  echoing back congestion signal
+       *  delay-based congestion control
 
     *  queue discplines
        *  droptail and problems
