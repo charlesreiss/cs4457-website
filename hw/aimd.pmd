@@ -78,7 +78,7 @@ Changelog:
     *  graphs of the congestion window size over time for MyTCP with your modifications (one for each added "mode");
 
     *  How you decided to make those changes. If your changes involve selecting numerical parameters,
-       describe how you choose those parameters. (If you choose the parameters thorugh experimentation,
+       describe how you choose those parameters. (If you choose the parameters through experimentation,
        that's fine; explain what you tried to decide on the final values.)
 
     *  Your assessment (ideally based on some experimentation)
@@ -169,4 +169,3 @@ In addition to the [official NS-3 website](https://nsnam.org) and our slides, yo
 2.  You can figure out the total number of bytes received from main()'s output and the option supplied for maxBytes, or by looking at the packet traces in wireshark (to count how many bytes are received in the TCP connections).
 
 3.  main() prints out the time the last byte was received, or you can look at when the last byte was received in the packet traces.
-
