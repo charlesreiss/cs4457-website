@@ -35,7 +35,6 @@
   open: 2026-09-25
   due: 2026-10-02
   page: hw/aimd.html
-  tentative: true
   submit_files:
   - "*.pdf"
   - "*.html"
@@ -49,7 +48,6 @@
   open: 2026-10-02
   due: 2026-10-09
   page: hw/aimd.html
-  tentative: true
   submit_files:
   - "*.pdf"
   - "*.html"
