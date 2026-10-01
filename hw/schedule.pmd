@@ -10,6 +10,7 @@ Changelog:
 *  7 Oct 2025: specify that precise handling of packets arriving in the middle of other packets
 *  20 October 2025: make skeleton code correctly use "from util import trace"
 *  22 October 2025: remove use of size_in_buffer in skeleton code and correct corresponding misaccounting in trace() prints
+*  1 Oct 2026: adjust description of virtual time computation to mention it only applies if one active queue
 </div>
 
 # Your Task
@@ -56,14 +57,15 @@ Changelog:
 2.  Add a new buffer implementation in buffer.py called WeightedFairQueuingBuffer.
 
     In this implementation, store the packets from connection c1 in a separate
-    buffer from the packets for connection c2. For each of these buffers,
-    have fixed limit on their size, and drop the incoming packets if those
-    buffers are full.
+    subqueue from the packets for connection c2. For each of these subqueues,
+    have fixed limit on their size, and drop the incoming packets if their
+    subqueues are full.
 
     In this queue, implement weighted fair queuing, where packets from connection c1
     get twice the bandwidth as packets from connection c2.
 
-    To keep this assignment simpler, your implementation does not need to account for
+    To keep this assignment simpler, when only one subqueue is active and a packet
+    comes in for the other subqueue, your implementation does not need to account for
     adjustments to virtual time based on one packet being in the middle of being transmitted
     when another is received. For example, this means you can compute the "current" virtual
     time based on the virtual time of the last transmitted packet.
