@@ -64,7 +64,7 @@ Changelog:
     In this queue, implement weighted fair queuing, where packets from connection c1
     get twice the bandwidth as packets from connection c2.
 
-    To keep this assignment simpler, your implementation can account for packets arriving
+    To keep this assignment simpler, your implementation may account for packets arriving
     while another packet is being transmitted as arriving at any time in between when the
     current packet started transmission and when the current packet will finish transmission.
 
