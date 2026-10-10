@@ -13,6 +13,7 @@ Changelog:
    there's no significant change in goodput that's not necessarily a problem
 *  6 Oct 2025: add some hints about computing goodput
 *  7 Oct 2025: mention ns3 clean for troubleshooting for setting up NS-3 under portal
+*  9 Oct 2026: clarify what was intended re: speed comaprisons, with caveat for accepting both interpretations
 </div>
 
 # Your Task
@@ -63,7 +64,7 @@ Changelog:
 
 1.  Customize the `MyTcpCongestionOps` so that on a simulation with default settings or with `--linkBandwidth=10Mbps`:
 
-    *  when the "myTcpMode" parameter is 1, the MyTCP flow completes at least 10% faster in the `mytcpvother` simulation 
+    *  when the "myTcpMode" parameter is 1, the MyTCP flow completes at least 10% faster in the `mytcpvother` simulation. *[added 9 Oct 2026:]* We intended 10% faster compared to with default setting --- and similar for the next part --- but we'll also accept a readings about comparing to the other flow (so long as you're consistent).
 
     *  when the "myTcpMode" parameter is 2, the other flow completes at least 10% faster and the MyTCP flow completes no more than 30% slower;
 
