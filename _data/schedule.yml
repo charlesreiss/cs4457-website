@@ -243,6 +243,8 @@
   slides_ref:
   - routing-intro
   description: |
+    >  When the recording for this lecture was originally uploaded, the audio was wrong; this should be corrected as of 12 October.
+
     *  ICMP routing errors (finish)
        *  time-to-live
 
