@@ -335,6 +335,8 @@
     *  socket / bind / connect
     *  read/recv, write/send
 
+- date: 2026-10-28
+  week: 10
 
 - date: 2026-10-29
   week: 10
