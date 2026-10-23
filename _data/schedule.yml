@@ -22,21 +22,22 @@
 - date: 2026-08-27
   week: 1
   title: "reliablity: checksums / ACKs / performance"
-  reading: PD 2.1, 2.4-2.5.2, 1.5
+  reading: PD 2.1, 2.4-2.5.2
   slides_ref:
   - intro
   - physical
   - framing
   - reliable-stop
   description: |
-    *  wireshark interlude
-       *  [packet trace](files/example-firefox-trace.pcapng)
     *  end-to-end argument
        *  Saltzer, Reed, and Clark, "[End-to-End Arguments in System Design](https://dl.acm.org/doi/pdf/10.1145/357401.357402)" (ACM Transactions on Computing Systems, 1984)
-    *  error detection --- checksums
-    *  stop-and-wait
-    *  need for sequence numbers
-
+    *  physical layer options
+    *  framing (briefly)
+       *  dividing bits into messages
+       *  checksums
+    *  acknowledgments + retransmissoins
+    *  wireshark interlude
+       *  [packet trace](files/example-firefox-trace.pcapng)
 
 - date: 2026-08-28
   week: 1
@@ -44,7 +45,7 @@
 - date: 2026-09-01
   week: 2
   title: "reliablity: performance metrics / sliding window"
-  reading: PD 2.5.1-2.5.2, PD 1.5
+  reading: PD 1.5, 2.5.1-2.5.2
   slides_ref:
   - perf
   - reliable-window
@@ -61,24 +62,18 @@
 - date: 2026-09-03
   week: 2
   title: "reliablity: sliding window / TCP realities / switching"
-  reading: PD 5.2-5.2.2; FS 14; PD 2.6.1-2.6.2, 3.1.1-3.1.2, 3.2-3.2.1, 3.2.4
+  reading: PD 5.2-5.2.2; FS 14; PD 2.6.1-2.6.2
   slides_ref:
+  - reliable-sliding
   - reliable-tcp
-  - switches
   description: |
     *  sliding window
        *  logic at sender, recevier (finish)
        *  size and bandwidth-delay product
        *  sequence number wraparound
     *  TCP realities
-        - sequence numbers are bytes
+        - sequence numbers are bytes, ack number usage
         - TCP options
-
-    *  interlude: "switch" v "router"; "forwarding" v "routing"
-    *  switched networks
-    *  packet versus circuit switching
-    *  software defined networks
-       *  see also: [Feamster et al, "The Road To SDN: An Intellectual History of Programmable Networks"](https://www.sigcomm.org/sites/default/files/ccr/papers/2014/April/0000000-0000012.pdf)
 
 
 - date: 2026-09-04
@@ -87,13 +82,21 @@
 - date: 2026-09-08
   week: 3
   title: "switches"
-  reading: PD 3.2-3.2.1, 3.2.4
+  reading: PD 3.1.1-3.1.2, 3.2-3.2.1, 3.2.4,
   slides_ref:
+  - reliable-tcp
   - switches
   description: |
-    *  P4 switch architecture (start)
+    *  TCP handshake, briefly
+
+    *  switched networks
+    *  Ethernet format, MAC addresses
+    *  software defined networks
+       *  see also: [Feamster et al, "The Road To SDN: An Intellectual History of Programmable Networks"](https://www.sigcomm.org/sites/default/files/ccr/papers/2014/April/0000000-0000012.pdf)
+    *  P4 switch architecture
        *  see also: [SDN book, chapter 4](https://sdn.systemsapproach.org/switch.html)
        *  control versus dataplane
+       *  data plane compoennts
 
 - date: 2026-09-10
   week: 3
@@ -107,44 +110,40 @@
        *  match/action pipeline
        *  tables
     *  P4 controllers
-    *  learning bridges
 
-    *  IP header
-       *  checksums
+    *  MAC learning
+
+    *  IPv4/v6 headers
     *  IP versus MAC addresses
-
 
 - date: 2026-09-11
   week: 3
 
 - date: 2026-09-15
   week: 4
-  title: "IPs con't / autoconfiguration"
-  reading: PD 3.3.2-3.3.7, 4.2.1-4.2.3
+  title: "IPs con't / ARP / routing basics"
+  reading: PD 3.3.2-3.3.6, 4.2.1-4.2.3; FS 4-4.5, 4.11
   slides_ref:
   - arp
   description: |
-    *  ARP
-    *  example: ICMP ping
-
-    *  ICMPv6 Neighbor Discovery
-
-    *  autoconfiguration (start)
-       *  DHCP
-       *  SLAAC
+    *  CIDR notation
+    *  switching v routing
+    *  ARP and ICMPv6 Neighbor Discovery
+    *  ARP hijacking
+    *  routing tables
 
 - date: 2026-09-17
   week: 4
-  title: "autoconfiguraiton / congestion control: AIMD, fairness"
-  reading: PD 6.1, 6.3-4, 6.4.2, FS 16, D 19.1, 20.2-20.3
+  title: " IP autoconfiguration / congetsion control basics"
+  reading: PD 3.3.7, 4.2.4, 6.1; FS 6-6.2.4, 6.2.6, 6.3; 
   slides_ref:
   - arp
   - congest-intro
   description: |
-    *  autoconfiguration (finish)
-
+    *  autoconfiguration
+       *  DHCP
+       *  SLAAC
     *  graph of throughput versus window size
-    *  history: congestion collapse
 
     *  observing good/bad congestion
     *  steady-state and changing cross-traffic
@@ -156,54 +155,56 @@
 - date: 2026-09-22
   week: 5
   title: "congestion control: fairness, slow start, fast recovery"
-  reading: PD 6.3.2-3, FS 16, D 19.2-4
+  reading: PD 6.1, 6.3-4, 6.4.2, FS 16, D 19.1-3, 20.2-20.3
   slides_ref:
+  - congest-intro
   - congest-sharing
-  - congest-opt
   description: |
     *  additive increase/multiplicative decrease
-    *  actual TCP outline
+    *  slow start and congestion avoidance
+
+    *  actual TCP outline (byte sequence numbers, etc.)
+
     *  fair sharing
     *  min/max fairness
-    *  "slow start"
-
 
 - date: 2026-09-24
   week: 5
-  title: "congestion control: fast recovery / simuatlors / congestion control: buffer bloat, CUBIC"
-  reading: PD 6.3.4, 6.4.1-6.4.2; (D 19-20); D 32
+  title: "congestion control: fast retransmit / simulators"
+  reading: PD 6.3.3; D 19.4, 18.8; D 32; 
+  reading: PD 6.3.2-3, FS 16, D 19.2-4
   slides_ref:
   - congest-opt
   - sim
   description: |
-    *  fast recovery
+    *  fast retransmit and fast recovery
+    
+    *  discrete event simulators and NS-3
 
-    *  discrete event simulators
+    *  delayed ACKs
+    *  RTT variance estimation
 
-    *  queuing theory interlude:
-       *  randomized arrivals means no 100% utilization
-       *  high variance from long queues
-    *  better RTT estimation
+    *  queuing theory interlude
+       *  bad to operate near 100% utilization
 
-    *  bufferbloat: congestion makes queues deep
-
-    *  CUBIC
 
 - date: 2026-09-25
   week: 5
 
 - date: 2026-09-29
   week: 6
-  title: "congestion control: non-loss-based methods / queuing"
+  title: "buffer bloat / congestion control: non-AIMD / queuing"
   slides_ref:
   - congest-opt
   - queuing
-  reading: PD 6.2, D 23.5.1-23.5.3
+  reading: PD 6.3.4, 6.4, 6.2, D 19.7, D 22.1, 22.6, 22.10, 22.16, D 23.5.1-23.5.3
   description: | 
-    *  alternate congestion signals
-       *  explicit congestion notification
-           *  echoing back congestion signal
-       *  delay-based congestion control
+    *  buffer bloat (congestion makes queus deep)
+    *  CUBIC
+
+    *  rate/latency-based congestion control
+
+    *  ECN
 
     *  queue discplines
        *  droptail and problems
@@ -212,7 +213,7 @@
 
 - date: 2026-10-01
   week: 6
-  title: "ECN; queue disciplines / routing : start"
+  title: queue disciplines / routing : start"
   reading: PD 6.2, 6.4.1, 3.4.1, 3.3.4, 3.3.8, D 23.5.1-3, 21.5.4, 9.4, 10.4, 12.2
   slides_ref:
   - queuing
@@ -222,9 +223,6 @@
        *  fair queuing (finish)
        *  strict priority
        *  random early detection
-
-    *  network as a graph
-       *  review: routing tables
 
     *  ICMP routing errors
        *  unreachable
@@ -249,6 +247,8 @@
        *  time-to-live
 
     *  flooding
+    *  fragmentation
+    *  sharing routes via flooding
 
     *  spanning tree protocols
        *  centralized
@@ -260,34 +260,34 @@
 - date: 2026-10-13
   week: 8
   title: "routing: metrics / distance vector"
-  reading: PD 3.4.4, 3.4.2, D 13.1-3
+  reading: PD 3.4.4, 3.4.2, 3.4.3, D 13.1-3, 13.5
   slides_ref:
   - routing-intro
   - routing-dv
+  - routing-ls
   description: |
     *  spanning tree protocols (finish)
     *  routing metrics
-
     *  distance vector routing
        *  running centrally
        *  distributed protocol
+    *  count-to-infinity problem
+
+    *  (start) link-state rotuting
 
 
 - date: 2026-10-15
   week: 8
-  title: "routing: distance vector (finish) / link state"
+  title: "routing: link state"
   slides_ref:
-  - routing-dv
-  - routing-ls
+    routing-ls
   reading: PD 3.4.2, 3.4.3, 4.1.1; D 13.5, 13.7
   description: |
-    *  distance vector (con't)
-       *  handling link removal
-       *  count-to-infinity problem
-
     *  link state routing
-       *  running centrally
-       *  distributed protocol
+    *  reliable flooding
+    *  mixing link-state and distance vector
+       *  OSPF areas
+
 
 
 - date: 2026-10-16
@@ -304,34 +304,39 @@
     *  autonomous systems
        *  graph structure
        *  business relationships (customer/provider; content-delivery; peering)
-    *  BGP advertisements
+    *  BGP advertisements and their components
+    *  multiple connections between ASes
 
 - date: 2026-10-22
   week: 9
-  title: "DNS"
+  title: "BGP / DNS"
   reading: PD 9.3.1; FS 11
   slides_ref:
+  - routing-bgp
   - dns
   description: |
+    *  route servers and internet exchanges
+    *  BGP fat-finger mistakes and hijacking
+
     *  domain names
        *  hierarchy
        *  zones
     *  recursive v authoritative
     *  record types, format
        *  name compression
-    *  DNS questions and answers
 
 - date: 2026-10-23
   week: 9
 
 - date: 2026-10-27
   week: 10
-  title: "DNS misc / sockets 1"
+  title: "DNS 2 / sockets 1"
   slides_ref:
   - dns
   - sockets
   reading: PD 9.3.1, 1.4; FS 11
   description: |
+    *  DNS questions and answers
     *  IDNs
     *  reverse lookups
     *  preview: cache poisoning, DNSSEC
